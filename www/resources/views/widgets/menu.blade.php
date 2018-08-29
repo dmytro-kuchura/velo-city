@@ -112,7 +112,7 @@
                             </div>
                         </li>
                         <li class="grid"><a href="#">Сервис</a></li>
-                        <li class="grid"><a href="#">Контакты</a>
+                        <li class="grid"><a href="{{ route('contacts') }}">Контакты</a>
                         </li>
                     </ul>
                 </div>
