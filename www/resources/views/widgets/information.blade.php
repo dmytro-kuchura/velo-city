@@ -30,12 +30,10 @@
                 </ul>
             </div>
             <div class="col-md-3 infor-left">
-                <h3>Store Information</h3>
-                <h4>The company name,
-                    <span>Lorem ipsum dolor,</span>
-                    Glasglow Dr 40 Fe 72.</h4>
-                <h5>+955 123 4567</h5>
-                <p><a href="mailto:example@email.com">contact@example.com</a></p>
+                <h3>Информация</h3>
+                <h4>Магазин Velo-City <span>ул. Кримская, 137</span> г. Херсон, Херсонская область.</h4>
+                <h5>+380 50 570 1900</h5>
+                <p><a href="mailto:contact@velo-city.online">contact@velo-city.online</a></p>
             </div>
             <div class="clearfix"></div>
         </div>

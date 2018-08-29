@@ -3,14 +3,12 @@
         <div class="footer-top">
             <div class="col-md-6 footer-left">
                 <form>
-                    <input type="text" value="Enter Your Email" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
-                    <input type="submit" value="Subscribe">
+                    <input type="text" value="Введите Ваш Email">
+                    <input type="submit" value="Подписаться">
                 </form>
             </div>
             <div class="col-md-6 footer-right">
-                <p>© 2015 Luxury Watches. All Rights Reserved | Design by <a href="http://w3layouts.com/"
-                                                                             target="_blank">W3layouts</a></p>
+                <p>© 2018 Velo-City | Сделан с ❤</p>
             </div>
             <div class="clearfix"></div>
         </div>
