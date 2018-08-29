@@ -13,14 +13,14 @@
                                     <div class="col1 me-one">
                                         <h4>Велосипеды</h4>
                                         <ul>
-                                            <li><a href="products.html">Горные</a></li>
-                                            <li><a href="products.html">Городские</a></li>
-                                            <li><a href="products.html">Шоссейные</a></li>
-                                            <li><a href="products.html">Детские</a></li>
-                                            <li><a href="products.html">Фэтбайки</a></li>
-                                            <li><a href="products.html">Электровелосипеды</a></li>
-                                            <li><a href="products.html">Двухподвесы</a></li>
-                                            <li><a href="products.html">Комфортные</a></li>
+                                            <li><a href="#">Горные</a></li>
+                                            <li><a href="#">Городские</a></li>
+                                            <li><a href="#">Шоссейные</a></li>
+                                            <li><a href="#">Детские</a></li>
+                                            <li><a href="#">Фэтбайки</a></li>
+                                            <li><a href="#">Электровелосипеды</a></li>
+                                            <li><a href="#">Двухподвесы</a></li>
+                                            <li><a href="#">Комфортные</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -32,39 +32,39 @@
                                     <div class="col1 me-one">
                                         <h4>Колесные части</h4>
                                         <ul>
-                                            <li><a href="products.html">Втулки</a></li>
-                                            <li><a href="products.html">Камеры</a></li>
-                                            <li><a href="products.html">Обода</a></li>
-                                            <li><a href="products.html">Покрышки</a></li>
-                                            <li><a href="products.html">Спицы и нипеля</a></li>
-                                            <li><a href="products.html">Ободные ленты</a></li>
-                                            <li><a href="products.html">Колеса в сборе</a></li>
+                                            <li><a href="#">Втулки</a></li>
+                                            <li><a href="#">Камеры</a></li>
+                                            <li><a href="#">Обода</a></li>
+                                            <li><a href="#">Покрышки</a></li>
+                                            <li><a href="#">Спицы и нипеля</a></li>
+                                            <li><a href="#">Ободные ленты</a></li>
+                                            <li><a href="#">Колеса в сборе</a></li>
                                         </ul>
                                     </div>
                                     <div class="col1 me-one">
                                         <h4>Трансмисия и тормоза</h4>
                                         <ul>
-                                            <li><a href="products.html">Каретки</a></li>
-                                            <li><a href="products.html">Касеты/Трещетки</a></li>
-                                            <li><a href="products.html">Педали</a></li>
-                                            <li><a href="products.html">Переключатели</a></li>
-                                            <li><a href="products.html">Цепи и замки</a></li>
-                                            <li><a href="products.html">Шатуны</a></li>
-                                            <li><a href="products.html">Звезды шатунов</a></li>
-                                            <li><a href="products.html">Тормоза (тормозные части)</a></li>
+                                            <li><a href="#">Каретки</a></li>
+                                            <li><a href="#">Касеты/Трещетки</a></li>
+                                            <li><a href="#">Педали</a></li>
+                                            <li><a href="#">Переключатели</a></li>
+                                            <li><a href="#">Цепи и замки</a></li>
+                                            <li><a href="#">Шатуны</a></li>
+                                            <li><a href="#">Звезды шатунов</a></li>
+                                            <li><a href="#">Тормоза (тормозные части)</a></li>
                                         </ul>
                                     </div>
                                     <div class="col1 me-one">
                                         <h4>Рамы, вилки, седла, рули</h4>
                                         <ul>
-                                            <li><a href="products.html">Рамы</a></li>
-                                            <li><a href="products.html">Седла</a></li>
-                                            <li><a href="products.html">Вилки и запчасти</a></li>
-                                            <li><a href="products.html">Подседельные хомуты</a></li>
-                                            <li><a href="products.html">Подседельные штыри</a></li>
-                                            <li><a href="products.html">Рули</a></li>
-                                            <li><a href="products.html">Грипсы</a></li>
-                                            <li><a href="products.html">Выносы</a></li>
+                                            <li><a href="#">Рамы</a></li>
+                                            <li><a href="#">Седла</a></li>
+                                            <li><a href="#">Вилки и запчасти</a></li>
+                                            <li><a href="#">Подседельные хомуты</a></li>
+                                            <li><a href="#">Подседельные штыри</a></li>
+                                            <li><a href="#">Рули</a></li>
+                                            <li><a href="#">Грипсы</a></li>
+                                            <li><a href="#">Выносы</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -76,43 +76,43 @@
                                     <div class="col1 me-one">
                                         <h4>Экипировка</h4>
                                         <ul>
-                                            <li><a href="products.html">Шлемы</a></li>
-                                            <li><a href="products.html">Перчатки</a></li>
-                                            <li><a href="products.html">Очки</a></li>
-                                            <li><a href="products.html">Одежда</a></li>
-                                            <li><a href="products.html">Обувь</a></li>
-                                            <li><a href="products.html">Защита</a></li>
+                                            <li><a href="#">Шлемы</a></li>
+                                            <li><a href="#">Перчатки</a></li>
+                                            <li><a href="#">Очки</a></li>
+                                            <li><a href="#">Одежда</a></li>
+                                            <li><a href="#">Обувь</a></li>
+                                            <li><a href="#">Защита</a></li>
                                         </ul>
                                     </div>
                                     <div class="col1 me-one">
                                         <h4>Инструменты</h4>
                                         <ul>
-                                            <li><a href="products.html">Выжимки цепей</a></li>
-                                            <li><a href="products.html">Ключи</a></li>
-                                            <li><a href="products.html">Измерительные</a></li>
-                                            <li><a href="products.html">Съемники</a></li>
-                                            <li><a href="products.html">Шестигранники</a></li>
-                                            <li><a href="products.html">Рем. комплекты</a></li>
+                                            <li><a href="#">Выжимки цепей</a></li>
+                                            <li><a href="#">Ключи</a></li>
+                                            <li><a href="#">Измерительные</a></li>
+                                            <li><a href="#">Съемники</a></li>
+                                            <li><a href="#">Шестигранники</a></li>
+                                            <li><a href="#">Рем. комплекты</a></li>
                                         </ul>
                                     </div>
                                     <div class="col1 me-one">
                                         <h4>Аксесуары</h4>
                                         <ul>
-                                            <li><a href="products.html">Антипрокольная жидкость</a></li>
-                                            <li><a href="products.html">Фляги</a></li>
-                                            <li><a href="products.html">Флягодержатели</a></li>
-                                            <li><a href="products.html">Велокомпьютеры</a></li>
-                                            <li><a href="products.html">Фары, мигалки</a></li>
-                                            <li><a href="products.html">Сумки</a></li>
-                                            <li><a href="products.html">Насосы</a></li>
-                                            <li><a href="products.html">Крылья</a></li>
+                                            <li><a href="#">Антипрокольная жидкость</a></li>
+                                            <li><a href="#">Фляги</a></li>
+                                            <li><a href="#">Флягодержатели</a></li>
+                                            <li><a href="#">Велокомпьютеры</a></li>
+                                            <li><a href="#">Фары, мигалки</a></li>
+                                            <li><a href="#">Сумки</a></li>
+                                            <li><a href="#">Насосы</a></li>
+                                            <li><a href="#">Крылья</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="grid"><a href="typo.html">Сервис</a></li>
-                        <li class="grid"><a href="contact.html">Контакты</a>
+                        <li class="grid"><a href="#">Сервис</a></li>
+                        <li class="grid"><a href="#">Контакты</a>
                         </li>
                     </ul>
                 </div>
