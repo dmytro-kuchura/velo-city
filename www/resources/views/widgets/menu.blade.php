@@ -5,7 +5,7 @@
                 <div class="top-nav">
                     <ul class="memenu skyblue">
                         <li class="active">
-                            <a href="/">Главная</a>
+                            <a href="{{ route('home') }}">Главная</a>
                         </li>
                         <li class="grid"><a href="#">Велосипеды</a>
                             <div class="mepanel">

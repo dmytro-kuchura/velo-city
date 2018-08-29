@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords"
-          content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template"/>
+
+    <meta name="description" content="@yield('description')"/>
+    <meta name="keywords" content="@yield('keywords')"/>
+
     <script type="application/x-javascript">
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -24,7 +26,6 @@
     <script src="/js/responsiveslides.min.js"></script>
 </head>
 <body>
-<!--top-header-->
 <div class="top-header">
     <div class="container">
         <div class="top-header-main">
@@ -44,12 +45,12 @@
             </div>
             <div class="col-md-6 top-header-left">
                 <div class="cart box_1">
-                    <a href="checkout.html">
+                    <a href="#">
                         <div class="total">
                             <span class="simpleCart_total"></span></div>
                         <img src="images/cart-1.png" alt=""/>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <p><a href="javascript:;" class="simpleCart_empty">Корзина пуста</a></p>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -57,28 +58,13 @@
         </div>
     </div>
 </div>
-<!--top-header-->
-<!--start-logo-->
 <div class="logo">
-    <a href="index.html"><h1>Luxury Watches</h1></a>
+    <a href="{{ route('home') }}">
+        <img src="/images/logo.png">
+    </a>
 </div>
-<!--start-logo-->
-<!--bottom-header-->
 @widget('Menu')
-<!--Slider-Starts-Here-->
-@widget('Slider')
-<!--End-slider-script-->
-<!--about-starts-->
-@widget('Categories')
-<!--about-end-->
-<!--product-starts-->
-@widget('Products')
-<!--product-end-->
-<!--information-starts-->
-@widget('Information')
-<!--information-end-->
-<!--footer-starts-->
+@yield('content')
 @widget('Footer')
-<!--footer-end-->
 </body>
 </html>

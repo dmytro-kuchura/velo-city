@@ -36015,7 +36015,7 @@ module.exports = function spread(callback) {
 
     var t = { interval: 250 };
     var n = 0;
-    $(".memenu").prepend("<li class='showhide'><span class='title'>MENU</span><span class='icon1'></span><span class='icon2'></span></li>");
+    $(".memenu").prepend("<li class='showhide'><span class='title'>МЕНЮ</span><span class='icon1'></span><span class='icon2'></span></li>");
     r();
     $(window).resize(function () {
         r();

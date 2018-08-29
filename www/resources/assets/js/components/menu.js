@@ -52,7 +52,7 @@ $.fn.memenu = function (e) {
 
     let t = {interval: 250};
     let n = 0;
-    $(".memenu").prepend("<li class='showhide'><span class='title'>MENU</span><span class='icon1'></span><span class='icon2'></span></li>");
+    $(".memenu").prepend("<li class='showhide'><span class='title'>МЕНЮ</span><span class='icon1'></span><span class='icon2'></span></li>");
     r();
     $(window).resize(function () {
         r()
