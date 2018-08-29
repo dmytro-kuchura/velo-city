@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-3 infor-left">
                 <h3>Контакты</h3>
-                <h4>Магазин Velo-City <span>ул. Кримская, 137</span> г. Херсон, Херсонская область.</h4>
+                <h4>Магазин Velo-City <span>ул. Крымская, 137</span> г. Херсон, Херсонская область.</h4>
                 <h5>+380 50 570 1900</h5>
                 <p><a href="mailto:contacts@velo-city.online">contacts@velo-city.online</a></p>
             </div>

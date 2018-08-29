@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'SiteController@home')->name('home');
+Route::get('/contacts', 'SiteController@contacts')->name('contacts');

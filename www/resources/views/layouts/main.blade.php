@@ -65,6 +65,7 @@
 </div>
 @widget('Menu')
 @yield('content')
+@widget('Information')
 @widget('Footer')
 </body>
 </html>

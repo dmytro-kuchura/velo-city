@@ -8,5 +8,4 @@
     @widget('Slider')
     @widget('Categories')
     @widget('Products')
-    @widget('Information')
 @endsection
