@@ -4,45 +4,22 @@
             <div class="col-md-9 header-left">
                 <div class="top-nav">
                     <ul class="memenu skyblue">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li class="grid"><a href="#">Men</a>
+                        <li class="active">
+                            <a href="/">Главная</a>
+                        </li>
+                        <li class="grid"><a href="#">Велосипеды</a>
                             <div class="mepanel">
                                 <div class="row">
                                     <div class="col1 me-one">
-                                        <h4>Shop</h4>
                                         <ul>
-                                            <li><a href="products.html">New Arrivals</a></li>
-                                            <li><a href="products.html">Blazers</a></li>
-                                            <li><a href="products.html">Swem Wear</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Handbags</a></li>
-                                            <li><a href="products.html">T-Shirts</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">My Shopping Bag</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>Style Zone</h4>
-                                        <ul>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">Brands</a></li>
-                                            <li><a href="products.html">Coats</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Trousers</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>Popular Brands</h4>
-                                        <ul>
-                                            <li><a href="products.html">499 Store</a></li>
-                                            <li><a href="products.html">Fastrack</a></li>
-                                            <li><a href="products.html">Casio</a></li>
-                                            <li><a href="products.html">Fossil</a></li>
-                                            <li><a href="products.html">Maxima</a></li>
-                                            <li><a href="products.html">Timex</a></li>
-                                            <li><a href="products.html">TomTom</a></li>
-                                            <li><a href="products.html">Titan</a></li>
+                                            <li><a href="products.html">Горные</a></li>
+                                            <li><a href="products.html">Городские</a></li>
+                                            <li><a href="products.html">Шоссейные</a></li>
+                                            <li><a href="products.html">Детские</a></li>
+                                            <li><a href="products.html">Фэтбайки</a></li>
+                                            <li><a href="products.html">Электровелосипеды</a></li>
+                                            <li><a href="products.html">Двухподвесы</a></li>
+                                            <li><a href="products.html">Комфортные</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -144,8 +121,7 @@
             </div>
             <div class="col-md-3 header-right">
                 <div class="search-bar">
-                    <input type="text" value="Search" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Search';}">
+                    <input type="text" value="Поиск">
                     <input type="submit" value="">
                 </div>
             </div>
