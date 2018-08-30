@@ -8965,23 +8965,13 @@ body a {
 }
 
 @font-face {
-  font-family: 'Lora-Regular';
-  src: url(/fonts/Lora-Regular.ttf?72631269e4dc9b244bfb441ea22188fe) format("truetype");
-}
-
-@font-face {
-  font-family: 'Muli-Regular';
-  src: url(/fonts/Muli-Regular.ttf?fe82d4bebb545cd0d8c9683e258e961c) format("truetype");
-}
-
-@font-face {
   font-family: 'Lato-Regular';
-  src: url(/fonts/Lato-Regular.ttf?7f690e503a254e0b8349aec0177e07aa) format("truetype");
+  src: url(/fonts/fritz-quadrata.ttf?c053fd0693fe6071a25c775abac2c43c) format("truetype");
 }
 
 @font-face {
-  font-family: 'BreeSerif-Regular';
-  src: url(/fonts/BreeSerif-Regular.ttf?9fcf3a62fd8e693bdc8215062a4bd1fa) format("truetype");
+  font-family: 'Fritz Quadrata Cyrillic';
+  src: url(/fonts/fritz-quadrata.ttf?c053fd0693fe6071a25c775abac2c43c) format("truetype");
 }
 
 /*--starts-logo--*/
