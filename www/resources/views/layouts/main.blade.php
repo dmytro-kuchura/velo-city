@@ -67,5 +67,6 @@
 @yield('content')
 @widget('Information')
 @widget('Footer')
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
