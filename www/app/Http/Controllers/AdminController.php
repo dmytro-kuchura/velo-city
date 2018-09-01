@@ -9,4 +9,9 @@ class AdminController
     {
         return view('admin.login');
     }
+
+    public function create()
+    {
+        return view('admin.create');
+    }
 }

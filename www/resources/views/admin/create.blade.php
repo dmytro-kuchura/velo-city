@@ -8,13 +8,16 @@
 
             <div class="panel-body">
                 <h3 class="text-center m-t-0 m-b-15">
-                    <a href="index.html" class="logo">
-                        <img src="/images/logo.png" alt="logo-img">
+                    <a href="{{ route('home') }}" class="logo">
+                        <img src="assets/images/logo_white.png" alt="logo-img">
                     </a>
                 </h3>
-                <h4 class="text-muted text-center m-t-0"><b>Sign In</b></h4>
 
-                <auth-form></auth-form>
+                <h4 class="text-muted text-center m-t-0">
+                    <b>Регистрация</b>
+                </h4>
+
+                <registration-form></registration-form>
             </div>
 
         </div>

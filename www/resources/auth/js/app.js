@@ -6,6 +6,14 @@
 
 require('./bootstrap');
 
+import Vue from "vue";
+
+Vue.component('registration-form', require('../components/RegistrationForm.vue'));
+Vue.component('auth-form', require('../components/AuthForm.vue'));
+
+const app = new Vue({
+    el: '#app'
+});
 
 // assets/js/modernizr.min.js"></script>
 // assets/js/detect.js"></script>

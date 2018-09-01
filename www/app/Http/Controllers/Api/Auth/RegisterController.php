@@ -6,7 +6,6 @@ use App\User;
 use Illuminate\Http\Request;
 use Laravel\Passport\Client;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
 {
