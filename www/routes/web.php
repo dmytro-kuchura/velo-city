@@ -17,6 +17,7 @@ Route::get('/contacts', 'SiteController@contacts')->name('contacts');
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('auth');
     Route::get('/create', 'AdminController@create')->name('create');
+    Route::get('/reset-password', 'AdminController@reset')->name('reset');
     Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
 
 //    Route::get('/', 'BlogController@index')->name('blog.index');

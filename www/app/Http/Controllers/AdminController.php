@@ -14,4 +14,9 @@ class AdminController
     {
         return view('admin.create');
     }
+
+    public function reset()
+    {
+        return view('admin.reset');
+    }
 }

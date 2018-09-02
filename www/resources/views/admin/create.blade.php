@@ -9,7 +9,7 @@
             <div class="panel-body">
                 <h3 class="text-center m-t-0 m-b-15">
                     <a href="{{ route('home') }}" class="logo">
-                        <img src="assets/images/logo_white.png" alt="logo-img">
+                        <img src="/images/logo-new.png" alt="logo-img">
                     </a>
                 </h3>
 
