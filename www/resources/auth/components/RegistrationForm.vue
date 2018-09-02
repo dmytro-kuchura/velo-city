@@ -32,7 +32,7 @@
 
         <div class="form-group m-t-30 m-b-0">
             <div class="col-sm-12 text-center">
-                <a href="pages-login.html" class="text-muted">Авторизация</a>
+                <a href="/admin" class="text-muted">Авторизация</a>
             </div>
         </div>
 

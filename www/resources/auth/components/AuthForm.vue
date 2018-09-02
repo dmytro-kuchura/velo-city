@@ -34,10 +34,10 @@
 
         <div class="form-group m-t-30 m-b-0">
             <div class="col-sm-7">
-                <a href="pages-recoverpw.html" class="text-muted"><i class="fa fa-lock m-r-5"></i> Забыли пароль?</a>
+                <a href="/admin/reset-password" class="text-muted"><i class="fa fa-lock m-r-5"></i> Забыли пароль?</a>
             </div>
             <div class="col-sm-5 text-right">
-                <a href="pages-register.html" class="text-muted">Создать аккаунт</a>
+                <a href="/admin/create" class="text-muted">Создать аккаунт</a>
             </div>
         </div>
     </form>
