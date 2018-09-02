@@ -13,10 +13,12 @@ trait IssueTokenTrait
             'grant_type' => $grantType,
             'client_id' => $this->client->id,
             'client_secret' => $this->client->secret,
-            'username' => $request->get('email'),
-            'password' => $request->get('password'),
             'scope' => $scope
         ];
+
+        if ($grantType !== 'social') {
+            $params['username'] = $request->username ?: $request->email;
+        }
 
         $request->request->add($params);
 
