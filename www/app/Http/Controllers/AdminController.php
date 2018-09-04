@@ -19,4 +19,9 @@ class AdminController
     {
         return view('admin.reset');
     }
+
+    public function dashboard()
+    {
+        return view('admin.dashboard');
+    }
 }

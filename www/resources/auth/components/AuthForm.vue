@@ -3,7 +3,7 @@
 
         <div class="form-group">
             <div class="col-xs-12">
-                <input class="form-control" type="text" required="" placeholder="Пользователь" v-model="auth.username"
+                <input class="form-control" type="text" required="" placeholder="Email" v-model="auth.username"
                        :class="{'has-error': errors.username}">
             </div>
         </div>
@@ -28,7 +28,8 @@
 
         <div class="form-group text-center m-t-40">
             <div class="col-xs-12">
-                <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Авторизоваться</button>
+                <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Авторизоваться
+                </button>
             </div>
         </div>
 
@@ -64,6 +65,10 @@
                 this.errors = response.data.errors;
             },
             setSuccessMessage() {
+                this.$cookies.set("auth_token", true, "1d", "/");
+
+                window.location.href = '/admin/dashboard';
+
                 this.reset();
             },
             reset() {

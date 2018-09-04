@@ -17,6 +17,6 @@ Route::prefix('v1')->group(function () {
     Route::post('refresh', 'Api\Auth\LoginController@refresh')->name('refresh');
 
     Route::middleware('auth:api')->group(function () {
-        Route::post('logout', 'Api\Auth\LoginController@logout');
+        Route::post('logout', 'Api\Auth\LoginController@logout')->name('logout');
     });
 });
