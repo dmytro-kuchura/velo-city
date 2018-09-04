@@ -5,7 +5,5 @@
 @section('keywords', 'велозапчасти, велоаксессуары, велозапчасти купить, магазин велозапчастей, велозапчасти интернет, велозапчасти интернет магазин')
 
 @section('content')
-    @widget('Slider')
-    @widget('Categories')
-    @widget('Products')
+
 @endsection

@@ -1,41 +1,18 @@
-<!--banner-starts-->
-<div class="bnr" id="home">
-    <div id="top" class="callbacks_container">
-        <ul class="rslides" id="slider4">
-            <li>
-                <img src="/images/slider-1.png" alt=""/>
-            </li>
-            <li>
-                <img src="/images/slider-2.png" alt=""/>
-            </li>
-            <li>
-                <img src="/images/slider-3.png" alt=""/>
-            </li>
-        </ul>
+<div class="image-slider">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide slide">
+            <a href="#"><img class="swiper-lazy" data-src="pic/slider-image1.png" alt=""></a>
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide slide">
+            <a href="#"><img class="swiper-lazy" data-src="" alt=""></a>
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide slide">
+            <a href="#"><img class="swiper-lazy" data-src="http://imgsrc.me/1366x500/000fff/000000" alt=""></a>
+            <div class="swiper-lazy-preloader"></div>
+        </div>
     </div>
-    <div class="clearfix"></div>
+    <div id="image-sliderprev" class="prev"></div>
+    <div id="image-slidernext" class="next"></div>
 </div>
-<!--banner-ends-->
-<!--Slider-Starts-Here-->
-<script src="js/responsiveslides.min.js"></script>
-<script>
-    // You can also use "$(window).load(function() {"
-    $(function () {
-        // Slideshow 4
-        $("#slider4").responsiveSlides({
-            auto: true,
-            pager: true,
-            nav: true,
-            speed: 500,
-            namespace: "callbacks",
-            before: function () {
-                $('.events').append("<li>before event fired.</li>");
-            },
-            after: function () {
-                $('.events').append("<li>after event fired.</li>");
-            }
-        });
-
-    });
-</script>
-<!--End-slider-script-->
