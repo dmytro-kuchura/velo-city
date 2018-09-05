@@ -49,6 +49,8 @@
     <meta name="application-name" content="Title">
     <meta name="msapplication-tooltip" content="Description">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <style>
@@ -76,7 +78,7 @@
         <div class="inline-logo">
             <div class="logo">
                 <span class="logo-big"><a href="/"></a></span>
-                <span class="logo-text">интернет магазин спортивной одежды и обуви</span>
+                <span class="logo-text">Веломагазин VELO-CITY</span>
             </div>
         </div>
         <div class="wSize">

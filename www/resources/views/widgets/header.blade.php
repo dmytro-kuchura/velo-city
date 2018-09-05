@@ -1,7 +1,5 @@
 <header class="wHeader">
-    <!-- Begin of topline -->
     <div id="Info" class="topline">
-        <!-- Begin of wSize -->
         <div class="wSize">
             <div class="top-btn">
                 <a href="#">
@@ -15,15 +13,12 @@
                     <span class="text">Надежная доставка</span>
                 </a>
             </div>
-
             <div class="top-btn">
                 <a href="#">
                     <span class="ico ico-change"></span>
                     <span class="text">Возврат и обмен</span>
                 </a>
             </div>
-
-
             <div class="top-btn">
                 <a href="#">
                     <span class="ico ico-warranty"></span>
@@ -36,17 +31,14 @@
                     <span class="text">Вход / регистрация</span>
                 </a>
             </div>
-        </div><!-- End of wSize-->
-    </div><!-- End of topline-->
-    <!-- Begin of logoline -->
+        </div>
+    </div>
     <div class="logoline">
-        <!-- Begin of wSize -->
         <div class="wSize">
             <div class="logo">
                 <span class="logo-big"><a href="index.html"></a></span>
                 <span class="logo-text">интернет магазин спортивной одежды и обуви</span>
             </div>
-
             <div id="Search" class="search wForm" data-form="true">
                 <input type="text" placeholder="Например Adidas Gazelle"  data-msg-minlength="Пожалуйста, введите не меньше 4 символов" data-rule-minlength="4">
                 <div class="icon-search wSubmit"></div>
@@ -54,11 +46,9 @@
             </div>
             <div id='Phones' class="phones">
                 <ul>
-                    <li><a href="tel:0443251212">044-325-12-12</a></li>
-                    <li><a href="tel:0443251212">044-325-12-12</a></li>
+                    <li><a href="tel:0505701900">050-570-1900</a></li>
                 </ul>
                 <div class="callme-btn"><span>перезвоните мне</span></div>
-
                 <div id="callme"  style="display:none;" class="callme-popup wForm" data-form="true">
                     <div class="wFormRow">
                         <input type="text" required
@@ -92,8 +82,6 @@
                     </div>
                     <div class="close"></div>
                 </div>
-
-
             </div>
             <div class="basket"><a data-mfp-src="#orderBasket" class="wb_edit_init" style="  text-decoration: none;">
                     <div class="basket-img"><span class="basket-count">0</span></div>
@@ -102,9 +90,8 @@
             </div>
             <div id="drop-info" class=" ico touch-info mfp" data-mfp-src="#Info"></div>
             <div id="drop-menu" class=" ico touch-menu dropdown"></div>
-
             <div class="ico touch-phone mfp" data-mfp-src="#Phones"></div>
             <div class="ico touch-search mfp" data-mfp-src="#Search"></div>
-        </div><!-- End of wSize-->
-    </div><!-- End of logoline-->
+        </div><
+    </div><
 </header>
