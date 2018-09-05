@@ -129,9 +129,11 @@
             </div>
         </div>
         <div class="wezom">
-            <span class="wico"></span>
-            <span><a href="http://wezom.com.ua" target="_blank">Программирование сайта - студия Wezom</a> </span>
+            {{--<span class="wico"></span>--}}
+            {{--<span>Программирование сайта - студия Wezom</span>--}}
         </div>
     </div>
-    <!-- End of bottomline-->
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="http://maps.google.com/maps/api/js"></script>
+
 </footer>

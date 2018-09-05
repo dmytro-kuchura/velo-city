@@ -7,9 +7,9 @@
 
 require('./bootstrap');
 
-require('./components/menu');
-require('./components/simplecart');
-require('./components/easydropdown');
+require('./components/modernizr');
+require('./components/jquery-ui');
+require('./components/plugins');
 
 // window.Vue = require('vue');
 
@@ -22,7 +22,3 @@ require('./components/easydropdown');
 // const app = new Vue({
 //     el: '#app'
 // });
-
-$(document).ready(function () {
-    $(".memenu").memenu();
-});
