@@ -98,6 +98,12 @@
             {{--<span>Программирование сайта - студия Wezom</span>--}}
         {{--</div>--}}
     </div>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+
+    <script src="/js/plugins.js"></script>
+    <script src="/js/init.js"></script>
+    <script src="/js/basket.js"></script>
     <script src="http://maps.google.com/maps/api/js"></script>
 </footer>

@@ -47,7 +47,7 @@ $(document).ready(function() {
         console.log('удаляем? - ' + itemDel);
         console.log('время: ' + delTime);
 
-
+        
         if (del) {
             wbf_del(obj, delTime);
         }
@@ -128,7 +128,7 @@ $(document).ready(function() {
             }
             // переназначение селекта - если есть
             /*if (wb_t.find('.wb_select')) {
-                wb_t.find('.wb_select').each(function(index, el) {
+                wb_t.find('.wb_select').each(function(index, el) {                    
                     $(this).find('option:selected').prop('selected', false);
                     $(this).find('[value="' + wb_t.attr($(this).attr('data-equal')) + '"]').prop('selected', true);
                 });
@@ -137,7 +137,7 @@ $(document).ready(function() {
             /*if (wb_t.find('.wb_check')) {
                 wb_t.find('.wb_check').each(function(index, el) {
                     $(this).find('input:checked').prop('checked', false);
-                    $(this).find('[value="' + wb_t.attr($(this).attr('data-equal')) + '"]').prop('checked', true);
+                    $(this).find('[value="' + wb_t.attr($(this).attr('data-equal')) + '"]').prop('checked', true);                    
                 });
             }*/
             wb_t = '';

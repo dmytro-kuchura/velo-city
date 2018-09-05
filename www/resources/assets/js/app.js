@@ -7,10 +7,6 @@
 
 require('./bootstrap');
 
-require('./components/modernizr');
-require('./components/jquery-ui');
-require('./components/plugins');
-
 // window.Vue = require('vue');
 
 /**

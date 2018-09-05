@@ -148,7 +148,7 @@ $(document).ready(function() {
         thisli.children('ul').toggleClass('current');
     })
 
-        .on('click', 'li>.close', function() {});
+    .on('click', 'li>.close', function() {});
     $('.phones').on('click','.callme-btn', function() {
         if ($('#callme').css('display') == 'none') {
             $('#callme').slideDown();
@@ -158,8 +158,8 @@ $(document).ready(function() {
             $('#Phones').toggleClass('opened');
         }
     }).on('click','.close',function(){
-        $('#callme').slideUp();
-        $('#Phones').toggleClass('opened');
+         $('#callme').slideUp();
+            $('#Phones').toggleClass('opened');
     });
     if ($('.image-slider').length) {
         var mainsli = $('.image-slider');
@@ -446,27 +446,27 @@ $(document).ready(function() {
     //     var orderfrmSli = new Swiper(orderfrm, {
     //         onlyExternal: true
     //     });
-    $('.wOrder').on('click', function(event) {
-        var form = $(this).closest('.wForm');
-        form.valid();
+        $('.wOrder').on('click', function(event) {
+            var form = $(this).closest('.wForm');
+            form.valid();
+                
+            if (form.valid()) {
+                form.submit();
+                var indx = $(this).closest('.orderstep').index();
+                $('.orderform .active').removeClass('active');
+                $('.ordertab').eq(indx+1).addClass('active');
+                $('.orderstep').eq(indx+1).addClass('active');
+            }
+        });
 
-        if (form.valid()) {
-            form.submit();
-            var indx = $(this).closest('.orderstep').index();
-            $('.orderform .active').removeClass('active');
-            $('.ordertab').eq(indx+1).addClass('active');
-            $('.orderstep').eq(indx+1).addClass('active');
-        }
-    });
+        $('.ordertabs .edit').on('click', function() {
+            var indx = $(this).closest('.ordertab').index();
+                $('.orderform .active').removeClass('active');
+                $('.ordertab').eq(indx).addClass('active');
+                $('.orderstep').eq(indx).addClass('active');
+        });
 
-    $('.ordertabs .edit').on('click', function() {
-        var indx = $(this).closest('.ordertab').index();
-        $('.orderform .active').removeClass('active');
-        $('.ordertab').eq(indx).addClass('active');
-        $('.orderstep').eq(indx).addClass('active');
-    });
-
-
+    
     /*-------------------------------  responsive EnterPopup  ------------------------------------*/
 
     $('#enterReg').on('click', '.erTitle', function(event) {
