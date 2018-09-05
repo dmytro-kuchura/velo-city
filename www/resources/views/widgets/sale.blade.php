@@ -1,6 +1,6 @@
 <section class="content-slider flash-sale">
     <div class="head">
-        <div class="section-name">Флеш-распродажа</div>
+        <div class="section-name">Популярное</div>
         <div class='nav'>
             <div id="flashprev" class="left"></div>
             <div id="flashnext" class="right"></div>

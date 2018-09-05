@@ -26,7 +26,7 @@
                 </li>
                 <li>
                     <div class="ulwrap">
-                        <a href="">Полезная информация</a>
+                        <a href="">Информация</a>
                         <ul>
                             <li>
                                 <a href="">Гарантия</a>
