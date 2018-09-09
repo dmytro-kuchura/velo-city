@@ -26,7 +26,7 @@
                 </a>
             </div>
             <div class="top-btn">
-                <a href="#enterReg"  class="enterReg">
+                <a href="#enterReg" class="enterReg">
                     <span class="ico ico-badge " ></span>
                     <span class="text">Вход / регистрация</span>
                 </a>
@@ -37,7 +37,7 @@
         <div class="wSize">
             <div class="logo">
                 <span class="logo-big"><a href="index.html"></a></span>
-                <span class="logo-text">интернет магазин спортивной одежды и обуви</span>
+                <span class="logo-text">интернет магазин велосипедов и комплектующего</span>
             </div>
             <div id="Search" class="search wForm" data-form="true">
                 <input type="text" placeholder="Например Adidas Gazelle"  data-msg-minlength="Пожалуйста, введите не меньше 4 символов" data-rule-minlength="4">
@@ -46,7 +46,7 @@
             </div>
             <div id='Phones' class="phones">
                 <ul>
-                    <li><a href="tel:0505701900">050-570-1900</a></li>
+                    <li><a href="tel:+380505701900">+38 050-570-1900</a></li>
                 </ul>
                 <div class="callme-btn"><span>перезвоните мне</span></div>
                 <div id="callme"  style="display:none;" class="callme-popup wForm" data-form="true">
@@ -92,6 +92,6 @@
             <div id="drop-menu" class=" ico touch-menu dropdown"></div>
             <div class="ico touch-phone mfp" data-mfp-src="#Phones"></div>
             <div class="ico touch-search mfp" data-mfp-src="#Search"></div>
-        </div><
-    </div><
+        </div>
+    </div>
 </header>
