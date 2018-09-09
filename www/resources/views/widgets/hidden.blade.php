@@ -84,7 +84,7 @@
                         <div class="wb_li">
                             <div class="wb_side">
                                 <div class="wb_img">
-                                    <a href="item.html" class="wbLeave"><img src="http://imgsrc.me/500/aaccee" alt="" /></a>
+                                    <a href="item.html" class="wbLeave"><img src="https://veloplaneta.com.ua/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/s/k/skd-86-94_1.jpg" alt="" /></a>
                                 </div>
                             </div>
                             <div class="wb_content">
@@ -94,20 +94,20 @@
                                         <a href="item.html" class="wbLeave">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
                                     </div>
                                 </div>
-                                <div class="wb_row">
-                                    <div class="wb_check" data-equal="data-size">
-                                        <div>Размер:</div>
-                                        <span class="sizes">
+                                {{--<div class="wb_row">--}}
+                                    {{--<div class="wb_check" data-equal="data-size">--}}
+                                        {{--<div>Размер:</div>--}}
+                                        {{--<span class="sizes">--}}
 
-											<input type="radio" value="40" id='size40' name='sizes' checked><label for="size40">40</label>
-											<input type="radio" value="41" id='size41' name='sizes'><label for="size41">41</label>
-											<input type="radio" value="42" id='size42' name='sizes'><label for="size42">42</label>
-											<input type="radio" value="43" id='size43' name='sizes'><label for="size43">43</label>
-											<input type="radio" value="44" id='size44' name='sizes'><label for="size44">44</label>
-											<input type="radio" value="45" id='size45' name='sizes'><label for="size45">45</label>
-										</span>
-                                    </div>
-                                </div>
+											{{--<input type="radio" value="40" id='size40' name='sizes' checked><label for="size40">40</label>--}}
+											{{--<input type="radio" value="41" id='size41' name='sizes'><label for="size41">41</label>--}}
+											{{--<input type="radio" value="42" id='size42' name='sizes'><label for="size42">42</label>--}}
+											{{--<input type="radio" value="43" id='size43' name='sizes'><label for="size43">43</label>--}}
+											{{--<input type="radio" value="44" id='size44' name='sizes'><label for="size44">44</label>--}}
+											{{--<input type="radio" value="45" id='size45' name='sizes'><label for="size45">45</label>--}}
+										{{--</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="wb_cntrl">
                                     <div class="wb_price_one"><p><span>9999.99</span> грн.</p></div>
                                     <div class="wb_amount_wrapp">

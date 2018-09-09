@@ -15,18 +15,3 @@ Vue.component('auth-form', require('../components/AuthForm.vue'));
 const app = new Vue({
     el: '#app'
 });
-
-require('./components/modernizr');
-require('./components/detect');
-require('./components/fastclick');
-require('./components/slimscroll');
-require('./components/block-ui');
-require('./components/waves');
-require('./components/wow');
-require('./components/nicescroll');
-require('./components/scroll-to');
-
-require('./components/morris');
-require('./components/raphael');
-
-require('./components/main');

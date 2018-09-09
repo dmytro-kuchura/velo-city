@@ -12,7 +12,7 @@
 
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <link rel="stylesheet" href="{{ asset('/auth/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('/dashboard/css/app.css') }}">
 </head>
 <body class="fixed-left">
 
@@ -30,6 +30,6 @@
     </div>
 </div>
 
-<script src="{{ asset('/auth/js/app.js') }}"></script>
+<script src="{{ asset('/dashboard/js/app.js') }}"></script>
 </body>
 </html>
