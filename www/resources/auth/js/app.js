@@ -16,14 +16,17 @@ const app = new Vue({
     el: '#app'
 });
 
-// assets/js/modernizr.min.js"></script>
-// assets/js/detect.js"></script>
-// assets/js/fastclick.js"></script>
-// assets/js/jquery.slimscroll.js"></script>
-// assets/js/jquery.blockUI.js"></script>
-// assets/js/waves.js"></script>
-// assets/js/wow.min.js"></script>
-// assets/js/jquery.nicescroll.js"></script>
-// assets/js/jquery.scrollTo.min.js"></script>
-//
-// assets/js/app.js"></script>
+require('./components/modernizr');
+require('./components/detect');
+require('./components/fastclick');
+require('./components/slimscroll');
+require('./components/block-ui');
+require('./components/waves');
+require('./components/wow');
+require('./components/nicescroll');
+require('./components/scroll-to');
+
+require('./components/morris');
+require('./components/raphael');
+
+require('./components/main');
