@@ -2,20 +2,19 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="text-center">
-            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="logo-img"></a>
-            <a href="index.html" class="logo-sm"><img src="assets/images/logo_sm.png" alt="logo-img"></a>
+            <a href="{{ '/' }}" class="logo"><img src="/images/logo-new.png" alt="logo-img"></a>
+            <a href="{{ '/' }}" class="logo-sm"><img src="/images/logo-new.png" alt="logo-img"></a>
         </div>
     </div>
-    <!-- Button mobile view to collapse sidebar menu -->
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="">
-                <div class="pull-left">
-                    <button type="button" class="button-menu-mobile open-left waves-effect waves-light">
-                        <i class="ion-navicon"></i>
-                    </button>
-                    <span class="clearfix"></span>
-                </div>
+                {{--<div class="pull-left">--}}
+                    {{--<button type="button" class="button-menu-mobile open-left waves-effect waves-light">--}}
+                        {{--<i class="ion-navicon"></i>--}}
+                    {{--</button>--}}
+                    {{--<span class="clearfix"></span>--}}
+                {{--</div>--}}
                 <form class="navbar-form pull-left" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control search-bar" placeholder="Search...">
@@ -72,14 +71,11 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="hidden-xs">
-                        <a href="#" id="btn-fullscreen" class="waves-effect waves-light notification-icon-box"><i
-                                    class="mdi mdi-fullscreen"></i></a>
-                    </li>
+
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown"
                            aria-expanded="true">
-                            <img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle">
+                            <img src="/images/user.png" alt="user-img" class="img-circle">
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="javascript:void(0)"> Profile</a></li>
