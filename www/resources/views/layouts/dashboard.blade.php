@@ -12,7 +12,13 @@
 
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <link rel="stylesheet" href="{{ asset('/dashboard/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('/dashboard/css/morris.css') }}">
+
+    <link href="{{ asset('/dashboard/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/dashboard/css/icons.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/dashboard/css/style.css') }}" rel="stylesheet" type="text/css">
+
+    <link href="{{ asset('/dashboard/css/app.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body class="fixed-left">
 
@@ -30,6 +36,25 @@
     </div>
 </div>
 
+<script src="{{ asset('/dashboard/js/jquery.min.js') }}"></script>
+<script src="{{ asset('/dashboard/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/dashboard/js/modernizr.min.js') }}"></script>
+<script src="{{ asset('/dashboard/js/detect.js') }}"></script>
+<script src="{{ asset('/dashboard/js/fastclick.js') }}"></script>
+<script src="{{ asset('/dashboard/js/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('/dashboard/js/jquery.blockUI.js') }}"></script>
+<script src="{{ asset('/dashboard/js/waves.js') }}"></script>
+<script src="{{ asset('/dashboard/js/wow.min.js') }}"></script>
+<script src="{{ asset('/dashboard/js/jquery.nicescroll.js') }}"></script>
+<script src="{{ asset('/dashboard/js/jquery.scrollTo.min.js') }}"></script>
+
+<!--Morris Chart-->
+<script src="{{ asset('/dashboard/js/morris.min.js') }}"></script>
+<script src="{{ asset('/dashboard/js/raphael-min.js') }}"></script>
+
+<script src="{{ asset('/dashboard/js/dashborad.js') }}"></script>
+
+<script src="{{ asset('/dashboard/js/main.js') }}"></script>
 <script src="{{ asset('/dashboard/js/app.js') }}"></script>
 </body>
 </html>

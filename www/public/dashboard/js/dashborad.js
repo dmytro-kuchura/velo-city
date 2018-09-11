@@ -11,22 +11,22 @@
     };
 
 
-    //creates area chart
-    Dashboard.prototype.createAreaChart = function (element, pointSize, lineWidth, data, xkey, ykeys, labels, lineColors) {
-        Morris.Area({
-            element: element,
-            pointSize: 3,
-            lineWidth: 1,
-            data: data,
-            xkey: xkey,
-            ykeys: ykeys,
-            labels: labels,
-            resize: true,
-            gridLineColor: '#3d4956',
-            hideHover: 'auto',
-            lineColors: lineColors
-        });
-    },
+        //creates area chart
+        Dashboard.prototype.createAreaChart = function (element, pointSize, lineWidth, data, xkey, ykeys, labels, lineColors) {
+            Morris.Area({
+                element: element,
+                pointSize: 3,
+                lineWidth: 1,
+                data: data,
+                xkey: xkey,
+                ykeys: ykeys,
+                labels: labels,
+                resize: true,
+                gridLineColor: '#3d4956',
+                hideHover: 'auto',
+                lineColors: lineColors
+            });
+        },
         //creates Bar chart
         Dashboard.prototype.createBarChart = function (element, data, xkey, ykeys, labels, lineColors) {
             Morris.Bar({
