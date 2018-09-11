@@ -9,12 +9,12 @@
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="">
-                {{--<div class="pull-left">--}}
-                    {{--<button type="button" class="button-menu-mobile open-left waves-effect waves-light">--}}
-                        {{--<i class="ion-navicon"></i>--}}
-                    {{--</button>--}}
-                    {{--<span class="clearfix"></span>--}}
-                {{--</div>--}}
+                <div class="pull-left">
+                    <button type="button" class="button-menu-mobile open-left waves-effect waves-light">
+                        <i class="ion-navicon"></i>
+                    </button>
+                    <span class="clearfix"></span>
+                </div>
                 <form class="navbar-form pull-left" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control search-bar" placeholder="Search...">
