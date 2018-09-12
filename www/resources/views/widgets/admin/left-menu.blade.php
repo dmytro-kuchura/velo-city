@@ -19,8 +19,8 @@
                         </span>
                     </a>
                     <ul class="list-unstyled">
-                        <li><a href="ui-components.html">Список страниц</a></li>
-                        <li><a href="ui-buttons.html">Добавить страницу</a></li>
+                        <li><a href="{{ route('pages.index') }}">Список страниц</a></li>
+                        <li><a href="{{ route('pages.create') }}">Добавить страницу</a></li>
                     </ul>
                 </li>
 

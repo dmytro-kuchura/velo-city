@@ -6,12 +6,10 @@
 
 require('./bootstrap');
 
-// import Vue from "vue";
-// Vue.use(require('vue-cookies'));
-//
-// Vue.component('registration-form', require('../components/RegistrationForm.vue'));
-// Vue.component('auth-form', require('../components/AuthForm.vue'));
-//
-// const app = new Vue({
-//     el: '#app'
-// });
+import Vue from "vue";
+
+Vue.component('pages-create-form', require('../components/PagesCreateForm.vue'));
+
+const app = new Vue({
+    el: '#app'
+});
