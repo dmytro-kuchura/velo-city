@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Exception;
 use Carbon\Carbon;
+use App\Models\Pages;
+use App\Http\Requests\PagesRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\PagesRepository;
 
@@ -66,11 +68,12 @@ class PagesController extends Controller
      * @param BlogRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(BlogRequest $request)
+    public function update(PagesRequest $request)
     {
         try {
             /* @var $model Blog */
             $model = $this->repository->getById($request->get('id'));
+
             $model->name = $request->get('name');
             $model->title = $request->get('title');
             $model->alias = $request->get('alias');
@@ -95,28 +98,31 @@ class PagesController extends Controller
      * @param BlogRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(BlogRequest $request)
+    public function store(PagesRequest $request)
     {
         try {
-            /* @var $model Blog */
-            $model = new Blog();
+            /* @var $model Pages */
+            $model = new Pages();
+
             $model->name = $request->get('name');
             $model->title = $request->get('title');
             $model->alias = $request->get('alias');
             $model->content = $request->get('content');
             $model->description = $request->get('description');
             $model->keywords = $request->get('keywords');
-            $model->category = $request->get('category');
             $model->status = $request->get('status');
-            $model->image = Upload::save($request);
+            $model->sort = 0;
+            $model->views = 0;
+            $model->parent_id = 0;
             $model->created_at = Carbon::now()->format('Y-m-d H:i:s');
             $model->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+
             $model->save();
         } catch (Exception $exception) {
-            var_dump($exception->getMessage());
-            die;
+            return $this->false($exception->getMessage(), 422);
         }
-        return redirect()->route('blog.index');
+
+        return $this->success(201);
     }
 
     /**

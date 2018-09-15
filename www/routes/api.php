@@ -19,4 +19,17 @@ Route::prefix('v1')->group(function () {
     Route::middleware('auth:api')->group(function () {
         Route::post('logout', 'Api\Auth\LoginController@logout')->name('logout');
     });
+
+
+    Route::prefix('admin')->group(function () {
+        Route::prefix('pages')->group(function () {
+            Route::post('/store', 'Admin\PagesController@store')->name('pages.store');
+            Route::post('/edit', 'Admin\PagesController@update')->name('pages.update');
+        });
+
+        Route::prefix('news')->group(function () {
+            Route::post('/store', 'Admin\NewsController@store')->name('news.store');
+            Route::post('/edit', 'Admin\NewsController@update')->name('news.update');
+        });
+    });
 });

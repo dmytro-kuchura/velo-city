@@ -4,14 +4,14 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Название</label>
             <div class="col-md-10">
-                <input type="text" class="form-control" placeholder="Название страницы ..." v-model="page.name">
+                <input type="text" class="form-control" placeholder="Название страницы" v-model="page.name">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-2 control-label">Алиас</label>
             <div class="col-md-10">
-                <input type="text" class="form-control" placeholder="Адрес страницы ..." v-model="page.alias">
+                <input type="text" class="form-control" placeholder="Адрес страницы" v-model="page.alias">
             </div>
         </div>
 
@@ -19,7 +19,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Контент</label>
             <div class="col-md-10">
-                <textarea class="form-control" rows="5" v-model="page.content"></textarea>
+                <textarea class="form-control" rows="5" placeholder="Содержание" v-model="page.content"></textarea>
             </div>
         </div>
 
@@ -27,28 +27,28 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Title</label>
             <div class="col-md-10">
-                <input type="text" class="form-control" v-model="page.title">
+                <input type="text" class="form-control" placeholder="Title" v-model="page.title">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-2 control-label">H1</label>
             <div class="col-md-10">
-                <input type="text" class="form-control" v-model="page.h1">
+                <input type="text" class="form-control" placeholder="H1" v-model="page.h1">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-2 control-label">Keywords</label>
             <div class="col-md-10">
-                <textarea class="form-control" rows="5" v-model="page.keywords"></textarea>
+                <textarea class="form-control" rows="5" placeholder="Keywords" v-model="page.keywords"></textarea>
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-2 control-label">Description</label>
             <div class="col-md-10">
-                <textarea class="form-control" rows="5" v-model="page.description"></textarea>
+                <textarea class="form-control" rows="5" placeholder="Description" v-model="page.description"></textarea>
             </div>
         </div>
 
@@ -92,7 +92,7 @@
         },
         methods: {
             onSubmit() {
-                axios.post('/api/v1/login', this.page)
+                axios.post('/api/v1/admin/pages/store', this.page)
                     .then(({}) => this.setSuccessMessage())
                     .catch(({response}) => this.setErrors(response));
             },
@@ -101,6 +101,8 @@
             },
             setSuccessMessage() {
                 this.reset();
+
+                window.location.href = '/admin/pages';
             },
             reset() {
                 this.errors = [];

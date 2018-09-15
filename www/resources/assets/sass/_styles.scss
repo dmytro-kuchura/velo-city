@@ -4023,7 +4023,7 @@ input[type='checkbox']:checked + label:before {
       transition: height 0.2s ease;
       background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
       background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #fff 100%);
-      background: linear-gradient(top, rgba(255, 255, 255, 0) 0%, #fff 100%);
+      background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, #fff 100%);
     }
   }
   .seoMore {

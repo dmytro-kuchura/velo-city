@@ -9,7 +9,12 @@ require('./bootstrap');
 import Vue from "vue";
 
 Vue.component('pages-create-form', require('../components/PagesCreateForm.vue'));
+Vue.component('pages-list', require('../components/PagesList.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    components: {
+        'summernote' : require('./components/summernote')
+    }
 });

@@ -4424,8 +4424,8 @@ input[type='radio']:checked + label:before {
   height: 6em;
   -webkit-transition: height 0.2s ease;
   transition: height 0.2s ease;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
-  background: linear-gradient(top, rgba(255, 255, 255, 0) 0%, #fff 100%);
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0)), to(#fff));
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, #fff 100%);
 }
 
 #seo .seoMore {

@@ -13224,9 +13224,14 @@ __webpack_require__(44);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('pages-create-form', __webpack_require__(45));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('pages-list', __webpack_require__(139));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-  el: '#app'
+    el: '#app',
+
+    components: {
+        'summernote': __webpack_require__(138)
+    }
 });
 
 /***/ }),
@@ -13409,7 +13414,7 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
         onSubmit: function onSubmit() {
             var _this = this;
 
-            axios.post('/api/v1/login', this.page).then(function (_ref) {
+            axios.post('/api/v1/admin/pages/store', this.page).then(function (_ref) {
                 _objectDestructuringEmpty(_ref);
 
                 return _this.setSuccessMessage();
@@ -13423,6 +13428,8 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
         },
         setSuccessMessage: function setSuccessMessage() {
             this.reset();
+
+            window.location.href = '/admin/pages';
         },
         reset: function reset() {
             this.errors = [];
@@ -13476,7 +13483,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "Название страницы ..." },
+            attrs: { type: "text", placeholder: "Название страницы" },
             domProps: { value: _vm.page.name },
             on: {
               input: function($event) {
@@ -13506,7 +13513,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "Адрес страницы ..." },
+            attrs: { type: "text", placeholder: "Адрес страницы" },
             domProps: { value: _vm.page.alias },
             on: {
               input: function($event) {
@@ -13536,7 +13543,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { rows: "5" },
+            attrs: { rows: "5", placeholder: "Содержание" },
             domProps: { value: _vm.page.content },
             on: {
               input: function($event) {
@@ -13566,7 +13573,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text" },
+            attrs: { type: "text", placeholder: "Title" },
             domProps: { value: _vm.page.title },
             on: {
               input: function($event) {
@@ -13594,7 +13601,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text" },
+            attrs: { type: "text", placeholder: "H1" },
             domProps: { value: _vm.page.h1 },
             on: {
               input: function($event) {
@@ -13624,7 +13631,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { rows: "5" },
+            attrs: { rows: "5", placeholder: "Keywords" },
             domProps: { value: _vm.page.keywords },
             on: {
               input: function($event) {
@@ -13654,7 +13661,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { rows: "5" },
+            attrs: { rows: "5", placeholder: "Description" },
             domProps: { value: _vm.page.description },
             on: {
               input: function($event) {
@@ -13732,6 +13739,436 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-1752b8a3", module.exports)
+  }
+}
+
+/***/ }),
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */
+/***/ (function(module, exports) {
+
+module.exports = {
+
+    template: '<textarea :name="name"></textarea>',
+
+    props: {
+        model: {
+            required: true
+        },
+
+        name: {
+            type: String,
+            required: true
+        },
+
+        height: {
+            type: String,
+            default: '150'
+        }
+    },
+
+    mounted: function mounted() {
+        var config = {
+            height: this.height
+        };
+
+        var vm = this;
+
+        config.callbacks = {
+
+            onInit: function onInit() {
+                $(vm.$el).summernote("code", vm.model);
+            },
+
+            onChange: function onChange() {
+                vm.$emit('change', $(vm.$el).summernote('code'));
+            },
+
+            onBlur: function onBlur() {
+                vm.$emit('change', $(vm.$el).summernote('code'));
+            }
+        };
+
+        $(this.$el).summernote(config);
+    }
+};
+
+/***/ }),
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(29)
+/* script */
+var __vue_script__ = __webpack_require__(140)
+/* template */
+var __vue_template__ = __webpack_require__(141)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/admin/components/PagesList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-23c35abe", Component.options)
+  } else {
+    hotAPI.reload("data-v-23c35abe", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 140 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            errors: [],
+            page: {
+                name: "",
+                alias: "",
+                content: "",
+                title: "",
+                h1: "",
+                keywords: "",
+                description: "",
+                status: 0
+            }
+        };
+    },
+
+    methods: {
+        onSubmit: function onSubmit() {
+            var _this = this;
+
+            axios.post('/api/v1/admin/pages/store', this.page).then(function (_ref) {
+                _objectDestructuringEmpty(_ref);
+
+                return _this.setSuccessMessage();
+            }).catch(function (_ref2) {
+                var response = _ref2.response;
+                return _this.setErrors(response);
+            });
+        },
+        setErrors: function setErrors(response) {
+            this.errors = response.data.errors;
+        },
+        setSuccessMessage: function setSuccessMessage() {
+            this.reset();
+
+            window.location.href = '/admin/pages';
+        },
+        reset: function reset() {
+            this.errors = [];
+            this.page = {
+                name: "",
+                alias: "",
+                content: "",
+                title: "",
+                h1: "",
+                keywords: "",
+                description: "",
+                status: 0
+            };
+        }
+    }
+});
+
+/***/ }),
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "panel panel-primary" }, [
+          _c("div", { staticClass: "panel-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-xs-12" }, [
+                _c("div", { staticClass: "table-responsive" }, [
+                  _c("table", { staticClass: "table" }, [
+                    _c("thead", [
+                      _c("tr", [
+                        _c("th", [_vm._v("#")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("First Name")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Last Name")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Username")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Age")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("City")])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", [_vm._v("1")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Mark")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Otto")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("@mdo")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("20")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Cityname")])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("2")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Jacob")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Thornton")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("@fat")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("20")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Cityname")])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("3")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Larry")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("the Bird")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("@twitter")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("20")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Cityname")])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("4")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Steve")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Mac Queen")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("@steve")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("20")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Cityname")])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-23c35abe", module.exports)
   }
 }
 
