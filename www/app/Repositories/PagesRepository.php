@@ -10,6 +10,14 @@ class PagesRepository extends Repository
     public function paginate($limit = 10)
     {
         $records = Pages::paginate($limit);
+
+        return $records;
+    }
+
+    public function list()
+    {
+        $records = Pages::all();
+
         return $records;
     }
 

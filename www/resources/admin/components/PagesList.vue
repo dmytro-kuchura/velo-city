@@ -1,6 +1,6 @@
 <template>
-
     <div class="row">
+
         <div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-body">
@@ -19,37 +19,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
+
+                                    <tr v-for="page in list[0]">
+                                        <td>{{ page.id }}</td>
+                                        <td>{{ page.name }}</td>
                                         <td>Otto</td>
                                         <td>@mdo</td>
                                         <td>20</td>
-                                        <td>Cityname</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>20</td>
-                                        <td>Cityname</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>20</td>
-                                        <td>Cityname</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Steve</td>
-                                        <td>Mac Queen</td>
-                                        <td>@steve</td>
-                                        <td>20</td>
-                                        <td>Cityname</td>
+                                        <td>
+                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Редактировать"><i class="fa fa-pencil-square-o"></i></a>
+                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Удалить"><i class="fa fa-trash-o"></i></a>
+                                        </td>
                                     </tr>
 
                                     </tbody>
@@ -60,6 +40,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -68,45 +49,34 @@
         data() {
             return {
                 errors: [],
-                page: {
-                    name: "",
-                    alias: "",
-                    content: "",
-                    title: "",
-                    h1: "",
-                    keywords: "",
-                    description: "",
-                    status: 0,
-                }
+                loader: true,
+                list: []
             };
         },
+
+        mounted() {
+            this.prepareComponent();
+        },
+
         methods: {
-            onSubmit() {
-                axios.post('/api/v1/admin/pages/store', this.page)
-                    .then(({}) => this.setSuccessMessage())
-                    .catch(({response}) => this.setErrors(response));
+            prepareComponent: function () {
+                let self = this;
+
+                axios.get('/api/v1/admin/pages/list')
+                    .then(function (response) {
+                        self.list = response.data.response;
+
+                        console.log(self.list);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
             setErrors(response) {
                 this.errors = response.data.errors;
             },
             setSuccessMessage() {
-                this.reset();
-
-                window.location.href = '/admin/pages';
             },
-            reset() {
-                this.errors = [];
-                this.page = {
-                    name: "",
-                    alias: "",
-                    content: "",
-                    title: "",
-                    h1: "",
-                    keywords: "",
-                    description: "",
-                    status: 0,
-                };
-            }
         }
     }
 </script>

@@ -23,6 +23,7 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('admin')->group(function () {
         Route::prefix('pages')->group(function () {
+            Route::get('/list', 'Admin\PagesController@list')->name('pages.list');
             Route::post('/store', 'Admin\PagesController@store')->name('pages.store');
             Route::post('/edit', 'Admin\PagesController@update')->name('pages.update');
         });

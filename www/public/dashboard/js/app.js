@@ -13935,27 +13935,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -14007,53 +13986,31 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
     data: function data() {
         return {
             errors: [],
-            page: {
-                name: "",
-                alias: "",
-                content: "",
-                title: "",
-                h1: "",
-                keywords: "",
-                description: "",
-                status: 0
-            }
+            loader: true,
+            list: []
         };
     },
+    mounted: function mounted() {
+        this.prepareComponent();
+    },
+
 
     methods: {
-        onSubmit: function onSubmit() {
-            var _this = this;
+        prepareComponent: function prepareComponent() {
+            var self = this;
 
-            axios.post('/api/v1/admin/pages/store', this.page).then(function (_ref) {
-                _objectDestructuringEmpty(_ref);
+            axios.get('/api/v1/admin/pages/list').then(function (response) {
+                self.list = response.data.response;
 
-                return _this.setSuccessMessage();
-            }).catch(function (_ref2) {
-                var response = _ref2.response;
-                return _this.setErrors(response);
+                console.log(self.list);
+            }).catch(function (error) {
+                console.log(error);
             });
         },
         setErrors: function setErrors(response) {
             this.errors = response.data.errors;
         },
-        setSuccessMessage: function setSuccessMessage() {
-            this.reset();
-
-            window.location.href = '/admin/pages';
-        },
-        reset: function reset() {
-            this.errors = [];
-            this.page = {
-                name: "",
-                alias: "",
-                content: "",
-                title: "",
-                h1: "",
-                keywords: "",
-                description: "",
-                status: 0
-            };
-        }
+        setSuccessMessage: function setSuccessMessage() {}
     }
 });
 
@@ -14065,42 +14022,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "panel panel-primary" }, [
-          _c("div", { staticClass: "panel-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-xs-12" }, [
-                _c("div", { staticClass: "table-responsive" }, [
-                  _c("table", { staticClass: "table" }, [
-                    _c("thead", [
-                      _c("tr", [
-                        _c("th", [_vm._v("#")]),
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "panel panel-primary" }, [
+        _c("div", { staticClass: "panel-body" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-xs-12" }, [
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.list[0], function(page) {
+                      return _c("tr", [
+                        _c("td", [_vm._v(_vm._s(page.id))]),
                         _vm._v(" "),
-                        _c("th", [_vm._v("First Name")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Last Name")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Username")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Age")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("City")])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tbody", [
-                      _c("tr", [
-                        _c("td", [_vm._v("1")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("Mark")]),
+                        _c("td", [_vm._v(_vm._s(page.name))]),
                         _vm._v(" "),
                         _c("td", [_vm._v("Otto")]),
                         _vm._v(" "),
@@ -14108,58 +14046,74 @@ var staticRenderFns = [
                         _vm._v(" "),
                         _c("td", [_vm._v("20")]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Cityname")])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("td", [_vm._v("2")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("Jacob")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("Thornton")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("@fat")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("20")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("Cityname")])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("td", [_vm._v("3")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("Larry")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("the Bird")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("@twitter")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("20")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("Cityname")])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("td", [_vm._v("4")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("Steve")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("Mac Queen")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("@steve")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("20")]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("Cityname")])
+                        _vm._m(1, true)
                       ])
-                    ])
-                  ])
+                    })
+                  )
                 ])
               ])
             ])
           ])
         ])
       ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("First Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Last Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Username")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Age")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("City")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "a",
+        {
+          staticClass: "tooltips",
+          attrs: {
+            title: "",
+            "data-placement": "top",
+            "data-toggle": "tooltip",
+            href: "",
+            "data-original-title": "Редактировать"
+          }
+        },
+        [_c("i", { staticClass: "fa fa-pencil-square-o" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "tooltips",
+          attrs: {
+            title: "",
+            "data-placement": "top",
+            "data-toggle": "tooltip",
+            href: "",
+            "data-original-title": "Удалить"
+          }
+        },
+        [_c("i", { staticClass: "fa fa-trash-o" })]
+      )
     ])
   }
 ]

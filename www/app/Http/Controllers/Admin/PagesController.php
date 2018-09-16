@@ -18,11 +18,6 @@ class PagesController extends Controller
         $this->repository = $repository;
     }
 
-    /**
-     * Show all records with pagination
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         $result = $this->repository->paginate(15);
@@ -32,22 +27,18 @@ class PagesController extends Controller
         ]);
     }
 
-    /**
-     * Create page
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+    public function list()
+    {
+        $result = $this->repository->list();
+
+        return $this->success([$result], 200);
+    }
+
     public function create()
     {
         return view('admin.pages.create');
     }
 
-    /**
-     * Update record
-     *
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $result = $this->repository->getById($id);
@@ -62,12 +53,6 @@ class PagesController extends Controller
         ]);
     }
 
-    /**
-     * Save updated data
-     *
-     * @param BlogRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(PagesRequest $request)
     {
         try {
@@ -92,12 +77,6 @@ class PagesController extends Controller
         return redirect()->route('blog.index');
     }
 
-    /**
-     * Save new record
-     *
-     * @param BlogRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(PagesRequest $request)
     {
         try {
@@ -125,24 +104,12 @@ class PagesController extends Controller
         return $this->success(201);
     }
 
-    /**
-     * Delete blog record
-     *
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function delete($id)
     {
         $this->repository->delete($id);
         return redirect()->route('blog.index');
     }
 
-    /**
-     * Update record status
-     *
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function status($id)
     {
         $this->repository->status($id);
