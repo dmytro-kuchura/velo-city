@@ -20,17 +20,21 @@ Route::prefix('v1')->group(function () {
         Route::post('logout', 'Api\Auth\LoginController@logout')->name('logout');
     });
 
-
     Route::prefix('admin')->group(function () {
         Route::prefix('pages')->group(function () {
             Route::get('/list', 'Admin\PagesController@list')->name('pages.list');
             Route::post('/store', 'Admin\PagesController@store')->name('pages.store');
             Route::post('/edit', 'Admin\PagesController@update')->name('pages.update');
+            Route::delete('/delete/{id}', 'Admin\PagesController@delete')->name('pages.delete');
+            Route::get('/status/{id}', 'Admin\PagesController@status')->name('pages.status');
         });
 
         Route::prefix('news')->group(function () {
+            Route::get('/list', 'Admin\NewsController@list')->name('news.list');
             Route::post('/store', 'Admin\NewsController@store')->name('news.store');
             Route::post('/edit', 'Admin\NewsController@update')->name('news.update');
+            Route::delete('/delete/{id}', 'Admin\NewsController@delete')->name('news.delete');
+            Route::get('/status/{id}', 'Admin\NewsController@status')->name('news.status');
         });
     });
 });
