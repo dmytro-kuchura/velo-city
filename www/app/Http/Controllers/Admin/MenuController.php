@@ -9,7 +9,7 @@ use App\Http\Requests\PagesRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\PagesRepository;
 
-class PagesController extends Controller
+class MenuController extends Controller
 {
     protected $repository;
 
@@ -20,7 +20,11 @@ class PagesController extends Controller
 
     public function index()
     {
-        return view('admin.pages.index');
+        $result = $this->repository->paginate(15);
+
+        return view('admin.menu.index', [
+            'result' => $result,
+        ]);
     }
 
     public function list()
@@ -33,15 +37,20 @@ class PagesController extends Controller
 
     public function create()
     {
-        return view('admin.pages.create');
+        return view('admin.menu.create');
     }
 
     public function edit($id)
     {
         $result = $this->repository->getById($id);
-
-        return view('admin.pages.edit', [
+        $query = new CategoriesRepository();
+        $categories = $query->all();
+        $query = new TagsRepository();
+        $tags = $query->all();
+        return view('admin.blog.edit', [
             'result' => $result,
+            'categories' => $categories,
+            'tags' => $tags,
         ]);
     }
 
@@ -64,7 +73,6 @@ class PagesController extends Controller
         } catch (Exception $exception) {
             return $this->false($exception->getMessage(), 422);
         }
-        return redirect()->route('blog.index');
     }
 
     public function store(PagesRequest $request)
