@@ -37,7 +37,7 @@
         <div class="wSize">
             <div class="logo">
                 <span class="logo-big"><a href="index.html"></a></span>
-                <span class="logo-text">интернет магазин велосипедов и комплектующего</span>
+                <span class="logo-text">Магазин велосипедов, комплектующего и аксессуаров</span>
             </div>
             <div id="Search" class="search wForm" data-form="true">
                 <input type="text" placeholder="Например Adidas Gazelle"  data-msg-minlength="Пожалуйста, введите не меньше 4 символов" data-rule-minlength="4">

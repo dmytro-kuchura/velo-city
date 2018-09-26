@@ -8,6 +8,12 @@ require('./bootstrap');
 
 import Vue from "vue";
 
+import wysiwyg from "vue-wysiwyg";
+
+Vue.use(wysiwyg, {
+    maxHeight: "500px"
+});
+
 Vue.component('pages-create-form', require('../components/PagesCreateForm.vue'));
 Vue.component('pages-list', require('../components/PagesList.vue'));
 
@@ -15,6 +21,6 @@ const app = new Vue({
     el: '#app',
 
     components: {
-        'summernote' : require('./components/summernote')
+        'summernote': require('./components/summernote')
     }
 });

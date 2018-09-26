@@ -21,6 +21,9 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.3.1",
-        "vue-cookies": "^1.5.6"
+        "codemirror": "^5.40.2",
+        "summernote": "^0.8.10",
+        "vue-cookies": "^1.5.6",
+        "vue-wysiwyg": "^1.7.2"
     }
 }
