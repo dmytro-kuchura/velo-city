@@ -17,7 +17,7 @@
                 </div>
                 <form class="navbar-form pull-left" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control search-bar" placeholder="Search...">
+                        <input type="text" class="form-control search-bar" placeholder="Поиск...">
                     </div>
                     <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
                 </form>

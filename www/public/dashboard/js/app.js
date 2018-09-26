@@ -13569,7 +13569,7 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
                         newStr += isUpperCaseOrWhatever ? newLetter.toUpperCase() : newLetter;
                     }
                 }
-                return newStr;
+                return newStr.toLowerCase();
             }
 
             this.page = {
@@ -13881,7 +13881,72 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { staticClass: "col-sm-2 control-label" }, [
+          _vm._v("Статус")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-10" }, [
+          _c("div", { staticClass: "radio radio-info radio-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.page.status,
+                  expression: "page.status"
+                }
+              ],
+              attrs: {
+                type: "radio",
+                id: "status-on",
+                value: "1",
+                name: "radioInline",
+                checked: "checked"
+              },
+              domProps: { checked: _vm._q(_vm.page.status, "1") },
+              on: {
+                change: function($event) {
+                  _vm.$set(_vm.page, "status", "1")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "status-on" } }, [
+              _vm._v(" Опубликовано ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "radio radio-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.page.status,
+                  expression: "page.status"
+                }
+              ],
+              attrs: {
+                type: "radio",
+                id: "status-off",
+                value: "0",
+                name: "radioInline"
+              },
+              domProps: { checked: _vm._q(_vm.page.status, "0") },
+              on: {
+                change: function($event) {
+                  _vm.$set(_vm.page, "status", "0")
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "status-off" } }, [
+              _vm._v(" Не опубликовано ")
+            ])
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "button",
@@ -13894,51 +13959,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { staticClass: "col-sm-2 control-label" }, [
-        _vm._v("Статус")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _c("div", { staticClass: "radio radio-info radio-inline" }, [
-          _c("input", {
-            attrs: {
-              type: "radio",
-              id: "inlineRadio1",
-              value: "1",
-              name: "radioInline",
-              checked: "checked"
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "inlineRadio1" } }, [
-            _vm._v(" Опубликовано ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "radio radio-inline" }, [
-          _c("input", {
-            attrs: {
-              type: "radio",
-              id: "inlineRadio2",
-              value: "0",
-              name: "radioInline"
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "inlineRadio2" } }, [
-            _vm._v(" Не опубликовано ")
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -14047,6 +14068,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -14065,13 +14094,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         prepareComponent: function prepareComponent() {
             var self = this;
 
+            self.list = [];
+
             axios.get('/api/v1/admin/pages/list').then(function (response) {
                 self.list = response.data.response;
-
-                console.log(self.list);
             }).catch(function (error) {
                 console.log(error);
             });
+        },
+        doDeletePage: function doDeletePage(id) {
+            axios.delete('/api/v1/admin/pages/delete/' + id).then(function () {
+                this.prepareComponent();
+            }).catch(function (error) {
+                console.log(error);
+            });
+            console.log(id);
         },
         setErrors: function setErrors(response) {
             this.errors = response.data.errors;
@@ -14100,19 +14137,55 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.list[0], function(page) {
+                    _vm._l(_vm.list, function(page) {
                       return _c("tr", [
                         _c("td", [_vm._v(_vm._s(page.id))]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(page.name))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("Otto")]),
+                        _c("td", [_vm._v(_vm._s(page.alias))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("@mdo")]),
+                        page.status === 1
+                          ? _c("td", [
+                              _c(
+                                "span",
+                                { staticClass: "label label-success" },
+                                [_vm._v("Опубликовано")]
+                              )
+                            ])
+                          : _c("td", [
+                              _c(
+                                "span",
+                                { staticClass: "label label-danger" },
+                                [_vm._v("Не опубликовано")]
+                              )
+                            ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("20")]),
+                        _c("td", [_vm._v(_vm._s(page.created_at))]),
                         _vm._v(" "),
-                        _vm._m(1, true)
+                        _c("td", [
+                          _vm._m(1, true),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "tooltips",
+                              attrs: {
+                                title: "",
+                                "data-placement": "top",
+                                "data-toggle": "tooltip",
+                                href: "#",
+                                "data-original-title": "Удалить"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.doDeletePage(page.id)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-trash-o" })]
+                          )
+                        ])
                       ])
                     })
                   )
@@ -14134,15 +14207,15 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("First Name")]),
+        _c("th", [_vm._v("Нзвание страницы")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Last Name")]),
+        _c("th", [_vm._v("Адрес")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Username")]),
+        _c("th", [_vm._v("Статус")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Age")]),
+        _c("th", [_vm._v("Дата создания")]),
         _vm._v(" "),
-        _c("th", [_vm._v("City")])
+        _c("th", [_vm._v("Действия")])
       ])
     ])
   },
@@ -14150,37 +14223,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "a",
-        {
-          staticClass: "tooltips",
-          attrs: {
-            title: "",
-            "data-placement": "top",
-            "data-toggle": "tooltip",
-            href: "",
-            "data-original-title": "Редактировать"
-          }
-        },
-        [_c("i", { staticClass: "fa fa-pencil-square-o" })]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "tooltips",
-          attrs: {
-            title: "",
-            "data-placement": "top",
-            "data-toggle": "tooltip",
-            href: "",
-            "data-original-title": "Удалить"
-          }
-        },
-        [_c("i", { staticClass: "fa fa-trash-o" })]
-      )
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "tooltips",
+        attrs: {
+          title: "",
+          "data-placement": "top",
+          "data-toggle": "tooltip",
+          href: "#",
+          "data-original-title": "Редактировать"
+        }
+      },
+      [_c("i", { staticClass: "fa fa-pencil-square-o" })]
+    )
   }
 ]
 render._withStripped = true

@@ -31,7 +31,8 @@ class PagesController extends Controller
     {
         $result = $this->repository->list();
 
-        return $this->success([$result], 200);
+
+        return $this->success($result, 200);
     }
 
     public function create()
@@ -56,7 +57,7 @@ class PagesController extends Controller
     public function update(PagesRequest $request)
     {
         try {
-            /* @var $model Blog */
+            /* @var $model Pages */
             $model = $this->repository->getById($request->get('id'));
 
             $model->name = $request->get('name');
@@ -65,10 +66,9 @@ class PagesController extends Controller
             $model->content = $request->get('content');
             $model->description = $request->get('description');
             $model->keywords = $request->get('keywords');
-            $model->category = $request->get('category');
             $model->status = $request->get('status');
-            $model->image = Upload::save($request);
             $model->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+
             $model->save();
         } catch (Exception $exception) {
             var_dump($exception->getMessage());
@@ -107,12 +107,10 @@ class PagesController extends Controller
     public function delete($id)
     {
         $this->repository->delete($id);
-        return redirect()->route('blog.index');
     }
 
     public function status($id)
     {
         $this->repository->status($id);
-        return redirect()->route('blog.index');
     }
 }

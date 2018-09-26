@@ -2,7 +2,6 @@
     <div class="sidebar-inner slimscrollleft">
         <div id="sidebar-menu">
             <ul>
-                <li class="menu-title">Menu</li>
                 <li>
                     <a href="{{ route('dashboard') }}" class="waves-effect">
                         <i class="mdi mdi-home"></i>

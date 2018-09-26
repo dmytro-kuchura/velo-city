@@ -11,24 +11,32 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
-                                        <th>Age</th>
-                                        <th>City</th>
+                                        <th>Нзвание страницы</th>
+                                        <th>Адрес</th>
+                                        <th>Статус</th>
+                                        <th>Дата создания</th>
+                                        <th>Действия</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <tr v-for="page in list[0]">
+                                    <tr v-for="page in list">
                                         <td>{{ page.id }}</td>
                                         <td>{{ page.name }}</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>20</td>
+                                        <td>{{ page.alias }}</td>
+
+                                        <td v-if="page.status === 1"><span
+                                                class="label label-success">Опубликовано</span></td>
+                                        <td v-else><span class="label label-danger">Не опубликовано</span></td>
+
+                                        <td>{{ page.created_at }}</td>
                                         <td>
-                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Редактировать"><i class="fa fa-pencil-square-o"></i></a>
-                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Удалить"><i class="fa fa-trash-o"></i></a>
+                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                               href="#" data-original-title="Редактировать"><i
+                                                    class="fa fa-pencil-square-o"></i></a>
+                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                               href="#" v-on:click="doDeletePage(page.id)"
+                                               data-original-title="Удалить"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
 
@@ -62,15 +70,25 @@
             prepareComponent: function () {
                 let self = this;
 
+                self.list = [];
+
                 axios.get('/api/v1/admin/pages/list')
                     .then(function (response) {
                         self.list = response.data.response;
-
-                        console.log(self.list);
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
+            },
+            doDeletePage(id) {
+                axios.delete('/api/v1/admin/pages/delete/' + id)
+                    .then(function () {
+                        this.prepareComponent();
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                console.log(id);
             },
             setErrors(response) {
                 this.errors = response.data.errors;

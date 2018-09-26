@@ -55,14 +55,14 @@
             <label class="col-sm-2 control-label">Статус</label>
             <div class="col-sm-10">
                 <div class="radio radio-info radio-inline">
-                    <input type="radio" id="inlineRadio1" value="1"
+                    <input type="radio" id="status-on" value="1" v-model="page.status"
                            name="radioInline" checked="checked">
-                    <label for="inlineRadio1"> Опубликовано </label>
+                    <label for="status-on"> Опубликовано </label>
                 </div>
                 <div class="radio radio-inline">
-                    <input type="radio" id="inlineRadio2" value="0"
+                    <input type="radio" id="status-off" value="0" v-model="page.status"
                            name="radioInline">
-                    <label for="inlineRadio2"> Не опубликовано </label>
+                    <label for="status-off"> Не опубликовано </label>
                 </div>
             </div>
         </div>
@@ -188,7 +188,7 @@
                             newStr += isUpperCaseOrWhatever ? newLetter.toUpperCase() : newLetter;
                         }
                     }
-                    return newStr;
+                    return newStr.toLowerCase();
                 }
 
                 this.page = {

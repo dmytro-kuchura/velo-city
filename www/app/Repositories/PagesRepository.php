@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Pages;
-use App\Repositories\Repository;
 
 class PagesRepository extends Repository
 {
@@ -23,19 +22,19 @@ class PagesRepository extends Repository
 
     public function getById($ID)
     {
-        $record = Blog::find($ID);
+        $record = Pages::find($ID);
         return $record;
     }
 
     public function delete($ID)
     {
-        return Blog::where('id', $ID)->delete();
+        return Pages::where('id', $ID)->delete();
     }
 
     public function status($ID)
     {
-        /* @var $record Blog */
-        $record = Blog::find($ID);
+        /* @var $record Pages */
+        $record = Pages::find($ID);
         $record->status = $record->status === 1 ? 0 : 1;
         $record->save();
     }
