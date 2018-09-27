@@ -1,6 +1,5 @@
 <template>
     <div class="row">
-
         <div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-body">
@@ -25,18 +24,21 @@
                                         <td>{{ page.name }}</td>
                                         <td>{{ page.alias }}</td>
 
-                                        <td v-if="page.status === 1"><span
-                                                class="label label-success">Опубликовано</span></td>
-                                        <td v-else><span class="label label-danger">Не опубликовано</span></td>
+                                        <td v-if="page.status === 1">
+                                            <span class="label label-success">Опубликовано</span>
+                                        </td>
+                                        <td v-else>
+                                            <span class="label label-danger">Не опубликовано</span>
+                                        </td>
 
                                         <td>{{ page.created_at }}</td>
                                         <td>
-                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
-                                               href="#" data-original-title="Редактировать"><i
-                                                    class="fa fa-pencil-square-o"></i></a>
-                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
-                                               href="#" v-on:click="doDeletePage(page.id)"
-                                               data-original-title="Удалить"><i class="fa fa-trash-o"></i></a>
+                                            <a :href="'/admin/pages/edit/' + page.id">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                            <a href="#" v-on:click="doDeletePage(page.id)">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
                                         </td>
                                     </tr>
 
@@ -49,6 +51,15 @@
             </div>
         </div>
 
+        <div class="loader-list" v-if="loader">
+            <div class="a" style="--n: 5;">
+                <div class="dot" style="--i: 0;"></div>
+                <div class="dot" style="--i: 1;"></div>
+                <div class="dot" style="--i: 2;"></div>
+                <div class="dot" style="--i: 3;"></div>
+                <div class="dot" style="--i: 4;"></div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -56,8 +67,8 @@
     export default {
         data() {
             return {
-                errors: [],
                 loader: true,
+                errors: [],
                 list: []
             };
         },
@@ -75,6 +86,7 @@
                 axios.get('/api/v1/admin/pages/list')
                     .then(function (response) {
                         self.list = response.data.response;
+                        self.loader = false;
                     })
                     .catch(function (error) {
                         console.log(error);

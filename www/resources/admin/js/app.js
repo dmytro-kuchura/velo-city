@@ -15,6 +15,7 @@ Vue.use(wysiwyg, {
 });
 
 Vue.component('pages-create-form', require('../components/PagesCreateForm.vue'));
+Vue.component('pages-edit-form', require('../components/PagesEditForm.vue'));
 Vue.component('pages-list', require('../components/PagesList.vue'));
 
 const app = new Vue({

@@ -1,3 +1,42 @@
+.loader-list {
+  padding-top: 1em;
+  text-align: center;
+}
+
+.dot {
+  background: tomato;
+}
+
+.dot,
+.dot:after {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  -webkit-animation: a 1.5s calc(((var(--i) + var(--o, 0)) / var(--n) - 1) * 1.5s) infinite;
+          animation: a 1.5s calc(((var(--i) + var(--o, 0)) / var(--n) - 1) * 1.5s) infinite;
+}
+
+.dot:after {
+  --o: 1;
+  background: red;
+  content: '';
+}
+
+@-webkit-keyframes a {
+  0%, 50% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
+@keyframes a {
+  0%, 50% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
 .editr {
   border: 1px solid #e4e4e4;
   width: 100%;

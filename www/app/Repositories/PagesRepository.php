@@ -23,6 +23,7 @@ class PagesRepository extends Repository
     public function getById($ID)
     {
         $record = Pages::find($ID);
+
         return $record;
     }
 
@@ -35,7 +36,9 @@ class PagesRepository extends Repository
     {
         /* @var $record Pages */
         $record = Pages::find($ID);
+
         $record->status = $record->status === 1 ? 0 : 1;
+
         $record->save();
     }
 }
