@@ -11,9 +11,8 @@ let mix = require('laravel-mix');
  |
  */
 
-// Frontend
-mix.js('resources/assets/js/app.js', 'public/js').sass('resources/assets/sass/app.scss', 'public/css');
-// Dashboard
-mix.js('resources/admin/js/app.js', 'public/dashboard/js').sass('resources/admin/sass/app.scss', 'public/dashboard/css');
-// Login page
-mix.js('resources/auth/js/app.js', 'public/auth/js').sass('resources/auth/sass/app.scss', 'public/auth/css');
+mix.js('resources/assets/js/app.js', 'public/js')
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .sass('resources/assets/sass/responsive.scss', 'public/css')
+   .sourceMaps()
+   .browserSync('laravel-ecommerce-example.test');

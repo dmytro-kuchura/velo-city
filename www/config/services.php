@@ -22,7 +22,7 @@ return [
     'ses' => [
         'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
-        'region' => env('SES_REGION', 'us-east-1'),
+        'region' => 'us-east-1',
     ],
 
     'sparkpost' => [
@@ -33,6 +33,13 @@ return [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+
+    'braintree' => [
+        'environment' => env('BT_ENVIRONMENT', 'sandbox'),
+        'merchantId' => env('BT_MERCHANT_ID'),
+        'publicKey' => env('BT_PUBLIC_KEY'),
+        'privateKey' => env('BT_PRIVATE_KEY'),
     ],
 
 ];

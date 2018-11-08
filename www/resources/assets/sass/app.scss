@@ -1,12 +1,41 @@
-// Main styles
-@import 'styles';
-@import 'plugins';
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@charset 'utf-8';
 
-.text-city {
-  color: #ff6b6b;
-}
+// Abstracts
+@import 'abstracts/variables';
 
-.wFooter {
-  padding-top: 15px;
-}
+// Base
+@import 'base/reset';
+@import 'base/base';
+@import 'base/helpers';
+@import 'base/typography';
+@import 'base/utility';
+
+// Components
+@import 'components/breadcrumbs';
+@import 'components/buttons';
+@import 'components/section-description';
+@import 'components/sidebar';
+@import 'components/might-like';
+@import 'components/form';
+@import 'components/alerts';
+@import 'components/pagination';
+@import 'components/search';
+@import 'components/tables';
+@import 'components/badge';
+
+// Layout
+@import 'layout/header';
+@import 'layout/footer';
+
+// Pages
+@import 'pages/landing-page';
+@import 'pages/shop';
+@import 'pages/product';
+@import 'pages/cart';
+@import 'pages/checkout';
+@import 'pages/thankyou';
+@import 'pages/search-results';
+@import 'pages/search-results-algolia';
+@import 'pages/auth';
+@import 'pages/my-profile';
+@import 'pages/my-orders';
