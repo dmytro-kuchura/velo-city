@@ -13,7 +13,6 @@ class UsersController extends VoyagerBaseController
 {
     use BreadRelationshipParser;
 
-    // POST BR(E)AD
     public function update(Request $request, $id)
     {
         $slug = $this->getSlug($request);

@@ -15,18 +15,6 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
 class OrdersController extends VoyagerBaseController
 {
-    //***************************************
-    //                _____
-    //               |  __ \
-    //               | |__) |
-    //               |  _  /
-    //               | | \ \
-    //               |_|  \_\
-    //
-    //  Read an item of our Data Type B(R)EAD
-    //
-    //****************************************
-
     public function show(Request $request, $id)
     {
         $slug = $this->getSlug($request);

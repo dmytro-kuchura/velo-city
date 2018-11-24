@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
         Arrilot\Widgets\ServiceProvider::class,
+        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
 
         /*
          * Application Service Providers...
