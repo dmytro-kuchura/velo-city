@@ -1,11 +1,3 @@
-![Laravel Ecommerce Example](https://user-images.githubusercontent.com/4316355/36414878-d41987b2-15f1-11e8-9f2c-6c3a68e4a14b.gif)
-
-# Laravel Ecommerce Example
-
-Code for YouTube video series: [https://www.youtube.com/watch?v=o5PWIuDTgxg&list=PLEhEHUEU3x5oPTli631ZX9cxl6cU_sDaR](https://www.youtube.com/watch?v=o5PWIuDTgxg&list=PLEhEHUEU3x5oPTli631ZX9cxl6cU_sDaR)
-
-Website Demo: [https://laravelecommerceexample.ca](https://laravelecommerceexample.ca). The demo has limited permissions. Install locally for full access.
-
 ## Installation
 
 1. Clone the repo and `cd` into it
