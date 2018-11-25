@@ -5,16 +5,16 @@
                 <div class="row">
                     <div class="col-xl-3 f-col">
                         <div class="footer-static-block"> <span class="opener plus"></span>
-                            <h3 class="title">address<span></span></h3>
+                            <h3 class="title">Наш адрес<span></span></h3>
                             <ul class="footer-block-contant address-footer">
                                 <li class="item"> <i class="fa fa-home"> </i>
-                                    <p>150-A Appolo aprtment, Opp. Hopewell Junction, <br>Allenst Road, Allen st Road, <br>new york-405001.</p>
+                                    <p>улица Крымская, 137<br>Херсон, Херсонская область<br>Украина, 73000</p>
                                 </li>
                                 <li class="item"> <i class="fa fa-envelope"> </i>
                                     <p> <a href="javascript:void(0)">infoservices@roadie.com </a> </p>
                                 </li>
                                 <li class="item"> <i class="fa fa-phone"> </i>
-                                    <p>(+00) 9988774455</p>
+                                    <p>+38 (050) 5701 900</p>
                                 </li>
                             </ul>
                         </div>
@@ -64,20 +64,20 @@
                     </div>
                     <div class="col-xl-3 f-col footer-about">
                         <div class="footer-static-block"> <span class="opener plus"></span>
-                            <h3 class="title">Contact Us <span></span></h3>
+                            <h3 class="title">Обратная связь <span></span></h3>
                             <div class="footer-block-contant">
                                 <form>
                                     <div class="field">
-                                        <input type="text" placeholder="Name" required>
+                                        <input type="text" placeholder="Имя" required>
                                     </div>
                                     <div class="field">
                                         <input type="email" placeholder="Email" required>
                                     </div>
                                     <div class="field">
-                                        <textarea name="Message" placeholder="Message" required id="message" cols="5" rows="2"></textarea>
+                                        <textarea name="Message" placeholder="Сообщение" required id="message" cols="5" rows="2"></textarea>
                                     </div>
                                     <div class="field">
-                                        <button title="Subscribe" class="btn-color">Submit</button>
+                                        <button title="Отправить" class="btn-color">Отправить</button>
                                     </div>
                                 </form>
                             </div>
@@ -93,10 +93,7 @@
                             <ul class="social-icon">
                                 <li><div class="title">Follow us on :</div></li>
                                 <li><a title="Facebook" class="facebook"><i class="fa fa-facebook"> </i></a></li>
-                                <li><a title="Twitter" class="twitter"><i class="fa fa-twitter"> </i></a></li>
-                                <li><a title="Linkedin" class="linkedin"><i class="fa fa-linkedin"> </i></a></li>
-                                <li><a title="RSS" class="rss"><i class="fa fa-rss"> </i></a></li>
-                                <li><a title="Pinterest" class="pinterest"><i class="fa fa-pinterest"> </i></a></li>
+                                <li><a title="Instagram" class="twitter"><i class="fa fa-instagram"> </i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -134,7 +131,7 @@
                 </div>
                 <div class="col-12">
                     <div class="">
-                        <div class="copy-right ">© 2018 All Rights Reserved. Design By  <a href="javascript:void(0)">Aaryaweb</a></div>
+                        <div class="copy-right ">© Velo-City 2018 Все права защищены. Сделано с любовью by <a href="https://www.instagram.com/dmitry.k__/" target="_blank"><i class="fa fa-heart"> </i> Dmitry</a></div>
                     </div>
                 </div>
             </div>

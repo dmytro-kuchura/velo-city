@@ -2,6 +2,9 @@
 
 Route::get('/', 'SiteController@index')->name('main');
 
+Route::get('/news', 'SiteController@index')->name('news');
+Route::get('/news/{alias}', 'SiteController@index')->name('news.inner');
+
 Route::get('/shop', 'ShopController@index')->name('shop.index');
 Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
 
