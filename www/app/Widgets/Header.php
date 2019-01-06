@@ -28,8 +28,6 @@ class Header extends AbstractWidget
             $menu[(int)$obj->parent_id][] = $obj;
         }
 
-        dd($menu);
-
         return view('widgets.header', [
             'config' => $this->config,
             'menu' => $menu,

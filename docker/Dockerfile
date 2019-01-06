@@ -21,10 +21,6 @@ RUN docker-php-ext-install pdo_mysql
 # Install the PHP pdo_pgsql extention
 RUN docker-php-ext-install pdo_pgsql
 
-#####################################
-# gd:
-#####################################
-
 # Install the PHP gd library
 RUN docker-php-ext-configure gd \
         --enable-gd-native-ttf \

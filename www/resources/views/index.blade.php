@@ -1,7 +1,10 @@
-{{--@extends('layouts.main')--}}
-{{--@section('content')--}}
+@extends('layouts.main')
+@section('content')
+<!-- SLIDER START -->
+@widget('Slider')
+<!-- SLIDER END -->
+
 <!-- SUB-BANNER START -->
-@widget('Header')
 @widget('Categories')
 <!-- SUB-BANNER END -->
 
@@ -84,4 +87,4 @@
 <!-- Brand logo block Start  -->
 @widget('Brands')
 <!-- Brand logo block End  -->
-{{--@endsection--}}
+@endsection

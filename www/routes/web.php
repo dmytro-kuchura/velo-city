@@ -2,6 +2,8 @@
 
 Route::get('/', 'SiteController@index')->name('main');
 
+Route::get('/contacts', 'SiteController@contacts')->name('contacts');
+
 Route::get('/news', 'SiteController@index')->name('news');
 Route::get('/news/{alias}', 'SiteController@index')->name('news.inner');
 

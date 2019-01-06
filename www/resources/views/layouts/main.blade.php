@@ -292,13 +292,9 @@
     @widget('Search')
     <!-- HEADER END -->
 
-    <!-- SLIDER START -->
-    @widget('Slider')
-    <!-- SLIDER END -->
-
     <!-- CONTAIN START -->
-@yield('content')
-<!-- CONTAINER END -->
+        @yield('content')
+    <!-- CONTAINER END -->
 
     <!-- News Letter Start -->
     @widget('Subscribe')

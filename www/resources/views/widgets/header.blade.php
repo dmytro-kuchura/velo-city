@@ -10,27 +10,29 @@
                                     <a href="shop.html" class="page-scroll">{{ $obj->title }}
                                         <div class="menu-label"></div>
                                     </a>
-                                    <div class="megamenu mobile-sub-menu">
-                                        <div class="megamenu-inner-top">
-                                            <ul class="sub-menu-level1">
-                                                @if(isset($menu[$obj->id]))
+                                    @if(isset($menu[$obj->id]))
+                                        <div class="megamenu mobile-sub-menu">
+                                            <div class="megamenu-inner-top">
+                                                <ul class="sub-menu-level1">
                                                     @foreach($menu[$obj->id] as $parent)
                                                         <li class="level2">
                                                             <a href="{{ $parent->url }}"><span>{{ $parent->title }}</span></a>
-                                                            @foreach($menu[$parent->parent_id] as $item)
-                                                                <ul class="sub-menu-level2 ">
-                                                                    <li class="level3">
-                                                                        <a href="{{ $item->url }}"><span>■</span>{{ $item->title }}
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            @endforeach
+                                                            @if(isset($menu[$parent->id]))
+                                                                @foreach($menu[$parent->id] as $item)
+                                                                    <ul class="sub-menu-level2 ">
+                                                                        <li class="level3">
+                                                                            <a href="{{ $item->url }}"><span>■</span>{{ $item->title }}
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                @endforeach
+                                                            @endif
                                                         </li>
                                                     @endforeach
-                                                @endif
-                                            </ul>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </li>
                             @endforeach
 
