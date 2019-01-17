@@ -13,10 +13,7 @@
 
 use Facades\App\Http\Routes\Register;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MainController@index');
 
 Auth::routes();
 
@@ -35,8 +32,6 @@ Route::get('currency/{value}', 'MainController@set_Session');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/aboutus', 'MainController@aboutus');
-
-Route::get('/cms', 'MainController@index');
 
 Route::get('/contacts', 'MainController@contacts');
 
