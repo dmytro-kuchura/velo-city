@@ -48,15 +48,14 @@
 <div class="preloader_hide">
     <!-- PAGE -->
     <div id="page">
-
         <!-- HEADER -->
-        @include('frontend.header')
-                <!-- //HEADER -->
-        @yield('content')
-        @yield('script')
-                <!-- FOOTER -->
-        @include('frontend.footer')
-                <!-- //FOOTER -->
+    @include('frontend.header')
+    <!-- //HEADER -->
+    @yield('content')
+    @yield('script')
+    <!-- FOOTER -->
+    @include('frontend.footer')
+    <!-- //FOOTER -->
     </div>
     <!-- //PAGE -->
 </div>
