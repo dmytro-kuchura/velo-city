@@ -1,4 +1,4 @@
-const { mix } = require('laravel-mix');
+let mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -10,6 +10,10 @@ const { mix } = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix.js('resources/js/app.js', 'public/js')
+   	.js('vendor/konekt/appshell/src/resources/assets/js/appshell.standalone.js', 'public/js/appshell.js')
+   	.sass('vendor/konekt/appshell/src/resources/assets/sass/appshell.sass', 'public/css')
+	.sass('resources/sass/app.scss', 'public/css');
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+// Use this option if vendor/konekt/appshell is a symlink:
+// mix.webpackConfig({ resolve: { symlinks: false } });

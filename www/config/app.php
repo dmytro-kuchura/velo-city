@@ -10,9 +10,10 @@ return [
     | This value is the name of your application. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
+    |
     */
 
-    'name' => 'Laravel eCommerce CMS',
+    'name' => env('APP_NAME', 'Vanilo Demo'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,19 +79,6 @@ return [
     */
 
     'locale' => 'en',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Currency label for products
-    |--------------------------------------------------------------------------
-    |
-    | The application currency label determines the default label that will be used
-    | by the products. You are free to set this value
-    | to any of the currency label which will be supported by the products.
-    |
-    */
-
-    'currency' => 'usd',
 
     /*
     |--------------------------------------------------------------------------
@@ -175,18 +163,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Zofe\Rapyd\RapydServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-        Ultraware\Roles\RolesServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        Netshell\Paypal\PaypalServiceProvider::class,
-        Orangehill\Iseed\IseedServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Package Service Providers...
          */
-        Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -196,8 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\ComposerServiceProvider::class,
-        App\Providers\ModelServiceProvider::class,
+
     ],
 
     /*
@@ -246,13 +225,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
-        'Helper' => App\Helpers\Helper::class,
-        'Query' => App\Repositories\ModelFactory::class,
-        'PayPal' => Netshell\Paypal\Facades\Paypal::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
     ],
 
 ];

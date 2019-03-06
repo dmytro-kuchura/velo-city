@@ -7,26 +7,17 @@ use Illuminate\Database\Migrations\Migration;
 class CreateUsersTable extends Migration
 {
     /**
-     * Schema table name to migrate
-     * @var string
-     */
-    public $set_table = 'users';
-
-    /**
      * Run the migrations.
-     * @table users
      *
      * @return void
      */
     public function up()
     {
-        Schema::create($this->set_table, function (Blueprint $table) {            
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('avatar', 32);
             $table->string('email')->unique();
-            $table->string('password', 60);
-            $table->tinyInteger('is_activated');
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -39,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists($this->set_table);
+        Schema::dropIfExists('users');
     }
 }

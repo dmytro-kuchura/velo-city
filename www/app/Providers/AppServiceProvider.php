@@ -3,8 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Blade;
+use Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,14 +15,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        //Custom admin blade
-        Blade::if('admin', function () {
-            return auth()->check() && auth()->user()->hasRole('admin');
-        });
-        //Custom user blade
-        Blade::if('user', function () {
-            return auth()->check() && auth()->user()->hasRole('user');
-        });
+
+        $this->app->concord->registerModel(\Konekt\User\Contracts\User::class, \App\User::class);
     }
 
     /**

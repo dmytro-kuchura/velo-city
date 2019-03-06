@@ -1,58 +1,78 @@
-@extends('backend.tblTemplate')
-@section('body')
-    @include('messages.flash_message')
-    <a href="{{url('backend/articles/create')}}" class="btn btn-success">Create Product</a>
-    <hr>
-    @include('product.search', ['url'=>'backend/articles/search'])
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr class="bg-info">
-            <th>ID</th>
-            <th>Slug</th>
-            <th>Name</th>
-            <th>Brand</th>
-            <th>Size</th>
-            <th>Category</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Front Image</th>
-            <th>Side Image</th>
-            <th>Left Image</th>
-            <th colspan="3">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($products as $p)
-            {{-- {{ dd($p->size) }}--}}
-            <tr>
-                <td>{{ $p->id }}</td>
-                <td>{{ $p->slug }}</td>
-                <td>{{ $p->name}}</td>
-                <td>{{ $p->brands->brand }}</td>
-                <td>{{implode(",", $p->size->pluck("size")->all())}}</td>
-                <td>{{ $p->category->cat }}</td>
-                <td>{{ $p->quantity }}</td>
-                <td>{{ $p->price }}</td>
+@extends('layouts.app')
 
-                <td><img src="{{asset('images/products/'.$p->a_img)}}" height="35" width="25"></td>
-                <td><img src="{{asset('images/products/'.$p->b_img)}}" height="35" width="25"></td>
-                <td><img src="{{asset('images/products/'.$p->c_img)}}" height="35" width="25"></td>
-                <td><a href="{{route('articles.show',$p->id)}}" class="btn btn-primary">Read</a></td>
-                <td><a href="{{route('articles.edit',$p->id)}}" class="btn btn-warning">Update</a></td>
-                <td>
-                    {!! Form::open(['method' => 'DELETE', 'route'=>['articles.destroy', $p->product_id]]) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                    {!! Form::close() !!}
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-    <div>
-        <nav>
-            {!! $products->appends(Input::except('page'))->render() !!}
-        </nav>
-    </div>
-    <div class="row">
+@section('categories-menu')
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="categoriesMenu">
+            <ul class="navbar-nav">
+            @foreach($taxonomies as $taxonomy)
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ $taxonomy->name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @include('product.index._category_level', ['taxons' => $taxonomy->rootLevelTaxons()])
+                    </div>
+                </li>
+            @endforeach
+            </ul>
+        </div>
+    </nav>
+@stop
+
+@section('breadcrumbs')
+    <li class="breadcrumb-item"><a href="{{ route('product.index') }}">All Products</a></li>
+    @if($taxon)
+        @include('product._breadcrumbs')
+    @endif
+@stop
+
+@section('content')
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-3">
+                @include('product.index._filters', ['properties' => $properties, 'filters' => $filters])
+            </div>
+
+            <div class="col-md-9">
+                @if($taxon && $products->isEmpty() && $taxon->children->count())
+                    <div class="card card-default mb-4">
+                        <div class="card-header">{{ $taxon->name }} Subcategories</div>
+
+                        <div class="card-body">
+                            <div class="row">
+                            @foreach($taxon->children as $child)
+                                <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                    @include('product.index._category', ['taxon' => $child])
+                                </div>
+                            @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if(!$products->isEmpty())
+                <div class="card card-default">
+                    <div class="card-header">{{ $taxon ?  'Products in ' . $taxon->name : 'All Products' }}</div>
+
+                    <div class="card-body">
+                        <div class="row">
+
+                            @foreach($products as $product)
+                                <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                    @include('product.index._product')
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+                @endif
+            </div>
+        </div>
     </div>
 @endsection

@@ -1,61 +1,102 @@
-## Documentation
+# Vanilo Demo Application
 
-Complete documentation for the this project it's not ready yet.
-If you want to test repository you must:
-* Clone the repo
-* Database
-  * `create database with name cms`
-* Create .env file and set
-  * `DB_DATABASE=cms`
-  * `DB_USERNAME=root`
-  * `leave password blank`
-* Run by performing on the repo's folder to install all dependencies:
-  * `$ composer update`
-* Now
-  * `$ php artisan migrate`
-* Fill the database
-  * `$ php artisan db:seed`
-* then run
-  * `$ php artisan serve`  
-* And access
-  * `http://127.0.0.1:8000/cms`
-  
-use admin username:
-* `admin@admin.com pass adminadmin` for admin acount.
-You are not be able to make test order with admin acount.
+![v0.5](https://img.shields.io/badge/version-0.5-green.svg?style=flat-square)
 
-use demo username:
-* `demo@demo.com pass demodemo` for demo user to make test order.
-create or register new user if you want.
+This is a minimalistic Laravel 5.7 application that demonstrates how to build a simple storefront
+using the Vanilo framework. It also contains Vanilo's admin panel.
 
-## About Laravel
+> The app uses the default Bootstrap theme that comes with Laravel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**1. Get the app**:
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Either download and decompress [the zipball](https://github.com/vanilophp/demo/archive/master.zip)
+or use git:
 
-## Learning Laravel
+```bash
+git clone https://github.com/vanilophp/demo.git
+```
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+**2. Install Dependencies**:
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+```bash
+cd demo/
+composer install
+```
 
-## Contributing
+**3. Configure the environment**:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+> The `.env` file is in the app's [root directory](https://laravel.com/docs/5.7/configuration#environment-configuration).
 
-## Security Vulnerabilities
+- Create a database for your application.
+- Initialize .env (quickly: `cp .env.example .env && php artisan key:generate`.
+- add the DB credentials to the `.env` file.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+**4. Install Database**:
 
-## License
+Run these commands in your terminal:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+```bash
+php artisan migrate --seed
+```
+**5. Create the first admin user**:
+
+Run this command:
+
+```bash
+php artisan appshell:super
+```
+Enter your email, name, password, **accept _admin_ as role**.
+
+**6. Open the application**:
+
+Run the site with `php artisan serve` and access the site:
+
+http://127.0.0.1:8000
+
+#### Product List
+
+![Product list](docs/ss05_01.png)
+
+#### Product Page
+
+![Product page](docs/ss05_02.png)
+
+#### Cart
+
+![Cart](docs/ss05_03.png)
+
+#### Checkout
+
+![Checkout](docs/ss05_04.png)
+
+#### Order Thank You
+
+![Order Thank You](docs/ss05_05.png)
+
+#### Order Admin
+
+![Order Admin](docs/ss05_06.png)
+
+#### Products Admin
+
+![Products Admin](docs/ss05_07.png)
+
+#### Manage Product
+
+![Manage Product](docs/ss05_08.png)
+
+#### Manage Categories
+
+![Manage Categories](docs/ss05_09.png)
+
+#### Manage Properties
+
+![Manage Properties](docs/ss05_10.png)
+
+#### Assign Product Properties
+
+![Assign Product Properties](docs/ss05_11.png)
+
+For further details refer to the [Vanilo Documentation](https://vanilo.io/docs/).

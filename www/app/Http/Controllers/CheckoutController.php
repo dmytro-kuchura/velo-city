@@ -2,43 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CheckoutService;
+
+use App\Http\Requests\CheckoutRequest;
+use Konekt\Address\Models\CountryProxy;
+use Vanilo\Cart\Facades\Cart;
+use Vanilo\Checkout\Facades\Checkout;
+use Vanilo\Order\Contracts\OrderFactory;
 
 class CheckoutController extends Controller
 {
-    protected $checkout;
-
-    /**
-     * ShoppingController constructor.
-     * @param ShoppingService $shoppingService
-     */
-    public function __construct(CheckoutService $checkout)
+    public function show()
     {
-        $this->checkout = $checkout;
-    }
+        $checkout = false;
 
-    /**
-     * Pass data to checkout view.
-     * @return View
-     */
-    public function checkout()
-    {
-        $data = $this->checkout->checkoutData();
-        return view('frontend.checkoutOne',$data);
-    }
+        if (Cart::isNotEmpty()) {
+            $checkout = Checkout::getFacadeRoot();
+            if ($old = old()) {
+                $checkout->update($old);
+            }
 
-    /**
-     * Show order information from session.     *
-     * @return View
-     */
-    public function checkoutShow()
-    {
-        $country = session()->get('country');
-        if (!isset($country)) {
-            session()->flash('flash_message', 'YOUR MUST FILL REQUIRED FIELDS!');
-            return redirect('checkout/shipping');
+            $checkout->setCart(Cart::model());
         }
-        $data = $this->checkout->checkoutShow();
-        return view('frontend.checkoutTwo', $data);
+
+        return view('checkout.show', [
+            'checkout'  => $checkout,
+            'countries' => CountryProxy::all()
+        ]);
     }
+
+    public function submit(CheckoutRequest $request, OrderFactory $orderFactory)
+    {
+        $checkout = Checkout::getFacadeRoot();
+        $checkout->update($request->all());
+        $checkout->setCart(Cart::model());
+
+        $order = $orderFactory->createFromCheckout($checkout);
+        Cart::destroy();
+
+        return view('checkout.thankyou', ['order' => $order]);
+    }
+
 }

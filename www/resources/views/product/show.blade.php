@@ -1,47 +1,82 @@
-@extends('backend.tblTemplate')
-@section('body')
-    <div class="form-group">
-        {!! Form::label('Slug', 'Slug:') !!}
-        {!! Form::text('slug',$product->slug,['class'=>'form-control', 'readonly' => 'true']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Name', 'Name:') !!}
-        {!! Form::text('name',$product->name,['class'=>'form-control', 'readonly' => 'true']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Description', 'Description:') !!}
-        {!! Form::textarea('description',$product->description,['class'=>'form-control', 'readonly' => 'true']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Image') !!}
-        <a class="thumbnail">
-            <img class="img-responsive" src="{{asset('images/products/'.$product->a_img)}}"
-                 height="45" width="35" alt="{{$product->a_img}}">
-        </a>
-    </div>
-    <div class="form-group">
-        {!! Form::label('Brand', 'Brand:') !!}
-        {!! Form::text('brand',$product->brands->brand,['class'=>'form-control', 'readonly' => 'true']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Size', 'Size:') !!}
-        {!! Form::text('size',implode(",",$product->size->pluck("size")->all()),
-                      ['class'=>'form-control', 'readonly' => 'true']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Category', 'Category:') !!}
-        {!! Form::text('cat_id',$product->category->cat,['class'=>'form-control', 'readonly' => 'true']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Quantity', 'Quantity:') !!}
-        {!! Form::text('quantity',$product->quantity,['class'=>'form-control', 'readonly' => 'true']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('Price', 'Price:') !!}
-        {!! Form::text('price',$product->price,['class'=>'form-control', 'readonly' => 'true']) !!}
-    </div>
-    <div class="form-group">
-        <a href="{{ url('backend/articles')}}" class="btn btn-primary">Back</a>
-    </div>
-    </form>
+@extends('layouts.app')
+
+@section('breadcrumbs')
+    <li class="breadcrumb-item"><a href="{{ route('product.index') }}">All Products</a></li>
+    @if ($product->taxons->count())
+        @include('product._breadcrumbs', ['taxon' => $product->taxons->first()])
+    @endif
+    <li class="breadcrumb-item">{{ $product->name }}</li>
 @stop
+
+@section('content')
+    <style>
+        .thumbnail-container {
+            overflow-x: scroll;
+        }
+
+        .thumbnail {
+            width: 64px;
+            height: auto;
+            display: block;
+            float: left;
+        }
+
+        .thumbnail img {
+            cursor: pointer;
+        }
+    </style>
+    <div class="container">
+        <h1>{{ $product->name }}</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-2">
+                    <?php $img = $product->getMedia()->first() ? $product->getMedia()->first()->getUrl('medium') : '/images/product-medium.jpg' ?>
+                    <img src="{{ $img  }}" id="product-image" />
+                </div>
+
+                <div class="thumbnail-container">
+                    @foreach($product->getMedia() as $media)
+                        <div class="thumbnail mr-1">
+                            <img class="mw-100" src="{{ $media->getUrl('thumbnail') }}"
+                                 onclick="document.getElementById('product-image').setAttribute('src', '{{ $media->getUrl("medium") }}')"
+                            />
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <form action="{{ route('cart.add', $product) }}" method="post" class="mb-4">
+                    {{ csrf_field() }}
+
+                    <span class="mr-2 font-weight-bold text-primary btn-lg">{{ format_price($product->price) }}</span>
+                    <button type="submit" class="btn btn-success btn-lg" @if(!$product->price) disabled @endif>Add to cart</button>
+                </form>
+
+                @unless(empty($product->propertyValues))
+                <table class="table table-sm">
+                    <tbody>
+                    @foreach($product->propertyValues as $propertyValue)
+                        <tr>
+                            <th>{{ $propertyValue->property->name }}</th>
+                            <td>{{ $propertyValue->title }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                @else
+                    <hr>
+                @endunless
+
+                @unless(empty($product->description))
+                <hr>
+                <p class="text-secondary">{!!  nl2br($product->description) !!}</p>
+                <hr>
+                @endunless
+
+            </div>
+        </div>
+    </div>
+@endsection
