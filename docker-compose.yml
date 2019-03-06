@@ -10,6 +10,7 @@ services:
     depends_on:
     - php
     - db
+
   php:
     build: docker
     volumes:
@@ -21,6 +22,7 @@ services:
     volumes:
     - ./www/:/app
     command: install
+
   db:
     image: postgres:10.1
     environment:
