@@ -33,11 +33,11 @@ class ProductController extends Controller
         }
 
         return view('product.index', [
-            'products'   => $this->productFinder->getResults(),
+            'products' => $this->productFinder->getResults(),
             'taxonomies' => $taxonomies,
-            'taxon'      => $taxon,
+            'taxon' => $taxon,
             'properties' => $properties,
-            'filters'    => $request->filters($properties)
+            'filters' => $request->filters($properties)
         ]);
     }
 

@@ -27,7 +27,7 @@ class CartController extends Controller
 
     public function update(CartItem $cart_item, Request $request)
     {
-        $qty = (int) $request->get('qty', $cart_item->getQuantity());
+        $qty = (int)$request->get('qty', $cart_item->getQuantity());
         $cart_item->quantity = $qty;
         $cart_item->save();
 

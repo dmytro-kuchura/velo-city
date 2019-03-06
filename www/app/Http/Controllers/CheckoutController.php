@@ -25,7 +25,7 @@ class CheckoutController extends Controller
         }
 
         return view('checkout.show', [
-            'checkout'  => $checkout,
+            'checkout' => $checkout,
             'countries' => CountryProxy::all()
         ]);
     }
