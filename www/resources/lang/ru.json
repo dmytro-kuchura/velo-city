@@ -1,5 +1,7 @@
 {
   "Categorization": "Категории",
+  "Settings": "Настройки",
+  "Users": "Пользователи",
   "Name": "Название",
   "Sales": "Продано",
   "State": "Статус",
@@ -8,5 +10,19 @@
   "Product Properties": "Свойства товаров",
   "Orders": "Заказы",
   "New Product": "Добавить товар",
-  "Product Details": "Описание товара"
+  "Product Details": "Описание товара",
+  "USD": "UAH",
+  "Create product": "Создать товар",
+  "Cancel": "Отменить создание",
+  "Create new product": "Добавление товара",
+  "Create": "Создание",
+  "Home": "Главная",
+  "Description": "Описание",
+  "Extra Settings": "Дополнительные настройки",
+  "Images": "Изображения",
+  "Price": "Цена товара",
+  "SKU (product code)": "Артикул товара",
+  "Short Description": "Краткое описание",
+  "Type or copy/paste product description here": "Введите или скопируйте и вставьте описание товара",
+  "Product name": "Название товара"
 }
