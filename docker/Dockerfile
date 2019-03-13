@@ -15,10 +15,13 @@ RUN apt-get update && \
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt
 
+# Install the PHP pdo_mysql extention
+RUN docker-php-ext-install pdo_mysql
+
 # Install the PHP pdo_pgsql extention
 RUN docker-php-ext-install pdo_pgsql
 
-# Install the PHP GD library
+# Install the PHP gd library
 RUN docker-php-ext-configure gd \
         --enable-gd-native-ttf \
         --with-jpeg-dir=/usr/lib \
