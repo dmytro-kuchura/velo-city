@@ -24,5 +24,11 @@
   "SKU (product code)": "Артикул товара",
   "Short Description": "Краткое описание",
   "Type or copy/paste product description here": "Введите или скопируйте и вставьте описание товара",
-  "Product name": "Название товара"
+  "Product name": "Название товара",
+
+  "inactive": "Не активен",
+  "draft": "Предзаказ",
+  "active": "В наличии",
+  "unavailable": "Нет в наличии",
+  "retired": "Недоступен"
 }
