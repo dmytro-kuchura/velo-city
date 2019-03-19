@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-xs-30">
                                 <div class="blog-media">
-                                    <img src="images/blog_img1.jpg" alt="Roadie">
+                                    <img src="/images/blog_img1.jpg" alt="Roadie">
                                     <div class="blog-effect"></div>
                                     <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
                                 </div>
@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-xs-30">
                                 <div class="blog-media">
-                                    <img src="images/blog_img2.jpg" alt="Roadie">
+                                    <img src="/images/blog_img2.jpg" alt="Roadie">
                                     <div class="blog-effect"></div>
                                     <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
                                 </div>
@@ -78,7 +78,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-xs-30">
                                 <div class="blog-media">
-                                    <img src="images/blog_img3.jpg" alt="Roadie">
+                                    <img src="/images/blog_img3.jpg" alt="Roadie">
                                     <div class="blog-effect"></div>
                                     <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
                                 </div>
@@ -110,7 +110,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-xs-30">
                                 <div class="blog-media">
-                                    <img src="images/blog_img4.jpg" alt="Roadie">
+                                    <img src="/images/blog_img4.jpg" alt="Roadie">
                                     <div class="blog-effect"></div>
                                     <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
                                 </div>
@@ -142,7 +142,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-xs-30">
                                 <div class="blog-media">
-                                    <img src="images/blog_img5.jpg" alt="Roadie">
+                                    <img src="/images/blog_img5.jpg" alt="Roadie">
                                     <div class="blog-effect"></div>
                                     <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
                                 </div>
@@ -174,7 +174,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-xs-30">
                                 <div class="blog-media">
-                                    <img src="images/blog_img6.jpg" alt="Roadie">
+                                    <img src="/images/blog_img6.jpg" alt="Roadie">
                                     <div class="blog-effect"></div>
                                     <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
                                 </div>

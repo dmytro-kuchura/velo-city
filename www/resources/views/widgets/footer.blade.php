@@ -103,11 +103,11 @@
                     <div class="col-lg-6 ">
                         <div class="payment">
                             <ul class="payment_icon">
-                                <li class="visa"><a href="javascript:void(0)"><img src="images/pay1.png" alt="Roadie"></a></li>
-                                <li class="discover"><a href="javascript:void(0)"><img src="images/pay2.png" alt="Roadie"></a></li>
-                                <li class="paypal"><a href="javascript:void(0)"><img src="images/pay3.png" alt="Roadie"></a></li>
-                                <li class="vindicia"><a href="javascript:void(0)"><img src="images/pay4.png" alt="Roadie"></a></li>
-                                <li class="atos"><a href="javascript:void(0)"><img src="images/pay5.png" alt="Roadie"></a></li>
+                                <li class="visa"><a href="javascript:void(0)"><img src="/images/pay1.png" alt="Roadie"></a></li>
+                                <li class="discover"><a href="javascript:void(0)"><img src="/images/pay2.png" alt="Roadie"></a></li>
+                                <li class="paypal"><a href="javascript:void(0)"><img src="/images/pay3.png" alt="Roadie"></a></li>
+                                <li class="vindicia"><a href="javascript:void(0)"><img src="/images/pay4.png" alt="Roadie"></a></li>
+                                <li class="atos"><a href="javascript:void(0)"><img src="/images/pay5.png" alt="Roadie"></a></li>
                             </ul>
                         </div>
                     </div>

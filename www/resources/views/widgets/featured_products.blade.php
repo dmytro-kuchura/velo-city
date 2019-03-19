@@ -15,7 +15,7 @@
                             <div class="product-item">
                                 <div class="main-label new-label"><span>New</span></div>
                                 <div class="product-image">
-                                    <a href="product-page.html"> <img src="images/10.jpg" alt="Roadie"> </a>
+                                    <a href="product-page.html"> <img src="/images/10.jpg" alt="Roadie"> </a>
                                 </div>
                                 <div class="product-details">
                                     <div class="product-item-details">
@@ -51,7 +51,7 @@
                             <div class="product-item">
                                 <div class="main-label sale-label"><span>Sale</span></div>
                                 <div class="product-image">
-                                    <a href="product-page.html"> <img src="images/13.jpg" alt="Roadie"> </a>
+                                    <a href="product-page.html"> <img src="/images/13.jpg" alt="Roadie"> </a>
                                 </div>
                                 <div class="product-details">
                                     <div class="product-item-details">
@@ -88,7 +88,7 @@
                                 <div class="main-label new-label"><span>New</span></div>
                                 <div class="main-label sale-label"><span>Sale</span></div>
                                 <div class="product-image">
-                                    <a href="product-page.html"> <img src="images/4.jpg" alt="Roadie"> </a>
+                                    <a href="product-page.html"> <img src="/images/4.jpg" alt="Roadie"> </a>
                                 </div>
                                 <div class="product-details">
                                     <div class="product-item-details">
@@ -123,7 +123,7 @@
                         <div class="item">
                             <div class="product-item sold-out">
                                 <div class="product-image">
-                                    <a href="product-page.html"> <img src="images/5.jpg" alt="Roadie"> </a>
+                                    <a href="product-page.html"> <img src="/images/5.jpg" alt="Roadie"> </a>
                                 </div>
                                 <div class="product-details">
                                     <div class="product-item-details">
@@ -159,7 +159,7 @@
                             <div class="product-item">
                                 <div class="main-label sale-label"><span>Sale</span></div>
                                 <div class="product-image">
-                                    <a href="product-page.html"> <img src="images/6.jpg" alt="Roadie"> </a>
+                                    <a href="product-page.html"> <img src="/images/6.jpg" alt="Roadie"> </a>
                                 </div>
                                 <div class="product-details">
                                     <div class="product-item-details">
@@ -194,7 +194,7 @@
                         <div class="item">
                             <div class="product-item">
                                 <div class="product-image">
-                                    <a href="product-page.html"> <img src="images/8.jpg" alt="Roadie"> </a>
+                                    <a href="product-page.html"> <img src="/images/8.jpg" alt="Roadie"> </a>
                                 </div>
                                 <div class="product-details">
                                     <div class="product-item-details">
@@ -230,7 +230,7 @@
                             <div class="product-item">
                                 <div class="main-label new-label"><span>New</span></div>
                                 <div class="product-image">
-                                    <a href="product-page.html"> <img src="images/9.jpg" alt="Roadie"> </a>
+                                    <a href="product-page.html"> <img src="/images/9.jpg" alt="Roadie"> </a>
                                 </div>
                                 <div class="product-details">
                                     <div class="product-item-details">
@@ -266,7 +266,7 @@
                             <div class="product-item">
                                 <div class="main-label sale-label"><span>Sale</span></div>
                                 <div class="product-image">
-                                    <a href="product-page.html"> <img src="images/11.jpg" alt="Roadie"> </a>
+                                    <a href="product-page.html"> <img src="/images/11.jpg" alt="Roadie"> </a>
                                 </div>
                                 <div class="product-details">
                                     <div class="product-item-details">
@@ -303,7 +303,7 @@
                                 <div class="main-label new-label"><span>New</span></div>
                                 <div class="main-label sale-label"><span>Sale</span></div>
                                 <div class="product-image">
-                                    <a href="product-page.html"> <img src="images/2.jpg" alt="Roadie"> </a>
+                                    <a href="product-page.html"> <img src="/images/2.jpg" alt="Roadie"> </a>
                                 </div>
                                 <div class="product-details">
                                     <div class="product-item-details">

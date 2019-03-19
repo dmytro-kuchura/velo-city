@@ -1,7 +1,7 @@
 <section class="banner-main container-full-sm">
     <div class="banner">
         <div class="main-banner">
-            <div class="banner-1"> <img src="images/banner1.jpg" alt="Roadie">
+            <div class="banner-1"> <img src="/images/banner1.jpg" alt="Roadie">
                 <div class="banner-detail align-center">
                     <div class="container">
                         <div class="row">
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="banner-2"> <img src="images/banner2.jpg" alt="Roadie">
+            <div class="banner-2"> <img src="/images/banner2.jpg" alt="Roadie">
                 <div class="banner-detail  align-center">
                     <div class="container">
                         <div class="row">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="banner-3"> <img src="images/banner3.jpg" alt="Roadie">
+            <div class="banner-3"> <img src="/images/banner3.jpg" alt="Roadie">
                 <div class="banner-detail  align-center">
                     <div class="container">
                         <div class="row">

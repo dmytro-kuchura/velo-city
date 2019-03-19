@@ -3,13 +3,11 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-
     <!-- Basic Page Needs
       ================================================== -->
     <meta charset="utf-8">
     <title>Roadie</title>
-    <!-- SEO Meta
-      ================================================== -->
+    <!-- SEO Meta ================================================== -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -19,11 +17,9 @@
     <meta name="rating" content="8 YEARS">
     <meta name="Language" content="en-us">
     <meta name="GOOGLEBOT" content="NOARCHIVE">
-    <!-- Mobile Specific Metas
-      ================================================== -->
+    <!-- Mobile Specific Metas ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!-- CSS
-      ================================================== -->
+    <!-- CSS ================================================== -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}">
@@ -36,10 +32,28 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '858425494500894');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=858425494500894&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Facebook Pixel Code -->
 </head>
 <body class="homepage">
 <div class="se-pre-con"></div>
-{{--{{ Widget::Popup() }}--}}
+{{ Widget::Popup() }}
 <div class="main">
 
     <!-- PRODUCT-POPUP START -->
@@ -50,56 +64,15 @@
     {{ Widget::Header() }}
     <!-- HEADER END -->
 
-    <!-- BANNER STRAT -->
-
-    <!-- BANNER END -->
+    <!-- SLIDER STRAT -->
+    {{ Widget::Slider() }}
+    <!-- SLIDER END -->
 
     <!-- CONTAIN START -->
 
-    <!-- SUB-BANNER START -->
-    <div class="sub-banner-block">
-        <div class=" center-sm">
-            <div class="row m-0">
-                <div class="col-lg-4 col-md-4 mt-xs-30 p-0">
-                    <div class="sub-banner sub-banner1" >
-                        <img alt="Roadie" src="images/sub-banner1.jpg">
-                        <div class="sub-banner-detail">
-                            <span class="sub-banner-slogan">Most Popular</span>
-                            <div class="sub-banner-title sub-banner-title-color">Bicycles Sale 2018 <br>Up to 70% Off</div>
-                            <a class="btn btn-color mt-10" href="shop.html">Shop Now!</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 mt-xs-30 p-0">
-                    <div class="">
-                        <div class="sub-banner sub-banner2">
-                            <img alt="Roadie" src="images/sub-banner2.jpg">
-                            <div class="sub-banner-detail">
-                                <div class="sub-banner-title sub-banner-title-color">Boys and Girls Bicycles</div>
-                                <div class="sub-banner-subtitle">Cycles For Boys & Girls online best prices</div>
-                                <a class="btn btn-color mt-10" href="shop.html">Shop Now!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 mt-xs-30 p-0">
-                    <div class="sub-banner sub-banner3" >
-                        <img alt="Roadie" src="images/sub-banner3.jpg">
-                        <div class="sub-banner-detail">
-                            <span class="sub-banner-slogan">Best Collection</span>
-                            <div class="sub-banner-title sub-banner-title-color">life Is like for <br>Ride Without limits</div>
-                            <a class="btn btn-color mt-10 " href="shop.html">Shop Now!</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- SUB-BANNER END -->
-
-    <!--  Featured Products Block Start  -->
+    <!--  Featured Products Start  -->
     {{ Widget::FeaturedProducts() }}
-    <!--  Featured Products Block Start  -->
+    <!--  Featured Products Start  -->
 
     <!-- Offer of the Week Start -->
     <section class="ptb-70">
@@ -107,7 +80,7 @@
             <div class="row m-0">
                 <div class="col-xl-6 p-0">
                     <div class="offer-img">
-                        <img src="images/offer-img.jpg" alt="Roadie">
+                        <img src="/images/offer-img.jpg" alt="Roadie">
                     </div>
                 </div>
                 <div class="col-xl-6 gray-bg center-sm p-0">
@@ -153,24 +126,9 @@
     </section>
     <!-- Offer of the Week End -->
 
-    <!-- perellex-banner Start -->
-    <section>
-        <div class="perellex-banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 ptb-70 client-box">
-                        <div class="perellex-delail float-none-sm right-side align-center">
-                            <div class="perellex-subtitle">weekend</div>
-                            <div class="perellex-title">Special Offer</div>
-                            <div class="perellex-des">Click & Collect First Delivery Free Over $20* </div>
-                            <a class="btn btn-color mt-30" href="shop.html">Shop Now!</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- perellex-banner End -->
+    <!-- Banner Start -->
+    {{ Widget::Banner() }}
+    <!-- Banner End -->
 
     <!--  Featured Products Slider Block Start  -->
     <div class="featured-product ptb-70">
@@ -205,7 +163,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label sale-label"><span>Sale</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/1.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/1.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -240,7 +198,7 @@
                                                     <div class="item">
                                                         <div class="product-item sold-out">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/2.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/2.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -276,7 +234,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label new-label"><span>New</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/3.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/3.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -312,7 +270,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label new-label"><span>New</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/4.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/4.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -347,7 +305,7 @@
                                                     <div class="item">
                                                         <div class="product-item">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/5.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/5.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -383,7 +341,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label sale-label"><span>Sale</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/6.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/6.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -419,7 +377,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label sale-label"><span>Sale</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/7.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/7.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -455,7 +413,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label new-label"><span>New</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/8.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/8.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -490,7 +448,7 @@
                                                     <div class="item">
                                                         <div class="product-item">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/9.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/9.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -536,7 +494,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label new-label"><span>New</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/10.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/10.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -572,7 +530,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label sale-label"><span>Sale</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/11.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/11.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -607,7 +565,7 @@
                                                     <div class="item">
                                                         <div class="product-item  sold-out">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/12.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/12.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -643,7 +601,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label new-label"><span>New</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/13.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/13.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -678,43 +636,7 @@
                                                     <div class="item">
                                                         <div class="product-item">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/14.jpg" alt="Roadie"> </a>
-                                                            </div>
-                                                            <div class="product-details">
-                                                                <div class="product-item-details">
-                                                                    <div class="product-item-name">
-                                                                        <a href="product-page.html">Defyant Reversible Dot Shorts</a>
-                                                                    </div>
-                                                                    <div class="rating-summary-block">
-                                                                        <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
-                                                                    </div>
-                                                                    <div class="price-box">
-                                                                        <span class="price">$520.00</span>
-                                                                        <del class="price old-price">$620.00</del>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-detail-inner">
-                                                                    <div class="detail-inner-left">
-                                                                        <ul>
-                                                                            <li class="pro-cart-icon">
-                                                                                <form>
-                                                                                    <button title="Add to Cart"></button>
-                                                                                </form>
-                                                                            </li>
-                                                                            <li class="pro-wishlist-icon"><a title="Wishlist" href="wishlist.html"></a></li>
-                                                                            <li class="pro-compare-icon"><a title="Compare" href="compare.html"></a></li>
-                                                                            <li class="pro-quick-view-icon"><a title="quick-view" href="#product_popup" class="popup-with-product"></a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="product-item">
-                                                            <div class="main-label sale-label"><span>Sale</span></div>
-                                                            <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/15.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/14.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -750,7 +672,43 @@
                                                         <div class="product-item">
                                                             <div class="main-label sale-label"><span>Sale</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/16.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/15.jpg" alt="Roadie"> </a>
+                                                            </div>
+                                                            <div class="product-details">
+                                                                <div class="product-item-details">
+                                                                    <div class="product-item-name">
+                                                                        <a href="product-page.html">Defyant Reversible Dot Shorts</a>
+                                                                    </div>
+                                                                    <div class="rating-summary-block">
+                                                                        <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
+                                                                    </div>
+                                                                    <div class="price-box">
+                                                                        <span class="price">$520.00</span>
+                                                                        <del class="price old-price">$620.00</del>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-detail-inner">
+                                                                    <div class="detail-inner-left">
+                                                                        <ul>
+                                                                            <li class="pro-cart-icon">
+                                                                                <form>
+                                                                                    <button title="Add to Cart"></button>
+                                                                                </form>
+                                                                            </li>
+                                                                            <li class="pro-wishlist-icon"><a title="Wishlist" href="wishlist.html"></a></li>
+                                                                            <li class="pro-compare-icon"><a title="Compare" href="compare.html"></a></li>
+                                                                            <li class="pro-quick-view-icon"><a title="quick-view" href="#product_popup" class="popup-with-product"></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="product-item">
+                                                            <div class="main-label sale-label"><span>Sale</span></div>
+                                                            <div class="product-image">
+                                                                <a href="product-page.html"> <img src="/images/16.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -786,7 +744,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label new-label"><span>New</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/17.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/17.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -821,7 +779,7 @@
                                                     <div class="item">
                                                         <div class="product-item">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/18.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/18.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -867,7 +825,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label sale-label"><span>Sale</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/14.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/14.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -903,7 +861,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label new-label"><span>New</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/3.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/3.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -938,7 +896,7 @@
                                                     <div class="item">
                                                         <div class="product-item">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/8.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/8.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -973,7 +931,7 @@
                                                     <div class="item">
                                                         <div class="product-item sold-out">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/2.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/2.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -1008,43 +966,7 @@
                                                     <div class="item">
                                                         <div class="product-item">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/4.jpg" alt="Roadie"> </a>
-                                                            </div>
-                                                            <div class="product-details">
-                                                                <div class="product-item-details">
-                                                                    <div class="product-item-name">
-                                                                        <a href="product-page.html">Defyant Reversible Dot Shorts</a>
-                                                                    </div>
-                                                                    <div class="rating-summary-block">
-                                                                        <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
-                                                                    </div>
-                                                                    <div class="price-box">
-                                                                        <span class="price">$520.00</span>
-                                                                        <del class="price old-price">$620.00</del>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-detail-inner">
-                                                                    <div class="detail-inner-left">
-                                                                        <ul>
-                                                                            <li class="pro-cart-icon">
-                                                                                <form>
-                                                                                    <button title="Add to Cart"></button>
-                                                                                </form>
-                                                                            </li>
-                                                                            <li class="pro-wishlist-icon"><a title="Wishlist" href="wishlist.html"></a></li>
-                                                                            <li class="pro-compare-icon"><a title="Compare" href="compare.html"></a></li>
-                                                                            <li class="pro-quick-view-icon"><a title="quick-view" href="#product_popup" class="popup-with-product"></a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="product-item">
-                                                            <div class="main-label sale-label"><span>Sale</span></div>
-                                                            <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/6.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/4.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -1080,7 +1002,43 @@
                                                         <div class="product-item">
                                                             <div class="main-label sale-label"><span>Sale</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/17.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/6.jpg" alt="Roadie"> </a>
+                                                            </div>
+                                                            <div class="product-details">
+                                                                <div class="product-item-details">
+                                                                    <div class="product-item-name">
+                                                                        <a href="product-page.html">Defyant Reversible Dot Shorts</a>
+                                                                    </div>
+                                                                    <div class="rating-summary-block">
+                                                                        <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
+                                                                    </div>
+                                                                    <div class="price-box">
+                                                                        <span class="price">$520.00</span>
+                                                                        <del class="price old-price">$620.00</del>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-detail-inner">
+                                                                    <div class="detail-inner-left">
+                                                                        <ul>
+                                                                            <li class="pro-cart-icon">
+                                                                                <form>
+                                                                                    <button title="Add to Cart"></button>
+                                                                                </form>
+                                                                            </li>
+                                                                            <li class="pro-wishlist-icon"><a title="Wishlist" href="wishlist.html"></a></li>
+                                                                            <li class="pro-compare-icon"><a title="Compare" href="compare.html"></a></li>
+                                                                            <li class="pro-quick-view-icon"><a title="quick-view" href="#product_popup" class="popup-with-product"></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="product-item">
+                                                            <div class="main-label sale-label"><span>Sale</span></div>
+                                                            <div class="product-image">
+                                                                <a href="product-page.html"> <img src="/images/17.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -1116,7 +1074,7 @@
                                                         <div class="product-item">
                                                             <div class="main-label new-label"><span>New</span></div>
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/11.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/11.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -1151,7 +1109,7 @@
                                                     <div class="item">
                                                         <div class="product-item">
                                                             <div class="product-image">
-                                                                <a href="product-page.html"> <img src="images/5.jpg" alt="Roadie"> </a>
+                                                                <a href="product-page.html"> <img src="/images/5.jpg" alt="Roadie"> </a>
                                                             </div>
                                                             <div class="product-details">
                                                                 <div class="product-item-details">
@@ -1197,13 +1155,9 @@
     </div>
     <!--  Featured Products Slider Block End  -->
 
-    <!--Testimonial Block Start -->
-    {{ Widget::Testemonial() }}
-    <!--Testimonial Block End -->
-
-    <!--Blog Block Start -->
+    <!-- Blog/News Start -->
     {{ Widget::Blog() }}
-    <!--Blog Block End -->
+    <!-- Blog/News End -->
 
     <!--  Site Services Features Block Start  -->
     {{ Widget::Services() }}
@@ -1222,14 +1176,14 @@
             <div class="row brand">
                 <div class="col-md-12">
                     <div id="brand-logo" class="owl-carousel align_center">
-                        <div class="item"><a href="javascript:void(0)"><img src="images/brand1.png" alt="Roadie"></a></div>
-                        <div class="item"><a href="javascript:void(0)"><img src="images/brand2.png" alt="Roadie"></a></div>
-                        <div class="item"><a href="javascript:void(0)"><img src="images/brand3.png" alt="Roadie"></a></div>
-                        <div class="item"><a href="javascript:void(0)"><img src="images/brand4.png" alt="Roadie"></a></div>
-                        <div class="item"><a href="javascript:void(0)"><img src="images/brand5.png" alt="Roadie"></a></div>
-                        <div class="item"><a href="javascript:void(0)"><img src="images/brand6.png" alt="Roadie"></a></div>
-                        <div class="item"><a href="javascript:void(0)"><img src="images/brand7.png" alt="Roadie"></a></div>
-                        <div class="item"><a href="javascript:void(0)"><img src="images/brand8.png" alt="Roadie"></a></div>
+                        <div class="item"><a href="javascript:void(0)"><img src="/images/brand1.png" alt="Roadie"></a></div>
+                        <div class="item"><a href="javascript:void(0)"><img src="/images/brand2.png" alt="Roadie"></a></div>
+                        <div class="item"><a href="javascript:void(0)"><img src="/images/brand3.png" alt="Roadie"></a></div>
+                        <div class="item"><a href="javascript:void(0)"><img src="/images/brand4.png" alt="Roadie"></a></div>
+                        <div class="item"><a href="javascript:void(0)"><img src="/images/brand5.png" alt="Roadie"></a></div>
+                        <div class="item"><a href="javascript:void(0)"><img src="/images/brand6.png" alt="Roadie"></a></div>
+                        <div class="item"><a href="javascript:void(0)"><img src="/images/brand7.png" alt="Roadie"></a></div>
+                        <div class="item"><a href="javascript:void(0)"><img src="/images/brand8.png" alt="Roadie"></a></div>
                     </div>
                 </div>
             </div>

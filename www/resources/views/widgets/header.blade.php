@@ -95,7 +95,7 @@
                                                                 <div class="owl-carousel sub_menu_slider">
                                                                     <div class="product-item">
                                                                         <div class="product-image">
-                                                                            <a href="product-page.html"> <img src="images/1.jpg" alt="Roadie"> </a>
+                                                                            <a href="product-page.html"> <img src="/images/1.jpg" alt="Roadie"> </a>
                                                                         </div>
                                                                         <div class="product-item-details">
                                                                             <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
@@ -108,7 +108,7 @@
                                                                     </div>
                                                                     <div class="product-item">
                                                                         <div class="product-image">
-                                                                            <a href="product-page.html"> <img src="images/2.jpg" alt="Roadie"> </a>
+                                                                            <a href="product-page.html"> <img src="/images/2.jpg" alt="Roadie"> </a>
                                                                         </div>
                                                                         <div class="product-item-details">
                                                                             <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
@@ -121,7 +121,7 @@
                                                                     </div>
                                                                     <div class="product-item">
                                                                         <div class="product-image">
-                                                                            <a href="product-page.html"> <img src="images/3.jpg" alt="Roadie"> </a>
+                                                                            <a href="product-page.html"> <img src="/images/3.jpg" alt="Roadie"> </a>
                                                                         </div>
                                                                         <div class="product-item-details">
                                                                             <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
@@ -134,7 +134,7 @@
                                                                     </div>
                                                                     <div class="product-item">
                                                                         <div class="product-image">
-                                                                            <a href="product-page.html"> <img src="images/4.jpg" alt="Roadie"> </a>
+                                                                            <a href="product-page.html"> <img src="/images/4.jpg" alt="Roadie"> </a>
                                                                         </div>
                                                                         <div class="product-item-details">
                                                                             <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
@@ -147,7 +147,7 @@
                                                                     </div>
                                                                     <div class="product-item">
                                                                         <div class="product-image">
-                                                                            <a href="product-page.html"> <img src="images/5.jpg" alt="Roadie"> </a>
+                                                                            <a href="product-page.html"> <img src="/images/5.jpg" alt="Roadie"> </a>
                                                                         </div>
                                                                         <div class="product-item-details">
                                                                             <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>

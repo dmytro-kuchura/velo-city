@@ -11,12 +11,12 @@
                             <div class="item client-detail">
                                 <div class="quote">
                                     <div class="quote1-img">
-                                        <img src="images/quote1.png" alt="Roadie">
+                                        <img src="/images/quote1.png" alt="Roadie">
                                     </div>
                                     <p>It is a long established fact reader will be distracted readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
                                     </p>
                                     <div class="quote2-img">
-                                        <img src="images/quote2.png" alt="Roadie">
+                                        <img src="/images/quote2.png" alt="Roadie">
                                     </div>
                                 </div>
                                 <div class="client-img">
@@ -27,12 +27,12 @@
                             <div class="item client-detail">
                                 <div class="quote">
                                     <div class="quote1-img">
-                                        <img src="images/quote1.png" alt="Roadie">
+                                        <img src="/images/quote1.png" alt="Roadie">
                                     </div>
                                     <p>It is a long established fact reader will be distracted readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
                                     </p>
                                     <div class="quote2-img">
-                                        <img src="images/quote2.png" alt="Roadie">
+                                        <img src="/images/quote2.png" alt="Roadie">
                                     </div>
                                 </div>
                                 <div class="client-img ">
@@ -43,12 +43,12 @@
                             <div class="item client-detail">
                                 <div class="quote">
                                     <div class="quote1-img">
-                                        <img src="images/quote1.png" alt="Roadie">
+                                        <img src="/images/quote1.png" alt="Roadie">
                                     </div>
                                     <p>It is a long established fact reader will be distracted readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
                                     </p>
                                     <div class="quote2-img">
-                                        <img src="images/quote2.png" alt="Roadie">
+                                        <img src="/images/quote2.png" alt="Roadie">
                                     </div>
                                 </div>
                                 <div class="client-img ">
