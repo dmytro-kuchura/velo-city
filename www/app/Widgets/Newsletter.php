@@ -21,7 +21,7 @@ class Newsletter extends AbstractWidget
     {
         //
 
-        return view('widgets.news', [
+        return view('widgets.newsletter', [
             'config' => $this->config,
         ]);
     }
