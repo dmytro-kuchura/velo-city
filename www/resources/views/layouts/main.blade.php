@@ -1194,7 +1194,7 @@
     <!-- CONTAINER END -->
 
     <!-- News Letter Start -->
-    {{ Widget::News() }}
+    {{ Widget::Newsletter() }}
     <!-- News Letter End -->
 
     <!-- FOOTER START -->

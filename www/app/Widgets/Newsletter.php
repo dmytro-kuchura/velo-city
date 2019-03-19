@@ -4,7 +4,7 @@ namespace App\Widgets;
 
 use Arrilot\Widgets\AbstractWidget;
 
-class News extends AbstractWidget
+class Newsletter extends AbstractWidget
 {
     /**
      * The configuration array.

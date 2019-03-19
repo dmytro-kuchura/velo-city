@@ -7,15 +7,15 @@
                         <div class="">
                             <div class="">
                                 <div class="newsletter-title">
-                                    <h2 class="main_title">Join Our Newsletter</h2>
-                                    <div class="newsletter-slogan">Get Latest News & Update</div>
+                                    <h2 class="main_title">Подпишитесь на нашу рассылку</h2>
+                                    <div class="newsletter-slogan">Что бы получать все последние новости</div>
                                 </div>
                             </div>
                             <div class="">
                                 <form>
                                     <div class="newsletter-box">
-                                        <input type="email" placeholder="Put your Email Address Here">
-                                        <button title="Subscribe" class="btn-color ">Subscribe !</button>
+                                        <input type="email" placeholder="Введите Ваш Email адрес">
+                                        <button title="Subscribe" class="btn-color ">Подписаться !</button>
                                     </div>
                                 </form>
                             </div>
