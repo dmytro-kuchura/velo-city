@@ -47,19 +47,15 @@
     {{ Widget::run('Header') }}
     <!-- HEADER END -->
 
-    <!-- BANNER STRAT -->
-    {{ Widget::run('Banner') }}
-    <!-- BANNER END -->
-
     <!-- CONTAINER START -->
+
+    <!-- Bread Crumb START -->
+    {{ Widget::run('Breadcrumbs') }}
+    <!-- Bread Crumb END -->
 
     @yield('content')
 
     <!-- CONTAINER END -->
-
-    <!-- Subscribe Block Start -->
-    {{ Widget::run('Subscribe') }}
-    <!-- Subscribe Block End -->
 
     <!-- FOOTER START -->
     {{ Widget::run('Footer') }}
@@ -74,16 +70,6 @@
 <script src="/js/jquery.magnific-popup.js"></script>
 <script src="/js/owl.carousel.min.js"></script>
 <script src="/js/custom.js"></script>
-
-<script>
-    /* ------------ Newslater-popup JS Start ------------- */
-    $(window).load(function () {
-        $.magnificPopup.open({
-            items: {src: '#newslater-popup'}, type: 'inline'
-        }, 0);
-    });
-    /* ------------ Newslater-popup JS End ------------- */
-</script>
 
 </body>
 </html>

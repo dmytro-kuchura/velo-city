@@ -401,22 +401,8 @@
                                     <ul class="link-dropdown-list">
                                         <li><span class="dropdown-title">Default welcome msg!</span>
                                             <ul>
-                                                <li><a href="login.html">Sign In</a></li>
-                                                <li><a href="register.html">Create an Account</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><span class="dropdown-title">Language :</span>
-                                            <ul>
-                                                <li><a class="active" href="javascript:void(0)">English</a></li>
-                                                <li><a href="javascript:void(0)">French</a></li>
-                                                <li><a href="javascript:void(0)">German</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><span class="dropdown-title">Currency :</span>
-                                            <ul>
-                                                <li><a class="active" href="javascript:void(0)">USD</a></li>
-                                                <li><a href="javascript:void(0)">AUD</a></li>
-                                                <li><a href="javascript:void(0)">EUR</a></li>
+                                                <li><a href="/login">Sign In</a></li>
+                                                <li><a href="/register">Create an Account</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -426,16 +412,21 @@
                                 <a href="javascript:void(0)">
                                     <span class="cart-icon-main"><small class="cart-notification">2</small> </span>
                                     <div class="cart-text">
-                                        <div class="my-cart">Shopping Cart</div>
-                                        <div class="total-price">$650.00</div>
+                                        <div class="my-cart">Корзина</div>
+                                        <div class="total-price">650.00</div>
                                     </div>
                                 </a>
                                 <div class="cart-dropdown header-link-dropdown">
                                     <ul class="cart-list link-dropdown-list">
-                                        <li><a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                                            <div class="media"><a class="pull-left"> <img alt="Roadie"
-                                                                                          src="images/1.jpg"></a>
-                                                <div class="media-body"><span><a href="javascript:void(0)">Black African Print Skirt</a></span>
+                                        <li><a class="close-cart">
+                                                <i class="fa fa-times-circle"></i>
+                                            </a>
+                                            <div class="media">
+                                                <a class="pull-left"><img alt="Roadie" src="images/1.jpg"></a>
+                                                <div class="media-body">
+                                                    <span>
+                                                        <a href="javascript:void(0)">Black African Print Skirt</a>
+                                                    </span>
                                                     <p class="cart-price">$14.99</p>
                                                     <div class="product-qty">
                                                         <label>Qty:</label>

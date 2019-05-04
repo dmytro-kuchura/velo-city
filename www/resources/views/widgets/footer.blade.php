@@ -8,14 +8,13 @@
                             <h3 class="title">address<span></span></h3>
                             <ul class="footer-block-contant address-footer">
                                 <li class="item"><i class="fa fa-home"> </i>
-                                    <p>150-A Appolo aprtment, Opp. Hopewell Junction, <br>Allenst Road, Allen st
-                                        Road, <br>new york-405001.</p>
+                                    <p>Херсон, Херсонська область, <br>улица Кримская, 137 <br>(Днепровский рынок)</p>
                                 </li>
                                 <li class="item"><i class="fa fa-envelope"> </i>
                                     <p><a href="javascript:void(0)">infoservices@roadie.com </a></p>
                                 </li>
                                 <li class="item"><i class="fa fa-phone"> </i>
-                                    <p>(+00) 9988774455</p>
+                                    <p>+38(050)5701900</p>
                                 </li>
                             </ul>
                         </div>
