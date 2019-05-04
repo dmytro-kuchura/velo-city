@@ -329,7 +329,8 @@
                                                             3</a></li>
                                                     <li class="level3"><a href="account.html"><span>■</span>Account</a>
                                                     </li>
-                                                    <li class="level3"><a href="checkout.html"><span>■</span>Checkout</a>
+                                                    <li class="level3"><a
+                                                            href="checkout.html"><span>■</span>Checkout</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -339,7 +340,8 @@
                                                     </li>
                                                     <li class="level3"><a href="compare.html"><span>■</span>Compare</a>
                                                     </li>
-                                                    <li class="level3"><a href="wishlist.html"><span>■</span>Wishlist</a>
+                                                    <li class="level3"><a
+                                                            href="wishlist.html"><span>■</span>Wishlist</a>
                                                     </li>
                                                     <li class="level3"><a href="blog.html"><span>■</span>Blog</a>
                                                     </li>
@@ -399,10 +401,19 @@
                             <li class="account-icon"><a href="javascript:void(0)"><span></span></a>
                                 <div class="header-link-dropdown account-link-dropdown">
                                     <ul class="link-dropdown-list">
-                                        <li><span class="dropdown-title">Default welcome msg!</span>
+                                        <li>
+                                            @if (session('status'))
+                                                <span class="dropdown-title">Профиль пользовтеля</span>
+                                            @else
+                                                <span class="dropdown-title">Авторизация</span>
+                                            @endif
                                             <ul>
-                                                <li><a href="/login">Sign In</a></li>
-                                                <li><a href="/register">Create an Account</a></li>
+                                                @if (session('status'))
+                                                    <li><a href="/profile">Профиль</a></li>
+                                                @else
+                                                    <li><a href="{{ 'login' }}">Авторизация</a></li>
+                                                    <li><a href="{{ 'register' }}">Регистрация</a></li>
+                                                @endif
                                             </ul>
                                         </li>
                                     </ul>
@@ -482,9 +493,9 @@
             <div class="search-closer right-side"></div>
             <div class="search-container">
                 <form method="get" id="search-form">
-                    <input type="text" id="s" class="search-input" name="s" placeholder="Start Searching">
+                    <input type="text" id="s" class="search-input" name="s" placeholder="Введите что ищем">
                 </form>
-                <span>Search and Press Enter</span>
+                <span>И нажмите клавишу Enter</span>
             </div>
         </div>
     </div>
