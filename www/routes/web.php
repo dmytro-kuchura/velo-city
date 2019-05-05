@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'SiteController@index')->name('index');
+Route::get('/profile', 'ProfileController@profile')->name('profile');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();

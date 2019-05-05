@@ -5,10 +5,10 @@
                 <div class="row">
                     <div class="col-xl-3 f-col">
                         <div class="footer-static-block"><span class="opener plus"></span>
-                            <h3 class="title">address<span></span></h3>
+                            <h3 class="title">Адрес<span></span></h3>
                             <ul class="footer-block-contant address-footer">
                                 <li class="item"><i class="fa fa-home"> </i>
-                                    <p>Херсон, Херсонська область, <br>улица Кримская, 137 <br>(Днепровский рынок)</p>
+                                    <p>Херсон, Херсонська область, <br>улица Крымская, 137 <br>(Днепровский рынок)</p>
                                 </li>
                                 <li class="item"><i class="fa fa-envelope"> </i>
                                     <p><a href="javascript:void(0)">infoservices@roadie.com </a></p>
@@ -23,57 +23,38 @@
                         <div class="row">
                             <div class="col-xl-4 f-col">
                                 <div class="footer-static-block"><span class="opener plus"></span>
-                                    <h3 class="title">Help <span></span></h3>
+                                    <h3 class="title">Помощь <span></span></h3>
                                     <ul class="footer-block-contant link">
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Gift Cards</a>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Руководство
+                                            </a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Обслуживание
+                                            </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 f-col">
+                                <div class="footer-static-block"><span class="opener plus"></span>
+                                    <h3 class="title">Сервис <span></span></h3>
+                                    <ul class="footer-block-contant link">
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Гарантийное
+                                                обслуживание </a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Ремонт </a>
                                         </li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Order
-                                                Status</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Free
-                                                Shipping</a></li>
-                                        <li><a href="javascript:void(0)"><i
-                                                    class="fa fa-angle-right"></i>Customer</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Return &
-                                                Exchange </a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>International</a>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Прокат </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-xl-4 f-col">
                                 <div class="footer-static-block"><span class="opener plus"></span>
-                                    <h3 class="title">Guidance <span></span></h3>
+                                    <h3 class="title">Информация <span></span></h3>
                                     <ul class="footer-block-contant link">
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Delivery
-                                                information</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Privacy
-                                                Policy</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Terms &
-                                                Conditions</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Gift Cards</a>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>О нас</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Контакты</a>
                                         </li>
-                                        <li><a href="javascript:void(0)"><i
-                                                    class="fa fa-angle-right"></i>Contact</a></li>
-                                        <li><a href="javascript:void(0)"><i
-                                                    class="fa fa-angle-right"></i>Sitemap</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 f-col">
-                                <div class="footer-static-block"><span class="opener plus"></span>
-                                    <h3 class="title">Information <span></span></h3>
-                                    <ul class="footer-block-contant link">
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>About
-                                                Us</a></li>
-                                        <li><a href="javascript:void(0)"><i
-                                                    class="fa fa-angle-right"></i>Customer</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Directory</a>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Оплата</a>
                                         </li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Coupons
-                                                Vouchers</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Online
-                                                Help</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Gift Cards</a>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Доставка</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -82,21 +63,21 @@
                     </div>
                     <div class="col-xl-3 f-col footer-about">
                         <div class="footer-static-block"><span class="opener plus"></span>
-                            <h3 class="title">Contact Us <span></span></h3>
+                            <h3 class="title">Связаться <span></span></h3>
                             <div class="footer-block-contant">
                                 <form>
                                     <div class="field">
-                                        <input type="text" placeholder="Name" required>
+                                        <input type="text" placeholder="Имя" required>
                                     </div>
                                     <div class="field">
                                         <input type="email" placeholder="Email" required>
                                     </div>
                                     <div class="field">
-                                            <textarea name="Message" placeholder="Message" required id="message"
-                                                      cols="5" rows="2"></textarea>
+                                        <textarea name="Message" placeholder="Краткое содержание" cols="5"
+                                                  rows="2"></textarea>
                                     </div>
                                     <div class="field">
-                                        <button title="Subscribe" class="btn-color">Submit</button>
+                                        <button title="Написать" class="btn-color">Написать</button>
                                     </div>
                                 </form>
                             </div>
@@ -144,20 +125,20 @@
                 <div class="col-12 mb-30">
                     <div class="site-link">
                         <ul>
-                            <li><a href="javascript:void(0)">About Us</a>/</li>
-                            <li><a href="javascript:void(0)">Contact Us</a>/</li>
-                            <li><a href="javascript:void(0)">Customer </a>/</li>
-                            <li><a href="javascript:void(0)">Service</a>/</li>
-                            <li><a href="javascript:void(0)">Privacy</a>/</li>
-                            <li><a href="javascript:void(0)">Policy </a>/</li>
-                            <li><a href="javascript:void(0)">Accessibility</a>/</li>
-                            <li><a href="javascript:void(0)">Directory </a></li>
+                            <li><a href="javascript:void(0)">О нас</a>/</li>
+                            <li><a href="javascript:void(0)">Контакты</a>/</li>
+                            <li><a href="javascript:void(0)">Обслуживание </a>/</li>
+                            <li><a href="javascript:void(0)">Мастерская</a>/</li>
+                            <li><a href="javascript:void(0)">Оплата</a>/</li>
+                            <li><a href="javascript:void(0)">Доставка </a>/</li>
+                            <li><a href="javascript:void(0)">Прокат</a>/</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="">
-                        <div class="copy-right ">© 2019 Все права защищены. Сделано с <i class="fa fa-heart"> </i> <a target="_blank" href="https://instagram.com/dmitry.k__/">Dmitry Kuchura</a>
+                        <div class="copy-right ">© 2019 Все права защищены. Сделано с <i class="fa fa-heart"> </i> <a
+                                target="_blank" href="https://instagram.com/dmitry.k__/">Dmitry Kuchura</a>
                         </div>
                     </div>
                 </div>
