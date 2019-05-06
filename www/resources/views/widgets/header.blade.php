@@ -5,6 +5,28 @@
                 <div class="col-xl-5 col-lg-5 menu-position col-xl-40per p-0  position-initial">
                     <div id="menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
+                            <li class="level dropdown"><span class="opener plus"></span>
+                                <a href="shop.html" class="page-scroll">Велосипеды</a>
+                                <div class="megamenu mobile-sub-menu">
+                                    <div class="megamenu-inner-top">
+                                        <ul class="sub-menu-level1">
+                                            <li class="level2">
+                                                <a href="shop.html"><span>Велосипеды</span></a>
+                                                <ul class="sub-menu-level2">
+                                                    <li class="level3"><a href="shop.html"><span>■</span>Горные</a></li>
+                                                    <li class="level3"><a href="shop.html"><span>■</span>Шоссейные</a></li>
+                                                    <li class="level3"><a href="shop.html"><span>■</span>Городсике</a></li>
+                                                    <li class="level3"><a href="shop.html"><span>■</span>Двухподвесы</a></li>
+                                                    <li class="level3"><a href="shop.html"><span>■</span>Электро</a></li>
+                                                    <li class="level3"><a href="shop.html"><span>■</span>Туринговые</a></li>
+                                                    <li class="level3"><a href="shop.html"><span>■</span>Подростковые</a></li>
+                                                    <li class="level3"><a href="shop.html"><span>■</span>Б/У</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
 
                             <li class="level dropdown"><span class="opener plus"></span>
                                 <a href="shop.html" class="page-scroll">Компоненты</a>
@@ -82,10 +104,17 @@
                                 </div>
                             </li>
 
+                            <li class="level">
+                                <a href="shop.html" class="page-scroll">Новости </a>
+                            </li>
 
+                            <li class="level">
+                                <a href="shop.html" class="page-scroll">Контакы </a>
+                            </li>
 
-
-
+                            <li class="level">
+                                <a href="shop.html" class="page-scroll">О нас </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
