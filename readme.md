@@ -1,96 +1,76 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+  <img src="https://hsto.org/webt/rf/x1/77/rfx177j6b8dxtjzfx97-rp7zzoe.png" alt="" style="width: 100%" />
 </p>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+This is an example of dockerized Laravel application, integrated with GitLab CI _(sources testing and images building)_.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## System requirements
 
-## License
+For local application starting (for development) make sure that you have locally installed next applications:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- `docker >= 18.0` _(install: `curl -fsSL get.docker.com | sudo sh`)_
+- `docker-compose >= 1.22` _([installing manual][install_compose])_
+- `make >= 4.1` _(install: `apt-get install make`)_
 
-### Starting Docker Compose
+## Used services
 
-Checkout the repository or download the sources.
+This application uses next services:
 
-Simply run `docker-compose up` and you are done.
+- Redis (cache, internal queue)
+- PostgreSQL (data storage)
+- PHP FPM
+- nginx
 
-Nginx will be available on `localhost:80` and PostgreSQL on `localhost:5432`.
+Declaration of all services can be found into `./docker-compose.yml` file.
 
-### Using Composer
+## Work with application
 
-`docker-compose run composer <cmd>`
+Most used commands declared in `./Makefile` file. For more information execute in your terminal `make help`.
 
-Where `cmd` is any of the available composer command.
+Here are just a few of them:
 
-### Using PostgreSQL
+Command signature | Description
+----------------- | -----------
+`make login` | Make login into remote Docker registry <sup>1</sup>
+`make pull`  | Download all application Docker images from remote registry
+`make build` | Build all Docker images from using own Docker files
+`make clean` | Remove all application docker images from **local** Docker registry
+`make up`    | Run all application containers into background mode
+`make down`  | Stop all started application containers
+`make restart` | Restart all application containers
+`make shell` | Start shell into application container
+`make install` | Make install all `composer` and `node` dependencies, make database migration and seeding
+`make watch` | Run `npm watch` _(for frontend-development)_
+`make init` | Make **full** application initialization _(install all dependencies, migrate database, seeding, compile assets)_
+`make test` | Run unit-tests
+`docker-compose down -v` | Stop all application containers and **remove all application data** (database, etc)
 
-Default connection:
+> **<sup>1</sup>** required for Docker images pulling/pushing. If you use Two-Factor Authentication (2FA) you should use auth token instead your password. Generate your token [here][personal_access_tokens].
 
-`docker-compose exec db psql -U postgres`
+After application starting you can open [127.0.0.1:9999](http://127.0.0.1:9999/) in your browser.
 
-Using .env file default parameters:
+### Fast application starting
 
-`docker-compose exec db psql -U dbuser dbname`
+Just execute into your terminal next commands:
 
-If you want to connect to the DB from another container (from the `php` one for instance), the host will be the service name: `db`.
-
-### Using PHP
-
-You can execute any command on the `php` container as you would do on any docker-compose container:
-
-`docker-compose exec php php -v`
-
-## Change configuration
-
-### Configuring PHP
-
-To change PHP's configuration edit `.docker/conf/php/php.ini`.
-Same goes for `.docker/conf/php/xdebug.ini`.
-
-You can add any .ini file in this directory, don't forget to map them by adding a new line in the php's `volume` section of the `docker-compose.yml` file.
-
-### Configuring PostgreSQL
-
-Any .sh or .sql file you add in `./.docker/conf/postgres` will be automatically loaded at boot time.
-
-If you want to change the db name, db user and db password simply edit the `.env` file at the project's root.
-
-If you connect to PostgreSQL from localhost a password is not required however from another container you will have to supply it.
-
-## Adding aliases
-
-To avoid typing over and over again the same commands you can add two useful aliases in your shell's configuration (`.bashrc` or `.zshrc` for instance):
-
-```
-alias dcu="docker-compose up"
-alias dcr="docker-compose run"
-alias dce="docker-compose exec"
+```bash
+$ git clone https://gitlab.com/tarampampam/laravel-in-docker.git ./laravel-in-docker && cd $_
+$ make init
 ```
 
-It then becomes way faster to execute a composer command for instance:
+## CI & CD
 
-`dcr composer require --dev phpunit/phpunit`
+When you make `git push`, it:
 
-## Clear cache
+- Build application Docker images and `push` it into Docker registry with tag, which equals branch name;
+- Run unit-tests;
+- Test assets building.
 
-```
-docker-compose rm --all
-docker-compose pull
-docker-compose build --no-cache
-docker-compose up -d --force-recreate
- ```
+When you make `git push` into branch named `master`, CI uses `latest` and `master` images tags into Docker registry.
+
+When you make `git push` **tag** like `vX.X.X` (where `X` - is numeric value), CI uses tags `vX.X.X` and `stable` into Docker registry.
+
+[install_compose]:https://docs.docker.com/compose/install/#install-compose
+[personal_access_tokens]:https://gitlab.com/profile/personal_access_tokens

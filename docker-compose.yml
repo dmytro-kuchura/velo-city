@@ -1,35 +1,118 @@
-version: '3'
+version: '3.2'
+
+networks:
+  backend-network:
+    driver: bridge
+  frontend-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+  pg-data:
+  home-dir:
+
 services:
-  web:
-    image: nginx
+  &app-service app: &app-service-template
+    image: registry.gitlab.com/tarampampam/laravel-in-docker/app:latest
+    #build:
+    #  context: ./docker/app
+    #  dockerfile: Dockerfile
+    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
     volumes:
-    - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-    - ./www/:/var/www/html
-    ports:
-    - 80:80
-    depends_on:
-    - php
-    - db
-
-  php:
-    build: docker
-    volumes:
-    - ./docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
-    - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
-    - ./www/:/var/www/html
-  composer:
-    image: composer
-    volumes:
-    - ./www/:/app
-    command: install
-
-  db:
-    image: postgres:10.1
+    - /etc/passwd:/etc/passwd:ro
+    - /etc/group:/etc/group:ro
+    - ./src:/app:rw
+    - home-dir:/home/user
+    hostname: *app-service
     environment:
-    - POSTGRES_DB=${DB_NAME}
-    - POSTGRES_USER=${DB_USER}
-    - POSTGRES_PASSWORD=${DB_PASSWORD}
-    ports:
-    - 5432:5432
+      REDIS_HOST: redis
+      REDIS_PORT: &redis-port 6379
+      DB_HOST: postgres
+      DB_PORT: &pg-port 5432
+      DB_DATABASE: &pg-db-name app
+      DB_USERNAME: &pg-username forge
+      DB_PASSWORD: &pg-password secret
+      SCHEDULE_PERIOD: 60
+      FPM_PORT: &php-fpm-port 9000
+      FPM_USER: "${USER_ID:-1000}"
+      FPM_GROUP: "${GROUP_ID:-1000}"
+      APP_ENV: local
+      APP_DEBUG: 'true'
+      HOME: /home/user
+    command: keep-alive.sh
+    depends_on:
+    - redis
+    - postgres
+    networks:
+    - backend-network
+
+  &queue-service queue:
+    <<: *app-service-template
+    hostname: *queue-service
+    command: php /app/artisan queue:work
+
+  &scheduler-service scheduler:
+    <<: *app-service-template
+    hostname: *scheduler-service
+    command: scheduler.sh "php /app/artisan schedule:run"
+
+  &php-fpm-service php-fpm:
+    <<: *app-service-template
+    user: 'root:root'
+    hostname: *php-fpm-service
+    ports: [*php-fpm-port]
+    entrypoint: /fpm-entrypoint.sh
+    command: php-fpm --nodaemonize -d "opcache.enable=0" -d "display_startup_errors=On" -d "display_errors=On" -d "error_reporting=E_ALL"
+    networks:
+    - backend-network
+    - frontend-network
+
+  &node-service node:
+    <<: *app-service-template
+    image: tarampampam/node:10.10-alpine
+    restart: on-failure
+    hostname: *node-service
+    working_dir: /app
+    command: []
+    depends_on: []
+    networks:
+    - frontend-network
+
+  nginx:
+    image: registry.gitlab.com/tarampampam/laravel-in-docker/nginx:latest
+    #build:
+    #  context: ./docker/nginx
+    #  dockerfile: Dockerfile
+    working_dir: /usr/share/nginx/html
+    environment:
+      FPM_HOST: *php-fpm-service
+      FPM_PORT: *php-fpm-port
+      ROOT_DIR: '/app/public' # App path must equals with php-fpm container path
     volumes:
-    - ./docker/postgres/:/docker-entrypoint-initdb.d/
+    - ./src:/app:ro
+    ports: ['80:80']
+    depends_on:
+    - *php-fpm-service
+    networks:
+    - frontend-network
+
+  redis:
+    image: redis:4.0.11-alpine
+    command: redis-server
+    volumes:
+    - redis-data:/data:rw
+    ports: [*redis-port, '16379:6379'] # Port 16379 for connecting from localhost
+    networks:
+    - backend-network
+
+  postgres:
+    image: postgres:9.6.10-alpine
+    environment:
+      POSTGRES_DB: *pg-db-name
+      POSTGRES_USER: *pg-username
+      POSTGRES_PASSWORD: *pg-password
+    volumes:
+    - pg-data:/var/lib/postgresql/data:rw
+    ports: [*pg-port, '15432:5432'] # Port 15432 for connecting from localhost using, for example, data-grip
+    networks:
+    - backend-network
