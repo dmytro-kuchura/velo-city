@@ -30,14 +30,13 @@ class CreateProductsTable extends Migration
             $table->decimal('cost_old', 16, 6);
 
             $table->integer('views')->default(0);
-
             $table->integer('brand')->default(0);
 
             $table->string('artikul')->nullable();
             $table->string('image')->nullable();
 
             $table->longText('specifications')->nullable();
-            $table->longText('specifications')->nullable();
+            $table->longText('information')->nullable();
 
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
