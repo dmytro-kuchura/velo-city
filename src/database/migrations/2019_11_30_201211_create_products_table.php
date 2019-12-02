@@ -26,8 +26,8 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('top')->default(0);
             $table->tinyInteger('available')->default(1);
 
-            $table->decimal('cost', 16, 6);
-            $table->decimal('cost_old', 16, 6);
+            $table->decimal('cost', 14, 2);
+            $table->decimal('cost_old', 14, 2);
 
             $table->integer('views')->default(0);
             $table->integer('brand')->default(0);
