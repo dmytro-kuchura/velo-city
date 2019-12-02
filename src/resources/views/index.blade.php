@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
+    @widget('banner')
+
+
     @widget('subBanner')
     @widget('featuredProducts')
     @widget('offerOfTheWeek')

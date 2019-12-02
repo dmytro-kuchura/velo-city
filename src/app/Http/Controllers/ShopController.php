@@ -18,6 +18,6 @@ class ShopController extends Controller
 
     public function item()
     {
-
+        return view('shop.item');
     }
 }

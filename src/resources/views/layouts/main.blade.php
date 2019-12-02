@@ -60,7 +60,6 @@
 
     @widget('header')
     @widget('searchWrap')
-    @widget('banner')
 
     <!-- CONTAIN START -->
 
