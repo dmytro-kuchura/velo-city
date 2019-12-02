@@ -15,6 +15,34 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->string('name');
+            $table->string('alias');
+            $table->integer('category_id')->default(0);
+            $table->tinyInteger('status')->default(1);
+
+            $table->tinyInteger('new')->default(0);
+            $table->tinyInteger('sale')->default(0);
+            $table->tinyInteger('top')->default(0);
+            $table->tinyInteger('available')->default(1);
+
+            $table->decimal('cost', 16, 6);
+            $table->decimal('cost_old', 16, 6);
+
+            $table->integer('views')->default(0);
+
+            $table->integer('brand')->default(0);
+
+            $table->string('artikul')->nullable();
+            $table->string('image')->nullable();
+
+            $table->longText('specifications')->nullable();
+            $table->longText('specifications')->nullable();
+
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('keywords')->nullable();
+
             $table->timestamps();
         });
     }
