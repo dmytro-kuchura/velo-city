@@ -13,7 +13,7 @@ class ProductsRepository
     }
 
     public function find($id) {
-
+        return $this->model::where('id', $id)->where('status', \App\Models\Enum\Product::STATUS_ACTIVE)->first();
     }
 
     public function store($id, $data) {
