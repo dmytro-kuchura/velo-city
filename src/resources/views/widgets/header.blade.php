@@ -220,35 +220,13 @@
                                 </div>
                             </li>
                         </ul>
-                        <div class="header-top mobile">
-                            <div class="">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="language-currency select-dropdown">
-                                            <fieldset>
-                                                <select name="speed" class="country option-drop">
-                                                    <option selected="selected">English</option>
-                                                    <option>Frence</option>
-                                                    <option>German</option>
-                                                </select>
-                                                <select name="speed" class="currency option-drop">
-                                                    <option selected="selected">USD</option>
-                                                    <option>EURO</option>
-                                                    <option>POUND</option>
-                                                </select>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-6 col-xl-20per align-center left-sm p-0">
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
                             <a class="navbar-brand page-scroll" href="index.html">
-                                <img alt="Roadie" src="images/logo.png">
+                                <img alt="Roadie" src="/images/logo.png">
                             </a>
                         </div>
                     </div>
@@ -275,13 +253,6 @@
                                                 <li><a href="javascript:void(0)">German</a></li>
                                             </ul>
                                         </li>
-                                        <li> <span class="dropdown-title">Currency :</span>
-                                            <ul>
-                                                <li><a class="active" href="javascript:void(0)">USD</a></li>
-                                                <li><a href="javascript:void(0)">AUD</a></li>
-                                                <li><a href="javascript:void(0)">EUR</a></li>
-                                            </ul>
-                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -296,7 +267,7 @@
                                 <div class="cart-dropdown header-link-dropdown">
                                     <ul class="cart-list link-dropdown-list">
                                         <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                                            <div class="media"> <a class="pull-left"> <img alt="Roadie" src="images/1.jpg"></a>
+                                            <div class="media"> <a class="pull-left"> <img alt="Roadie" src="/images/1.jpg"></a>
                                                 <div class="media-body"> <span><a href="javascript:void(0)">Black African Print Skirt</a></span>
                                                     <p class="cart-price">$14.99</p>
                                                     <div class="product-qty">
@@ -309,7 +280,7 @@
                                             </div>
                                         </li>
                                         <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                                            <div class="media"> <a class="pull-left"> <img alt="Roadie" src="images/2.jpg"></a>
+                                            <div class="media"> <a class="pull-left"> <img alt="Roadie" src="/images/2.jpg"></a>
                                                 <div class="media-body"> <span><a href="javascript:void(0)">Black African Print Skirt</a></span>
                                                     <p class="cart-price">$14.99</p>
                                                     <div class="product-qty">

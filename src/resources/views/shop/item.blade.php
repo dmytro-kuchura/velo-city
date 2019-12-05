@@ -60,8 +60,7 @@
                                                 </div>
                                             </div>
                                             <hr class="mb-20">
-                                            <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed
-                                                et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
+                                            <p>{{ $result->information }}</p>
                                             <ul class="product-list">
                                                 <li><i class="fa fa-check"></i> Satisfaction 100% Guaranteed</li>
                                                 <li><i class="fa fa-check"></i> Free shipping on orders over $99</li>
@@ -70,148 +69,6 @@
                                             <hr class="mb-20">
                                             <div class="mb-20">
                                                 <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row">
-                                                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3">
-                                                                <span>Select Size :</span>
-                                                            </div>
-                                                            <div class="col-xl-9 col-lg-8 col-md-8 col-sm-9">
-                                                                <div class="select-size">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <label class="size-option ">
-                                                                                <input class="pro-size" type="radio"
-                                                                                       value="[object Object]"
-                                                                                       name="size">
-                                                                                <span>S</span>
-                                                                            </label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <label class="size-option ">
-                                                                                <input class="pro-size" type="radio"
-                                                                                       value="[object Object]"
-                                                                                       name="size">
-                                                                                <span>M</span>
-                                                                            </label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <label class="size-option ">
-                                                                                <input class="pro-size" type="radio"
-                                                                                       value="[object Object]"
-                                                                                       name="size">
-                                                                                <span>L</span>
-                                                                            </label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <label class="size-option ">
-                                                                                <input class="pro-size" type="radio"
-                                                                                       value="[object Object]"
-                                                                                       name="size">
-                                                                                <span>XL</span>
-                                                                            </label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <label class="size-option ">
-                                                                                <input class="pro-size" type="radio"
-                                                                                       value="[object Object]"
-                                                                                       name="size">
-                                                                                <span>XXl</span>
-                                                                            </label>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="row">
-                                                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3">
-                                                                <span>Select Color :</span>
-                                                            </div>
-                                                            <div class="col-xl-9 col-lg-8 col-md-8 col-sm-9">
-                                                                <div class="select-color">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <div class="check-box">
-                                                                                <div class="position-r">
-                                                                                    <div class="color-tooltip">
-                                                                                        <span
-                                                                                            class="color-arrow"></span>red
-                                                                                    </div>
-                                                                                    <input type="checkbox"
-                                                                                           class="checkbox" id="red"
-                                                                                           name="red">
-                                                                                    <label for="red"
-                                                                                           class="red"></label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li>
-                                                                            <div class="check-box">
-                                                                                <div class="position-r">
-                                                                                    <div class="color-tooltip">
-                                                                                        <span
-                                                                                            class="color-arrow"></span>black
-                                                                                    </div>
-                                                                                    <input type="checkbox"
-                                                                                           class="checkbox" id="black"
-                                                                                           name="black">
-                                                                                    <label for="black"
-                                                                                           class="black"></label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li>
-                                                                            <div class="check-box">
-                                                                                <div class="position-r">
-                                                                                    <div class="color-tooltip">
-                                                                                        <span
-                                                                                            class="color-arrow"></span>navyblue
-                                                                                    </div>
-                                                                                    <input type="checkbox"
-                                                                                           class="checkbox"
-                                                                                           id="navyblue"
-                                                                                           name="navyblue">
-                                                                                    <label for="navyblue"
-                                                                                           class="navyblue"></label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li>
-                                                                            <div class="check-box">
-                                                                                <div class="position-r">
-                                                                                    <div class="color-tooltip">
-                                                                                        <span
-                                                                                            class="color-arrow"></span>green
-                                                                                    </div>
-                                                                                    <input type="checkbox"
-                                                                                           class="checkbox" id="green"
-                                                                                           name="green">
-                                                                                    <label for="green"
-                                                                                           class="green"></label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li>
-                                                                            <div class="check-box">
-                                                                                <div class="position-r">
-                                                                                    <div class="color-tooltip">
-                                                                                        <span
-                                                                                            class="color-arrow"></span>blue
-                                                                                    </div>
-                                                                                    <input type="checkbox"
-                                                                                           class="checkbox" id="blue"
-                                                                                           name="blue">
-                                                                                    <label for="blue"
-                                                                                           class="blue"></label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="col-12">
                                                         <div class="row">
                                                             <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3">
@@ -287,24 +144,7 @@
                                 <ul>
                                     <li>
                                         <div class="items-Description selected ">
-                                            <div class="Description"><strong>The standard Lorem Ipsum passage, used
-                                                    since the 1500s</strong><br/>
-                                                <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus.
-                                                    Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci
-                                                    luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet
-                                                    congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla
-                                                    luctus malesuada Lorem Ipsum is simply dummy text of the printing
-                                                    and typesetting industry. Lorem Ipsum has been the industry's
-                                                    standard dummy took a galley of type and scrambled it to make a type
-                                                    specimen book. It has survived not only five centuries, but also the
-                                                    leap into Roadienic typesetting, remaining essentially unchanged. It
-                                                    was popularised in the 1960s with the release of Letraset sheets</p>
-                                                <p>Tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis
-                                                    in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean
-                                                    eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim
-                                                    semper. Nulla luctus malesuada Lorem Ipsum is simply dummy text of
-                                                    the printing and typesetting industry.</p>
-                                            </div>
+                                            <div class="Description">{{ $result->specification }}</div>
                                         </div>
                                     </li>
                                     <li>

@@ -8,13 +8,13 @@
                             <h3 class="title">address<span></span></h3>
                             <ul class="footer-block-contant address-footer">
                                 <li class="item"> <i class="fa fa-home"> </i>
-                                    <p>150-A Appolo aprtment, Opp. Hopewell Junction, <br>Allenst Road, Allen st Road, <br>new york-405001.</p>
+                                    <p>Херсон, Херсонськая область, <br>улица Кримская 137, <br>район Днепровского рынка</p>
                                 </li>
                                 <li class="item"> <i class="fa fa-envelope"> </i>
-                                    <p> <a href="javascript:void(0)">infoservices@roadie.com </a> </p>
+                                    <p> <a href="javascript:void(0)">info@velo-city.store </a> </p>
                                 </li>
                                 <li class="item"> <i class="fa fa-phone"> </i>
-                                    <p>(+00) 9988774455</p>
+                                    <p>(+38) 050 570 1900</p>
                                 </li>
                             </ul>
                         </div>
