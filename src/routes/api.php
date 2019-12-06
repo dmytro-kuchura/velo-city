@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('authentication')->group(function () {
+    Route::prefix('v1')->group(function () {
+        Route::prefix('cart')->group(function () {
+            Route::get('list', 'Api\CartController@list')->name('api.cart.list');
+            Route::post('add', 'Api\CartController@add')->name('api.cart.add');
+        });
+    });
 });

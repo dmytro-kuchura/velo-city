@@ -6,15 +6,15 @@
                     <div class="row">
                         <div class="col-lg-5 col-md-5 mb-xs-30">
                             <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
-                                <a href="javascript:void(0)"><img src="images/1.jpg" alt="Roadie"></a>
-                                <a href="javascript:void(0)"><img src="images/2.jpg" alt="Roadie"></a>
-                                <a href="javascript:void(0)"><img src="images/3.jpg" alt="Roadie"></a>
-                                <a href="javascript:void(0)"><img src="images/4.jpg" alt="Roadie"></a>
-                                <a href="javascript:void(0)"><img src="images/5.jpg" alt="Roadie"></a>
-                                <a href="javascript:void(0)"><img src="images/6.jpg" alt="Roadie"></a>
-                                <a href="javascript:void(0)"><img src="images/4.jpg" alt="Roadie"></a>
-                                <a href="javascript:void(0)"><img src="images/5.jpg" alt="Roadie"></a>
-                                <a href="javascript:void(0)"><img src="images/6.jpg" alt="Roadie"></a>
+                                <a href="javascript:void(0)"><img src="/images/1.jpg" alt="Roadie"></a>
+                                <a href="javascript:void(0)"><img src="/images/2.jpg" alt="Roadie"></a>
+                                <a href="javascript:void(0)"><img src="/images/3.jpg" alt="Roadie"></a>
+                                <a href="javascript:void(0)"><img src="/images/4.jpg" alt="Roadie"></a>
+                                <a href="javascript:void(0)"><img src="/images/5.jpg" alt="Roadie"></a>
+                                <a href="javascript:void(0)"><img src="/images/6.jpg" alt="Roadie"></a>
+                                <a href="javascript:void(0)"><img src="/images/4.jpg" alt="Roadie"></a>
+                                <a href="javascript:void(0)"><img src="/images/5.jpg" alt="Roadie"></a>
+                                <a href="javascript:void(0)"><img src="/images/6.jpg" alt="Roadie"></a>
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-7">

@@ -20,6 +20,8 @@ class CreateCartsTable extends Migration
             $table->integer('user_id')->nullable();
 
             $table->timestamps();
+
+            $table->index(['user_id', 'hash']);
         });
     }
 

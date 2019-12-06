@@ -13,6 +13,9 @@ return [
     |
     */
 
+    'username' => env('AUTH_USERNAME', 'admin'),
+    'password' => env('AUTH_PASSWORD', 'secret'),
+
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',

@@ -30,5 +30,19 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
+    /**
+     * Database table name
+     *
+     * @var string
+     */
+    protected $table = 'products';
+
+    /**
+     * Using timestamp
+     *
+     * @var bool
+     */
+    public $timestamps = true;
+
     protected $fillable = ['name', 'alias', 'category_id', 'status', 'new', 'sale', 'top', 'available', 'cost', 'cost_old', 'views', 'brand', 'article', 'image', 'specifications', 'information', 'title', 'keywords', 'description', 'created_at', 'updated_at'];
 }

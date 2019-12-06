@@ -24,6 +24,11 @@ try {
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+axios.defaults.auth = {
+    username: 'admin',
+    password: 'secret'
+};
+
 window.swal = require('sweetalert');
 
 /**

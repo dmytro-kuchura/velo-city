@@ -55,7 +55,7 @@
         </div>
     </div>
 </div>
-<div class="main">
+<div class="main" id="app">
     @widget('productsPopup')
 
     @widget('header')

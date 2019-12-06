@@ -67,49 +67,7 @@
                                                 <li><i class="fa fa-check"></i> 14 day easy Return</li>
                                             </ul>
                                             <hr class="mb-20">
-                                            <div class="mb-20">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row">
-                                                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-3">
-                                                                <span>Qty:</span>
-                                                            </div>
-                                                            <div class="col-xl-9 col-lg-8 col-md-8 col-sm-9">
-                                                                <div class="custom-qty">
-                                                                    <button
-                                                                        onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;"
-                                                                        class="reduced items" type="button"><i
-                                                                            class="fa fa-minus"></i></button>
-                                                                    <input type="text" class="input-text qty"
-                                                                           title="Qty" value="1" maxlength="8" id="qty"
-                                                                           name="qty">
-                                                                    <button
-                                                                        onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;"
-                                                                        class="increase items" type="button"><i
-                                                                            class="fa fa-plus"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr class="mb-20">
-                                            <div class="bottom-detail cart-button">
-                                                <ul>
-                                                    <li class="pro-cart-icon">
-                                                        <form>
-                                                            <button title="Add to Cart" class="btn-color"><i
-                                                                    class="fa fa-shopping-basket"></i> Add to Cart
-                                                            </button>
-                                                        </form>
-                                                    </li>
-                                                    <li class="pro-wishlist-icon"><a href="wishlist.html"><span><i
-                                                                    class="fa fa-heart"></i></span>Wishlist</a></li>
-                                                    <li class="pro-email-icon"><a href="javascript:void(0)"><span><i
-                                                                    class="fa fa-envelope"></i></span>Email to
-                                                            Friends</a></li>
-                                                </ul>
-                                            </div>
+                                            <add-to-cart :item="{{ $result->id }}"></add-to-cart>
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +121,7 @@
                                                 <h4>Comments<span>(2)</span></h4>
                                                 <ul class="comment-list mt-30">
                                                     <li>
-                                                        <div class="comment-user"><img src="images/comment-user.jpg"
+                                                        <div class="comment-user"><img src="/images/comment-user.jpg"
                                                                                        alt="Roadie"></div>
                                                         <div class="comment-detail">
                                                             <div class="user-name">John Doe</div>
@@ -180,7 +138,7 @@
                                                         <ul class="comment-list child-comment">
                                                             <li>
                                                                 <div class="comment-user"><img
-                                                                        src="images/comment-user2.jpg" alt="Roadie">
+                                                                        src="/images/comment-user2.jpg" alt="Roadie">
                                                                 </div>
                                                                 <div class="comment-detail">
                                                                     <div class="user-name">Joseph</div>
@@ -197,7 +155,7 @@
                                                             </li>
                                                             <li>
                                                                 <div class="comment-user"><img
-                                                                        src="images/comment-user2.jpg" alt="Roadie">
+                                                                        src="/images/comment-user2.jpg" alt="Roadie">
                                                                 </div>
                                                                 <div class="comment-detail">
                                                                     <div class="user-name">Joseph</div>
@@ -215,7 +173,7 @@
                                                         </ul>
                                                     </li>
                                                     <li>
-                                                        <div class="comment-user"><img src="images/comment-user3.jpg"
+                                                        <div class="comment-user"><img src="/images/comment-user3.jpg"
                                                                                        alt="Roadie"></div>
                                                         <div class="comment-detail">
                                                             <div class="user-name">Kennedy Doe</div>

@@ -19,15 +19,14 @@ require('./vendor/jquery.magnific-popup');
 require('./vendor/owl.carousel.min');
 require('./vendor/custom');
 
-// import Vue from "vue";
-//
-// Vue.component('subscribe', require('./components/SubscribeFormComponent.vue'));
-// Vue.component('contacts', require('./components/ContactsFormComponent.vue'));
-// Vue.component('comments', require('./components/CommentsFormComponent.vue'));
-//
-// new Vue({
-//     el: '#app',
-// });
+import Vue from "vue";
+
+Vue.component('cart', require('./components/CartComponent.vue').default);
+Vue.component('add-to-cart', require('./components/AddToCartComponet.vue').default);
+
+new Vue({
+    el: '#app',
+});
 
 function notification(text, type) {
     new Noty({
