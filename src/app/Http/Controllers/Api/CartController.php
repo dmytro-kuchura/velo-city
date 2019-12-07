@@ -19,8 +19,11 @@ class CartController extends Controller
 
     public function list()
     {
+        $result = $this->repository->list(Cookie::get('cart'));
+
         return $this->returnResponse([
             'success' => true,
+            'result' => $result
         ]);
     }
 

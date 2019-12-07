@@ -20,12 +20,16 @@ require('./vendor/owl.carousel.min');
 require('./vendor/custom');
 
 import Vue from "vue";
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
 
 Vue.component('cart', require('./components/CartComponent.vue').default);
 Vue.component('add-to-cart', require('./components/AddToCartComponet.vue').default);
 
 new Vue({
     el: '#app',
+    // store: new Vuex.Store(store)
 });
 
 function notification(text, type) {

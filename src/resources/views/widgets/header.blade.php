@@ -226,7 +226,7 @@
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
                             <a class="navbar-brand page-scroll" href="index.html">
-                                <img alt="Roadie" src="/images/logo.png">
+                                <img alt="Roadie" src="/images/logo-new.png">
                             </a>
                         </div>
                     </div>

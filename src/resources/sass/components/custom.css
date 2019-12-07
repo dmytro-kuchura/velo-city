@@ -1243,7 +1243,7 @@ button:focus {
 }
 .cart-dropdown .btn-color.btn {
     font-size: 15px;
-    padding: 13px 20px;
+    padding: 10px 15px;
     text-transform: none;
 }
 
@@ -1492,7 +1492,7 @@ button:focus {
 }
 .cart-dropdown .input-text.qty {
 	background-color: transparent;
-	padding: 7px 13px;
+	padding: 7px 10px;
 }
 .cart-dropdown .cart-price {
 	font-weight: 500;
@@ -4461,7 +4461,7 @@ _______________________________________________________*/
 }
 .product-qty {
 	float: left;
-	margin-right: 20px;
+	/*margin-right: 20px;*/
 	margin-top: 10px;
 }
 .cart-dropdown .product-qty {
