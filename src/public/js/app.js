@@ -1998,6 +1998,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2013,6 +2016,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    console.log(this.$store);
     axios.get("/api/v1/cart/list").then(function (_ref) {
       var data = _ref.data;
       return _this.setCartListSuccessResponse(data);
@@ -2043,7 +2047,6 @@ __webpack_require__.r(__webpack_exports__);
     // },
     setCartListSuccessResponse: function setCartListSuccessResponse(data) {
       this.cart = data.result;
-      console.log(this.cart);
     },
     setCartListErrorResponse: function setCartListErrorResponse(response) {
       this.isLoading = false;
@@ -37594,7 +37597,9 @@ var render = function() {
             _vm._m(0, true),
             _vm._v(" "),
             _c("div", { staticClass: "media" }, [
-              _vm._m(1, true),
+              _c("a", { staticClass: "pull-left" }, [
+                _c("img", { attrs: { alt: item.name, src: "/images/1.jpg" } })
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "media-body" }, [
                 _c("span", [
@@ -37658,7 +37663,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "clearfix" }),
       _vm._v(" "),
-      _vm._m(2)
+      _vm._m(1)
     ])
   ])
 }
@@ -37675,16 +37680,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "pull-left" }, [
-      _c("img", { attrs: { alt: "Roadie", src: "/images/1.jpg" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "mt-20" }, [
-      _c("a", { staticClass: "btn-color btn", attrs: { href: "cart.html" } }, [
+      _c("a", { staticClass: "btn-color btn", attrs: { href: "/cart" } }, [
         _c("i", { staticClass: "fa fa-shopping-cart" }),
         _vm._v("Корзина")
       ]),
@@ -37693,7 +37690,7 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "btn-color btn right-side",
-          attrs: { href: "checkout.html" }
+          attrs: { href: "/checkout" }
         },
         [_c("i", { staticClass: "fa fa-share" }), _vm._v("Купить")]
       )
@@ -50924,6 +50921,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -50951,12 +50949,13 @@ __webpack_require__(/*! ./vendor/custom */ "./resources/js/vendor/custom.js");
 
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('cart', __webpack_require__(/*! ./components/CartComponent.vue */ "./resources/js/components/CartComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('add-to-cart', __webpack_require__(/*! ./components/AddToCartComponet.vue */ "./resources/js/components/AddToCartComponet.vue")["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#app' // store: new Vuex.Store(store)
-
+  el: '#app',
+  store: new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_2__["default"])
 });
 
 function notification(text, type) {
@@ -51237,6 +51236,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartComponent_vue_vue_type_template_id_e7ab8a3c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/store.js":
+/*!*******************************!*\
+  !*** ./resources/js/store.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var store = {
+  state: {
+    items: [],
+    totalCount: 10,
+    totalPrice: 0.00
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
 

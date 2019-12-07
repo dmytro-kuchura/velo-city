@@ -2,13 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\MapRepository;
 use Illuminate\Http\Request;
-use App\Repositories\BlogRepository;
-use App\Repositories\TagsRepository;
-use App\Repositories\SitemapRepository;
-use App\Repositories\CategoriesRepository;
-use App\Repositories\SubscribersRepository;
 
 class SiteController extends Controller
 {

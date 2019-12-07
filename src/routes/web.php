@@ -19,9 +19,14 @@ Route::get('sitemap.xml', 'SiteController@sitemap')->name('sitemap.xml');
     Route::get('/contact', 'SiteController@contacts')->name('contacts');
     Route::get('/search', 'SiteController@search')->name('search');
 
-    Route::get('/shop', 'ShopController@index')->name('shop.index');
-    Route::get('/shop/{category}', 'ShopController@category')->name('shop.category');
+    Route::prefix('shop')->group(function () {
+        Route::get('/', 'ShopController@index')->name('shop.index');
+        Route::get('/{category}', 'ShopController@category')->name('shop.category');
+    });
+
     Route::get('/{alias}/p{id}', 'ShopController@item')->name('shop.item');
+
+    Route::get('/cart', 'CartController@cart')->name('cart');
 //};
 
 //Route::domain('{localization}.' . config('app.original_domain'))->group($routes);

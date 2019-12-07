@@ -10,7 +10,10 @@
         <div class="cart-dropdown header-link-dropdown">
             <ul class="cart-list link-dropdown-list">
                 <li v-for="item in cart.list"> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                    <div class="media"> <a class="pull-left"> <img alt="Roadie" src="/images/1.jpg"></a>
+                    <div class="media">
+                        <a class="pull-left">
+                            <img v-bind:alt="item.name" src="/images/1.jpg">
+                        </a>
                         <div class="media-body"> <span><a v-bind:href="item.alias">{{ item.name }}</a></span>
                             <p class="cart-price">₴ {{ item.price }}</p>
                             <div class="product-qty">
@@ -26,8 +29,8 @@
             <p class="cart-sub-totle"> <span class="pull-left">Итого</span> <span class="pull-right"><strong class="price-box">₴ {{ cart.totalPrice }}</strong></span> </p>
             <div class="clearfix"></div>
             <div class="mt-20">
-                <a href="cart.html" class="btn-color btn"><i class="fa fa-shopping-cart"></i>Корзина</a>
-                <a href="checkout.html" class="btn-color btn right-side"><i class="fa fa-share"></i>Купить</a>
+                <a href="/cart" class="btn-color btn"><i class="fa fa-shopping-cart"></i>Корзина</a>
+                <a href="/checkout" class="btn-color btn right-side"><i class="fa fa-share"></i>Купить</a>
             </div>
         </div>
     </li>
@@ -47,6 +50,8 @@
             }
         },
         mounted() {
+            console.log(this.$store);
+
             axios.get("/api/v1/cart/list")
                 .then(({data}) => this.setCartListSuccessResponse(data))
                 .catch((response) => this.setCartListErrorResponse(response));
@@ -74,7 +79,6 @@
             // },
             setCartListSuccessResponse(data) {
                 this.cart = data.result;
-                console.log(this.cart);
             },
             setCartListErrorResponse(response) {
                 this.isLoading = false;

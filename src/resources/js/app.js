@@ -21,6 +21,7 @@ require('./vendor/custom');
 
 import Vue from "vue";
 import Vuex from 'vuex';
+import store from "./store";
 
 Vue.use(Vuex);
 
@@ -29,7 +30,7 @@ Vue.component('add-to-cart', require('./components/AddToCartComponet.vue').defau
 
 new Vue({
     el: '#app',
-    // store: new Vuex.Store(store)
+    store: new Vuex.Store(store)
 });
 
 function notification(text, type) {

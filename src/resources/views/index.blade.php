@@ -3,7 +3,6 @@
 @section('content')
     @widget('banner')
 
-
     @widget('subBanner')
     @widget('featuredProducts')
     @widget('offerOfTheWeek')
@@ -12,4 +11,5 @@
     @widget('blog')
     @widget('services')
     @widget('brands')
+    @widget('newsLetter')
 @endsection

@@ -61,13 +61,8 @@
     @widget('header')
     @widget('searchWrap')
 
-    <!-- CONTAIN START -->
+     @yield('content')
 
-    @yield('content')
-
-    <!-- CONTAINER END -->
-
-    @widget('newsLetter')
     @widget('footer')
 </div>
 

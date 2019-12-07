@@ -8,7 +8,7 @@
                             <h3 class="title">address<span></span></h3>
                             <ul class="footer-block-contant address-footer">
                                 <li class="item"> <i class="fa fa-home"> </i>
-                                    <p>Херсон, Херсонськая область, <br>улица Кримская 137, <br>район Днепровского рынка</p>
+                                    <p>Херсон, Херсонская область, <br>улица Крымская 137, <br>район Днепровского рынка</p>
                                 </li>
                                 <li class="item"> <i class="fa fa-envelope"> </i>
                                     <p> <a href="javascript:void(0)">info@velo-city.store </a> </p>

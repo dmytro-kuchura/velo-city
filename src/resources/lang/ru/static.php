@@ -13,7 +13,14 @@ return [
     |
     */
 
-    'previous' => '&laquo; Previous',
-    'next' => 'Next &raquo;',
-
+    'Product' => 'Product',
+    'Product Name' => 'Product Name',
+    'Price' => 'Price',
+    'Quantity' => 'Quantity',
+    'Sub Total' => 'Sub Total',
+    'Action' => 'Action',
+    'Cart Total' => 'Cart Total',
+    'Item(s)' => 'Item(s)',
+    'Shipping' => 'Shipping',
+    'Amount Payable' => 'Amount Payable',
 ];
