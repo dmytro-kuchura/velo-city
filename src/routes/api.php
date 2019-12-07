@@ -18,6 +18,7 @@ Route::middleware('authentication')->group(function () {
         Route::prefix('cart')->group(function () {
             Route::get('list', 'Api\CartController@list')->name('api.cart.list');
             Route::post('add', 'Api\CartController@add')->name('api.cart.add');
+            Route::delete('delete/{item}', 'Api\CartController@delete')->name('api.cart.delete');
         });
     });
 });

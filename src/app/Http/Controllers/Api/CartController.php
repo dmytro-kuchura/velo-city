@@ -51,4 +51,17 @@ class CartController extends Controller
             ], 201, [], ['name' => 'cart', 'value' => $this->uuid]);
         }
     }
+
+    public function delete(Request $request)
+    {
+        $cookie = Cookie::get('cart');
+
+        $item = $request->route('item');
+
+        $this->repository->destroy($item, $cookie);
+
+        return $this->returnResponse([
+            'success' => true,
+        ]);
+    }
 }

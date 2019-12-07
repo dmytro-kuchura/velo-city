@@ -44,7 +44,6 @@
                     count: 1,
                     item_id: null,
                 },
-                errors: [],
             };
         },
         mounted() {
@@ -62,12 +61,11 @@
             onSubmit() {
                 this.isLoading = true;
                 axios.post("/api/v1/cart/add", this.item)
-                    .then(() => this.setSuccessResponse())
+                    .then(({data}) => this.setSuccessResponse(data))
                     .catch(({response}) => this.setErrorResponse(response));
             },
-            setSuccessResponse() {
-                this.item.count = 1;
-                this.errors = [];
+            setSuccessResponse(data) {
+                this.updateCart();
 
                 swal({
                     title: "Добавлено!",
@@ -77,7 +75,6 @@
             },
             setErrorResponse(response) {
                 this.isLoading = false;
-                this.errors = response.data.errors;
 
                 swal({
                     title: "Ошибка!",
@@ -85,6 +82,17 @@
                     icon: "error",
                 });
             },
+            updateCart() {
+                axios.get("/api/v1/cart/list")
+                    .then(({data}) => this.setCartListSuccessResponse(data))
+                    .catch((response) => this.setCartListErrorResponse(response));
+            },
+            setCartListSuccessResponse(data) {
+                this.$store.commit("loadCart", data.result);
+            },
+            setCartListErrorResponse(response) {
+                this.isLoading = false;
+            }
         }
     }
 </script>

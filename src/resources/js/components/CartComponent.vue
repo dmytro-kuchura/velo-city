@@ -9,7 +9,8 @@
         </a>
         <div class="cart-dropdown header-link-dropdown">
             <ul class="cart-list link-dropdown-list">
-                <li v-for="item in cart.list"> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
+                <li v-for="item in cart.list">
+                    <a class="close-cart" @click.prevent="removeFromCart(item.id)"><i class="fa fa-times-circle"></i></a>
                     <div class="media">
                         <a class="pull-left">
                             <img v-bind:alt="item.name" src="/images/1.jpg">
@@ -40,49 +41,34 @@
     export default {
         data() {
             return {
-                cart: {
-                    list: [],
-                    totalCount: 0,
-                    totalPrice: 0.00,
-                },
+                cart: this.$store.state,
                 isLoading: true,
-                errors: [],
             }
         },
         mounted() {
-            console.log(this.$store);
-
             axios.get("/api/v1/cart/list")
                 .then(({data}) => this.setCartListSuccessResponse(data))
                 .catch((response) => this.setCartListErrorResponse(response));
         },
         methods: {
-            // onSubmit() {
-            //     this.isLoading = true;
-            //     axios.post("api/v1/search", {"searchQuery": this.searchQuery})
-            //         .then(({data}) => this.setSuccessResponse(data))
-            //         .catch(({response}) => this.setErrorResponse(response));
-            // },
-            // setSuccessResponse(data) {
-            //     this.isLoading = false;
-            //     this.searchResults = data.searchResults;
-            //     this.emptyResults = !data.searchResults.length;
-            //     this.errors = [];
-            //     this.isFetched = true;
-            // },
-            // setErrorResponse(response) {
-            //     this.isLoading = false;
-            //     this.emptyResults = true;
-            //     this.isFetched = false;
-            //     this.errors = response.data.errors;
-            //     toastr.error("The given data was invalid.", "Error!");
-            // },
+            removeFromCart(id) {
+                axios.delete("/api/v1/cart/delete/" + id)
+                    .then(() => this.deleteCartListSuccessResponse())
+                    .catch((response) => this.deleteCartListErrorResponse(response));
+            },
             setCartListSuccessResponse(data) {
-                this.cart = data.result;
+                this.$store.commit("loadCart", data.result);
             },
             setCartListErrorResponse(response) {
                 this.isLoading = false;
-                swal.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!")
+            },
+            deleteCartListSuccessResponse() {
+                axios.get("/api/v1/cart/list")
+                    .then(({data}) => this.setCartListSuccessResponse(data))
+                    .catch((response) => this.setCartListErrorResponse(response));
+            },
+            deleteCartListErrorResponse(response) {
+                this.isLoading = false;
             }
         }
     }

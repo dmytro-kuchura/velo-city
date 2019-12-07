@@ -1904,8 +1904,7 @@ __webpack_require__.r(__webpack_exports__);
       item: {
         count: 1,
         item_id: null
-      },
-      errors: []
+      }
     };
   },
   mounted: function mounted() {
@@ -1924,16 +1923,16 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.isLoading = true;
-      axios.post("/api/v1/cart/add", this.item).then(function () {
-        return _this.setSuccessResponse();
-      })["catch"](function (_ref) {
-        var response = _ref.response;
+      axios.post("/api/v1/cart/add", this.item).then(function (_ref) {
+        var data = _ref.data;
+        return _this.setSuccessResponse(data);
+      })["catch"](function (_ref2) {
+        var response = _ref2.response;
         return _this.setErrorResponse(response);
       });
     },
-    setSuccessResponse: function setSuccessResponse() {
-      this.item.count = 1;
-      this.errors = [];
+    setSuccessResponse: function setSuccessResponse(data) {
+      this.updateCart();
       swal({
         title: "Добавлено!",
         text: "Товар в корзине :)",
@@ -1942,12 +1941,27 @@ __webpack_require__.r(__webpack_exports__);
     },
     setErrorResponse: function setErrorResponse(response) {
       this.isLoading = false;
-      this.errors = response.data.errors;
       swal({
         title: "Ошибка!",
         text: "Что то сломалось :(",
         icon: "error"
       });
+    },
+    updateCart: function updateCart() {
+      var _this2 = this;
+
+      axios.get("/api/v1/cart/list").then(function (_ref3) {
+        var data = _ref3.data;
+        return _this2.setCartListSuccessResponse(data);
+      })["catch"](function (response) {
+        return _this2.setCartListErrorResponse(response);
+      });
+    },
+    setCartListSuccessResponse: function setCartListSuccessResponse(data) {
+      this.$store.commit("loadCart", data.result);
+    },
+    setCartListErrorResponse: function setCartListErrorResponse(response) {
+      this.isLoading = false;
     }
   }
 });
@@ -2001,22 +2015,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      cart: {
-        list: [],
-        totalCount: 0,
-        totalPrice: 0.00
-      },
-      isLoading: true,
-      errors: []
+      cart: this.$store.state,
+      isLoading: true
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    console.log(this.$store);
     axios.get("/api/v1/cart/list").then(function (_ref) {
       var data = _ref.data;
       return _this.setCartListSuccessResponse(data);
@@ -2025,32 +2034,33 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    // onSubmit() {
-    //     this.isLoading = true;
-    //     axios.post("api/v1/search", {"searchQuery": this.searchQuery})
-    //         .then(({data}) => this.setSuccessResponse(data))
-    //         .catch(({response}) => this.setErrorResponse(response));
-    // },
-    // setSuccessResponse(data) {
-    //     this.isLoading = false;
-    //     this.searchResults = data.searchResults;
-    //     this.emptyResults = !data.searchResults.length;
-    //     this.errors = [];
-    //     this.isFetched = true;
-    // },
-    // setErrorResponse(response) {
-    //     this.isLoading = false;
-    //     this.emptyResults = true;
-    //     this.isFetched = false;
-    //     this.errors = response.data.errors;
-    //     toastr.error("The given data was invalid.", "Error!");
-    // },
+    removeFromCart: function removeFromCart(id) {
+      var _this2 = this;
+
+      axios["delete"]("/api/v1/cart/delete/" + id).then(function () {
+        return _this2.deleteCartListSuccessResponse();
+      })["catch"](function (response) {
+        return _this2.deleteCartListErrorResponse(response);
+      });
+    },
     setCartListSuccessResponse: function setCartListSuccessResponse(data) {
-      this.cart = data.result;
+      this.$store.commit("loadCart", data.result);
     },
     setCartListErrorResponse: function setCartListErrorResponse(response) {
       this.isLoading = false;
-      swal.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!");
+    },
+    deleteCartListSuccessResponse: function deleteCartListSuccessResponse() {
+      var _this3 = this;
+
+      axios.get("/api/v1/cart/list").then(function (_ref2) {
+        var data = _ref2.data;
+        return _this3.setCartListSuccessResponse(data);
+      })["catch"](function (response) {
+        return _this3.setCartListErrorResponse(response);
+      });
+    },
+    deleteCartListErrorResponse: function deleteCartListErrorResponse(response) {
+      this.isLoading = false;
     }
   }
 });
@@ -37594,7 +37604,19 @@ var render = function() {
         { staticClass: "cart-list link-dropdown-list" },
         _vm._l(_vm.cart.list, function(item) {
           return _c("li", [
-            _vm._m(0, true),
+            _c(
+              "a",
+              {
+                staticClass: "close-cart",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.removeFromCart(item.id)
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fa fa-times-circle" })]
+            ),
             _vm._v(" "),
             _c("div", { staticClass: "media" }, [
               _c("a", { staticClass: "pull-left" }, [
@@ -37663,19 +37685,11 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "clearfix" }),
       _vm._v(" "),
-      _vm._m(1)
+      _vm._m(0)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "close-cart" }, [
-      _c("i", { staticClass: "fa fa-times-circle" })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -51250,9 +51264,16 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 var store = {
   state: {
-    items: [],
-    totalCount: 10,
+    list: [],
+    totalCount: 0,
     totalPrice: 0.00
+  },
+  mutations: {
+    loadCart: function loadCart(state, items) {
+      state.list = items.list;
+      state.totalCount = items.totalCount;
+      state.totalPrice = items.totalPrice;
+    }
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (store);

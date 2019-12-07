@@ -18,32 +18,30 @@ class CartRepository
 
         $cart->save();
 
-        $items = new $this->items;
-        $items->cart_id = $cart->id;
-        $items->product_id = $data['item_id'];
-        $items->count = $data['count'];
-
-        $items->save();
+        $item = new $this->items;
+        $item->cart_id = $cart->id;
+        $item->product_id = $data['item_id'];
+        $item->count = $data['count'];
+        $item->save();
     }
 
     public function update($data, $uuid)
     {
         $cart = $this->find($uuid);
 
-        $items = $this->items::where('cart_id', $cart->id)->where('product_id', $data['item_id'])->first();
+        $item = $this->items::where('cart_id', $cart->id)->where('product_id', $data['item_id'])->first();
 
-        if ($items) {
-            $items->count = $items->count + $data['count'];
-            $items->save();
+        if ($item) {
+            $item->count = $item->count + $data['count'];
+            $item->save();
         } else {
-            $items = new $this->items;
-            $items->cart_id = $cart->id;
-            $items->product_id = $data['item_id'];
-            $items->count = $data['count'];
+            $item = new $this->items;
+            $item->cart_id = $cart->id;
+            $item->product_id = $data['item_id'];
+            $item->count = $data['count'];
 
-            $items->save();
+            $item->save();
         }
-
     }
 
     public function find($uuid)
@@ -97,8 +95,10 @@ class CartRepository
         ];
     }
 
-    public function destroy()
+    public function destroy($id, $uuid)
     {
-        //
+        $cart = $this->find($uuid);
+
+        $this->items::where('cart_id', $cart->id)->where('product_id', $id)->delete();
     }
 }

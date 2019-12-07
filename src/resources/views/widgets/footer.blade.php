@@ -4,16 +4,17 @@
             <div class="footer-middle">
                 <div class="row">
                     <div class="col-xl-3 f-col">
-                        <div class="footer-static-block"> <span class="opener plus"></span>
-                            <h3 class="title">address<span></span></h3>
+                        <div class="footer-static-block"><span class="opener plus"></span>
+                            <h3 class="title">Адрес<span></span></h3>
                             <ul class="footer-block-contant address-footer">
-                                <li class="item"> <i class="fa fa-home"> </i>
-                                    <p>Херсон, Херсонская область, <br>улица Крымская 137, <br>район Днепровского рынка</p>
+                                <li class="item"><i class="fa fa-home"> </i>
+                                    <p>Херсон, Херсонская область, <br>улица Крымская 137, <br>район Днепровского рынка
+                                    </p>
                                 </li>
-                                <li class="item"> <i class="fa fa-envelope"> </i>
-                                    <p> <a href="javascript:void(0)">info@velo-city.store </a> </p>
+                                <li class="item"><i class="fa fa-envelope"> </i>
+                                    <p><a href="javascript:void(0)">info@velo-city.store </a></p>
                                 </li>
-                                <li class="item"> <i class="fa fa-phone"> </i>
+                                <li class="item"><i class="fa fa-phone"> </i>
                                     <p>(+38) 050 570 1900</p>
                                 </li>
                             </ul>
@@ -22,48 +23,60 @@
                     <div class="col-xl-6 footer-center">
                         <div class="row">
                             <div class="col-xl-4 f-col">
-                                <div class="footer-static-block"> <span class="opener plus"></span>
-                                    <h3 class="title">Help <span></span></h3>
+                                <div class="footer-static-block"><span class="opener plus"></span>
+                                    <h3 class="title">Каталог <span></span></h3>
                                     <ul class="footer-block-contant link">
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Gift Cards</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Order Status</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Free Shipping</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Customer</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Return & Exchange </a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>International</a></li>
+                                        @foreach($tree[0] as $obj)
+                                            <li>
+                                                <a href="javascript:void(0)"><i
+                                                        class="fa fa-angle-right"></i>{{ $obj->name }}</a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-xl-4 f-col">
-                                <div class="footer-static-block"> <span class="opener plus"></span>
+                                <div class="footer-static-block"><span class="opener plus"></span>
                                     <h3 class="title">Guidance <span></span></h3>
                                     <ul class="footer-block-contant link">
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Delivery information</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Privacy Policy</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Terms & Conditions</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Gift Cards</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Contact</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Sitemap</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Delivery
+                                                information</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Privacy Policy</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Terms &
+                                                Conditions</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Gift Cards</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Contact</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Sitemap</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-xl-4 f-col">
-                                <div class="footer-static-block"> <span class="opener plus"></span>
+                                <div class="footer-static-block"><span class="opener plus"></span>
                                     <h3 class="title">Information <span></span></h3>
                                     <ul class="footer-block-contant link">
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>About Us</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Customer</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Directory</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Coupons Vouchers</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Online Help</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Gift Cards</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>About Us</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Customer</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Directory</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Coupons
+                                                Vouchers</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Online
+                                                Help</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Gift Cards</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 f-col footer-about">
-                        <div class="footer-static-block"> <span class="opener plus"></span>
+                        <div class="footer-static-block"><span class="opener plus"></span>
                             <h3 class="title">Contact Us <span></span></h3>
                             <div class="footer-block-contant">
                                 <form>
@@ -74,7 +87,8 @@
                                         <input type="email" placeholder="Email" required>
                                     </div>
                                     <div class="field">
-                                        <textarea name="Message" placeholder="Message" required id="message" cols="5" rows="2"></textarea>
+                                        <textarea name="Message" placeholder="Message" required id="message" cols="5"
+                                                  rows="2"></textarea>
                                     </div>
                                     <div class="field">
                                         <button title="Subscribe" class="btn-color">Submit</button>
@@ -91,7 +105,9 @@
                     <div class="col-lg-6 ">
                         <div class="footer_social mb-sm-30 center-sm">
                             <ul class="social-icon">
-                                <li><div class="title">Follow us on :</div></li>
+                                <li>
+                                    <div class="title">Follow us on :</div>
+                                </li>
                                 <li><a title="Facebook" class="facebook"><i class="fa fa-facebook"> </i></a></li>
                                 <li><a title="Twitter" class="twitter"><i class="fa fa-twitter"> </i></a></li>
                                 <li><a title="Linkedin" class="linkedin"><i class="fa fa-linkedin"> </i></a></li>
@@ -103,11 +119,16 @@
                     <div class="col-lg-6 ">
                         <div class="payment">
                             <ul class="payment_icon">
-                                <li class="visa"><a href="javascript:void(0)"><img src="/images/pay1.png" alt="Roadie"></a></li>
-                                <li class="discover"><a href="javascript:void(0)"><img src="/images/pay2.png" alt="Roadie"></a></li>
-                                <li class="paypal"><a href="javascript:void(0)"><img src="/images/pay3.png" alt="Roadie"></a></li>
-                                <li class="vindicia"><a href="javascript:void(0)"><img src="/images/pay4.png" alt="Roadie"></a></li>
-                                <li class="atos"><a href="javascript:void(0)"><img src="/images/pay5.png" alt="Roadie"></a></li>
+                                <li class="visa"><a href="javascript:void(0)"><img src="/images/pay1.png" alt="Roadie"></a>
+                                </li>
+                                <li class="discover"><a href="javascript:void(0)"><img src="/images/pay2.png"
+                                                                                       alt="Roadie"></a></li>
+                                <li class="paypal"><a href="javascript:void(0)"><img src="/images/pay3.png"
+                                                                                     alt="Roadie"></a></li>
+                                <li class="vindicia"><a href="javascript:void(0)"><img src="/images/pay4.png"
+                                                                                       alt="Roadie"></a></li>
+                                <li class="atos"><a href="javascript:void(0)"><img src="/images/pay5.png" alt="Roadie"></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -134,7 +155,8 @@
                 </div>
                 <div class="col-12">
                     <div class="">
-                        <div class="copy-right ">© 2018 All Rights Reserved. Design By  <a href="javascript:void(0)">Aaryaweb</a></div>
+                        <div class="copy-right ">© 2018 All Rights Reserved. Design By <a href="javascript:void(0)">Aaryaweb</a>
+                        </div>
                     </div>
                 </div>
             </div>

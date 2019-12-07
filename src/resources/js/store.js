@@ -1,9 +1,17 @@
 let store = {
     state: {
-        items: [],
-        totalCount: 10,
+        list: [],
+        totalCount: 0,
         totalPrice: 0.00,
     },
+
+    mutations: {
+        loadCart(state, items) {
+            state.list = items.list;
+            state.totalCount = items.totalCount;
+            state.totalPrice = items.totalPrice;
+        },
+    }
 };
 
 export default store;
