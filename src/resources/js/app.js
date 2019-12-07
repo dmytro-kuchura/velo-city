@@ -26,6 +26,8 @@ import store from "./store";
 Vue.use(Vuex);
 
 Vue.component('cart', require('./components/CartComponent.vue').default);
+Vue.component('cart-list', require('./components/CartTableComponent.vue').default);
+Vue.component('cart-total', require('./components/CartTotalComponent.vue').default);
 Vue.component('add-to-cart', require('./components/AddToCartComponet.vue').default);
 
 new Vue({
