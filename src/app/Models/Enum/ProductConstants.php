@@ -2,7 +2,7 @@
 
 namespace App\Models\Enum;
 
-class Product
+class ProductConstants
 {
     const STATUS_ACTIVE = 1;
     const STATUS_DISABLE = 0;

@@ -30,6 +30,7 @@ Vue.component('cart-list', require('./components/CartTableComponent.vue').defaul
 Vue.component('cart-total', require('./components/CartTotalComponent.vue').default);
 Vue.component('add-to-cart', require('./components/AddToCartComponet.vue').default);
 Vue.component('checkout', require('./components/CheckoutComponent.vue').default);
+Vue.component('contact-us-form', require('./components/ContactUsFormComponent.vue').default);
 
 new Vue({
     el: '#app',

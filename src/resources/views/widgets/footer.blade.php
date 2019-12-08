@@ -78,23 +78,7 @@
                     <div class="col-xl-3 f-col footer-about">
                         <div class="footer-static-block"><span class="opener plus"></span>
                             <h3 class="title">Contact Us <span></span></h3>
-                            <div class="footer-block-contant">
-                                <form>
-                                    <div class="field">
-                                        <input type="text" placeholder="Name" required>
-                                    </div>
-                                    <div class="field">
-                                        <input type="email" placeholder="Email" required>
-                                    </div>
-                                    <div class="field">
-                                        <textarea name="Message" placeholder="Message" required id="message" cols="5"
-                                                  rows="2"></textarea>
-                                    </div>
-                                    <div class="field">
-                                        <button title="Subscribe" class="btn-color">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
+                            <contact-us-form></contact-us-form>
                         </div>
                     </div>
                 </div>
