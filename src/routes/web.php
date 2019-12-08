@@ -27,6 +27,7 @@ Route::get('sitemap.xml', 'SiteController@sitemap')->name('sitemap.xml');
     Route::get('/{alias}/p{id}', 'ShopController@item')->name('shop.item');
 
     Route::get('/cart', 'CartController@cart')->name('cart');
+    Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
 //};
 
 //Route::domain('{localization}.' . config('app.original_domain'))->group($routes);

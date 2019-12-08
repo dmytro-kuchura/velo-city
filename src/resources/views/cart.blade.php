@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mt-30 mt-xs-15">
-                            <a href="shop-3col-sidebar.html" class="btn btn-color">
+                            <a href="{{ route('shop.index') }}" class="btn btn-color">
                                 <span><i class="fa fa-angle-left"></i></span>
                                 Continue Shopping
                             </a>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="mt-30 mt-xs-15 right-side xs-float-none">
-                            <a href="checkout.html" class="btn btn-color">Proceed to checkout
+                            <a href="{{ route('checkout') }}" class="btn btn-color">Proceed to checkout
                                 <span><i class="fa fa-angle-right"></i></span>
                             </a>
                         </div>
