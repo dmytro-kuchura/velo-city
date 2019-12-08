@@ -2,24 +2,32 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\CartRepository;use Illuminate\Http\Request;use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cookie;
+use App\Services\ShoppingCart;
+use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
-    protected $repository;
+    /**
+     * @var ShoppingCart
+     */
+    private $shoppingCart;
 
+    /**
+     * @var string
+     */
     private $uuid;
 
-    public function __construct(CartRepository $cartRepository) {
-        $this->repository = $cartRepository;
+    public function __construct(ShoppingCart $shoppingCart) {
+        $this->shoppingCart = $shoppingCart;
         $this->uuid = (string)Str::uuid();
     }
 
     public function list()
     {
-        $result = $this->repository->list(Cookie::get('cart'));
+        $result = $this->shoppingCart->cartList();
 
         return $this->returnResponse([
             'success' => true,
@@ -54,11 +62,7 @@ class CartController extends Controller
 
     public function delete(Request $request)
     {
-        $cookie = Cookie::get('cart');
-
-        $item = $request->route('item');
-
-        $this->repository->destroy($item, $cookie);
+        $this->shoppingCart->deleteItem($request->route('item'));
 
         return $this->returnResponse([
             'success' => true,
