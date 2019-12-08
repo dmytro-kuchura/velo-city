@@ -41,33 +41,22 @@
         data() {
             return {
                 cart: this.$store.state,
-                isLoading: true,
             }
         },
         mounted() {
-            axios.get("/api/v1/cart/list")
-                .then(({data}) => this.setCartListSuccessResponse(data))
-                .catch((response) => this.setCartListErrorResponse(response));
+            this.$store.commit('loadCart');
         },
         methods: {
             removeFromCart(id) {
-                axios.post("/api/v1/cart/delete", {'item': id})
+                axios.delete("/api/v1/cart/delete/" + id)
                     .then(() => this.deleteCartListSuccessResponse())
                     .catch((response) => this.deleteCartListErrorResponse(response));
             },
-            setCartListSuccessResponse(data) {
-                this.$store.commit('loadCart', data.result);
-            },
-            setCartListErrorResponse(response) {
-                this.isLoading = false;
-            },
             deleteCartListSuccessResponse() {
-                axios.get("/api/v1/cart/list")
-                    .then(({data}) => this.setCartListSuccessResponse(data))
-                    .catch((response) => this.setCartListErrorResponse(response));
+                this.$store.commit('loadCart');
             },
             deleteCartListErrorResponse(response) {
-                this.isLoading = false;
+                console.log(response);
             }
         }
     }

@@ -2018,50 +2018,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      cart: this.$store.state,
-      isLoading: true
+      cart: this.$store.state
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
-    axios.get("/api/v1/cart/list").then(function (_ref) {
-      var data = _ref.data;
-      return _this.setCartListSuccessResponse(data);
-    })["catch"](function (response) {
-      return _this.setCartListErrorResponse(response);
-    });
+    this.$store.commit('loadCart');
   },
   methods: {
     removeFromCart: function removeFromCart(id) {
-      var _this2 = this;
+      var _this = this;
 
-      axios.post("/api/v1/cart/delete", {
-        'item': id
-      }).then(function () {
-        return _this2.deleteCartListSuccessResponse();
+      axios["delete"]("/api/v1/cart/delete/" + id).then(function () {
+        return _this.deleteCartListSuccessResponse();
       })["catch"](function (response) {
-        return _this2.deleteCartListErrorResponse(response);
+        return _this.deleteCartListErrorResponse(response);
       });
-    },
-    setCartListSuccessResponse: function setCartListSuccessResponse(data) {
-      this.$store.commit('loadCart', data.result);
-    },
-    setCartListErrorResponse: function setCartListErrorResponse(response) {
-      this.isLoading = false;
     },
     deleteCartListSuccessResponse: function deleteCartListSuccessResponse() {
-      var _this3 = this;
-
-      axios.get("/api/v1/cart/list").then(function (_ref2) {
-        var data = _ref2.data;
-        return _this3.setCartListSuccessResponse(data);
-      })["catch"](function (response) {
-        return _this3.setCartListErrorResponse(response);
-      });
+      this.$store.commit('loadCart');
     },
     deleteCartListErrorResponse: function deleteCartListErrorResponse(response) {
-      this.isLoading = false;
+      console.log(response);
     }
   }
 });
@@ -51792,16 +51769,24 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var store = {
+  debug: true,
   state: {
     list: [],
     totalCount: 0,
     totalPrice: 0.00
   },
   mutations: {
-    loadCart: function loadCart(state, items) {
-      state.list = items.list;
-      state.totalCount = items.totalCount;
-      state.totalPrice = items.totalPrice;
+    loadCart: function loadCart(state) {
+      axios.get("/api/v1/cart/list").then(function (_ref) {
+        var data = _ref.data;
+        state.list = data.result.list;
+        state.totalCount = data.result.totalCount;
+        state.totalPrice = data.result.totalPrice;
+      })["catch"](function (response) {
+        if (this.debug) {
+          console.log(response);
+        }
+      });
     }
   }
 };
