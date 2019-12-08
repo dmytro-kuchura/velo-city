@@ -10,7 +10,12 @@ class CartItemsRepository
 
     public function find($cart_id)
     {
-        return $this->model::where('cart_id', $cart_id)->get();
+        return $this->model::where('cart_id', $cart_id)->orderBy('created_at', 'asc')->get();
+    }
+
+    public function getItem($item_id, $cart_id)
+    {
+        return $this->model::where('cart_id', $cart_id)->where('product_id', $item_id)->first();
     }
 
     public function create($data, $cart_id)
@@ -29,20 +34,9 @@ class CartItemsRepository
     {
         $item = $this->model::where('cart_id', $cart_id)->where('product_id', $data['item_id'])->first();
 
-        if ($item) {
-            $item->count = $item->count + $data['count'];
+        $item->count = $data['count'];
 
-            $item->save();
-        } else {
-            $item = new $this->model;
-            $item->cart_id = $cart_id;
-            $item->product_id = $data['item_id'];
-            $item->count = $data['count'];
-
-            $item->save();
-        }
-
-        return $item;
+        $item->save();
     }
 
     public function destroy($cart_id, $id)

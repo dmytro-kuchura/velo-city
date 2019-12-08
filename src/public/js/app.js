@@ -1900,7 +1900,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      isLoading: false,
       item: {
         count: 1,
         item_id: null
@@ -1922,7 +1921,6 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit() {
       var _this = this;
 
-      this.isLoading = true;
       axios.post("/api/v1/cart/add", this.item).then(function (_ref) {
         var data = _ref.data;
         return _this.setSuccessResponse(data);
@@ -1932,7 +1930,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     setSuccessResponse: function setSuccessResponse(data) {
-      this.updateCart();
+      this.$store.commit("loadCart");
       swal({
         title: "Добавлено!",
         text: "Товар в корзине :)",
@@ -1940,28 +1938,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     setErrorResponse: function setErrorResponse(response) {
-      this.isLoading = false;
       swal({
         title: "Ошибка!",
         text: "Что то сломалось :(",
         icon: "error"
       });
-    },
-    updateCart: function updateCart() {
-      var _this2 = this;
-
-      axios.get("/api/v1/cart/list").then(function (_ref3) {
-        var data = _ref3.data;
-        return _this2.setCartListSuccessResponse(data);
-      })["catch"](function (response) {
-        return _this2.setCartListErrorResponse(response);
-      });
-    },
-    setCartListSuccessResponse: function setCartListSuccessResponse(data) {
-      this.$store.commit("loadCart", data.result);
-    },
-    setCartListErrorResponse: function setCartListErrorResponse(response) {
-      this.isLoading = false;
     }
   }
 });
@@ -2110,53 +2091,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      isLoading: false,
       cart: this.$store.state,
       item: {
         count: 1,
         item_id: null
-      },
-      isLoading: true
+      }
     };
   },
   methods: {
-    onIncrement: function onIncrement() {
-      this.item.count++;
+    onIncrement: function onIncrement(item_count, item_id) {
+      var _this = this;
+
+      this.item.count = item_count + 1;
+      this.item.item_id = item_id;
+      axios.post("/api/v1/cart/update", this.item).then(function () {
+        return _this.cartListSuccessResponse();
+      })["catch"](function (response) {
+        return _this.cartListErrorResponse(response);
+      });
     },
-    onDecrement: function onDecrement() {
-      if (this.item.count > 1) {
-        this.item.count--;
+    onDecrement: function onDecrement(item_count, item_id) {
+      var _this2 = this;
+
+      if (item_count > 1) {
+        this.item.count = item_count - 1;
+        this.item.item_id = item_id;
+        axios.post("/api/v1/cart/update", this.item).then(function () {
+          return _this2.cartListSuccessResponse();
+        })["catch"](function (response) {
+          return _this2.cartListErrorResponse(response);
+        });
       }
     },
     removeFromCart: function removeFromCart(id) {
-      var _this = this;
+      var _this3 = this;
 
       axios["delete"]("/api/v1/cart/delete/" + id).then(function () {
-        return _this.deleteCartListSuccessResponse();
+        return _this3.cartListSuccessResponse();
       })["catch"](function (response) {
-        return _this.deleteCartListErrorResponse(response);
+        return _this3.cartListErrorResponse(response);
       });
     },
-    deleteCartListSuccessResponse: function deleteCartListSuccessResponse() {
-      var _this2 = this;
-
-      axios.get("/api/v1/cart/list").then(function (_ref) {
-        var data = _ref.data;
-        return _this2.setCartListSuccessResponse(data);
-      })["catch"](function (response) {
-        return _this2.setCartListErrorResponse(response);
-      });
+    cartListSuccessResponse: function cartListSuccessResponse() {
+      this.$store.commit('loadCart');
     },
-    deleteCartListErrorResponse: function deleteCartListErrorResponse(response) {
-      this.isLoading = false;
-    },
-    setCartListSuccessResponse: function setCartListSuccessResponse(data) {
-      this.$store.commit('loadCart', data.result);
-    },
-    setCartListErrorResponse: function setCartListErrorResponse(response) {
-      this.isLoading = false;
+    cartListErrorResponse: function cartListErrorResponse(response) {
+      console.log(response);
     }
   }
 });
@@ -37725,7 +37711,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("li", { staticClass: "cart-icon" }, [
-    _c("a", { attrs: { href: "javascript:void(0)" } }, [
+    _c("a", { attrs: { href: "/cart" } }, [
       _c("span", { staticClass: "cart-icon-main" }, [
         _c("small", { staticClass: "cart-notification" }, [
           _vm._v(_vm._s(_vm.cart.totalCount))
@@ -37911,7 +37897,11 @@ var render = function() {
                 {
                   staticClass: "reduced items",
                   attrs: { type: "button" },
-                  on: { click: _vm.onDecrement }
+                  on: {
+                    click: function($event) {
+                      return _vm.onDecrement(item.count, item.id)
+                    }
+                  }
                 },
                 [_c("i", { staticClass: "fa fa-minus" })]
               ),
@@ -37943,7 +37933,11 @@ var render = function() {
                 {
                   staticClass: "increase items",
                   attrs: { type: "button" },
-                  on: { click: _vm.onIncrement }
+                  on: {
+                    click: function($event) {
+                      return _vm.onIncrement(item.count, item.id)
+                    }
+                  }
                 },
                 [_c("i", { staticClass: "fa fa-plus" })]
               )
@@ -37983,17 +37977,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Product")]),
+        _c("th", [_vm._v("Товар")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Product Name")]),
+        _c("th", [_vm._v("Название")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Price")]),
+        _c("th", [_vm._v("Цена")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Quantity")]),
+        _c("th", [_vm._v("Кол-во")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Sub Total")]),
+        _c("th", [_vm._v("Итого")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Action")])
+        _c("th", [_vm._v("Действие")])
       ])
     ])
   },

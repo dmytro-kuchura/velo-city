@@ -42,8 +42,8 @@
                 <div class="col-xl-2 col-lg-3 col-6 col-xl-20per align-center left-sm p-0">
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
-                            <a class="navbar-brand page-scroll" href="index.html">
-                                <img alt="Roadie" src="/images/logo-new.png">
+                            <a class="navbar-brand page-scroll" href="{{ route('home') }}">
+                                <img alt="VeloCity" src="/images/logo-new.png">
                             </a>
                         </div>
                     </div>

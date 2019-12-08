@@ -39,7 +39,6 @@
     export default {
         data() {
             return {
-                isLoading: false,
                 item: {
                     count: 1,
                     item_id: null,
@@ -59,13 +58,12 @@
                 }
             },
             onSubmit() {
-                this.isLoading = true;
                 axios.post("/api/v1/cart/add", this.item)
                     .then(({data}) => this.setSuccessResponse(data))
                     .catch(({response}) => this.setErrorResponse(response));
             },
             setSuccessResponse(data) {
-                this.updateCart();
+                this.$store.commit("loadCart");
 
                 swal({
                     title: "Добавлено!",
@@ -74,24 +72,11 @@
                 });
             },
             setErrorResponse(response) {
-                this.isLoading = false;
-
                 swal({
                     title: "Ошибка!",
                     text: "Что то сломалось :(",
                     icon: "error",
                 });
-            },
-            updateCart() {
-                axios.get("/api/v1/cart/list")
-                    .then(({data}) => this.setCartListSuccessResponse(data))
-                    .catch((response) => this.setCartListErrorResponse(response));
-            },
-            setCartListSuccessResponse(data) {
-                this.$store.commit("loadCart", data.result);
-            },
-            setCartListErrorResponse(response) {
-                this.isLoading = false;
             }
         }
     }

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Cookie;
 use App\Services\ShoppingCart;
 use App\Http\Controllers\Controller;
 
@@ -15,14 +13,9 @@ class CartController extends Controller
      */
     private $shoppingCart;
 
-    /**
-     * @var string
-     */
-    private $uuid;
-
-    public function __construct(ShoppingCart $shoppingCart) {
+    public function __construct(ShoppingCart $shoppingCart)
+    {
         $this->shoppingCart = $shoppingCart;
-        $this->uuid = (string)Str::uuid();
     }
 
     public function list()
@@ -37,27 +30,26 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        $data = $request->all();
+        $uuid = $this->shoppingCart->addItem($request->all());
 
-        $cookie = Cookie::get('cart');
-
-        $cart = $this->repository->find($cookie);
-
-        if ($cookie && $cart) {
-            $this->repository->update($data, $cookie);
-
+        if (!$uuid) {
             return $this->returnResponse([
                 'success' => true,
             ]);
         } else {
-            $data['uuid'] = $this->uuid;
-
-            $this->repository->create($data);
-
             return $this->returnResponse([
                 'success' => true,
-            ], 201, [], ['name' => 'cart', 'value' => $this->uuid]);
+            ], 201, [], ['name' => 'cart', 'value' => $uuid]);
         }
+    }
+
+    public function update(Request $request)
+    {
+        $this->shoppingCart->updateCart($request->all());
+
+        return $this->returnResponse([
+            'success' => true,
+        ]);
     }
 
     public function delete(Request $request)

@@ -2,12 +2,12 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Product</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-            <th>Action</th>
+            <th>Товар</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Кол-во</th>
+            <th>Итого</th>
+            <th>Действие</th>
         </tr>
         </thead>
         <tbody>
@@ -35,9 +35,11 @@
             </td>
             <td>
                 <div class="custom-qty">
-                    <button type="button" v-on:click="onDecrement" class="reduced items"><i class="fa fa-minus"></i></button>
+                    <button type="button" v-on:click="onDecrement(item.count, item.id)" class="reduced items"><i
+                            class="fa fa-minus"></i></button>
                     <input type="text" v-model="item.count" class="input-text qty">
-                    <button type="button" v-on:click="onIncrement" class="increase items"><i class="fa fa-plus"></i></button>
+                    <button type="button" v-on:click="onIncrement(item.count, item.id)" class="increase items"><i
+                            class="fa fa-plus"></i></button>
                 </div>
             </td>
             <td>
@@ -58,41 +60,43 @@
     export default {
         data() {
             return {
+                isLoading: false,
                 cart: this.$store.state,
                 item: {
                     count: 1,
                     item_id: null,
-                },
-                isLoading: true,
+                }
             }
         },
         methods: {
-            onIncrement() {
-                this.item.count++;
+            onIncrement(item_count, item_id) {
+                this.item.count = item_count + 1;
+                this.item.item_id = item_id;
+
+                axios.post("/api/v1/cart/update", this.item)
+                    .then(() => this.cartListSuccessResponse())
+                    .catch((response) => this.cartListErrorResponse(response));
             },
-            onDecrement() {
-                if (this.item.count > 1) {
-                    this.item.count--;
+            onDecrement(item_count, item_id) {
+                if (item_count > 1) {
+                    this.item.count = item_count - 1;
+                    this.item.item_id = item_id;
+
+                    axios.post("/api/v1/cart/update", this.item)
+                        .then(() => this.cartListSuccessResponse())
+                        .catch((response) => this.cartListErrorResponse(response));
                 }
             },
             removeFromCart(id) {
                 axios.delete("/api/v1/cart/delete/" + id)
-                    .then(() => this.deleteCartListSuccessResponse())
-                    .catch((response) => this.deleteCartListErrorResponse(response));
+                    .then(() => this.cartListSuccessResponse())
+                    .catch((response) => this.cartListErrorResponse(response));
             },
-            deleteCartListSuccessResponse() {
-                axios.get("/api/v1/cart/list")
-                    .then(({data}) => this.setCartListSuccessResponse(data))
-                    .catch((response) => this.setCartListErrorResponse(response));
+            cartListSuccessResponse() {
+                this.$store.commit('loadCart');
             },
-            deleteCartListErrorResponse(response) {
-                this.isLoading = false;
-            },
-            setCartListSuccessResponse(data) {
-                this.$store.commit('loadCart', data.result);
-            },
-            setCartListErrorResponse(response) {
-                this.isLoading = false;
+            cartListErrorResponse(response) {
+                console.log(response);
             }
         }
     }

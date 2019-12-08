@@ -13,10 +13,10 @@ class CartRepository
         return $this->model::where('hash', $uuid)->first();
     }
 
-    public function create($data)
+    public function create($uuid)
     {
         $cart = new $this->model;
-        $cart->hash = $data['uuid'];
+        $cart->hash = $uuid;
 
         $cart->save();
 

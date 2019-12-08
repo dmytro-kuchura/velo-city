@@ -1,6 +1,6 @@
 <template>
     <li class="cart-icon">
-        <a href="javascript:void(0)">
+        <a href="/cart">
             <span class="cart-icon-main"><small class="cart-notification">{{ cart.totalCount }}</small> </span>
             <div class="cart-text">
                 <div class="my-cart">Ваша корзина</div>
