@@ -2196,6 +2196,238 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CheckoutComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CheckoutComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      cart: this.$store.state
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -38077,6 +38309,473 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CheckoutComponent.vue?vue&type=template&id=ed2d7008&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CheckoutComponent.vue?vue&type=template&id=ed2d7008& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "checkout-content" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "heading-part align-center" }, [
+            _c("h2", { staticClass: "heading" }, [_vm._v("Оформление заказа")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-xl-4 col-lg-5" }, [
+          _c("form", { staticClass: "main-form full" }, [
+            _c("div", { staticClass: "row mb-20" }, [
+              _c("div", { staticClass: "col-12 mb-20" }, [
+                _c("div", { staticClass: "heading-part" }, [
+                  _c("h3", { staticClass: "sub-heading" }, [
+                    _vm._v("Контактные данные")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "input-box" }, [
+                  _c("input", {
+                    attrs: { type: "text", required: "", placeholder: "Имя" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "input-box" }, [
+                  _c("input", {
+                    attrs: {
+                      type: "text",
+                      required: "",
+                      placeholder: "Фамилия"
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "input-box" }, [
+                  _c("input", {
+                    attrs: {
+                      type: "text",
+                      required: "",
+                      placeholder: "Отчество"
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "input-box" }, [
+                  _c("input", {
+                    attrs: {
+                      type: "email",
+                      required: "",
+                      placeholder: "Email Address"
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "input-box" }, [
+                  _c("input", {
+                    attrs: {
+                      type: "text",
+                      required: "",
+                      placeholder: "Contact Number"
+                    }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-12 mb-20" }, [
+                _c("div", { staticClass: "heading-part" }, [
+                  _c("h3", { staticClass: "sub-heading" }, [_vm._v("Доставка")])
+                ]),
+                _vm._v(" "),
+                _c("hr")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("div", { staticClass: "input-box" }, [
+                  _c("fieldset", [
+                    _c(
+                      "select",
+                      {
+                        staticClass: "option-drop",
+                        attrs: {
+                          name: "billingcountryId",
+                          id: "billingcountryid"
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { selected: "", value: "" } }, [
+                          _vm._v("Вариант доставки")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AX" } }, [
+                          _vm._v("Самовывоз")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AX" } }, [
+                          _vm._v("Новой Почтой")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AF" } }, [
+                          _vm._v("Курьером (Новой Почтой)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AF" } }, [
+                          _vm._v("Justin")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Please include landmark.")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "input-box select-dropdown" }, [
+                  _c("fieldset", [
+                    _c(
+                      "select",
+                      {
+                        staticClass: "option-drop",
+                        attrs: {
+                          name: "billingcountryId",
+                          id: "billingcountryid"
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { selected: "", value: "" } }, [
+                          _vm._v("Выберите область")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AX" } }, [
+                          _vm._v("Aland Islands")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AF" } }, [
+                          _vm._v("Afghanistan")
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "input-box select-dropdown" }, [
+                  _c("fieldset", [
+                    _c(
+                      "select",
+                      {
+                        staticClass: "option-drop",
+                        attrs: { name: "billingstateId", id: "billingstateid" }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Выберите город")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AP" } }, [
+                          _vm._v("Andhra Pradesh")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AR" } }, [
+                          _vm._v("Arunachal Pradesh")
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xl-8 col-lg-7 mb-sm-30" }, [
+          _c("div", { staticClass: "col-12 mb-20" }, [
+            _c("div", { staticClass: "heading-part" }, [
+              _c("h3", { staticClass: "sub-heading" }, [_vm._v("Ваши товары")])
+            ]),
+            _vm._v(" "),
+            _c("hr")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "cart-item-table commun-table mb-30" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Product")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Product Detail")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Sub Total")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Action")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [
+                      _c("a", { attrs: { href: "product-page.html" } }, [
+                        _c("div", { staticClass: "product-image" }, [
+                          _c("img", {
+                            attrs: { alt: "Honour", src: "images/1.jpg" }
+                          })
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "product-title" }, [
+                        _c("a", { attrs: { href: "product-page.html" } }, [
+                          _vm._v("Cross Colours Camo Print Tank half mengo")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "product-info-stock-sku m-0" },
+                          [
+                            _c("div", [
+                              _c("label", [_vm._v("Price: ")]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "price-box" }, [
+                                _c("span", { staticClass: "info-deta price" }, [
+                                  _vm._v("$520.00")
+                                ])
+                              ])
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "product-info-stock-sku m-0" },
+                          [
+                            _c("div", [
+                              _c("label", [_vm._v("Quantity: ")]),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "info-deta" }, [
+                                _vm._v("1")
+                              ])
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "total-price price-box",
+                          attrs: { "data-id": "100" }
+                        },
+                        [
+                          _c("span", { staticClass: "price" }, [
+                            _vm._v("$520.00")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("i", {
+                        staticClass: "fa fa-trash cart-remove-item",
+                        attrs: {
+                          "data-id": "100",
+                          title: "Remove Item From Cart"
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [
+                      _c("a", { attrs: { href: "product-page.html" } }, [
+                        _c("div", { staticClass: "product-image" }, [
+                          _c("img", {
+                            attrs: { alt: "Honour", src: "images/2.jpg" }
+                          })
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "product-title" }, [
+                        _c("a", { attrs: { href: "product-page.html" } }, [
+                          _vm._v("Cross Colours Camo Print Tank half mengo")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "product-info-stock-sku m-0" },
+                          [
+                            _c("div", [
+                              _c("label", [_vm._v("Price: ")]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "price-box" }, [
+                                _c("span", { staticClass: "info-deta price" }, [
+                                  _vm._v("$520.00")
+                                ])
+                              ])
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "product-info-stock-sku m-0" },
+                          [
+                            _c("div", [
+                              _c("label", [_vm._v("Quantity: ")]),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "info-deta" }, [
+                                _vm._v("1")
+                              ])
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "total-price price-box",
+                          attrs: { "data-id": "100" }
+                        },
+                        [
+                          _c("span", { staticClass: "price" }, [
+                            _vm._v("$520.00")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("i", {
+                        staticClass: "fa fa-trash cart-remove-item",
+                        attrs: {
+                          "data-id": "100",
+                          title: "Remove Item From Cart"
+                        }
+                      })
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "cart-total-table commun-table mb-30 mb-sm-15" },
+            [
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("thead", [
+                    _c("tr", [
+                      _c("th", { attrs: { colspan: "2" } }, [
+                        _vm._v("Cart Total")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", [_vm._v("Item(s) Subtotal")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("div", { staticClass: "price-box" }, [
+                          _c("span", { staticClass: "price" }, [
+                            _vm._v("$160.00")
+                          ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Shipping")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("div", { staticClass: "price-box" }, [
+                          _c("span", { staticClass: "price" }, [
+                            _vm._v("$0.00")
+                          ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_c("b", [_vm._v("Amount Payable")])]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("div", { staticClass: "price-box" }, [
+                          _c("span", { staticClass: "price" }, [
+                            _c("b", [_vm._v("$160.00")])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12 mt-20 mt-xs-15" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-color right-side",
+              attrs: { href: "order-overview.html" }
+            },
+            [_vm._v("Оформить")]
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -51329,6 +52028,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('cart', __webpack_require__
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('cart-list', __webpack_require__(/*! ./components/CartTableComponent.vue */ "./resources/js/components/CartTableComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('cart-total', __webpack_require__(/*! ./components/CartTotalComponent.vue */ "./resources/js/components/CartTotalComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('add-to-cart', __webpack_require__(/*! ./components/AddToCartComponet.vue */ "./resources/js/components/AddToCartComponet.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('checkout', __webpack_require__(/*! ./components/CheckoutComponent.vue */ "./resources/js/components/CheckoutComponent.vue")["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   store: new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_2__["default"])
@@ -51748,6 +52448,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartTotalComponent_vue_vue_type_template_id_4cb5b284___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartTotalComponent_vue_vue_type_template_id_4cb5b284___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/CheckoutComponent.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/CheckoutComponent.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CheckoutComponent_vue_vue_type_template_id_ed2d7008___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CheckoutComponent.vue?vue&type=template&id=ed2d7008& */ "./resources/js/components/CheckoutComponent.vue?vue&type=template&id=ed2d7008&");
+/* harmony import */ var _CheckoutComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CheckoutComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CheckoutComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CheckoutComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CheckoutComponent_vue_vue_type_template_id_ed2d7008___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CheckoutComponent_vue_vue_type_template_id_ed2d7008___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CheckoutComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CheckoutComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/CheckoutComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CheckoutComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CheckoutComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CheckoutComponent.vue?vue&type=template&id=ed2d7008&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/CheckoutComponent.vue?vue&type=template&id=ed2d7008& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutComponent_vue_vue_type_template_id_ed2d7008___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CheckoutComponent.vue?vue&type=template&id=ed2d7008& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CheckoutComponent.vue?vue&type=template&id=ed2d7008&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutComponent_vue_vue_type_template_id_ed2d7008___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutComponent_vue_vue_type_template_id_ed2d7008___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
