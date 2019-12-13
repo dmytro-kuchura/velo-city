@@ -62,21 +62,33 @@ class ShoppingCart
         $total_quantity = 0;
 
         if (!$this->cookie) {
-            return $list;
+            return [
+                'list' => [],
+                'totalCount' => 0,
+                'totalPrice' => 0,
+            ];
         }
 
         /* @var $cart Cart */
         $cart = $this->cartRepository->find($this->cookie);
 
         if (!$cart) {
-            return $list;
+            return [
+                'list' => [],
+                'totalCount' => 0,
+                'totalPrice' => 0,
+            ];
         }
 
         /* @var $items CartItems[] */
         $items = $this->cartItemsRepository->find($cart->id);
 
         if (!$items) {
-            return $list;
+            return [
+                'list' => [],
+                'totalCount' => 0,
+                'totalPrice' => 0,
+            ];
         }
 
         foreach ($items as $item) {

@@ -5,37 +5,43 @@
                 <div class="col-xl-5 col-lg-5 menu-position col-xl-40per p-0  position-initial">
                     <div id="menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            @foreach($tree[0] as $obj)
-                                <li class="level dropdown"><span class="opener plus"></span> <a
-                                        href="javascript:void(0)" class="page-scroll">{{ $obj->name }}</a>
-                                    <div class="megamenu mobile-sub-menu">
-                                        <div class="megamenu-inner-top">
-                                            <ul class="sub-menu-level1">
-                                                <li class="level2">
-                                                    <ul class="sub-menu-level2 ">
-                                                        <li class="level3"><a href="shop.html"><span>■</span>Shop</a>
-                                                        </li>
-                                                        <li class="level3"><a href="shop_2.html"><span>■</span>Shop
-                                                                2</a></li>
-                                                        <li class="level3"><a href="product-page.html"><span>■</span>product-page</a>
-                                                        </li>
-                                                        <li class="level3"><a href="about.html"><span>■</span>About
-                                                                Us</a></li>
-                                                        <li class="level3"><a href="about-2.html"><span>■</span>About Us
-                                                                2</a></li>
-                                                        <li class="level3"><a href="about-3.html"><span>■</span>About Us
-                                                                3</a></li>
-                                                        <li class="level3"><a href="account.html"><span>■</span>Account</a>
-                                                        </li>
-                                                        <li class="level3"><a href="checkout.html"><span>■</span>Checkout</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                            @if($tree)
+                                @foreach($tree[0] as $obj)
+                                    <li class="level dropdown"><span class="opener plus"></span> <a
+                                            href="javascript:void(0)" class="page-scroll">{{ $obj->name }}</a>
+                                        <div class="megamenu mobile-sub-menu">
+                                            <div class="megamenu-inner-top">
+                                                <ul class="sub-menu-level1">
+                                                    <li class="level2">
+                                                        <ul class="sub-menu-level2 ">
+                                                            <li class="level3"><a
+                                                                    href="shop.html"><span>■</span>Shop</a>
+                                                            </li>
+                                                            <li class="level3"><a href="shop_2.html"><span>■</span>Shop
+                                                                    2</a></li>
+                                                            <li class="level3"><a
+                                                                    href="product-page.html"><span>■</span>product-page</a>
+                                                            </li>
+                                                            <li class="level3"><a href="about.html"><span>■</span>About
+                                                                    Us</a></li>
+                                                            <li class="level3"><a href="about-2.html"><span>■</span>About
+                                                                    Us
+                                                                    2</a></li>
+                                                            <li class="level3"><a href="about-3.html"><span>■</span>About
+                                                                    Us
+                                                                    3</a></li>
+                                                            <li class="level3"><a href="account.html"><span>■</span>Account</a>
+                                                            </li>
+                                                            <li class="level3"><a href="checkout.html"><span>■</span>Checkout</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            @endforeach
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>

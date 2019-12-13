@@ -26,12 +26,14 @@
                                 <div class="footer-static-block"><span class="opener plus"></span>
                                     <h3 class="title">Каталог <span></span></h3>
                                     <ul class="footer-block-contant link">
-                                        @foreach($tree[0] as $obj)
-                                            <li>
-                                                <a href="javascript:void(0)"><i
-                                                        class="fa fa-angle-right"></i>{{ $obj->name }}</a>
-                                            </li>
-                                        @endforeach
+                                        @if($tree)
+                                            @foreach($tree[0] as $obj)
+                                                <li>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa fa-angle-right"></i>{{ $obj->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
