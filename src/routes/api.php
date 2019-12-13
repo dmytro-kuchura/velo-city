@@ -27,5 +27,13 @@ Route::middleware('authentication')->group(function () {
             Route::post('add', 'Api\WishlistController@add')->name('api.wishlist.add');
             Route::delete('delete/{item}', 'Api\WishlistController@delete')->name('api.wishlist.delete');
         });
+
+        Route::prefix('regions')->group(function () {
+            Route::get('list', 'Api\RegionsController@list')->name('api.regions.list');
+        });
+
+        Route::prefix('cities')->group(function () {
+            Route::get('/{region}', 'Api\CitiesController@list')->name('api.cities.list');
+        });
     });
 });

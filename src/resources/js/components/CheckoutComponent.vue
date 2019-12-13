@@ -53,8 +53,7 @@
                         <div class="col-md-12">
                             <div class="input-box">
                                 <fieldset>
-                                    <select name="billingcountryId" class="option-drop"
-                                            id="billingcountryid">
+                                    <select name="delivery" class="option-drop" id="delivery">
                                         <option selected="" value="">Вариант доставки</option>
                                         <option value="AX">Самовывоз</option>
                                         <option value="AX">Новой Почтой</option>
@@ -62,17 +61,17 @@
                                         <option value="AF">Justin</option>
                                     </select>
                                 </fieldset>
-                                <span>Please include landmark.</span>
+                                <!--                                <span>Please include landmark.</span>-->
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-box select-dropdown">
                                 <fieldset>
-                                    <select name="billingcountryId" class="option-drop"
-                                            id="billingcountryid">
+                                    <select name="region" class="option-drop" id="region" @change="selectRegion($event)" >
                                         <option selected="" value="">Выберите область</option>
-                                        <option value="AX">Aland Islands</option>
-                                        <option value="AF">Afghanistan</option>
+                                        <option v-bind:value="region.id" v-for="region in regions">{{ region.name_ru
+                                            }}
+                                        </option>
                                     </select>
                                 </fieldset>
                             </div>
@@ -80,11 +79,10 @@
                         <div class="col-md-6">
                             <div class="input-box select-dropdown">
                                 <fieldset>
-                                    <select name="billingstateId" class="option-drop"
-                                            id="billingstateid">
+                                    <select name="city" class="option-drop" id="city">
                                         <option value="">Выберите город</option>
-                                        <option value="AP">Andhra Pradesh</option>
-                                        <option value="AR">Arunachal Pradesh</option>
+                                        <option v-bind:value="city.id" v-for="city in cities">{{ city.name_ru }}
+                                        </option>
                                     </select>
                                 </fieldset>
                             </div>
@@ -125,13 +123,14 @@
                                         <div class="product-info-stock-sku m-0">
                                             <div>
                                                 <label>Price: </label>
-                                                <div class="price-box"> <span class="info-deta price">$520.00</span> </div>
+                                                <div class="price-box"><span class="info-deta price">$520.00</span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="product-info-stock-sku m-0">
                                             <div>
                                                 <label>Quantity: </label>
-                                                <span class="info-deta">1</span> </div>
+                                                <span class="info-deta">1</span></div>
                                         </div>
                                     </div>
                                 </td>
@@ -141,7 +140,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <i class="fa fa-trash cart-remove-item" data-id="100" title="Remove Item From Cart"></i>
+                                    <i class="fa fa-trash cart-remove-item" data-id="100"
+                                       title="Remove Item From Cart"></i>
                                 </td>
                             </tr>
                             <tr>
@@ -158,18 +158,23 @@
                                         <div class="product-info-stock-sku m-0">
                                             <div>
                                                 <label>Price: </label>
-                                                <div class="price-box"> <span class="info-deta price">$520.00</span> </div>
+                                                <div class="price-box"><span class="info-deta price">$520.00</span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="product-info-stock-sku m-0">
                                             <div>
                                                 <label>Quantity: </label>
-                                                <span class="info-deta">1</span> </div>
+                                                <span class="info-deta">1</span></div>
                                         </div>
                                     </div>
                                 </td>
-                                <td><div data-id="100" class="total-price price-box"> <span class="price">$520.00</span> </div></td>
-                                <td><i class="fa fa-trash cart-remove-item" data-id="100" title="Remove Item From Cart"></i></td>
+                                <td>
+                                    <div data-id="100" class="total-price price-box"><span class="price">$520.00</span>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-trash cart-remove-item" data-id="100"
+                                       title="Remove Item From Cart"></i></td>
                             </tr>
                             </tbody>
                         </table>
@@ -187,15 +192,21 @@
                             <tbody>
                             <tr>
                                 <td>Item(s) Subtotal</td>
-                                <td><div class="price-box"> <span class="price">$160.00</span> </div></td>
+                                <td>
+                                    <div class="price-box"><span class="price">$160.00</span></div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Shipping</td>
-                                <td><div class="price-box"> <span class="price">$0.00</span> </div></td>
+                                <td>
+                                    <div class="price-box"><span class="price">$0.00</span></div>
+                                </td>
                             </tr>
                             <tr>
                                 <td><b>Amount Payable</b></td>
-                                <td><div class="price-box"> <span class="price"><b>$160.00</b></span> </div></td>
+                                <td>
+                                    <div class="price-box"><span class="price"><b>$160.00</b></span></div>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -215,8 +226,39 @@
     export default {
         data() {
             return {
-                cart: this.$store.state,
+                isLoading: false,
+                delivery: [],
+                cities: [],
+                regions: [],
             }
+        },
+        mounted() {
+            axios.get("api/v1/regions/list")
+                .then(({data}) => this.setRegionsSuccessResponse(data))
+                .catch((response) => this.setRegionsErrorResponse(response));
+        },
+        methods: {
+            setRegionsSuccessResponse(data) {
+                this.isLoading = false;
+                this.regions = data.result;
+            },
+            setRegionsErrorResponse(response) {
+                this.isLoading = false;
+                toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!")
+            },
+            selectRegion(event) {
+                axios.get("api/v1/cities/" + event.target.value)
+                    .then(({data}) => this.setCitiesSuccessResponse(data))
+                    .catch((response) => this.setCitiesErrorResponse(response));
+            },
+            setCitiesSuccessResponse(data) {
+                this.isLoading = false;
+                this.cities = data.result;
+            },
+            setCitiesErrorResponse(response) {
+                this.isLoading = false;
+                toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!")
+            },
         }
     }
 </script>

@@ -2418,11 +2418,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      cart: this.$store.state
+      isLoading: false,
+      delivery: [],
+      cities: [],
+      regions: []
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("api/v1/regions/list").then(function (_ref) {
+      var data = _ref.data;
+      return _this.setRegionsSuccessResponse(data);
+    })["catch"](function (response) {
+      return _this.setRegionsErrorResponse(response);
+    });
+  },
+  methods: {
+    setRegionsSuccessResponse: function setRegionsSuccessResponse(data) {
+      this.isLoading = false;
+      this.regions = data.result;
+    },
+    setRegionsErrorResponse: function setRegionsErrorResponse(response) {
+      this.isLoading = false;
+      toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!");
+    },
+    selectRegion: function selectRegion(event) {
+      var _this2 = this;
+
+      axios.get("api/v1/cities/" + event.target.value).then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.setCitiesSuccessResponse(data);
+      })["catch"](function (response) {
+        return _this2.setCitiesErrorResponse(response);
+      });
+    },
+    setCitiesSuccessResponse: function setCitiesSuccessResponse(data) {
+      this.isLoading = false;
+      this.cities = data.result;
+    },
+    setCitiesErrorResponse: function setCitiesErrorResponse(response) {
+      this.isLoading = false;
+      toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!");
+    }
   }
 });
 
@@ -38363,449 +38415,424 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "checkout-content" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-xl-4 col-lg-5" }, [
+        _c("form", { staticClass: "main-form full" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "input-box select-dropdown" }, [
+                _c("fieldset", [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "option-drop",
+                      attrs: { name: "region", id: "region" },
+                      on: {
+                        change: function($event) {
+                          return _vm.selectRegion($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { selected: "", value: "" } }, [
+                        _vm._v("Выберите область")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.regions, function(region) {
+                        return _c(
+                          "option",
+                          { domProps: { value: region.id } },
+                          [
+                            _vm._v(
+                              _vm._s(region.name_ru) +
+                                "\n                                    "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "input-box select-dropdown" }, [
+                _c("fieldset", [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "option-drop",
+                      attrs: { name: "city", id: "city" }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("Выберите город")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.cities, function(city) {
+                        return _c("option", { domProps: { value: city.id } }, [
+                          _vm._v(
+                            _vm._s(city.name_ru) +
+                              "\n                                    "
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(4),
+      _vm._v(" "),
+      _vm._m(5)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "checkout-content" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "heading-part align-center" }, [
-            _c("h2", { staticClass: "heading" }, [_vm._v("Оформление заказа")])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "heading-part align-center" }, [
+          _c("h2", { staticClass: "heading" }, [_vm._v("Оформление заказа")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mb-20" }, [
+      _c("div", { staticClass: "col-12 mb-20" }, [
+        _c("div", { staticClass: "heading-part" }, [
+          _c("h3", { staticClass: "sub-heading" }, [
+            _vm._v("Контактные данные")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "input-box" }, [
+          _c("input", {
+            attrs: { type: "text", required: "", placeholder: "Имя" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "input-box" }, [
+          _c("input", {
+            attrs: { type: "text", required: "", placeholder: "Фамилия" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "input-box" }, [
+          _c("input", {
+            attrs: { type: "text", required: "", placeholder: "Отчество" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "input-box" }, [
+          _c("input", {
+            attrs: { type: "email", required: "", placeholder: "Email Address" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "input-box" }, [
+          _c("input", {
+            attrs: { type: "text", required: "", placeholder: "Contact Number" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12 mb-20" }, [
+      _c("div", { staticClass: "heading-part" }, [
+        _c("h3", { staticClass: "sub-heading" }, [_vm._v("Доставка")])
+      ]),
+      _vm._v(" "),
+      _c("hr")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "input-box" }, [
+        _c("fieldset", [
+          _c(
+            "select",
+            {
+              staticClass: "option-drop",
+              attrs: { name: "delivery", id: "delivery" }
+            },
+            [
+              _c("option", { attrs: { selected: "", value: "" } }, [
+                _vm._v("Вариант доставки")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "AX" } }, [_vm._v("Самовывоз")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "AX" } }, [
+                _vm._v("Новой Почтой")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "AF" } }, [
+                _vm._v("Курьером (Новой Почтой)")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "AF" } }, [_vm._v("Justin")])
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xl-8 col-lg-7 mb-sm-30" }, [
+      _c("div", { staticClass: "col-12 mb-20" }, [
+        _c("div", { staticClass: "heading-part" }, [
+          _c("h3", { staticClass: "sub-heading" }, [_vm._v("Ваши товары")])
+        ]),
+        _vm._v(" "),
+        _c("hr")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "cart-item-table commun-table mb-30" }, [
+        _c("div", { staticClass: "table-responsive" }, [
+          _c("table", { staticClass: "table" }, [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Product")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Product Detail")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Sub Total")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Action")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c("td", [
+                  _c("a", { attrs: { href: "product-page.html" } }, [
+                    _c("div", { staticClass: "product-image" }, [
+                      _c("img", {
+                        attrs: { alt: "Honour", src: "images/1.jpg" }
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("div", { staticClass: "product-title" }, [
+                    _c("a", { attrs: { href: "product-page.html" } }, [
+                      _vm._v("Cross Colours Camo Print Tank half mengo")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "product-info-stock-sku m-0" }, [
+                      _c("div", [
+                        _c("label", [_vm._v("Price: ")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "price-box" }, [
+                          _c("span", { staticClass: "info-deta price" }, [
+                            _vm._v("$520.00")
+                          ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "product-info-stock-sku m-0" }, [
+                      _c("div", [
+                        _c("label", [_vm._v("Quantity: ")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "info-deta" }, [_vm._v("1")])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "total-price price-box",
+                      attrs: { "data-id": "100" }
+                    },
+                    [_c("span", { staticClass: "price" }, [_vm._v("$520.00")])]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("i", {
+                    staticClass: "fa fa-trash cart-remove-item",
+                    attrs: { "data-id": "100", title: "Remove Item From Cart" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [
+                  _c("a", { attrs: { href: "product-page.html" } }, [
+                    _c("div", { staticClass: "product-image" }, [
+                      _c("img", {
+                        attrs: { alt: "Honour", src: "images/2.jpg" }
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("div", { staticClass: "product-title" }, [
+                    _c("a", { attrs: { href: "product-page.html" } }, [
+                      _vm._v("Cross Colours Camo Print Tank half mengo")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "product-info-stock-sku m-0" }, [
+                      _c("div", [
+                        _c("label", [_vm._v("Price: ")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "price-box" }, [
+                          _c("span", { staticClass: "info-deta price" }, [
+                            _vm._v("$520.00")
+                          ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "product-info-stock-sku m-0" }, [
+                      _c("div", [
+                        _c("label", [_vm._v("Quantity: ")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "info-deta" }, [_vm._v("1")])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "total-price price-box",
+                      attrs: { "data-id": "100" }
+                    },
+                    [_c("span", { staticClass: "price" }, [_vm._v("$520.00")])]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("i", {
+                    staticClass: "fa fa-trash cart-remove-item",
+                    attrs: { "data-id": "100", title: "Remove Item From Cart" }
+                  })
+                ])
+              ])
+            ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-xl-4 col-lg-5" }, [
-          _c("form", { staticClass: "main-form full" }, [
-            _c("div", { staticClass: "row mb-20" }, [
-              _c("div", { staticClass: "col-12 mb-20" }, [
-                _c("div", { staticClass: "heading-part" }, [
-                  _c("h3", { staticClass: "sub-heading" }, [
-                    _vm._v("Контактные данные")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("hr")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "input-box" }, [
-                  _c("input", {
-                    attrs: { type: "text", required: "", placeholder: "Имя" }
-                  })
+      _c(
+        "div",
+        { staticClass: "cart-total-table commun-table mb-30 mb-sm-15" },
+        [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { colspan: "2" } }, [_vm._v("Cart Total")])
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "input-box" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      required: "",
-                      placeholder: "Фамилия"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "input-box" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      required: "",
-                      placeholder: "Отчество"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "input-box" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "email",
-                      required: "",
-                      placeholder: "Email Address"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "input-box" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      required: "",
-                      placeholder: "Contact Number"
-                    }
-                  })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-12 mb-20" }, [
-                _c("div", { staticClass: "heading-part" }, [
-                  _c("h3", { staticClass: "sub-heading" }, [_vm._v("Доставка")])
-                ]),
-                _vm._v(" "),
-                _c("hr")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "input-box" }, [
-                  _c("fieldset", [
-                    _c(
-                      "select",
-                      {
-                        staticClass: "option-drop",
-                        attrs: {
-                          name: "billingcountryId",
-                          id: "billingcountryid"
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { selected: "", value: "" } }, [
-                          _vm._v("Вариант доставки")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AX" } }, [
-                          _vm._v("Самовывоз")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AX" } }, [
-                          _vm._v("Новой Почтой")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AF" } }, [
-                          _vm._v("Курьером (Новой Почтой)")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AF" } }, [
-                          _vm._v("Justin")
-                        ])
-                      ]
-                    )
-                  ]),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("Item(s) Subtotal")]),
                   _vm._v(" "),
-                  _c("span", [_vm._v("Please include landmark.")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "input-box select-dropdown" }, [
-                  _c("fieldset", [
-                    _c(
-                      "select",
-                      {
-                        staticClass: "option-drop",
-                        attrs: {
-                          name: "billingcountryId",
-                          id: "billingcountryid"
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { selected: "", value: "" } }, [
-                          _vm._v("Выберите область")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AX" } }, [
-                          _vm._v("Aland Islands")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AF" } }, [
-                          _vm._v("Afghanistan")
-                        ])
-                      ]
-                    )
+                  _c("td", [
+                    _c("div", { staticClass: "price-box" }, [
+                      _c("span", { staticClass: "price" }, [_vm._v("$160.00")])
+                    ])
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "input-box select-dropdown" }, [
-                  _c("fieldset", [
-                    _c(
-                      "select",
-                      {
-                        staticClass: "option-drop",
-                        attrs: { name: "billingstateId", id: "billingstateid" }
-                      },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Выберите город")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AP" } }, [
-                          _vm._v("Andhra Pradesh")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AR" } }, [
-                          _vm._v("Arunachal Pradesh")
-                        ])
-                      ]
-                    )
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Shipping")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "price-box" }, [
+                      _c("span", { staticClass: "price" }, [_vm._v("$0.00")])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_c("b", [_vm._v("Amount Payable")])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "price-box" }, [
+                      _c("span", { staticClass: "price" }, [
+                        _c("b", [_vm._v("$160.00")])
+                      ])
+                    ])
                   ])
                 ])
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xl-8 col-lg-7 mb-sm-30" }, [
-          _c("div", { staticClass: "col-12 mb-20" }, [
-            _c("div", { staticClass: "heading-part" }, [
-              _c("h3", { staticClass: "sub-heading" }, [_vm._v("Ваши товары")])
-            ]),
-            _vm._v(" "),
-            _c("hr")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "cart-item-table commun-table mb-30" }, [
-            _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Product")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Product Detail")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Sub Total")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Action")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", [
-                      _c("a", { attrs: { href: "product-page.html" } }, [
-                        _c("div", { staticClass: "product-image" }, [
-                          _c("img", {
-                            attrs: { alt: "Honour", src: "images/1.jpg" }
-                          })
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "product-title" }, [
-                        _c("a", { attrs: { href: "product-page.html" } }, [
-                          _vm._v("Cross Colours Camo Print Tank half mengo")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "product-info-stock-sku m-0" },
-                          [
-                            _c("div", [
-                              _c("label", [_vm._v("Price: ")]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "price-box" }, [
-                                _c("span", { staticClass: "info-deta price" }, [
-                                  _vm._v("$520.00")
-                                ])
-                              ])
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "product-info-stock-sku m-0" },
-                          [
-                            _c("div", [
-                              _c("label", [_vm._v("Quantity: ")]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "info-deta" }, [
-                                _vm._v("1")
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "total-price price-box",
-                          attrs: { "data-id": "100" }
-                        },
-                        [
-                          _c("span", { staticClass: "price" }, [
-                            _vm._v("$520.00")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("i", {
-                        staticClass: "fa fa-trash cart-remove-item",
-                        attrs: {
-                          "data-id": "100",
-                          title: "Remove Item From Cart"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [
-                      _c("a", { attrs: { href: "product-page.html" } }, [
-                        _c("div", { staticClass: "product-image" }, [
-                          _c("img", {
-                            attrs: { alt: "Honour", src: "images/2.jpg" }
-                          })
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "product-title" }, [
-                        _c("a", { attrs: { href: "product-page.html" } }, [
-                          _vm._v("Cross Colours Camo Print Tank half mengo")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "product-info-stock-sku m-0" },
-                          [
-                            _c("div", [
-                              _c("label", [_vm._v("Price: ")]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "price-box" }, [
-                                _c("span", { staticClass: "info-deta price" }, [
-                                  _vm._v("$520.00")
-                                ])
-                              ])
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "product-info-stock-sku m-0" },
-                          [
-                            _c("div", [
-                              _c("label", [_vm._v("Quantity: ")]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "info-deta" }, [
-                                _vm._v("1")
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "total-price price-box",
-                          attrs: { "data-id": "100" }
-                        },
-                        [
-                          _c("span", { staticClass: "price" }, [
-                            _vm._v("$520.00")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("i", {
-                        staticClass: "fa fa-trash cart-remove-item",
-                        attrs: {
-                          "data-id": "100",
-                          title: "Remove Item From Cart"
-                        }
-                      })
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "cart-total-table commun-table mb-30 mb-sm-15" },
-            [
-              _c("div", { staticClass: "table-responsive" }, [
-                _c("table", { staticClass: "table" }, [
-                  _c("thead", [
-                    _c("tr", [
-                      _c("th", { attrs: { colspan: "2" } }, [
-                        _vm._v("Cart Total")
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", [_vm._v("Item(s) Subtotal")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("div", { staticClass: "price-box" }, [
-                          _c("span", { staticClass: "price" }, [
-                            _vm._v("$160.00")
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Shipping")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("div", { staticClass: "price-box" }, [
-                          _c("span", { staticClass: "price" }, [
-                            _vm._v("$0.00")
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_c("b", [_vm._v("Amount Payable")])]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("div", { staticClass: "price-box" }, [
-                          _c("span", { staticClass: "price" }, [
-                            _c("b", [_vm._v("$160.00")])
-                          ])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-12 mt-20 mt-xs-15" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-color right-side",
-              attrs: { href: "order-overview.html" }
-            },
-            [_vm._v("Оформить")]
-          )
-        ])
-      ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12 mt-20 mt-xs-15" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-color right-side",
+          attrs: { href: "order-overview.html" }
+        },
+        [_vm._v("Оформить")]
+      )
     ])
   }
 ]
@@ -68236,8 +68263,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Projects\velo-city\src\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Projects\velo-city\src\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Projects\velo-city\src\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Projects\velo-city\src\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
