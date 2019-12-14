@@ -2,7 +2,7 @@
     <div class="banner">
         <div class="main-banner">
             @if($banners)
-                @foreach($banners as $banner)
+                @foreach($banners as $key => $banner)
                     <div class="banner-1">
                         <img src="{{ $banner->image }}" alt="{{ $banner->title }}">
                         <div class="banner-detail align-center">
@@ -23,7 +23,6 @@
                     </div>
                 @endforeach
             @endif
-
         </div>
     </div>
 </section>
