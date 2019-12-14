@@ -37,7 +37,7 @@
                                                             @endif
                                                             <div class="product-image">
                                                                 <a href="{{ route('shop.item', ['alias' => $item->alias, 'id' => $item->id]) }}">
-                                                                    <img src="/images/4.jpg" alt="Roadie">
+                                                                    <img src="{{ $item->image }}" alt="{{ $item->image }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-details">
@@ -91,7 +91,7 @@
                                                             @endif
                                                             <div class="product-image">
                                                                 <a href="{{ route('shop.item', ['alias' => $item->alias, 'id' => $item->id]) }}">
-                                                                    <img src="/images/4.jpg" alt="Roadie">
+                                                                    <img src="{{ $item->image }}" alt="{{ $item->image }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-details">
@@ -145,7 +145,7 @@
                                                             @endif
                                                             <div class="product-image">
                                                                 <a href="{{ route('shop.item', ['alias' => $item->alias, 'id' => $item->id]) }}">
-                                                                    <img src="/images/4.jpg" alt="Roadie">
+                                                                    <img src="{{ $item->image }}" alt="{{ $item->image }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-details">

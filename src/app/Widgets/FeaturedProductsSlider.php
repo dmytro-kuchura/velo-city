@@ -23,9 +23,9 @@ class FeaturedProductsSlider extends AbstractWidget
      */
     public function run(ProductsRepository $productsRepository)
     {
-        $special = $productsRepository->getSpecial();
-        $mostViewed = $productsRepository->getMostViewed();
-        $latest = $productsRepository->getLatest();
+        $special = $productsRepository->getSpecial(8);
+        $mostViewed = $productsRepository->getMostViewed(8);
+        $latest = $productsRepository->getLatest(8);
 
         return view('widgets.featured-products-slider', [
             'special' => $special,

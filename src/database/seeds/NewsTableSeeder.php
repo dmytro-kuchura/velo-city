@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class ProductsTableSeeder extends Seeder
+class NewsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,29 +13,19 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 350; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $faker = Faker\Factory::create();
 
-            DB::table('products')->insert([
+            DB::table('news')->insert([
                 'name' => $faker->sentence(rand(3, 9), $variableNbWords = true),
+                'image' =>  $faker->imageUrl($width = 1300, $height = 811),
                 'alias' => strtolower(str_replace([' ', '.'], ['_', ''], $faker->sentence(rand(3, 9), $variableNbWords = true))),
-                'category_id' => rand(0, 9),
-                'status' => rand(0, 1),
-                'new' => rand(0, 1),
-                'sale' => rand(0, 1),
-                'top' => rand(0, 1),
-                'available' => rand(0, 1),
-                'cost' => rand(150.77, 17777.95),
-                'cost_old' => rand(10560.70, 53777.95),
-                'views' => rand(0, 1000),
-                'brand' => 0,
-                'artikul' => $faker->swiftBicNumber,
-                'image' =>  $faker->imageUrl($width = 750, $height = 750),
-                'specifications' => $faker->text(300),
-                'information' => $faker->text(300),
                 'title' => $faker->sentence(rand(3, 9), $variableNbWords = true),
+                'content' => $faker->realText($maxNbChars = 300, $indexSize = 2),
+                'short' => $faker->realText($maxNbChars = 150, $indexSize = 2),
                 'description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'keywords' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+                'status' => rand(0, 1),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);

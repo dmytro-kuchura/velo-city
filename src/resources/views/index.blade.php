@@ -3,7 +3,7 @@
 @section('content')
     @widget('banner')
 
-    @widget('subBanner')
+{{--    @widget('subBanner')--}}
     @widget('featuredProducts')
     @widget('offerOfTheWeek')
     @widget('perellexBanner')

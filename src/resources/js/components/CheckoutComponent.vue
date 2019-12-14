@@ -20,26 +20,31 @@
                         <div class="col-md-12">
                             <div class="input-box">
                                 <input type="text" v-model="order.first_name" :class="{'has-error': errors.first_name}" placeholder="Имя *">
+                                <span v-if="errors.first_name" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
                                 <input type="text" v-model="order.last_name" :class="{'has-error': errors.last_name}" placeholder="Фамилия *">
+                                <span v-if="errors.last_name" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
                                 <input type="text" v-model="order.middle_name" :class="{'has-error': errors.middle_name}" placeholder="Отчество">
+                                <span v-if="errors.middle_name" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
                                 <input type="email" v-model="order.email" :class="{'has-error': errors.email}" placeholder="Ваш Email *">
+                                <span v-if="errors.email" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
                                 <input type="text" v-model="order.phone" :class="{'has-error': errors.phone}" placeholder="Номер телефона *">
+                                <span v-if="errors.phone" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
                     </div>
@@ -84,6 +89,23 @@
                                         <option value="">Выберите город</option>
                                         <option v-bind:value="city.id" v-for="city in cities">{{ city.name_ru }}
                                         </option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mb-20">
+                            <div class="heading-part">
+                                <h3 class="sub-heading">Оплата</h3>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-box">
+                                <fieldset>
+                                    <select name="payment" class="option-drop" id="payment">
+                                        <option selected="" value="">Вариант оплаты</option>
                                     </select>
                                 </fieldset>
                             </div>

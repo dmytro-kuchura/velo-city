@@ -2402,6 +2402,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38497,7 +38519,13 @@ var render = function() {
                       _vm.$set(_vm.order, "first_name", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.first_name
+                  ? _c("span", { staticClass: "has-error" }, [
+                      _vm._v("Please include landmark.")
+                    ])
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),
@@ -38523,7 +38551,13 @@ var render = function() {
                       _vm.$set(_vm.order, "last_name", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.last_name
+                  ? _c("span", { staticClass: "has-error" }, [
+                      _vm._v("Please include landmark.")
+                    ])
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),
@@ -38549,7 +38583,13 @@ var render = function() {
                       _vm.$set(_vm.order, "middle_name", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.middle_name
+                  ? _c("span", { staticClass: "has-error" }, [
+                      _vm._v("Please include landmark.")
+                    ])
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),
@@ -38575,7 +38615,13 @@ var render = function() {
                       _vm.$set(_vm.order, "email", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.email
+                  ? _c("span", { staticClass: "has-error" }, [
+                      _vm._v("Please include landmark.")
+                    ])
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),
@@ -38601,7 +38647,13 @@ var render = function() {
                       _vm.$set(_vm.order, "phone", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.errors.phone
+                  ? _c("span", { staticClass: "has-error" }, [
+                      _vm._v("Please include landmark.")
+                    ])
+                  : _vm._e()
               ])
             ])
           ]),
@@ -38718,17 +38770,19 @@ var render = function() {
                 ])
               ])
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-xl-8 col-lg-7 mb-sm-30" }, [
-        _vm._m(3),
+        _vm._m(4),
         _vm._v(" "),
         _c("div", { staticClass: "cart-item-table commun-table mb-30" }, [
           _c("div", { staticClass: "table-responsive" }, [
             _c("table", { staticClass: "table" }, [
-              _vm._m(4),
+              _vm._m(5),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -38736,7 +38790,7 @@ var render = function() {
                   return _c("tr", [
                     _c("td", [
                       _c("a", { attrs: { href: item.alias } }, [
-                        _vm._m(5, true)
+                        _vm._m(6, true)
                       ])
                     ]),
                     _vm._v(" "),
@@ -38814,7 +38868,7 @@ var render = function() {
           [
             _c("div", { staticClass: "table-responsive" }, [
               _c("table", { staticClass: "table" }, [
-                _vm._m(6),
+                _vm._m(7),
                 _vm._v(" "),
                 _c("tbody", [
                   _c("tr", [
@@ -38829,10 +38883,10 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(7),
+                  _vm._m(8),
                   _vm._v(" "),
                   _c("tr", [
-                    _vm._m(8),
+                    _vm._m(9),
                     _vm._v(" "),
                     _c("td", [
                       _c("div", { staticClass: "price-box" }, [
@@ -38902,6 +38956,39 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("hr")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 mb-20" }, [
+        _c("div", { staticClass: "heading-part" }, [
+          _c("h3", { staticClass: "sub-heading" }, [_vm._v("Оплата")])
+        ]),
+        _vm._v(" "),
+        _c("hr")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "input-box" }, [
+          _c("fieldset", [
+            _c(
+              "select",
+              {
+                staticClass: "option-drop",
+                attrs: { name: "payment", id: "payment" }
+              },
+              [
+                _c("option", { attrs: { selected: "", value: "" } }, [
+                  _vm._v("Вариант оплаты")
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
     ])
   },
   function() {

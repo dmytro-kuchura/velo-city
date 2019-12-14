@@ -9,3 +9,11 @@
 
 @import "~noty/src/noty.scss";
 @import "~noty/src/themes/mint.scss";
+
+span .has-error {
+  border-color: #ff0000;
+}
+
+input .has-error {
+  border-color: #ff0000;
+}

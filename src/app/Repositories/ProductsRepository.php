@@ -29,35 +29,35 @@ class ProductsRepository
 
     }
 
-    public function getFeatured() {
+    public function getFeatured(int $limit) {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
-            ->limit(25)
+            ->limit($limit)
             ->inRandomOrder()
             ->get();
     }
 
-    public function getSpecial() {
+    public function getSpecial(int $limit) {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
             ->where(function ($query) {
                 $query->where('sale', ProductConstants::IS_SALE)
                     ->orWhere('top', ProductConstants::IS_TOP);
             })
-            ->limit(25)
+            ->limit($limit)
             ->inRandomOrder()
             ->get();
     }
 
-    public function getMostViewed() {
+    public function getMostViewed(int $limit) {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
-            ->limit(25)
+            ->limit($limit)
             ->inRandomOrder()
             ->get();
     }
 
-    public function getLatest() {
+    public function getLatest(int $limit) {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
             ->where('new', ProductConstants::IS_NEW)
-            ->limit(25)
+            ->limit($limit)
             ->inRandomOrder()
             ->get();
     }

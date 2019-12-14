@@ -20,7 +20,7 @@ class FeaturedProducts extends AbstractWidget
      */
     public function run(ProductsRepository $productsRepository)
     {
-        $items = $productsRepository->getFeatured();
+        $items = $productsRepository->getFeatured(8);
 
         return view('widgets.featured-products', [
             'items' => $items,
