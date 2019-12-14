@@ -2398,41 +2398,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       isLoading: false,
+      cart: this.$store.state,
       delivery: [],
       cities: [],
       regions: []
@@ -2474,6 +2444,21 @@ __webpack_require__.r(__webpack_exports__);
     setCitiesErrorResponse: function setCitiesErrorResponse(response) {
       this.isLoading = false;
       toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!");
+    },
+    removeFromCart: function removeFromCart(id) {
+      var _this3 = this;
+
+      axios["delete"]("/api/v1/cart/delete/" + id).then(function () {
+        return _this3.deleteCartListSuccessResponse();
+      })["catch"](function (response) {
+        return _this3.deleteCartListErrorResponse(response);
+      });
+    },
+    deleteCartListSuccessResponse: function deleteCartListSuccessResponse() {
+      this.$store.commit('loadCart');
+    },
+    deleteCartListErrorResponse: function deleteCartListErrorResponse(response) {
+      console.log(response);
     }
   }
 });
@@ -38353,7 +38338,7 @@ var render = function() {
     _vm._v(" "),
     _c("tbody", [
       _c("tr", [
-        _c("td", [_vm._v("Item(s)")]),
+        _c("td", [_vm._v("Товаров")]),
         _vm._v(" "),
         _c("td", [
           _c("div", { staticClass: "price-box" }, [
@@ -38384,14 +38369,14 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
-      _c("tr", [_c("th", { attrs: { colspan: "2" } }, [_vm._v("Cart Total")])])
+      _c("tr", [_c("th", { attrs: { colspan: "2" } }, [_vm._v("Итого")])])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [_c("b", [_vm._v("Amount Payable")])])
+    return _c("td", [_c("b", [_vm._v("К оплате")])])
   }
 ]
 render._withStripped = true
@@ -38498,9 +38483,134 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(4),
+      _c("div", { staticClass: "col-xl-8 col-lg-7 mb-sm-30" }, [
+        _vm._m(4),
+        _vm._v(" "),
+        _c("div", { staticClass: "cart-item-table commun-table mb-30" }, [
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(5),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.cart.list, function(item) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c("a", { attrs: { href: item.alias } }, [
+                        _vm._m(6, true)
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "product-title" }, [
+                        _c("a", { attrs: { href: item.alias } }, [
+                          _vm._v(_vm._s(item.name))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "product-info-stock-sku m-0" },
+                          [
+                            _c("div", [
+                              _c("label", [_vm._v("Цена: ")]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "price-box" }, [
+                                _c("span", { staticClass: "info-deta price" }, [
+                                  _vm._v("₴ " + _vm._s(item.price))
+                                ])
+                              ])
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "product-info-stock-sku m-0" },
+                          [
+                            _c("div", [
+                              _c("label", [_vm._v("Кол-во: ")]),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "info-deta" }, [
+                                _vm._v(_vm._s(item.count))
+                              ])
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "total-price price-box" }, [
+                        _c("span", { staticClass: "price" }, [
+                          _vm._v(
+                            "₴ " + _vm._s((item.price * item.count).toFixed(2))
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("i", {
+                        staticClass: "fa fa-trash cart-remove-item",
+                        attrs: { title: "Удалить" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.removeFromCart(item.id)
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "cart-total-table commun-table mb-30 mb-sm-15" },
+          [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table" }, [
+                _vm._m(7),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Всего за товары товаров")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "price-box" }, [
+                        _c("span", { staticClass: "price" }, [
+                          _vm._v("₴ " + _vm._s(_vm.cart.totalPrice))
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(8),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _vm._m(9),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "price-box" }, [
+                        _c("span", { staticClass: "price" }, [
+                          _c("b", [_vm._v("₴ " + _vm._s(_vm.cart.totalPrice))])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]
+        )
+      ]),
       _vm._v(" "),
-      _vm._m(5)
+      _vm._m(10)
     ])
   ])
 }
@@ -38624,201 +38734,65 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-8 col-lg-7 mb-sm-30" }, [
-      _c("div", { staticClass: "col-12 mb-20" }, [
-        _c("div", { staticClass: "heading-part" }, [
-          _c("h3", { staticClass: "sub-heading" }, [_vm._v("Ваши товары")])
-        ]),
-        _vm._v(" "),
-        _c("hr")
+    return _c("div", { staticClass: "col-12 mb-20" }, [
+      _c("div", { staticClass: "heading-part" }, [
+        _c("h3", { staticClass: "sub-heading" }, [_vm._v("Ваши товары")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "cart-item-table commun-table mb-30" }, [
-        _c("div", { staticClass: "table-responsive" }, [
-          _c("table", { staticClass: "table" }, [
-            _c("thead", [
-              _c("tr", [
-                _c("th", [_vm._v("Product")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Product Detail")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Sub Total")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Action")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [
-                  _c("a", { attrs: { href: "product-page.html" } }, [
-                    _c("div", { staticClass: "product-image" }, [
-                      _c("img", {
-                        attrs: { alt: "Honour", src: "images/1.jpg" }
-                      })
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("div", { staticClass: "product-title" }, [
-                    _c("a", { attrs: { href: "product-page.html" } }, [
-                      _vm._v("Cross Colours Camo Print Tank half mengo")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "product-info-stock-sku m-0" }, [
-                      _c("div", [
-                        _c("label", [_vm._v("Price: ")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "price-box" }, [
-                          _c("span", { staticClass: "info-deta price" }, [
-                            _vm._v("$520.00")
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "product-info-stock-sku m-0" }, [
-                      _c("div", [
-                        _c("label", [_vm._v("Quantity: ")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "info-deta" }, [_vm._v("1")])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "total-price price-box",
-                      attrs: { "data-id": "100" }
-                    },
-                    [_c("span", { staticClass: "price" }, [_vm._v("$520.00")])]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("i", {
-                    staticClass: "fa fa-trash cart-remove-item",
-                    attrs: { "data-id": "100", title: "Remove Item From Cart" }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [
-                  _c("a", { attrs: { href: "product-page.html" } }, [
-                    _c("div", { staticClass: "product-image" }, [
-                      _c("img", {
-                        attrs: { alt: "Honour", src: "images/2.jpg" }
-                      })
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("div", { staticClass: "product-title" }, [
-                    _c("a", { attrs: { href: "product-page.html" } }, [
-                      _vm._v("Cross Colours Camo Print Tank half mengo")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "product-info-stock-sku m-0" }, [
-                      _c("div", [
-                        _c("label", [_vm._v("Price: ")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "price-box" }, [
-                          _c("span", { staticClass: "info-deta price" }, [
-                            _vm._v("$520.00")
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "product-info-stock-sku m-0" }, [
-                      _c("div", [
-                        _c("label", [_vm._v("Quantity: ")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "info-deta" }, [_vm._v("1")])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "total-price price-box",
-                      attrs: { "data-id": "100" }
-                    },
-                    [_c("span", { staticClass: "price" }, [_vm._v("$520.00")])]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("i", {
-                    staticClass: "fa fa-trash cart-remove-item",
-                    attrs: { "data-id": "100", title: "Remove Item From Cart" }
-                  })
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "cart-total-table commun-table mb-30 mb-sm-15" },
-        [
-          _c("div", { staticClass: "table-responsive" }, [
-            _c("table", { staticClass: "table" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", { attrs: { colspan: "2" } }, [_vm._v("Cart Total")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_vm._v("Item(s) Subtotal")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "price-box" }, [
-                      _c("span", { staticClass: "price" }, [_vm._v("$160.00")])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("Shipping")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "price-box" }, [
-                      _c("span", { staticClass: "price" }, [_vm._v("$0.00")])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_c("b", [_vm._v("Amount Payable")])]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("div", { staticClass: "price-box" }, [
-                      _c("span", { staticClass: "price" }, [
-                        _c("b", [_vm._v("$160.00")])
-                      ])
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ]
-      )
+      _c("hr")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Продукт")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Информация")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Итого")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Действия")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "product-image" }, [
+      _c("img", { attrs: { alt: "Honour", src: "images/1.jpg" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [_c("th", { attrs: { colspan: "2" } }, [_vm._v("Итого")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("Доставка")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "price-box" }, [
+          _c("span", { staticClass: "price" }, [_vm._v("$0.00")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("b", [_vm._v("К оплате")])])
   },
   function() {
     var _vm = this

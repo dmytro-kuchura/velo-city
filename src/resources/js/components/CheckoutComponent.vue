@@ -102,16 +102,17 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Product</th>
-                                <th>Product Detail</th>
-                                <th>Sub Total</th>
-                                <th>Action</th>
+                                <th>Продукт</th>
+                                <th>Информация</th>
+                                <th>Итого</th>
+                                <th>Действия</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+
+                            <tr v-for="item in cart.list">
                                 <td>
-                                    <a href="product-page.html">
+                                    <a v-bind:href="item.alias">
                                         <div class="product-image">
                                             <img alt="Honour" src="images/1.jpg">
                                         </div>
@@ -119,63 +120,31 @@
                                 </td>
                                 <td>
                                     <div class="product-title">
-                                        <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
+                                        <a v-bind:href="item.alias">{{ item.name }}</a>
                                         <div class="product-info-stock-sku m-0">
                                             <div>
-                                                <label>Price: </label>
-                                                <div class="price-box"><span class="info-deta price">$520.00</span>
+                                                <label>Цена: </label>
+                                                <div class="price-box"><span class="info-deta price">₴ {{ item.price }}</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="product-info-stock-sku m-0">
                                             <div>
-                                                <label>Quantity: </label>
-                                                <span class="info-deta">1</span></div>
+                                                <label>Кол-во: </label>
+                                                <span class="info-deta">{{ item.count }}</span></div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <div data-id="100" class="total-price price-box">
-                                        <span class="price">$520.00</span>
+                                    <div class="total-price price-box">
+                                        <span class="price">₴ {{ (item.price * item.count).toFixed(2) }}</span>
                                     </div>
                                 </td>
                                 <td>
-                                    <i class="fa fa-trash cart-remove-item" data-id="100"
-                                       title="Remove Item From Cart"></i>
+                                    <i class="fa fa-trash cart-remove-item" @click.prevent="removeFromCart(item.id)" title="Удалить"></i>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <a href="product-page.html">
-                                        <div class="product-image">
-                                            <img alt="Honour" src="images/2.jpg">
-                                        </div>
-                                    </a>
-                                </td>
-                                <td>
-                                    <div class="product-title">
-                                        <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
-                                        <div class="product-info-stock-sku m-0">
-                                            <div>
-                                                <label>Price: </label>
-                                                <div class="price-box"><span class="info-deta price">$520.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-info-stock-sku m-0">
-                                            <div>
-                                                <label>Quantity: </label>
-                                                <span class="info-deta">1</span></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div data-id="100" class="total-price price-box"><span class="price">$520.00</span>
-                                    </div>
-                                </td>
-                                <td><i class="fa fa-trash cart-remove-item" data-id="100"
-                                       title="Remove Item From Cart"></i></td>
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -186,26 +155,26 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th colspan="2">Cart Total</th>
+                                <th colspan="2">Итого</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Item(s) Subtotal</td>
+                                <td>Всего за товары товаров</td>
                                 <td>
-                                    <div class="price-box"><span class="price">$160.00</span></div>
+                                    <div class="price-box"><span class="price">₴ {{ cart.totalPrice }}</span></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Shipping</td>
+                                <td>Доставка</td>
                                 <td>
                                     <div class="price-box"><span class="price">$0.00</span></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><b>Amount Payable</b></td>
+                                <td><b>К оплате</b></td>
                                 <td>
-                                    <div class="price-box"><span class="price"><b>$160.00</b></span></div>
+                                    <div class="price-box"><span class="price"><b>₴ {{ cart.totalPrice }}</b></span></div>
                                 </td>
                             </tr>
                             </tbody>
@@ -227,6 +196,7 @@
         data() {
             return {
                 isLoading: false,
+                cart: this.$store.state,
                 delivery: [],
                 cities: [],
                 regions: [],
@@ -259,6 +229,17 @@
                 this.isLoading = false;
                 toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!")
             },
+            removeFromCart(id) {
+                axios.delete("/api/v1/cart/delete/" + id)
+                    .then(() => this.deleteCartListSuccessResponse())
+                    .catch((response) => this.deleteCartListErrorResponse(response));
+            },
+            deleteCartListSuccessResponse() {
+                this.$store.commit('loadCart');
+            },
+            deleteCartListErrorResponse(response) {
+                console.log(response);
+            }
         }
     }
 </script>
