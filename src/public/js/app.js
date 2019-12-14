@@ -2419,7 +2419,8 @@ __webpack_require__.r(__webpack_exports__);
         delivery_id: null,
         region_id: null,
         city_id: null
-      }
+      },
+      errors: []
     };
   },
   mounted: function mounted() {
@@ -2439,6 +2440,34 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    onSubmit: function onSubmit() {
+      var _this2 = this;
+
+      this.isLoading = true;
+      axios.post("/api/v1/orders/create", this.order).then(function () {
+        return _this2.setOnSubmitSuccessResponse();
+      })["catch"](function (_ref3) {
+        var response = _ref3.response;
+        return _this2.setOnSubmitErrorResponse(response);
+      });
+    },
+    setOnSubmitSuccessResponse: function setOnSubmitSuccessResponse() {
+      this.isLoading = false;
+      this.order.first_name = null;
+      this.order.last_name = null;
+      this.order.middle_name = null;
+      this.order.email = null;
+      this.order.phone = null;
+      swal({
+        title: "Оформлен!",
+        text: "Ваш заказ был оформлен мы свяжемся с Вами в ближайшее время :)",
+        icon: "success"
+      });
+    },
+    setOnSubmitErrorResponse: function setOnSubmitErrorResponse(response) {
+      this.isLoading = false;
+      this.errors = response.data;
+    },
     setRegionsSuccessResponse: function setRegionsSuccessResponse(data) {
       this.isLoading = false;
       this.regions = data.result;
@@ -2462,15 +2491,15 @@ __webpack_require__.r(__webpack_exports__);
       this.order.city_id = event.target.value;
     },
     selectRegion: function selectRegion(event) {
-      var _this2 = this;
+      var _this3 = this;
 
       var region = event.target.value;
       this.order.region_id = region;
-      axios.get("api/v1/cities/" + region).then(function (_ref3) {
-        var data = _ref3.data;
-        return _this2.setCitiesSuccessResponse(data);
+      axios.get("api/v1/cities/" + region).then(function (_ref4) {
+        var data = _ref4.data;
+        return _this3.setCitiesSuccessResponse(data);
       })["catch"](function (response) {
-        return _this2.setCitiesErrorResponse(response);
+        return _this3.setCitiesErrorResponse(response);
       });
     },
     setCitiesSuccessResponse: function setCitiesSuccessResponse(data) {
@@ -2482,12 +2511,12 @@ __webpack_require__.r(__webpack_exports__);
       console.log(response);
     },
     removeFromCart: function removeFromCart(id) {
-      var _this3 = this;
+      var _this4 = this;
 
       axios["delete"]("/api/v1/cart/delete/" + id).then(function () {
-        return _this3.deleteCartListSuccessResponse();
+        return _this4.deleteCartListSuccessResponse();
       })["catch"](function (response) {
-        return _this3.deleteCartListErrorResponse(response);
+        return _this4.deleteCartListErrorResponse(response);
       });
     },
     deleteCartListSuccessResponse: function deleteCartListSuccessResponse() {
@@ -38443,7 +38472,139 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-xl-4 col-lg-5" }, [
         _c("form", { staticClass: "main-form full" }, [
-          _vm._m(1),
+          _c("div", { staticClass: "row mb-20" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "input-box" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.order.first_name,
+                      expression: "order.first_name"
+                    }
+                  ],
+                  class: { "has-error": _vm.errors.first_name },
+                  attrs: { type: "text", placeholder: "Имя *" },
+                  domProps: { value: _vm.order.first_name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.order, "first_name", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "input-box" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.order.last_name,
+                      expression: "order.last_name"
+                    }
+                  ],
+                  class: { "has-error": _vm.errors.last_name },
+                  attrs: { type: "text", placeholder: "Фамилия *" },
+                  domProps: { value: _vm.order.last_name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.order, "last_name", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "input-box" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.order.middle_name,
+                      expression: "order.middle_name"
+                    }
+                  ],
+                  class: { "has-error": _vm.errors.middle_name },
+                  attrs: { type: "text", placeholder: "Отчество" },
+                  domProps: { value: _vm.order.middle_name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.order, "middle_name", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "input-box" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.order.email,
+                      expression: "order.email"
+                    }
+                  ],
+                  class: { "has-error": _vm.errors.email },
+                  attrs: { type: "email", placeholder: "Ваш Email *" },
+                  domProps: { value: _vm.order.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.order, "email", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "input-box" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.order.phone,
+                      expression: "order.phone"
+                    }
+                  ],
+                  class: { "has-error": _vm.errors.phone },
+                  attrs: { type: "text", placeholder: "Номер телефона *" },
+                  domProps: { value: _vm.order.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.order, "phone", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _vm._m(2),
@@ -38688,7 +38849,21 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(9)
+      _c("div", { staticClass: "col-md-12 mt-20 mt-xs-15" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-color right-side",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.onSubmit()
+              }
+            }
+          },
+          [_vm._v("Оформить")]
+        )
+      ])
     ])
   ])
 }
@@ -38709,56 +38884,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mb-20" }, [
-      _c("div", { staticClass: "col-12 mb-20" }, [
-        _c("div", { staticClass: "heading-part" }, [
-          _c("h3", { staticClass: "sub-heading" }, [
-            _vm._v("Контактные данные")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("hr")
+    return _c("div", { staticClass: "col-12 mb-20" }, [
+      _c("div", { staticClass: "heading-part" }, [
+        _c("h3", { staticClass: "sub-heading" }, [_vm._v("Контактные данные")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "input-box" }, [
-          _c("input", {
-            attrs: { type: "text", required: "", placeholder: "Имя" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "input-box" }, [
-          _c("input", {
-            attrs: { type: "text", required: "", placeholder: "Фамилия" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "input-box" }, [
-          _c("input", {
-            attrs: { type: "text", required: "", placeholder: "Отчество" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "input-box" }, [
-          _c("input", {
-            attrs: { type: "email", required: "", placeholder: "Email Address" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "input-box" }, [
-          _c("input", {
-            attrs: { type: "text", required: "", placeholder: "Contact Number" }
-          })
-        ])
-      ])
+      _c("hr")
     ])
   },
   function() {
@@ -38836,21 +38967,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [_c("b", [_vm._v("К оплате")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 mt-20 mt-xs-15" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-color right-side",
-          attrs: { href: "order-overview.html" }
-        },
-        [_vm._v("Оформить")]
-      )
-    ])
   }
 ]
 render._withStripped = true

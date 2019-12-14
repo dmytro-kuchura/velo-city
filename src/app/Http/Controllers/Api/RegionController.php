@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Repositories\RegionsRepository;
 use App\Http\Controllers\Controller;
 
-class RegionsController extends Controller
+class RegionController extends Controller
 {
     /** @var RegionsRepository */
     private $regionsRepository;

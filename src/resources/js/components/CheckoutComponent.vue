@@ -19,27 +19,27 @@
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="text" required placeholder="Имя">
+                                <input type="text" v-model="order.first_name" :class="{'has-error': errors.first_name}" placeholder="Имя *">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="text" required placeholder="Фамилия">
+                                <input type="text" v-model="order.last_name" :class="{'has-error': errors.last_name}" placeholder="Фамилия *">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="text" required placeholder="Отчество">
+                                <input type="text" v-model="order.middle_name" :class="{'has-error': errors.middle_name}" placeholder="Отчество">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="email" required placeholder="Email Address">
+                                <input type="email" v-model="order.email" :class="{'has-error': errors.email}" placeholder="Ваш Email *">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="text" required placeholder="Contact Number">
+                                <input type="text" v-model="order.phone" :class="{'has-error': errors.phone}" placeholder="Номер телефона *">
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
             </div>
 
             <div class="col-md-12 mt-20 mt-xs-15">
-                <a href="order-overview.html" class="btn btn-color right-side">Оформить</a>
+                <a @click.prevent="onSubmit()" class="btn btn-color right-side">Оформить</a>
             </div>
         </div>
     </div>
@@ -213,7 +213,8 @@
                     delivery_id: null,
                     region_id: null,
                     city_id: null,
-                }
+                },
+                errors: []
             }
         },
         mounted() {
@@ -226,6 +227,32 @@
                 .catch((response) => this.setDeliveriesErrorResponse(response));
         },
         methods: {
+            onSubmit() {
+                this.isLoading = true;
+                axios.post("/api/v1/orders/create", this.order)
+                    .then(() => this.setOnSubmitSuccessResponse())
+                    .catch(({response}) => this.setOnSubmitErrorResponse(response));
+            },
+            setOnSubmitSuccessResponse() {
+                this.isLoading = false;
+
+                this.order.first_name = null;
+                this.order.last_name = null;
+                this.order.middle_name = null;
+                this.order.email = null;
+                this.order.phone = null;
+
+                swal({
+                    title: "Оформлен!",
+                    text: "Ваш заказ был оформлен мы свяжемся с Вами в ближайшее время :)",
+                    icon: "success",
+                });
+            },
+            setOnSubmitErrorResponse(response) {
+                this.isLoading = false;
+
+                this.errors = response.data;
+            },
             setRegionsSuccessResponse(data) {
                 this.isLoading = false;
                 this.regions = data.result;

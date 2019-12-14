@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Services\Checkout;
+use App\Services\OrderCheckout;
 use App\Http\Controllers\Controller;
 
 class CheckoutController extends Controller
 {
-    /** @var Checkout */
+    /** @var OrderCheckout */
     private $checkout;
 
-    public function __construct(Checkout $checkout)
+    public function __construct(OrderCheckout $checkout)
     {
         $this->checkout = $checkout;
     }

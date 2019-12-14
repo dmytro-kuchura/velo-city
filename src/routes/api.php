@@ -29,15 +29,19 @@ Route::middleware('authentication')->group(function () {
         });
 
         Route::prefix('regions')->group(function () {
-            Route::get('list', 'Api\RegionsController@list')->name('api.regions.list');
+            Route::get('list', 'Api\RegionController@list')->name('api.regions.list');
         });
 
         Route::prefix('cities')->group(function () {
-            Route::get('/{region}', 'Api\CitiesController@list')->name('api.cities.list');
+            Route::get('/{region}', 'Api\CityController@list')->name('api.cities.list');
         });
 
         Route::prefix('deliveries')->group(function () {
-            Route::get('list', 'Api\DeliveriesController@list')->name('api.deliveries.list');
+            Route::get('list', 'Api\DeliveryController@list')->name('api.deliveries.list');
+        });
+
+        Route::prefix('orders')->group(function () {
+            Route::post('create', 'Api\OrderController@create')->name('api.order.create');
         });
     });
 });

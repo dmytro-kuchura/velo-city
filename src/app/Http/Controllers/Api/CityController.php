@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Repositories\CitiesRepository;
 use App\Http\Controllers\Controller;use Illuminate\Http\Request;
 
-class CitiesController extends Controller
+class CityController extends Controller
 {
     /** @var CitiesRepository */
     private $citiesRepository;

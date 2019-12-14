@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Repositories\DeliveriesRepository;
 use App\Http\Controllers\Controller;
 
-class DeliveriesController extends Controller
+class DeliveryController extends Controller
 {
     /** @var DeliveriesRepository */
     private $deliveriesRepository;

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class CheckoutContactsDetailsRequest extends FormRequest
+class OrderCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,9 +21,14 @@ class CheckoutContactsDetailsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required',
+            'first_name' => 'string|required',
+            'last_name' => 'string|required',
+            'middle_name' => 'string|nullable',
+            'phone' => 'string|required',
             'email' => 'string|required|email',
-            'description' => 'string|required',
+            'delivery_id' => 'integer|required',
+            'region_id' => 'integer|required',
+            'city_id' => 'integer|required',
         ];
     }
 
