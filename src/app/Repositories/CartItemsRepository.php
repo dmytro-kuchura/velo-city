@@ -43,4 +43,9 @@ class CartItemsRepository
     {
         return $this->model::where('cart_id', $cart_id)->where('product_id', $id)->delete();
     }
+
+    public function destroyCartItems($cart_id)
+    {
+        return $this->model::where('cart_id', $cart_id)->delete();
+    }
 }

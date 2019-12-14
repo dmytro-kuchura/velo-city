@@ -19,8 +19,8 @@ class OrderController extends Controller
     {
         $this->orderCheckout->createOrder($orderCreateRequest->all());
 
-//        return $this->returnResponse([
-//            'success' => true
-//        ]);
+        return $this->returnResponse([
+            'success' => true
+        ]);
     }
 }

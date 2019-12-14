@@ -19,6 +19,7 @@ class OrdersRepository
         $order->email = $data['email'];
         $order->phone = $data['phone'];
         $order->delivery = $data['delivery_id'];
+        $order->payment = $data['payment_id'];
         $order->status = OrderStatus::STATUS_CREATED;
 
         $order->save();

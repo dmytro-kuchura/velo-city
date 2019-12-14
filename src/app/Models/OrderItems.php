@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property int $cart_id
+ * @property int $order_id
  * @property int $product_id
+ * @property int $cost
  * @property int $count
  * @property string $created_at
  * @property string $updated_at
@@ -19,7 +20,7 @@ class OrderItems extends Model
      *
      * @var string
      */
-    protected $table = 'cart_items';
+    protected $table = 'order_items';
 
     /**
      * Using timestamp
@@ -28,5 +29,5 @@ class OrderItems extends Model
      */
     public $timestamps = true;
 
-    protected $fillable = ['hash', 'cart_id', 'product_id', 'count', 'created_at', 'updated_at'];
+    protected $fillable = ['hash', 'order_id', 'product_id', 'count', 'cost', 'created_at', 'updated_at'];
 }

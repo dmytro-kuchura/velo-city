@@ -18,7 +18,7 @@ class CreateOrderItemsTable extends Migration
 
             $table->integer('order_id');
             $table->integer('product_id');
-            $table->decimal('cost', 16, 6);
+            $table->decimal('cost', 14, 2);
             $table->integer('count')->default(1);
 
             $table->timestamps();

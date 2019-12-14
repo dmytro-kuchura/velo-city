@@ -58,26 +58,20 @@
                         <div class="col-md-12">
                             <div class="input-box">
                                 <fieldset>
-                                    <select name="delivery" class="option-drop" id="delivery"
-                                            @change="selectDelivery($event)">
+                                    <select name="delivery" class="option-drop" @change="selectDelivery($event)">
                                         <option selected="" value="">Вариант доставки</option>
-                                        <option v-bind:value="delivery.id" v-for="delivery in deliveries">{{
-                                            delivery.name }}
-                                        </option>
+                                        <option v-bind:value="delivery.id" v-for="delivery in deliveries">{{ delivery.name }}</option>
                                     </select>
                                 </fieldset>
-                                <!--<span>Please include landmark.</span>-->
+                                <span v-show="order.delivery_id === 1">Херсон, улица Крымская 137, район Днепровского рынка</span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-box select-dropdown">
                                 <fieldset>
-                                    <select name="region" class="option-drop" id="region"
-                                            @change="selectRegion($event)">
+                                    <select name="region" class="option-drop"  @change="selectRegion($event)">
                                         <option selected="" value="">Выберите область</option>
-                                        <option v-bind:value="region.id" v-for="region in regions">{{ region.name_ru
-                                            }}
-                                        </option>
+                                        <option v-bind:value="region.id" v-for="region in regions">{{ region.name_ru }}</option>
                                     </select>
                                 </fieldset>
                             </div>
@@ -85,10 +79,9 @@
                         <div class="col-md-6">
                             <div class="input-box select-dropdown">
                                 <fieldset>
-                                    <select name="city" class="option-drop" id="city" @change="selectCity($event)">
+                                    <select name="city" class="option-drop" @change="selectCity($event)">
                                         <option value="">Выберите город</option>
-                                        <option v-bind:value="city.id" v-for="city in cities">{{ city.name_ru }}
-                                        </option>
+                                        <option v-bind:value="city.id" v-for="city in cities">{{ city.name_ru }}</option>
                                     </select>
                                 </fieldset>
                             </div>
@@ -104,8 +97,7 @@
                         <div class="col-md-12">
                             <div class="input-box">
                                 <fieldset>
-                                    <select name="payment" class="option-drop" id="payment"
-                                            @change="selectPayment($event)">
+                                    <select name="payment" class="option-drop" @change="selectPayment($event)">
                                         <option selected="" value="">Вариант оплаты</option>
                                         <option v-bind:value="payment.id" v-for="payment in payments">{{
                                             payment.name }}
@@ -314,18 +306,18 @@
                 console.log(response);
             },
             selectDelivery(event) {
-                this.order.delivery_id = event.target.value;
+                this.order.delivery_id = parseInt(event.target.value);
             },
             selectCity(event) {
-                this.order.city_id = event.target.value;
+                this.order.city_id = parseInt(event.target.value);
             },
             selectPayment(event) {
-                this.order.payment_id = event.target.value;
+                this.order.payment_id = parseInt(event.target.value);
             },
             selectRegion(event) {
                 let region = event.target.value;
 
-                this.order.region_id = region;
+                this.order.region_id = parseInt(region);
 
                 axios.get("api/v1/cities/" + region)
                     .then(({data}) => this.setCitiesSuccessResponse(data))
@@ -354,3 +346,13 @@
         }
     }
 </script>
+
+<style>
+    span .has-error {
+        color: #ff0000;
+    }
+
+    input .has-error {
+        border-color: #ff0000;
+    }
+</style>
