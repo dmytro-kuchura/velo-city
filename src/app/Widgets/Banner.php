@@ -2,6 +2,7 @@
 
 namespace App\Widgets;
 
+use App\Repositories\BannersRepository;
 use Arrilot\Widgets\AbstractWidget;
 
 class Banner extends AbstractWidget
@@ -17,11 +18,12 @@ class Banner extends AbstractWidget
      * Treat this method as a controller action.
      * Return view() or other content to display.
      */
-    public function run()
+    public function run(BannersRepository $bannersRepository)
     {
-        //
+        $banners = $bannersRepository->list();
 
         return view('widgets.banner', [
+            'banners' => $banners,
             'config' => $this->config,
         ]);
     }
