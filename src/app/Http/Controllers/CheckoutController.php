@@ -8,4 +8,9 @@ class CheckoutController extends Controller
     {
         return view('checkout');
     }
+
+    public function thank()
+    {
+        return view('thank');
+    }
 }
