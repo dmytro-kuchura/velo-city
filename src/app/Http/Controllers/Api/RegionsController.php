@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 class RegionsController extends Controller
 {
+    /** @var RegionsRepository */
     private $regionsRepository;
 
     public function __construct(RegionsRepository $regionsRepository)

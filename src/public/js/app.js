@@ -2398,14 +2398,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       isLoading: false,
       cart: this.$store.state,
-      delivery: [],
+      deliveries: [],
       cities: [],
-      regions: []
+      regions: [],
+      order: {
+        first_name: null,
+        last_name: null,
+        middle_name: null,
+        email: null,
+        phone: null,
+        delivery_id: null,
+        region_id: null,
+        city_id: null
+      }
     };
   },
   mounted: function mounted() {
@@ -2417,6 +2431,12 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (response) {
       return _this.setRegionsErrorResponse(response);
     });
+    axios.get("api/v1/deliveries/list").then(function (_ref2) {
+      var data = _ref2.data;
+      return _this.setDeliveriesSuccessResponse(data);
+    })["catch"](function (response) {
+      return _this.setDeliveriesErrorResponse(response);
+    });
   },
   methods: {
     setRegionsSuccessResponse: function setRegionsSuccessResponse(data) {
@@ -2425,13 +2445,29 @@ __webpack_require__.r(__webpack_exports__);
     },
     setRegionsErrorResponse: function setRegionsErrorResponse(response) {
       this.isLoading = false;
-      toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!");
+      console.log(response);
+    },
+    setDeliveriesSuccessResponse: function setDeliveriesSuccessResponse(data) {
+      this.isLoading = false;
+      this.deliveries = data.result;
+    },
+    setDeliveriesErrorResponse: function setDeliveriesErrorResponse(response) {
+      this.isLoading = false;
+      console.log(response);
+    },
+    selectDelivery: function selectDelivery(event) {
+      this.order.delivery_id = event.target.value;
+    },
+    selectCity: function selectCity(event) {
+      this.order.city_id = event.target.value;
     },
     selectRegion: function selectRegion(event) {
       var _this2 = this;
 
-      axios.get("api/v1/cities/" + event.target.value).then(function (_ref2) {
-        var data = _ref2.data;
+      var region = event.target.value;
+      this.order.region_id = region;
+      axios.get("api/v1/cities/" + region).then(function (_ref3) {
+        var data = _ref3.data;
         return _this2.setCitiesSuccessResponse(data);
       })["catch"](function (response) {
         return _this2.setCitiesErrorResponse(response);
@@ -2443,7 +2479,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     setCitiesErrorResponse: function setCitiesErrorResponse(response) {
       this.isLoading = false;
-      toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!");
+      console.log(response);
     },
     removeFromCart: function removeFromCart(id) {
       var _this3 = this;
@@ -2458,6 +2494,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.commit('loadCart');
     },
     deleteCartListErrorResponse: function deleteCartListErrorResponse(response) {
+      this.isLoading = false;
       console.log(response);
     }
   }
@@ -38411,7 +38448,43 @@ var render = function() {
           _c("div", { staticClass: "row" }, [
             _vm._m(2),
             _vm._v(" "),
-            _vm._m(3),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "input-box" }, [
+                _c("fieldset", [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "option-drop",
+                      attrs: { name: "delivery", id: "delivery" },
+                      on: {
+                        change: function($event) {
+                          return _vm.selectDelivery($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { selected: "", value: "" } }, [
+                        _vm._v("Вариант доставки")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.deliveries, function(delivery) {
+                        return _c(
+                          "option",
+                          { domProps: { value: delivery.id } },
+                          [
+                            _vm._v(
+                              _vm._s(delivery.name) +
+                                "\n                                    "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-6" }, [
               _c("div", { staticClass: "input-box select-dropdown" }, [
@@ -38458,7 +38531,12 @@ var render = function() {
                     "select",
                     {
                       staticClass: "option-drop",
-                      attrs: { name: "city", id: "city" }
+                      attrs: { name: "city", id: "city" },
+                      on: {
+                        change: function($event) {
+                          return _vm.selectCity($event)
+                        }
+                      }
                     },
                     [
                       _c("option", { attrs: { value: "" } }, [
@@ -38484,12 +38562,12 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-xl-8 col-lg-7 mb-sm-30" }, [
-        _vm._m(4),
+        _vm._m(3),
         _vm._v(" "),
         _c("div", { staticClass: "cart-item-table commun-table mb-30" }, [
           _c("div", { staticClass: "table-responsive" }, [
             _c("table", { staticClass: "table" }, [
-              _vm._m(5),
+              _vm._m(4),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -38497,7 +38575,7 @@ var render = function() {
                   return _c("tr", [
                     _c("td", [
                       _c("a", { attrs: { href: item.alias } }, [
-                        _vm._m(6, true)
+                        _vm._m(5, true)
                       ])
                     ]),
                     _vm._v(" "),
@@ -38575,7 +38653,7 @@ var render = function() {
           [
             _c("div", { staticClass: "table-responsive" }, [
               _c("table", { staticClass: "table" }, [
-                _vm._m(7),
+                _vm._m(6),
                 _vm._v(" "),
                 _c("tbody", [
                   _c("tr", [
@@ -38590,10 +38668,10 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(8),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("tr", [
-                    _vm._m(9),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("td", [
                       _c("div", { staticClass: "price-box" }, [
@@ -38610,7 +38688,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(10)
+      _vm._m(9)
     ])
   ])
 }
@@ -38693,41 +38771,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("hr")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "input-box" }, [
-        _c("fieldset", [
-          _c(
-            "select",
-            {
-              staticClass: "option-drop",
-              attrs: { name: "delivery", id: "delivery" }
-            },
-            [
-              _c("option", { attrs: { selected: "", value: "" } }, [
-                _vm._v("Вариант доставки")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "AX" } }, [_vm._v("Самовывоз")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "AX" } }, [
-                _vm._v("Новой Почтой")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "AF" } }, [
-                _vm._v("Курьером (Новой Почтой)")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "AF" } }, [_vm._v("Justin")])
-            ]
-          )
-        ])
-      ])
     ])
   },
   function() {

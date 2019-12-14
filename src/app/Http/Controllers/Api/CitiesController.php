@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Repositories\RegionsRepository;
-use App\Http\Controllers\Controller;
+use App\Repositories\CitiesRepository;
+use App\Http\Controllers\Controller;use Illuminate\Http\Request;
 
 class CitiesController extends Controller
 {
-    private $regionsRepository;
+    /** @var CitiesRepository */
+    private $citiesRepository;
 
-    public function __construct(RegionsRepository $regionsRepository)
+    public function __construct(CitiesRepository $regionsRepository)
     {
-        $this->regionsRepository = $regionsRepository;
+        $this->citiesRepository = $regionsRepository;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $result = $this->regionsRepository->list();
+        $result = $this->citiesRepository->list($request->route('region'));
 
         return $this->returnResponse([
             'success' => true,

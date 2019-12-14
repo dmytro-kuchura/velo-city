@@ -7,9 +7,7 @@ use App\Http\Controllers\Controller;
 
 class CheckoutController extends Controller
 {
-    /**
-     * @var Checkout
-     */
+    /** @var Checkout */
     private $checkout;
 
     public function __construct(Checkout $checkout)

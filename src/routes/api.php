@@ -35,5 +35,9 @@ Route::middleware('authentication')->group(function () {
         Route::prefix('cities')->group(function () {
             Route::get('/{region}', 'Api\CitiesController@list')->name('api.cities.list');
         });
+
+        Route::prefix('deliveries')->group(function () {
+            Route::get('list', 'Api\DeliveriesController@list')->name('api.deliveries.list');
+        });
     });
 });

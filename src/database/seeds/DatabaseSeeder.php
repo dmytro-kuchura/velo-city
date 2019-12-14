@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
 //         $this->call(ProductsTableSeeder::class);
 //         $this->call(CatalogTableSeeder::class);
-         $this->call(UkraineRegionsTableSeeder::class);
-         $this->call(UkraineCitiesTableSeeder::class);
+//         $this->call(UkraineRegionsTableSeeder::class);
+//         $this->call(UkraineCitiesTableSeeder::class);
+//         $this->call(DeliveriesTableSeeder::class);
     }
 }

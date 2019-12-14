@@ -53,21 +53,22 @@
                         <div class="col-md-12">
                             <div class="input-box">
                                 <fieldset>
-                                    <select name="delivery" class="option-drop" id="delivery">
+                                    <select name="delivery" class="option-drop" id="delivery"
+                                            @change="selectDelivery($event)">
                                         <option selected="" value="">Вариант доставки</option>
-                                        <option value="AX">Самовывоз</option>
-                                        <option value="AX">Новой Почтой</option>
-                                        <option value="AF">Курьером (Новой Почтой)</option>
-                                        <option value="AF">Justin</option>
+                                        <option v-bind:value="delivery.id" v-for="delivery in deliveries">{{
+                                            delivery.name }}
+                                        </option>
                                     </select>
                                 </fieldset>
-                                <!--                                <span>Please include landmark.</span>-->
+                                <!--<span>Please include landmark.</span>-->
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-box select-dropdown">
                                 <fieldset>
-                                    <select name="region" class="option-drop" id="region" @change="selectRegion($event)" >
+                                    <select name="region" class="option-drop" id="region"
+                                            @change="selectRegion($event)">
                                         <option selected="" value="">Выберите область</option>
                                         <option v-bind:value="region.id" v-for="region in regions">{{ region.name_ru
                                             }}
@@ -79,7 +80,7 @@
                         <div class="col-md-6">
                             <div class="input-box select-dropdown">
                                 <fieldset>
-                                    <select name="city" class="option-drop" id="city">
+                                    <select name="city" class="option-drop" id="city" @change="selectCity($event)">
                                         <option value="">Выберите город</option>
                                         <option v-bind:value="city.id" v-for="city in cities">{{ city.name_ru }}
                                         </option>
@@ -124,7 +125,8 @@
                                         <div class="product-info-stock-sku m-0">
                                             <div>
                                                 <label>Цена: </label>
-                                                <div class="price-box"><span class="info-deta price">₴ {{ item.price }}</span>
+                                                <div class="price-box"><span
+                                                        class="info-deta price">₴ {{ item.price }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -141,7 +143,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <i class="fa fa-trash cart-remove-item" @click.prevent="removeFromCart(item.id)" title="Удалить"></i>
+                                    <i class="fa fa-trash cart-remove-item" @click.prevent="removeFromCart(item.id)"
+                                       title="Удалить"></i>
                                 </td>
                             </tr>
 
@@ -174,7 +177,8 @@
                             <tr>
                                 <td><b>К оплате</b></td>
                                 <td>
-                                    <div class="price-box"><span class="price"><b>₴ {{ cart.totalPrice }}</b></span></div>
+                                    <div class="price-box"><span class="price"><b>₴ {{ cart.totalPrice }}</b></span>
+                                    </div>
                                 </td>
                             </tr>
                             </tbody>
@@ -197,15 +201,29 @@
             return {
                 isLoading: false,
                 cart: this.$store.state,
-                delivery: [],
+                deliveries: [],
                 cities: [],
                 regions: [],
+                order: {
+                    first_name: null,
+                    last_name: null,
+                    middle_name: null,
+                    email: null,
+                    phone: null,
+                    delivery_id: null,
+                    region_id: null,
+                    city_id: null,
+                }
             }
         },
         mounted() {
             axios.get("api/v1/regions/list")
                 .then(({data}) => this.setRegionsSuccessResponse(data))
                 .catch((response) => this.setRegionsErrorResponse(response));
+
+            axios.get("api/v1/deliveries/list")
+                .then(({data}) => this.setDeliveriesSuccessResponse(data))
+                .catch((response) => this.setDeliveriesErrorResponse(response));
         },
         methods: {
             setRegionsSuccessResponse(data) {
@@ -214,10 +232,28 @@
             },
             setRegionsErrorResponse(response) {
                 this.isLoading = false;
-                toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!")
+                console.log(response);
+            },
+            setDeliveriesSuccessResponse(data) {
+                this.isLoading = false;
+                this.deliveries = data.result;
+            },
+            setDeliveriesErrorResponse(response) {
+                this.isLoading = false;
+                console.log(response);
+            },
+            selectDelivery(event) {
+                this.order.delivery_id = event.target.value;
+            },
+            selectCity(event) {
+                this.order.city_id = event.target.value;
             },
             selectRegion(event) {
-                axios.get("api/v1/cities/" + event.target.value)
+                let region = event.target.value;
+
+                this.order.region_id = region;
+
+                axios.get("api/v1/cities/" + region)
                     .then(({data}) => this.setCitiesSuccessResponse(data))
                     .catch((response) => this.setCitiesErrorResponse(response));
             },
@@ -227,7 +263,7 @@
             },
             setCitiesErrorResponse(response) {
                 this.isLoading = false;
-                toastr.error("Error, maybe you forget Migrate and Seeding database?!?", "Inconceivable!")
+                console.log(response);
             },
             removeFromCart(id) {
                 axios.delete("/api/v1/cart/delete/" + id)
@@ -238,8 +274,9 @@
                 this.$store.commit('loadCart');
             },
             deleteCartListErrorResponse(response) {
+                this.isLoading = false;
                 console.log(response);
-            }
+            },
         }
     }
 </script>

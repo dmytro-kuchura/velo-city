@@ -8,9 +8,7 @@ use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
-    /**
-     * @var ShoppingCart
-     */
+    /** @var ShoppingCart */
     private $shoppingCart;
 
     public function __construct(ShoppingCart $shoppingCart)
