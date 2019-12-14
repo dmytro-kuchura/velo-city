@@ -9,7 +9,7 @@ class OrdersRepository
 {
     private $model = Orders::class;
 
-    public function create(array $data)
+    public function create(array $data): Orders
     {
         /** @var Orders $order */
         $order = new $this->model;
@@ -22,5 +22,7 @@ class OrdersRepository
         $order->status = OrderStatus::STATUS_CREATED;
 
         $order->save();
+
+        return $order;
     }
 }

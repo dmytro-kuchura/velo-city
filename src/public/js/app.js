@@ -2424,6 +2424,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2432,6 +2436,7 @@ __webpack_require__.r(__webpack_exports__);
       deliveries: [],
       cities: [],
       regions: [],
+      payments: [],
       order: {
         first_name: null,
         last_name: null,
@@ -2440,7 +2445,8 @@ __webpack_require__.r(__webpack_exports__);
         phone: null,
         delivery_id: null,
         region_id: null,
-        city_id: null
+        city_id: null,
+        payment_id: null
       },
       errors: []
     };
@@ -2460,6 +2466,12 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (response) {
       return _this.setDeliveriesErrorResponse(response);
     });
+    axios.get("api/v1/payments/list").then(function (_ref3) {
+      var data = _ref3.data;
+      return _this.setPaymentsSuccessResponse(data);
+    })["catch"](function (response) {
+      return _this.setPaymentsErrorResponse(response);
+    });
   },
   methods: {
     onSubmit: function onSubmit() {
@@ -2468,8 +2480,8 @@ __webpack_require__.r(__webpack_exports__);
       this.isLoading = true;
       axios.post("/api/v1/orders/create", this.order).then(function () {
         return _this2.setOnSubmitSuccessResponse();
-      })["catch"](function (_ref3) {
-        var response = _ref3.response;
+      })["catch"](function (_ref4) {
+        var response = _ref4.response;
         return _this2.setOnSubmitErrorResponse(response);
       });
     },
@@ -2480,6 +2492,10 @@ __webpack_require__.r(__webpack_exports__);
       this.order.middle_name = null;
       this.order.email = null;
       this.order.phone = null;
+      this.order.delivery_id = null;
+      this.order.region_id = null;
+      this.order.city_id = null;
+      this.order.payment_id = null;
       swal({
         title: "Оформлен!",
         text: "Ваш заказ был оформлен мы свяжемся с Вами в ближайшее время :)",
@@ -2498,6 +2514,14 @@ __webpack_require__.r(__webpack_exports__);
       this.isLoading = false;
       console.log(response);
     },
+    setPaymentsSuccessResponse: function setPaymentsSuccessResponse(data) {
+      this.isLoading = false;
+      this.payments = data.result;
+    },
+    setPaymentsErrorResponse: function setPaymentsErrorResponse(response) {
+      this.isLoading = false;
+      console.log(response);
+    },
     setDeliveriesSuccessResponse: function setDeliveriesSuccessResponse(data) {
       this.isLoading = false;
       this.deliveries = data.result;
@@ -2512,13 +2536,16 @@ __webpack_require__.r(__webpack_exports__);
     selectCity: function selectCity(event) {
       this.order.city_id = event.target.value;
     },
+    selectPayment: function selectPayment(event) {
+      this.order.payment_id = event.target.value;
+    },
     selectRegion: function selectRegion(event) {
       var _this3 = this;
 
       var region = event.target.value;
       this.order.region_id = region;
-      axios.get("api/v1/cities/" + region).then(function (_ref4) {
-        var data = _ref4.data;
+      axios.get("api/v1/cities/" + region).then(function (_ref5) {
+        var data = _ref5.data;
         return _this3.setCitiesSuccessResponse(data);
       })["catch"](function (response) {
         return _this3.setCitiesErrorResponse(response);
@@ -38772,7 +38799,47 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(3)
+          _c("div", { staticClass: "row" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "input-box" }, [
+                _c("fieldset", [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "option-drop",
+                      attrs: { name: "payment", id: "payment" },
+                      on: {
+                        change: function($event) {
+                          return _vm.selectPayment($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { selected: "", value: "" } }, [
+                        _vm._v("Вариант оплаты")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.payments, function(payment) {
+                        return _c(
+                          "option",
+                          { domProps: { value: payment.id } },
+                          [
+                            _vm._v(
+                              _vm._s(payment.name) +
+                                "\n                                    "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
+            ])
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -38962,33 +39029,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 mb-20" }, [
-        _c("div", { staticClass: "heading-part" }, [
-          _c("h3", { staticClass: "sub-heading" }, [_vm._v("Оплата")])
-        ]),
-        _vm._v(" "),
-        _c("hr")
+    return _c("div", { staticClass: "col-12 mb-20" }, [
+      _c("div", { staticClass: "heading-part" }, [
+        _c("h3", { staticClass: "sub-heading" }, [_vm._v("Оплата")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "input-box" }, [
-          _c("fieldset", [
-            _c(
-              "select",
-              {
-                staticClass: "option-drop",
-                attrs: { name: "payment", id: "payment" }
-              },
-              [
-                _c("option", { attrs: { selected: "", value: "" } }, [
-                  _vm._v("Вариант оплаты")
-                ])
-              ]
-            )
-          ])
-        ])
-      ])
+      _c("hr")
     ])
   },
   function() {

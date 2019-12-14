@@ -40,6 +40,10 @@ Route::middleware('authentication')->group(function () {
             Route::get('list', 'Api\DeliveryController@list')->name('api.deliveries.list');
         });
 
+        Route::prefix('payments')->group(function () {
+            Route::get('list', 'Api\PaymentController@list')->name('api.payments.list');
+        });
+
         Route::prefix('orders')->group(function () {
             Route::post('create', 'Api\OrderController@create')->name('api.order.create');
         });

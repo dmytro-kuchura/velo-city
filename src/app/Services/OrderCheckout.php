@@ -2,11 +2,15 @@
 
 namespace App\Services;
 
+use App\Models\Cart;
+use App\Models\CartItems;
+use App\Models\Orders;
 use App\Repositories\CartItemsRepository;
 use App\Repositories\CartRepository;
 use App\Repositories\OrderItemsRepository;
 use App\Repositories\OrdersRepository;
 use App\Repositories\ProductsRepository;
+use Illuminate\Support\Facades\Cookie;
 
 class OrderCheckout
 {
@@ -25,6 +29,9 @@ class OrderCheckout
     /**  @var ProductsRepository */
     private $productsRepository;
 
+    /** @var string */
+    private $cookie;
+
     public function __construct(
         CartRepository $cartRepository,
         CartItemsRepository $cartItemsRepository,
@@ -38,10 +45,21 @@ class OrderCheckout
         $this->ordersRepository = $ordersRepository;
         $this->orderItemsRepository = $orderItemsRepository;
         $this->productsRepository = $productsRepository;
+        $this->cookie = Cookie::get('cart');
     }
 
     public function createOrder(array $data)
     {
-        $this->ordersRepository->create($data);
+        /* @var Cart $cart */
+        $cart = $this->cartRepository->find($this->cookie);
+
+        if ($cart) {
+            /** @var CartItems $items */
+            $items = $this->cartItemsRepository->find($cart->id);
+        }
+
+        /** @var Orders $order */
+        $order = $this->ordersRepository->create($data);
+        $this->orderItemsRepository->create($items, $order->id);
     }
 }

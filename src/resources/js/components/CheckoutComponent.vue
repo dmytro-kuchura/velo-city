@@ -104,8 +104,12 @@
                         <div class="col-md-12">
                             <div class="input-box">
                                 <fieldset>
-                                    <select name="payment" class="option-drop" id="payment">
+                                    <select name="payment" class="option-drop" id="payment"
+                                            @change="selectPayment($event)">
                                         <option selected="" value="">Вариант оплаты</option>
+                                        <option v-bind:value="payment.id" v-for="payment in payments">{{
+                                            payment.name }}
+                                        </option>
                                     </select>
                                 </fieldset>
                             </div>
@@ -226,6 +230,7 @@
                 deliveries: [],
                 cities: [],
                 regions: [],
+                payments: [],
                 order: {
                     first_name: null,
                     last_name: null,
@@ -235,6 +240,7 @@
                     delivery_id: null,
                     region_id: null,
                     city_id: null,
+                    payment_id: null,
                 },
                 errors: []
             }
@@ -247,6 +253,10 @@
             axios.get("api/v1/deliveries/list")
                 .then(({data}) => this.setDeliveriesSuccessResponse(data))
                 .catch((response) => this.setDeliveriesErrorResponse(response));
+
+            axios.get("api/v1/payments/list")
+                .then(({data}) => this.setPaymentsSuccessResponse(data))
+                .catch((response) => this.setPaymentsErrorResponse(response));
         },
         methods: {
             onSubmit() {
@@ -263,6 +273,10 @@
                 this.order.middle_name = null;
                 this.order.email = null;
                 this.order.phone = null;
+                this.order.delivery_id = null;
+                this.order.region_id = null;
+                this.order.city_id = null;
+                this.order.payment_id = null;
 
                 swal({
                     title: "Оформлен!",
@@ -283,6 +297,14 @@
                 this.isLoading = false;
                 console.log(response);
             },
+            setPaymentsSuccessResponse(data) {
+                this.isLoading = false;
+                this.payments = data.result;
+            },
+            setPaymentsErrorResponse(response) {
+                this.isLoading = false;
+                console.log(response);
+            },
             setDeliveriesSuccessResponse(data) {
                 this.isLoading = false;
                 this.deliveries = data.result;
@@ -296,6 +318,9 @@
             },
             selectCity(event) {
                 this.order.city_id = event.target.value;
+            },
+            selectPayment(event) {
+                this.order.payment_id = event.target.value;
             },
             selectRegion(event) {
                 let region = event.target.value;
