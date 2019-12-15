@@ -13,6 +13,10 @@
 
 Route::get('sitemap.xml', 'SiteController@sitemap')->name('sitemap.xml');
 
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('/register', 'Auth\RegisterController@register')->name('register');
+
 //$routes = function() {
     Route::get('/', 'SiteController@index')->name('home');
     Route::get('/about', 'SiteController@about')->name('about');

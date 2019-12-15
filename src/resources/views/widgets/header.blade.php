@@ -71,9 +71,8 @@
                                         </li>
                                         <li><span class="dropdown-title">Language :</span>
                                             <ul>
-                                                <li><a class="active" href="javascript:void(0)">English</a></li>
-                                                <li><a href="javascript:void(0)">French</a></li>
-                                                <li><a href="javascript:void(0)">German</a></li>
+                                                <li><a class="active" href="javascript:void(0)">Русский</a></li>
+                                                <li><a href="javascript:void(0)">Украинский</a></li>
                                             </ul>
                                         </li>
                                     </ul>

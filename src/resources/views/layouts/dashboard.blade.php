@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Elisyam - Login</title>
+    <title>VeloCity | Dashboard</title>
     <meta name="description" content="Elisyam is a Web App and Admin Dashboard Template built with Bootstrap 4">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Google Fonts -->
@@ -22,11 +22,13 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
     <!-- Stylesheet -->
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/dashboard.css') }}"/>
+    <!-- csrf-token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="bg-white">
 <div id="preloader">
     <div class="canvas">
-        <img src="assets/img/logo.png" alt="logo" class="loader-logo">
+        <img src="/images/logo-new.png" alt="logo" class="loader-logo">
         <div class="spinner"></div>
     </div>
 </div>
