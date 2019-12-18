@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.auth')
 
 @section('content')
     <div class="col-xl-3 col-lg-5 col-md-5 col-sm-12 col-12 no-padding">
@@ -19,7 +19,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-xl-9 col-lg-7 col-md-7 col-sm-12 col-12 my-auto no-padding">
         <div class="authentication-form-2 mx-auto">
             <div class="tab-content" id="animate-tab-content">
