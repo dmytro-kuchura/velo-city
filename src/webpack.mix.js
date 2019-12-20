@@ -14,6 +14,8 @@ const mix = require('laravel-mix');
 mix.js('resources/public/js/app.js', 'public/js').sass('resources/public/sass/app.scss', 'public/css');
 mix.js('resources/dashboard/js/auth.js', 'public/js').sass('resources/dashboard/sass/auth.scss', 'public/css');
 
+mix.js('resources/dashboard/js/dashboard-custom.js', 'public/js');
+
 mix.scripts([
     'resources/dashboard/js/components/jquery.min.js',
     'resources/dashboard/js/components/nicescroll.js',
