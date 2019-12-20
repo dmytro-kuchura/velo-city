@@ -14,3 +14,7 @@
 Route::get('/', 'Dashboard\MainController@dashboard')->name('dashboard');
 Route::get('/auth', 'Dashboard\MainController@auth')->name('dashboard.auth');
 
+Route::prefix('order')->group(function () {
+    Route::get('/{order}', 'Dashboard\OrderController@edit')->name('dashboard.order.edit');
+});
+

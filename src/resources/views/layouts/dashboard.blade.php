@@ -32,7 +32,7 @@
     </div>
 </div>
 <!-- End Preloader -->
-<div class="page">
+<div class="page" id="dashboard">
     <!-- Begin Header -->
     <header class="header">
         <nav class="navbar fixed-top">
@@ -320,6 +320,7 @@
     <!-- End Page Content -->
 </div>
 
+<script src="{{ asset('/js/custom.js') }}"></script>
 <script src="{{ asset('/js/dashboard.js') }}"></script>
 </body>
 </html>
