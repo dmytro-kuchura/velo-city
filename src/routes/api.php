@@ -46,6 +46,7 @@ Route::middleware('authentication')->group(function () {
 
         Route::prefix('orders')->group(function () {
             Route::post('create', 'Api\OrderController@create')->name('api.order.create');
+            Route::post('list', 'Api\OrderController@list')->name('api.order.list');
         });
     });
 });

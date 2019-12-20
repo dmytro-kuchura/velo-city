@@ -9,6 +9,10 @@ class OrdersRepository
 {
     private $model = Orders::class;
 
+    public function list(int $limit) {
+        return $this->model::orderBy('id', 'desc')->limit($limit)->get();
+    }
+
     public function create(array $data): Orders
     {
         /** @var Orders $order */
