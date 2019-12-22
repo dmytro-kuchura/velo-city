@@ -26,6 +26,12 @@ class BannersController extends Controller
 
     public function show($id)
     {
+        $result = $this->repository->find($id);
+
+        return $this->returnResponse([
+            'success' => true,
+            'result' => $result
+        ]);
     }
 
     public function store($data)

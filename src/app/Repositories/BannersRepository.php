@@ -18,7 +18,7 @@ class BannersRepository
     }
 
     public function find($id) {
-        return $this->model::where('id', $id)->where('status', BannerStatus::STATUS_ACTIVE)->first();
+        return $this->model::where('id', $id)->first();
     }
 
     public function store($id, $data) {

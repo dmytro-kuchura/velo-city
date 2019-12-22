@@ -8,25 +8,25 @@
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Название</label>
                     <div class="col-lg-5">
-                        <input type="text" class="form-control" placeholder="Enter your name">
+                        <input type="text" class="form-control" placeholder="Введите навзвание" v-model="banner.title">
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Ссылка *</label>
                     <div class="col-lg-5">
-                        <input type="url" class="form-control">
+                        <input type="url" class="form-control" v-model="banner.link">
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Слоган *</label>
                     <div class="col-lg-5">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" v-model="banner.slogan">
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Описание *</label>
                     <div class="col-lg-5">
-                        <textarea class="form-control" placeholder="Type your message here ..." required></textarea>
+                        <textarea class="form-control" placeholder="Type your message here ..." required v-model="banner.description"></textarea>
                         <div class="invalid-feedback">
                             Please enter a custom message
                         </div>
@@ -49,7 +49,7 @@
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Статус *</label>
                     <div class="col-lg-2">
                         <div class="custom-control custom-radio styled-radio mb-3">
-                            <input class="custom-control-input" type="radio" name="options" id="opt-01" required>
+                            <input class="custom-control-input" type="radio" value="1" id="opt-01" v-model="banner.status" required>
                             <label class="custom-control-descfeedback" for="opt-01">Опубликовано</label>
                             <div class="invalid-feedback">
                                 Toggle this custom radio
@@ -58,7 +58,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="custom-control custom-radio styled-radio mb-3">
-                            <input class="custom-control-input" type="radio" name="options" id="opt-02" required>
+                            <input class="custom-control-input" type="radio" value="0" id="opt-02" v-model="banner.status" required>
                             <label class="custom-control-descfeedback" for="opt-02">Не опубликовано</label>
                             <div class="invalid-feedback">
                                 Or toggle this other custom radio
@@ -67,12 +67,12 @@
                     </div>
                 </div>
 
-                <vue-dropzone :options="dropzoneOptions" :useCustomSlot=true>
-                    <div class="dropzone-custom-content">
-                        <h3 class="dropzone-custom-title">Drag and drop to upload content!</h3>
-                        <div class="subtitle">...or click to select a file from your computer</div>
-                    </div>
-                </vue-dropzone>
+                <!--                <vue-dropzone :options="dropzoneOptions" :useCustomSlot=true>-->
+                <!--                    <div class="dropzone-custom-content">-->
+                <!--                        <h3 class="dropzone-custom-title">Drag and drop to upload content!</h3>-->
+                <!--                        <div class="subtitle">...or click to select a file from your computer</div>-->
+                <!--                    </div>-->
+                <!--                </vue-dropzone>-->
 
                 <div class="text-right">
                     <button class="btn btn-gradient-01" type="submit">Обновить</button>
@@ -87,7 +87,17 @@
     export default {
         data() {
             return {
-                banner: {},
+                banner: {
+                    created_at: null,
+                    description: null,
+                    id: null,
+                    image: null,
+                    link: null,
+                    slogan: null,
+                    status: null,
+                    title: null,
+                    updated_at: null,
+                },
                 endpoint: '/api/v1/banners?page=',
                 dropzoneOptions: {
                     url: 'https://httpbin.org/post',
@@ -97,14 +107,21 @@
             };
         },
         mounted() {
-            axios.get("/api/v1/banners")
-                .then(({data}) => this.getBannersListSuccessResponse(data))
-                .catch((response) => this.getBannersListErrorResponse(response));
+            let str = window.location.pathname;
+            let n = str.lastIndexOf('/');
+            let id = str.substring(n + 1);
+
+            axios.get("/api/v1/banners/" + id)
+                .then(({data}) => this.getBannersEditSuccessResponse(data))
+                .catch((response) => this.getBannersEditErrorResponse(response));
         },
         methods: {
-            onUpload() {
-
-            }
+            getBannersEditSuccessResponse(data) {
+                this.banner = data.result;
+            },
+            getBannersEditErrorResponse(response) {
+                console.log(response);
+            },
         }
     }
 </script>

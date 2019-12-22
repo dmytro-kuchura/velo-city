@@ -2554,7 +2554,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      banner: {},
+      banner: {
+        created_at: null,
+        description: null,
+        id: null,
+        image: null,
+        link: null,
+        slogan: null,
+        status: null,
+        title: null,
+        updated_at: null
+      },
       endpoint: '/api/v1/banners?page=',
       dropzoneOptions: {
         url: 'https://httpbin.org/post',
@@ -2566,15 +2576,23 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/api/v1/banners").then(function (_ref) {
+    var str = window.location.pathname;
+    var n = str.lastIndexOf('/');
+    var id = str.substring(n + 1);
+    axios.get("/api/v1/banners/" + id).then(function (_ref) {
       var data = _ref.data;
-      return _this.getBannersListSuccessResponse(data);
+      return _this.getBannersEditSuccessResponse(data);
     })["catch"](function (response) {
-      return _this.getBannersListErrorResponse(response);
+      return _this.getBannersEditErrorResponse(response);
     });
   },
   methods: {
-    onUpload: function onUpload() {}
+    getBannersEditSuccessResponse: function getBannersEditSuccessResponse(data) {
+      this.banner = data.result;
+    },
+    getBannersEditErrorResponse: function getBannersEditErrorResponse(response) {
+      console.log(response);
+    }
   }
 });
 
@@ -22533,41 +22551,288 @@ var render = function() {
         "form",
         { staticClass: "needs-validation", attrs: { novalidate: "" } },
         [
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _vm._m(4),
-          _vm._v(" "),
-          _c("div", { staticClass: "em-separator separator-dashed" }),
-          _vm._v(" "),
-          _vm._m(5),
-          _vm._v(" "),
-          _vm._m(6),
-          _vm._v(" "),
-          _vm._m(7),
+          _c(
+            "div",
+            { staticClass: "form-group row d-flex align-items-center mb-5" },
+            [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                },
+                [_vm._v("Название")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-5" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.banner.title,
+                      expression: "banner.title"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "Введите навзвание" },
+                  domProps: { value: _vm.banner.title },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.banner, "title", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
-            "vue-dropzone",
-            { attrs: { options: _vm.dropzoneOptions, useCustomSlot: true } },
+            "div",
+            { staticClass: "form-group row d-flex align-items-center mb-5" },
             [
-              _c("div", { staticClass: "dropzone-custom-content" }, [
-                _c("h3", { staticClass: "dropzone-custom-title" }, [
-                  _vm._v("Drag and drop to upload content!")
-                ]),
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                },
+                [_vm._v("Ссылка *")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-5" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.banner.link,
+                      expression: "banner.link"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "url" },
+                  domProps: { value: _vm.banner.link },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.banner, "link", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group row d-flex align-items-center mb-5" },
+            [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                },
+                [_vm._v("Слоган *")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-5" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.banner.slogan,
+                      expression: "banner.slogan"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.banner.slogan },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.banner, "slogan", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group row d-flex align-items-center mb-5" },
+            [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                },
+                [_vm._v("Описание *")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-5" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.banner.description,
+                      expression: "banner.description"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    placeholder: "Type your message here ...",
+                    required: ""
+                  },
+                  domProps: { value: _vm.banner.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.banner, "description", $event.target.value)
+                    }
+                  }
+                }),
                 _vm._v(" "),
-                _c("div", { staticClass: "subtitle" }, [
-                  _vm._v("...or click to select a file from your computer")
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                        Please enter a custom message\n                    "
+                  )
                 ])
               ])
             ]
           ),
           _vm._v(" "),
-          _vm._m(8)
-        ],
-        1
+          _c("div", { staticClass: "em-separator separator-dashed" }),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row mb-5" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "col-lg-4 form-control-label d-flex justify-content-lg-end"
+              },
+              [_vm._v("Статус *")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "custom-control custom-radio styled-radio mb-3"
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.banner.status,
+                        expression: "banner.status"
+                      }
+                    ],
+                    staticClass: "custom-control-input",
+                    attrs: {
+                      type: "radio",
+                      value: "1",
+                      id: "opt-01",
+                      required: ""
+                    },
+                    domProps: { checked: _vm._q(_vm.banner.status, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.banner, "status", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-control-descfeedback",
+                      attrs: { for: "opt-01" }
+                    },
+                    [_vm._v("Опубликовано")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                            Toggle this custom radio\n                        "
+                    )
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "custom-control custom-radio styled-radio mb-3"
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.banner.status,
+                        expression: "banner.status"
+                      }
+                    ],
+                    staticClass: "custom-control-input",
+                    attrs: {
+                      type: "radio",
+                      value: "0",
+                      id: "opt-02",
+                      required: ""
+                    },
+                    domProps: { checked: _vm._q(_vm.banner.status, "0") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.banner, "status", "0")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-control-descfeedback",
+                      attrs: { for: "opt-02" }
+                    },
+                    [_vm._v("Не опубликовано")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                            Or toggle this other custom radio\n                        "
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
+        ]
       )
     ])
   ])
@@ -22584,110 +22849,6 @@ var staticRenderFns = [
           "widget-header bordered no-actions d-flex align-items-center"
       },
       [_c("h4", [_vm._v("Default Form")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "form-group row d-flex align-items-center mb-5" },
-      [
-        _c(
-          "label",
-          {
-            staticClass:
-              "col-lg-4 form-control-label d-flex justify-content-lg-end"
-          },
-          [_vm._v("Название")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-5" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { type: "text", placeholder: "Enter your name" }
-          })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "form-group row d-flex align-items-center mb-5" },
-      [
-        _c(
-          "label",
-          {
-            staticClass:
-              "col-lg-4 form-control-label d-flex justify-content-lg-end"
-          },
-          [_vm._v("Ссылка *")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-5" }, [
-          _c("input", { staticClass: "form-control", attrs: { type: "url" } })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "form-group row d-flex align-items-center mb-5" },
-      [
-        _c(
-          "label",
-          {
-            staticClass:
-              "col-lg-4 form-control-label d-flex justify-content-lg-end"
-          },
-          [_vm._v("Слоган *")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-5" }, [
-          _c("input", { staticClass: "form-control", attrs: { type: "text" } })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "form-group row d-flex align-items-center mb-5" },
-      [
-        _c(
-          "label",
-          {
-            staticClass:
-              "col-lg-4 form-control-label d-flex justify-content-lg-end"
-          },
-          [_vm._v("Описание *")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-5" }, [
-          _c("textarea", {
-            staticClass: "form-control",
-            attrs: { placeholder: "Type your message here ...", required: "" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "invalid-feedback" }, [
-            _vm._v(
-              "\n                        Please enter a custom message\n                    "
-            )
-          ])
-        ])
-      ]
     )
   },
   function() {
@@ -22741,87 +22902,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row mb-5" }, [
-      _c(
-        "label",
-        {
-          staticClass:
-            "col-lg-4 form-control-label d-flex justify-content-lg-end"
-        },
-        [_vm._v("Статус *")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-2" }, [
-        _c(
-          "div",
-          { staticClass: "custom-control custom-radio styled-radio mb-3" },
-          [
-            _c("input", {
-              staticClass: "custom-control-input",
-              attrs: {
-                type: "radio",
-                name: "options",
-                id: "opt-01",
-                required: ""
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "custom-control-descfeedback",
-                attrs: { for: "opt-01" }
-              },
-              [_vm._v("Опубликовано")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                            Toggle this custom radio\n                        "
-              )
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3" }, [
-        _c(
-          "div",
-          { staticClass: "custom-control custom-radio styled-radio mb-3" },
-          [
-            _c("input", {
-              staticClass: "custom-control-input",
-              attrs: {
-                type: "radio",
-                name: "options",
-                id: "opt-02",
-                required: ""
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "custom-control-descfeedback",
-                attrs: { for: "opt-02" }
-              },
-              [_vm._v("Не опубликовано")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                            Or toggle this other custom radio\n                        "
-              )
-            ])
-          ]
-        )
-      ])
-    ])
   },
   function() {
     var _vm = this
