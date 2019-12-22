@@ -8,6 +8,6 @@ class OrderController extends Controller
 {
     public function edit($id)
     {
-
+        return view('dashboard.orders.edit');
     }
 }

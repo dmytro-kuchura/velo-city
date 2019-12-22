@@ -56,20 +56,14 @@
                     </a>
                     <!-- End Toggle -->
                 </div>
-                <!-- End Logo -->
-                <!-- Begin Navbar Menu -->
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center pull-right">
-                    <!-- Search -->
-                    <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="la la-search"></i></a></li>
-                    <!-- End Search -->
-                    <!-- Begin Notifications -->
                     <li class="nav-item dropdown"><a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="la la-bell animated infinite swing"></i><span class="badge-pulse"></span></a>
                         <ul aria-labelledby="notifications" class="dropdown-menu notification">
                             <li>
                                 <div class="notifications-header">
-                                    <div class="title">Notifications (4)</div>
+                                    <div class="title">Уведомления (4)</div>
                                     <div class="notifications-overlay"></div>
-                                    <img src="assets/img/notifications/01.jpg" alt="..." class="img-fluid">
+                                    <img src="/images/logo-new.png" alt="..." class="img-fluid">
                                 </div>
                             </li>
                             <li>
@@ -129,8 +123,6 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- End Notifications -->
-                    <!-- User -->
                     <li class="nav-item dropdown"><a id="user" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><img src="assets/img/avatar/avatar-01.jpg" alt="..." class="avatar rounded-circle"></a>
                         <ul aria-labelledby="user" class="user-size dropdown-menu">
                             <li class="welcome">
@@ -161,23 +153,13 @@
                             <li><a rel="nofollow" href="pages-login.html" class="dropdown-item logout text-center"><i class="ti-power-off"></i></a></li>
                         </ul>
                     </li>
-                    <!-- End User -->
-                    <!-- Begin Quick Actions -->
-                    <li class="nav-item"><a href="#off-canvas" class="open-sidebar"><i class="la la-ellipsis-h"></i></a></li>
-                    <!-- End Quick Actions -->
                 </ul>
-                <!-- End Navbar Menu -->
             </div>
-            <!-- End Topbar -->
         </nav>
     </header>
-    <!-- End Header -->
-    <!-- Begin Page Content -->
     <div class="page-content d-flex align-items-stretch">
         <div class="default-sidebar">
-            <!-- Begin Side Navbar -->
             <nav class="side-navbar box-scroll sidebar-scroll">
-                <!-- Begin Main Navigation -->
                 <ul class="list-unstyled">
                     <li class="active"><a href="#dropdown-db" aria-expanded="true" data-toggle="collapse"><i class="la la-columns"></i><span>Dashboard</span></a>
                         <ul id="dropdown-db" class="collapse list-unstyled show pt-0">
