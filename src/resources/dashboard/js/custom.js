@@ -9,6 +9,8 @@ axios.defaults.auth = {
 
 window.swal = require('sweetalert');
 
+moment.locale('ru');
+
 import Vue from "vue";
 import Vuex from 'vuex';
 import paginate from "vuejs-paginate";
@@ -20,6 +22,8 @@ Vue.component('paginate', paginate);
 Vue.component('orders-list', require('./vue-components/OrdersListComponent.vue').default);
 Vue.component('activity-log', require('./vue-components/ActivityLogComponent.vue').default);
 Vue.component('reviews', require('./vue-components/ReviewsComponent.vue').default);
+
+Vue.component('banner-list', require('./vue-components/banners/BannersListComponent').default);
 
 new Vue({
     el: '#dashboard',

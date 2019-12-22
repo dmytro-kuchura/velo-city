@@ -48,5 +48,13 @@ Route::middleware('authentication')->group(function () {
             Route::post('create', 'Api\OrderController@create')->name('api.order.create');
             Route::get('list', 'Api\OrderController@list')->name('api.order.list');
         });
+
+        Route::prefix('banners')->group(function () {
+            Route::get('/', 'Api\BannersController@index')->name('api.banners.index');
+            Route::post('/create', 'Api\BannersController@create')->name('api.banners.create');
+            Route::get('/{id}', 'Api\BannersController@find')->name('api.banners.find');
+            Route::put('/{id}', 'Api\BannersController@update')->name('api.banners.update');
+            Route::delete('/{id}', 'Api\BannersController@delete')->name('api.banners.delete');
+        });
     });
 });

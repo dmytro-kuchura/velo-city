@@ -18,3 +18,9 @@ Route::prefix('order')->group(function () {
     Route::get('/{order}', 'Dashboard\OrderController@edit')->name('dashboard.order.edit');
 });
 
+Route::prefix('banners')->group(function () {
+    Route::get('/', 'Dashboard\BannersController@index')->name('dashboard.banners.index');
+    Route::get('/{id}', 'Dashboard\BannersController@edit')->name('dashboard.banners.edit');
+    Route::get('/create', 'Dashboard\BannersController@create')->name('dashboard.banners.create');
+});
+

@@ -9,6 +9,10 @@ class BannersRepository
 {
     protected $model = Banners::class;
 
+    public function all() {
+        return $this->model::paginate(4);
+    }
+
     public function list() {
         return $this->model::where('status', BannerStatus::STATUS_ACTIVE)->get();
     }
