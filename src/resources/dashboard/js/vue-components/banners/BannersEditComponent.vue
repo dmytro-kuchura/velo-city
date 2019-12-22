@@ -1,7 +1,7 @@
 <template>
     <div class="widget has-shadow">
         <div class="widget-header bordered no-actions d-flex align-items-center">
-            <h4>Default Form</h4>
+            <h4>Форма редактирования</h4>
         </div>
         <div class="widget-body">
             <form class="needs-validation" novalidate>
@@ -36,13 +36,13 @@
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Создано</label>
                     <div class="col-lg-5">
-                        <input type="password" class="form-control" placeholder="MM/DD/YYYY">
+                        <input type="string" class="form-control" disabled placeholder="MM/DD/YYYY" v-model="banner.created">
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Изменено</label>
                     <div class="col-lg-5">
-                        <input type="password" class="form-control" placeholder="MM/DD/YYYY">
+                        <input type="string" class="form-control" disabled placeholder="MM/DD/YYYY" v-model="banner.updated">
                     </div>
                 </div>
                 <div class="form-group row mb-5">
@@ -88,7 +88,6 @@
         data() {
             return {
                 banner: {
-                    created_at: null,
                     description: null,
                     id: null,
                     image: null,
@@ -96,7 +95,8 @@
                     slogan: null,
                     status: null,
                     title: null,
-                    updated_at: null,
+                    created: null,
+                    updated: null,
                 },
                 endpoint: '/api/v1/banners?page=',
                 dropzoneOptions: {

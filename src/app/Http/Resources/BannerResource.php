@@ -17,8 +17,12 @@ class BannerResource extends Resource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'link' => $this->link,
+            'slogan' => $this->slogan,
+            'description' => $this->description,
             'status' => $this->status,
-            'date' => $this->created_at->diffForHumans(),
+            'updated' => $this->updated_at->toDateTimeString(),
+            'created' => $this->created_at->toDateTimeString(),
         ];
     }
 }

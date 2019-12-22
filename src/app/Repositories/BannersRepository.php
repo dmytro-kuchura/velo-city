@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Http\Resources\BannerResource;
 use App\Models\Banners;
 use App\Models\Enum\BannerStatus;
 
@@ -18,7 +19,9 @@ class BannersRepository
     }
 
     public function find($id) {
-        return $this->model::where('id', $id)->first();
+        $banner = $this->model::where('id', $id)->first();
+
+        return new BannerResource($banner);
     }
 
     public function store($id, $data) {
