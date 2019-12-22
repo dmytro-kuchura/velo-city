@@ -25,8 +25,8 @@
                                 </span>
                             </td>
                             <td class="td-actions">
-                                <a href="#"><i class="la la-edit edit"></i></a>
-                                <a href="#"><i class="la la-close delete"></i></a>
+                                <a v-bind:href="'/admin/banners/' + item.id"><i class="la la-edit edit"></i></a>
+                                <a v-bind:href="'/admin/banners/' + item.id"><i class="la la-close delete"></i></a>
                             </td>
                         </tr>
 

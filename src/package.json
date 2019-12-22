@@ -32,6 +32,7 @@
         "noty": "^3.2.0-beta",
         "popper.js": "^1.16.0",
         "sweetalert": "^2.1.2",
+        "vue2-dropzone": "^3.6.0",
         "vuejs-paginate": "^2.1.0"
     }
 }
