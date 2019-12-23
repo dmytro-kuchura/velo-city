@@ -20,7 +20,7 @@ class CreateLogsTable extends Migration
             $table->string('link')->nullable();
             $table->tinyInteger('deleted')->default(0);
             $table->string('type')->nullable();
-            $table->string('status')->default(1);
+            $table->tinyInteger('status')->default(1);
 
             $table->timestamps();
         });
