@@ -12,6 +12,7 @@ class LogsTypes
     const NEW_CONTACT_FORM_MESSAGE = 'Сообщение из контактной формы';
     const NEW_SUBSCRIBER = 'Подписчик';
     const NEW_USER = 'Регистрация пользователя';
+    const NEW_APP_ERROR = 'Ошибка приложения';
 
     const ORDER_LINK = '';
     const REVIEW_LINK = '';

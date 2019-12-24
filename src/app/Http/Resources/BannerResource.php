@@ -20,6 +20,7 @@ class BannerResource extends Resource
             'link' => $this->link,
             'slogan' => $this->slogan,
             'description' => $this->description,
+            'image' => $this->image,
             'status' => $this->status,
             'updated' => $this->updated_at->toDateTimeString(),
             'created' => $this->created_at->toDateTimeString(),

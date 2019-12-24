@@ -13,7 +13,7 @@
         <tbody>
         <tr v-for="item in cart.list">
             <td>
-                <a href="product-page.html">
+                <a v-bind:href="item.alias">
                     <div class="product-image">
                         <img alt="Roadie" src="images/1.jpg">
                     </div>

@@ -2551,6 +2551,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2591,6 +2622,29 @@ __webpack_require__.r(__webpack_exports__);
       this.banner = data.result;
     },
     getBannersEditErrorResponse: function getBannersEditErrorResponse(response) {
+      console.log(response);
+    },
+    uploadFile: function uploadFile(event) {
+      var _this2 = this;
+
+      var formData = new FormData();
+      formData.append("image", event.target.files[0]);
+      formData.append("type", 'banner');
+      axios.post('/api/v1/upload/image/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.uploadBannerSuccessResponse(data);
+      })["catch"](function (response) {
+        return _this2.uploadBannerEditErrorResponse(response);
+      });
+    },
+    uploadBannerSuccessResponse: function uploadBannerSuccessResponse(data) {
+      console.log(data);
+    },
+    uploadBannerEditErrorResponse: function uploadBannerEditErrorResponse(response) {
       console.log(response);
     }
   }
@@ -2763,7 +2817,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.dropzone-custom-content {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    text-align: center;\n}\n.dropzone-custom-title {\n    margin-top: 0;\n    color: #00b782;\n}\n.subtitle {\n    color: #314b5f;\n}\n", ""]);
+exports.push([module.i, "\n.area {\n    padding: 15px;\n    border: 5px dashed white;\n    background: #EB6A5A;\n}\n#dropZone {\n    border: 2px dashed white;\n    border-radius: 5px;\n    padding: 50px;\n    text-align: center;\n    font: 21pt bold arial;\n    color: white;\n    cursor: pointer;\n}\n.hidden-input {\n    display: none;\n}\n", ""]);
 
 // exports
 
@@ -22728,6 +22782,89 @@ var render = function() {
                   staticClass:
                     "col-lg-4 form-control-label d-flex justify-content-lg-end"
                 },
+                [_vm._v("Изображение")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-5" }, [
+                _c("div", { staticClass: "widget has-shadow" }, [
+                  _c("figure", { staticClass: "img-hover-01" }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: { src: _vm.banner.image, alt: "..." }
+                    }),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: _vm.banner.image,
+                            "data-lity": "",
+                            "data-lity-desc": "..."
+                          }
+                        },
+                        [_c("i", { staticClass: "la la-expand" })]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group row d-flex align-items-center mb-5" },
+            [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                },
+                [_vm._v("Изображение")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-5" }, [
+                _c("div", { staticClass: "area" }, [
+                  _c(
+                    "div",
+                    {
+                      attrs: { id: "dropZone" },
+                      on: {
+                        click: function($event) {
+                          return _vm.$refs.file.click()
+                        }
+                      }
+                    },
+                    [_vm._v("Drop files here")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    ref: "file",
+                    staticClass: "hidden-input",
+                    attrs: { type: "file" },
+                    on: { change: _vm.uploadFile }
+                  })
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "em-separator separator-dashed" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group row d-flex align-items-center mb-5" },
+            [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                },
                 [_vm._v("Создано")]
               ),
               _vm._v(" "),
@@ -22913,7 +23050,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(2)
         ]
       )
     ])
@@ -22932,6 +23069,14 @@ var staticRenderFns = [
       },
       [_c("h4", [_vm._v("Форма редактирования")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "la la-trash-o" })
+    ])
   },
   function() {
     var _vm = this

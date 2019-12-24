@@ -26,30 +26,67 @@
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Описание *</label>
                     <div class="col-lg-5">
-                        <textarea class="form-control" placeholder="Type your message here ..." required v-model="banner.description"></textarea>
+                        <textarea class="form-control" placeholder="Type your message here ..." required
+                                  v-model="banner.description"></textarea>
                         <div class="invalid-feedback">
                             Please enter a custom message
                         </div>
                     </div>
                 </div>
+
                 <div class="em-separator separator-dashed"></div>
+
+                <div class="form-group row d-flex align-items-center mb-5">
+                    <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Изображение</label>
+                    <div class="col-md-5">
+                        <div class="widget has-shadow">
+                            <figure class="img-hover-01">
+                                <img :src="banner.image" class="img-fluid" alt="...">
+                                <div>
+                                    <a href="#">
+                                        <i class="la la-trash-o"></i>
+                                    </a>
+                                    <a v-bind:href="banner.image" data-lity data-lity-desc="...">
+                                        <i class="la la-expand"></i>
+                                    </a>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row d-flex align-items-center mb-5">
+                    <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Изображение</label>
+                    <div class="col-md-5">
+                        <div class="area">
+                            <div id="dropZone" @click="$refs.file.click()">Drop files here</div>
+                            <input type="file" ref="file" class="hidden-input" v-on:change="uploadFile">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="em-separator separator-dashed"></div>
+
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Создано</label>
                     <div class="col-lg-5">
-                        <input type="string" class="form-control" disabled placeholder="MM/DD/YYYY" v-model="banner.created">
+                        <input type="string" class="form-control" disabled placeholder="MM/DD/YYYY"
+                               v-model="banner.created">
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Изменено</label>
                     <div class="col-lg-5">
-                        <input type="string" class="form-control" disabled placeholder="MM/DD/YYYY" v-model="banner.updated">
+                        <input type="string" class="form-control" disabled placeholder="MM/DD/YYYY"
+                               v-model="banner.updated">
                     </div>
                 </div>
                 <div class="form-group row mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Статус *</label>
                     <div class="col-lg-2">
                         <div class="custom-control custom-radio styled-radio mb-3">
-                            <input class="custom-control-input" type="radio" value="1" id="opt-01" v-model="banner.status" required>
+                            <input class="custom-control-input" type="radio" value="1" id="opt-01"
+                                   v-model="banner.status" required>
                             <label class="custom-control-descfeedback" for="opt-01">Опубликовано</label>
                             <div class="invalid-feedback">
                                 Toggle this custom radio
@@ -58,7 +95,8 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="custom-control custom-radio styled-radio mb-3">
-                            <input class="custom-control-input" type="radio" value="0" id="opt-02" v-model="banner.status" required>
+                            <input class="custom-control-input" type="radio" value="0" id="opt-02"
+                                   v-model="banner.status" required>
                             <label class="custom-control-descfeedback" for="opt-02">Не опубликовано</label>
                             <div class="invalid-feedback">
                                 Or toggle this other custom radio
@@ -66,13 +104,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!--                <vue-dropzone :options="dropzoneOptions" :useCustomSlot=true>-->
-                <!--                    <div class="dropzone-custom-content">-->
-                <!--                        <h3 class="dropzone-custom-title">Drag and drop to upload content!</h3>-->
-                <!--                        <div class="subtitle">...or click to select a file from your computer</div>-->
-                <!--                    </div>-->
-                <!--                </vue-dropzone>-->
 
                 <div class="text-right">
                     <button class="btn btn-gradient-01" type="submit">Обновить</button>
@@ -122,25 +153,48 @@
             getBannersEditErrorResponse(response) {
                 console.log(response);
             },
+            uploadFile(event) {
+                let formData = new FormData();
+                formData.append("image", event.target.files[0]);
+                formData.append("type", 'banner');
+
+                axios.post('/api/v1/upload/image/', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                    .then(({data}) => this.uploadBannerSuccessResponse(data))
+                    .catch((response) => this.uploadBannerEditErrorResponse(response));
+            },
+            uploadBannerSuccessResponse(data) {
+                console.log(data);
+            },
+            uploadBannerEditErrorResponse(response) {
+                console.log(response);
+            },
         }
     }
 </script>
 
 <style>
-    .dropzone-custom-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    .area {
+        padding: 15px;
+        border: 5px dashed white;
+        background: #EB6A5A;
+    }
+
+    #dropZone {
+        border: 2px dashed white;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        padding: 50px;
         text-align: center;
+        font: 21pt bold arial;
+        color: white;
+        cursor: pointer;
     }
 
-    .dropzone-custom-title {
-        margin-top: 0;
-        color: #00b782;
-    }
-
-    .subtitle {
-        color: #314b5f;
+    .hidden-input {
+        display: none;
     }
 </style>

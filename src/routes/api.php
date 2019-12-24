@@ -44,6 +44,10 @@ Route::middleware('authentication')->group(function () {
             Route::get('list', 'Api\PaymentController@list')->name('api.payments.list');
         });
 
+        Route::prefix('upload')->group(function () {
+            Route::post('/image', 'Api\UploadController@image')->name('api.upload.image');
+        });
+
         Route::prefix('orders')->group(function () {
             Route::post('create', 'Api\OrderController@create')->name('api.order.create');
             Route::get('list', 'Api\OrderController@list')->name('api.order.list');
