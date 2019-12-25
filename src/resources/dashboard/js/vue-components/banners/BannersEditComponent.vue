@@ -107,7 +107,7 @@
                 </div>
 
                 <div class="text-right">
-                    <button class="btn btn-gradient-01" type="submit">Обновить</button>
+                    <button class="btn btn-gradient-01" type="submit" v-on:click="updateBanner">Обновить</button>
                     <button class="btn btn-shadow" type="reset">Сбросить</button>
                 </div>
             </form>
@@ -183,6 +183,9 @@
                 if (data.success) {
                     this.getBanner(this.banner.id)
                 }
+            },
+            updateBanner() {
+                axios.put('/api/v1/banners/' + this.banner.id, this.banner)
             },
             deleteImage() {
                 this.banner.image = null

@@ -29,7 +29,14 @@ class BannersRepository
 
     public function store($id, $data)
     {
-
+        return $this->model::where('id', $id)->update([
+            'link' => $data['link'],
+            'image' => $data['image'],
+            'title' => $data['title'],
+            'slogan' => $data['slogan'],
+            'description' => $data['description'],
+            'status' => $data['status'],
+        ]);
     }
 
     public function create($data)

@@ -2666,6 +2666,9 @@ __webpack_require__.r(__webpack_exports__);
         this.getBanner(this.banner.id);
       }
     },
+    updateBanner: function updateBanner() {
+      axios.put('/api/v1/banners/' + this.banner.id, this.banner);
+    },
     deleteImage: function deleteImage() {
       this.banner.image = null;
     }
@@ -23087,7 +23090,23 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("div", { staticClass: "text-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-gradient-01",
+                attrs: { type: "submit" },
+                on: { click: _vm.updateBanner }
+              },
+              [_vm._v("Обновить")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-shadow", attrs: { type: "reset" } },
+              [_vm._v("Сбросить")]
+            )
+          ])
         ]
       )
     ])
@@ -23106,24 +23125,6 @@ var staticRenderFns = [
       },
       [_c("h4", [_vm._v("Форма редактирования")])]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-right" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-gradient-01", attrs: { type: "submit" } },
-        [_vm._v("Обновить")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-shadow", attrs: { type: "reset" } },
-        [_vm._v("Сбросить")]
-      )
-    ])
   }
 ]
 render._withStripped = true
