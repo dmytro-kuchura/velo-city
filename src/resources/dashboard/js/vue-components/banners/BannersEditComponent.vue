@@ -36,14 +36,14 @@
 
                 <div class="em-separator separator-dashed"></div>
 
-                <div class="form-group row d-flex align-items-center mb-5">
+                <div class="form-group row d-flex align-items-center mb-5" v-if="banner.image !== null">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Изображение</label>
                     <div class="col-md-5">
                         <div class="widget has-shadow">
                             <figure class="img-hover-01">
                                 <img :src="banner.image" class="img-fluid" alt="...">
                                 <div>
-                                    <a href="#">
+                                    <a href="#" v-on:click="deleteImage">
                                         <i class="la la-trash-o"></i>
                                     </a>
                                     <a v-bind:href="banner.image" data-lity data-lity-desc="...">
@@ -55,8 +55,9 @@
                     </div>
                 </div>
 
-                <div class="form-group row d-flex align-items-center mb-5">
-                    <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Изображение</label>
+                <div class="form-group row d-flex align-items-center mb-5" v-if="banner.image === null">
+                    <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Загрузка
+                        изображения</label>
                     <div class="col-md-5">
                         <div class="area">
                             <div id="dropZone" @click="$refs.file.click()">Drop files here</div>
@@ -142,11 +143,14 @@
             let n = str.lastIndexOf('/');
             let id = str.substring(n + 1);
 
-            axios.get("/api/v1/banners/" + id)
-                .then(({data}) => this.getBannersEditSuccessResponse(data))
-                .catch((response) => this.getBannersEditErrorResponse(response));
+            this.getBanner(id);
         },
         methods: {
+            getBanner(id) {
+                axios.get("/api/v1/banners/" + id)
+                    .then(({data}) => this.getBannersEditSuccessResponse(data))
+                    .catch((response) => this.getBannersEditErrorResponse(response));
+            },
             getBannersEditSuccessResponse(data) {
                 this.banner = data.result;
             },
@@ -167,11 +171,22 @@
                     .catch((response) => this.uploadBannerEditErrorResponse(response));
             },
             uploadBannerSuccessResponse(data) {
-                console.log(data);
+                if (data.success) {
+                    axios.put('/api/v1/banners/image-update/', {'id': this.banner.id, 'link': data.url})
+                        .then(({data}) => this.successImageUpdate(data))
+                }
             },
             uploadBannerEditErrorResponse(response) {
                 console.log(response);
             },
+            successImageUpdate(data) {
+                if (data.success) {
+                    this.getBanner(this.banner.id)
+                }
+            },
+            deleteImage() {
+                this.banner.image = null
+            }
         }
     }
 </script>

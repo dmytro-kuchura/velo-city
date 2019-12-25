@@ -56,6 +56,7 @@ Route::middleware('authentication')->group(function () {
         Route::prefix('banners')->group(function () {
             Route::get('/', 'Api\BannersController@index')->name('api.banners.index');
             Route::post('/create', 'Api\BannersController@create')->name('api.banners.create');
+            Route::put('/image-update', 'Api\BannersController@image')->name('api.banners.image');
             Route::get('/{id}', 'Api\BannersController@show')->name('api.banners.show');
             Route::put('/{id}', 'Api\BannersController@update')->name('api.banners.update');
             Route::delete('/{id}', 'Api\BannersController@delete')->name('api.banners.delete');

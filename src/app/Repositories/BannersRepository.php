@@ -10,29 +10,40 @@ class BannersRepository
 {
     protected $model = Banners::class;
 
-    public function all() {
+    public function all()
+    {
         return $this->model::paginate(4);
     }
 
-    public function list() {
+    public function list()
+    {
         return $this->model::where('status', BannerStatus::STATUS_ACTIVE)->get();
     }
 
-    public function find($id) {
+    public function find($id)
+    {
         $banner = $this->model::where('id', $id)->first();
 
         return new BannerResource($banner);
     }
 
-    public function store($id, $data) {
+    public function store($id, $data)
+    {
 
     }
 
-    public function create($data) {
+    public function create($data)
+    {
 
     }
 
-    public function destroy($id) {
+    public function updateImage($data)
+    {
+        return $this->model::where('id', $data['id'])->update(['image' => $data['link']]);
+    }
+
+    public function destroy($id)
+    {
 
     }
 }

@@ -2582,6 +2582,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2605,19 +2606,22 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
     var str = window.location.pathname;
     var n = str.lastIndexOf('/');
     var id = str.substring(n + 1);
-    axios.get("/api/v1/banners/" + id).then(function (_ref) {
-      var data = _ref.data;
-      return _this.getBannersEditSuccessResponse(data);
-    })["catch"](function (response) {
-      return _this.getBannersEditErrorResponse(response);
-    });
+    this.getBanner(id);
   },
   methods: {
+    getBanner: function getBanner(id) {
+      var _this = this;
+
+      axios.get("/api/v1/banners/" + id).then(function (_ref) {
+        var data = _ref.data;
+        return _this.getBannersEditSuccessResponse(data);
+      })["catch"](function (response) {
+        return _this.getBannersEditErrorResponse(response);
+      });
+    },
     getBannersEditSuccessResponse: function getBannersEditSuccessResponse(data) {
       this.banner = data.result;
     },
@@ -2642,10 +2646,28 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     uploadBannerSuccessResponse: function uploadBannerSuccessResponse(data) {
-      console.log(data);
+      var _this3 = this;
+
+      if (data.success) {
+        axios.put('/api/v1/banners/image-update/', {
+          'id': this.banner.id,
+          'link': data.url
+        }).then(function (_ref3) {
+          var data = _ref3.data;
+          return _this3.successImageUpdate(data);
+        });
+      }
     },
     uploadBannerEditErrorResponse: function uploadBannerEditErrorResponse(response) {
       console.log(response);
+    },
+    successImageUpdate: function successImageUpdate(data) {
+      if (data.success) {
+        this.getBanner(this.banner.id);
+      }
+    },
+    deleteImage: function deleteImage() {
+      this.banner.image = null;
     }
   }
 });
@@ -22772,86 +22794,101 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "em-separator separator-dashed" }),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "form-group row d-flex align-items-center mb-5" },
-            [
-              _c(
-                "label",
+          _vm.banner.image !== null
+            ? _c(
+                "div",
                 {
-                  staticClass:
-                    "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                  staticClass: "form-group row d-flex align-items-center mb-5"
                 },
-                [_vm._v("Изображение")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-5" }, [
-                _c("div", { staticClass: "widget has-shadow" }, [
-                  _c("figure", { staticClass: "img-hover-01" }, [
-                    _c("img", {
-                      staticClass: "img-fluid",
-                      attrs: { src: _vm.banner.image, alt: "..." }
-                    }),
-                    _vm._v(" "),
-                    _c("div", [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href: _vm.banner.image,
-                            "data-lity": "",
-                            "data-lity-desc": "..."
-                          }
-                        },
-                        [_c("i", { staticClass: "la la-expand" })]
-                      )
-                    ])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "form-group row d-flex align-items-center mb-5" },
-            [
-              _c(
-                "label",
-                {
-                  staticClass:
-                    "col-lg-4 form-control-label d-flex justify-content-lg-end"
-                },
-                [_vm._v("Изображение")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-5" }, [
-                _c("div", { staticClass: "area" }, [
+                [
                   _c(
-                    "div",
+                    "label",
                     {
-                      attrs: { id: "dropZone" },
-                      on: {
-                        click: function($event) {
-                          return _vm.$refs.file.click()
-                        }
-                      }
+                      staticClass:
+                        "col-lg-4 form-control-label d-flex justify-content-lg-end"
                     },
-                    [_vm._v("Drop files here")]
+                    [_vm._v("Изображение")]
                   ),
                   _vm._v(" "),
-                  _c("input", {
-                    ref: "file",
-                    staticClass: "hidden-input",
-                    attrs: { type: "file" },
-                    on: { change: _vm.uploadFile }
-                  })
-                ])
-              ])
-            ]
-          ),
+                  _c("div", { staticClass: "col-md-5" }, [
+                    _c("div", { staticClass: "widget has-shadow" }, [
+                      _c("figure", { staticClass: "img-hover-01" }, [
+                        _c("img", {
+                          staticClass: "img-fluid",
+                          attrs: { src: _vm.banner.image, alt: "..." }
+                        }),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: { click: _vm.deleteImage }
+                            },
+                            [_c("i", { staticClass: "la la-trash-o" })]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href: _vm.banner.image,
+                                "data-lity": "",
+                                "data-lity-desc": "..."
+                              }
+                            },
+                            [_c("i", { staticClass: "la la-expand" })]
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.banner.image === null
+            ? _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Загрузка\n                    изображения")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-5" }, [
+                    _c("div", { staticClass: "area" }, [
+                      _c(
+                        "div",
+                        {
+                          attrs: { id: "dropZone" },
+                          on: {
+                            click: function($event) {
+                              return _vm.$refs.file.click()
+                            }
+                          }
+                        },
+                        [_vm._v("Drop files here")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        ref: "file",
+                        staticClass: "hidden-input",
+                        attrs: { type: "file" },
+                        on: { change: _vm.uploadFile }
+                      })
+                    ])
+                  ])
+                ]
+              )
+            : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "em-separator separator-dashed" }),
           _vm._v(" "),
@@ -23050,7 +23087,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(2)
+          _vm._m(1)
         ]
       )
     ])
@@ -23069,14 +23106,6 @@ var staticRenderFns = [
       },
       [_c("h4", [_vm._v("Форма редактирования")])]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("i", { staticClass: "la la-trash-o" })
-    ])
   },
   function() {
     var _vm = this
