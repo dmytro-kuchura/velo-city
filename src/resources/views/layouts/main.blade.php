@@ -6,10 +6,10 @@
 
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
-    <title>Roadie</title>
+    <title>VeloCity — интернет магазин велосипедов в Украине, Херсоне</title>
     <!-- SEO Meta -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="">
+    <meta name="description" content="Веломагазин VeloCity ➤➤➤ Интернет магазин №➊ по выбору велосипедов ✅ БЕСПЛАТНАЯ доставка ✅ РАССРОЧКА 0% ➜ Официальная гарантия ➜ Цены от производителя">
     <meta name="keywords" content="">
     <meta name="distribution" content="global">
     <meta name="revisit-after" content="2 Days">
