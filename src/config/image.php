@@ -26,7 +26,6 @@ return [
     | "width": image width
     | "height": image height
     | "resize": need resize or not "1" or "0"
-    | "crop": need crop or not "1" or "0"
     | "watermark": need watermark or not "1" or "0"
     |
     */
@@ -38,13 +37,11 @@ return [
                 'width' => 1920,
                 'height' => 700,
                 'resize' => 1,
-                'crop' => 1,
-                'watermark' => 1,
+                'watermark' => 0,
             ],
             [
                 'path' => 'original',
                 'resize' => 0,
-                'crop' => 0,
             ],
         ],
     ],

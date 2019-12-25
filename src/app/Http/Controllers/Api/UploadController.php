@@ -12,7 +12,7 @@ class UploadController extends Controller
     {
         try {
             $service = new UploadImage();
-            $path = $service->upload($request, config('image.crop.banners'));
+            $path = $service->upload($request, 'banners');
         } catch (\Throwable $exception) {
 
             dd($exception->getMessage());

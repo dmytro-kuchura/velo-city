@@ -7,29 +7,36 @@ use Illuminate\Support\Facades\Storage;
 
 class UploadImage
 {
-    public function upload($request, $params)
+    public function upload($request, $param)
     {
-        foreach ($params as $key => $value) {
-            if (isset($value['width'])) {
-                $img = Image::make($request->image)->fit($value['width'], $value['height'])->encode('jpg');
-                // paste another image
-                // $img->insert(public_path('images/bar.png'));
-                // create a new Image instance for inserting
-                // $watermark = Image::make(public_path('watermark.png'));
-                // $img->insert($watermark, 'center');
-                // insert watermark at bottom-right corner with 10px offset
-                // $img->insert(public_path('images/bar.png'), 'bottom-right', 10, 10);
+        // load resizing configs
+        $config = config('image.crop.' . $param);
+
+        // set filename
+        $filename = $this->quickRandom() . '.jpg';
+
+        foreach ($config as $key => $value) {
+            if (isset($value['resize']) && (bool)$value['resize']) {
+                $img = Image::make($request->image)->resize($value['width'], $value['height']);
+
+                // add watermark
+                if (isset($value['resize']) && (bool)$value['watermark']) {
+                    $watermark = Image::make(public_path('images/logo-new.png'));
+                    $img->insert($watermark, 'center')->encode('jpg');
+                }
+
+                $img->encode('jpg');
             } else {
                 $img = Image::make($request->image)->encode('jpg');
             }
 
-            $path = Storage::disk('s3')->put('/banners/' . $value['path'], $request->image, (string)$img);
+            Storage::disk('s3')->put('/' . $param . '/' . $value['path'] . '/' . $filename, $img->getEncoded());
         }
 
-        return 'https://velo-city.s3-eu-west-1.amazonaws.com/' . $path;
+        return 'https://velo-city.s3-eu-west-1.amazonaws.com/' . $param . '/main/' . $filename;
     }
 
-    public static function quickRandom($length = 16)
+    public static function quickRandom($length = 25)
     {
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
