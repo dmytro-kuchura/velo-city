@@ -41,7 +41,16 @@ class BannersRepository
 
     public function create($data)
     {
+        $model = new $this->model;
 
+        $model->link = $data['link'];
+        $model->image = $data['image'];
+        $model->title = $data['title'];
+        $model->slogan = $data['slogan'];
+        $model->description = $data['description'];
+        $model->status = $data['status'];
+
+        return $model->save();
     }
 
     public function updateImage($data)

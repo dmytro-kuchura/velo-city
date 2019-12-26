@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BannerCreateRequest;
 use App\Http\Requests\BannerImageUpdateRequest;
 use App\Http\Requests\BannerUpdateRequest;
 use App\Repositories\BannersRepository;
@@ -36,8 +37,13 @@ class BannersController extends Controller
         ]);
     }
 
-    public function store($data)
+    public function store(BannerCreateRequest $bannerCreateRequest)
     {
+        $this->repository->create($bannerCreateRequest->all());
+
+        return $this->returnResponse([
+            'success' => true,
+        ]);
     }
 
     public function update($id, BannerUpdateRequest $bannerUpdateRequest)
