@@ -69,7 +69,7 @@
                         изображения</label>
                     <div class="col-md-5">
                         <div class="area">
-                            <div id="dropZone" @click="$refs.file.click()">Drop files here</div>
+                            <div id="dropZone" @click="$refs.file.click()">Нажмите сюда для загрузки</div>
                             <input type="file" ref="file" class="hidden-input" v-on:change="uploadFile">
                         </div>
                     </div>

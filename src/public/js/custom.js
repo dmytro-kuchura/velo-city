@@ -3432,6 +3432,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateProduct: function updateProduct() {
       axios.put('/api/v1/products/' + this.product.id, this.product);
+      swal({
+        title: "Обновлено!",
+        text: "Товар был обновлен",
+        icon: "success"
+      });
     },
     deleteImage: function deleteImage() {
       this.product.image = null;
@@ -37400,7 +37405,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Drop files here")]
+                      [_vm._v("Нажмите сюда для загрузки")]
                     ),
                     _vm._v(" "),
                     _c("input", {
@@ -37840,7 +37845,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("Drop files here")]
+                        [_vm._v("Нажмите сюда для загрузки")]
                       ),
                       _vm._v(" "),
                       _c("input", {
@@ -38877,12 +38882,12 @@ var render = function() {
                         "label",
                         {
                           staticClass:
-                            "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                            "col-lg-3 form-control-label d-flex justify-content-lg-end"
                         },
                         [_vm._v("Изображение")]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-5" }, [
+                      _c("div", { staticClass: "col-md-8" }, [
                         _c("div", { staticClass: "widget has-shadow" }, [
                           _c("figure", { staticClass: "img-hover-01" }, [
                             _c("img", {
@@ -38931,7 +38936,7 @@ var render = function() {
                         "label",
                         {
                           staticClass:
-                            "col-lg-4 form-control-label d-flex justify-content-lg-end"
+                            "col-lg-3 form-control-label d-flex justify-content-lg-end"
                         },
                         [
                           _vm._v(
@@ -38940,7 +38945,7 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-5" }, [
+                      _c("div", { staticClass: "col-md-8" }, [
                         _c("div", { staticClass: "area" }, [
                           _c(
                             "div",
@@ -38952,7 +38957,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [_vm._v("Drop files here")]
+                            [_vm._v("Нажмите сюда для загрузки")]
                           ),
                           _vm._v(" "),
                           _c("input", {

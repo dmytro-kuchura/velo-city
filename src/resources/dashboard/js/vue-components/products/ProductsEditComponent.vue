@@ -136,8 +136,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group row d-flex align-items-center mb-5" v-if="product.image !== null">
-                            <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Изображение</label>
-                            <div class="col-md-5">
+                            <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Изображение</label>
+                            <div class="col-md-8">
                                 <div class="widget has-shadow">
                                     <figure class="img-hover-01">
                                         <img :src="product.image" class="img-fluid" alt="...">
@@ -154,11 +154,11 @@
                             </div>
                         </div>
                         <div class="form-group row d-flex align-items-center mb-5" v-if="product.image === null">
-                            <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Загрузка
+                            <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Загрузка
                                 изображения</label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <div class="area">
-                                    <div id="dropZone" @click="$refs.file.click()">Drop files here</div>
+                                    <div id="dropZone" @click="$refs.file.click()">Нажмите сюда для загрузки</div>
                                     <input type="file" ref="file" class="hidden-input" v-on:change="uploadFile">
                                 </div>
                             </div>
@@ -400,7 +400,13 @@
                 }
             },
             updateProduct() {
-                axios.put('/api/v1/products/' + this.product.id, this.product)
+                axios.put('/api/v1/products/' + this.product.id, this.product);
+
+                swal({
+                    title: "Обновлено!",
+                    text: "Товар был обновлен",
+                    icon: "success",
+                });
             },
             deleteImage() {
                 this.product.image = null
