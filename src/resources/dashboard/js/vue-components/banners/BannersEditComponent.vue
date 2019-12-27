@@ -179,7 +179,13 @@
                 }
             },
             updateBanner() {
-                axios.put('/api/v1/banners/' + this.banner.id, this.banner)
+                axios.put('/api/v1/banners/' + this.banner.id, this.banner);
+
+                swal({
+                    title: "Обновлено!",
+                    text: "Бренд был обновлен",
+                    icon: "success",
+                });
             },
             deleteImage() {
                 this.banner.image = null

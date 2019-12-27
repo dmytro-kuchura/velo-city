@@ -155,7 +155,13 @@
                 }
             },
             updateBrand() {
-                axios.put('/api/v1/brands/' + this.brand.id, this.brand)
+                axios.put('/api/v1/brands/' + this.brand.id, this.brand);
+
+                swal({
+                    title: "Обновлено!",
+                    text: "Бренд был обновлен",
+                    icon: "success",
+                });
             },
             deleteImage() {
                 this.brand.image = null
