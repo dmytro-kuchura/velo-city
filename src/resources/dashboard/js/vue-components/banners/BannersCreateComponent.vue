@@ -4,29 +4,38 @@
             <h4>Форма создания</h4>
         </div>
         <div class="widget-body">
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation">
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Название</label>
                     <div class="col-lg-5">
                         <input type="text" class="form-control" placeholder="Введите навзвание" v-model="banner.title">
+                        <div class="invalid-feedback">
+                            Please enter a custom message
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Ссылка *</label>
                     <div class="col-lg-5">
-                        <input type="url" class="form-control" v-model="banner.link">
+                        <input type="text" class="form-control" v-model="banner.link">
+                        <div class="invalid-feedback">
+                            Please enter a custom message
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Слоган *</label>
                     <div class="col-lg-5">
                         <input type="text" class="form-control" v-model="banner.slogan">
+                        <div class="invalid-feedback">
+                            Please enter a custom message
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-4 form-control-label d-flex justify-content-lg-end">Описание *</label>
                     <div class="col-lg-5">
-                        <textarea class="form-control" placeholder="Type your message here ..." required
+                        <textarea class="form-control" placeholder="Type your message here ..."
                                   v-model="banner.description"></textarea>
                         <div class="invalid-feedback">
                             Please enter a custom message
@@ -93,7 +102,7 @@
                 </div>
 
                 <div class="text-right">
-                    <button class="btn btn-gradient-01" type="submit" v-on:click="createBanner">Создать</button>
+                    <button class="btn btn-gradient-01" type="submit" v-on:click.prevent="onSubmit">Создать</button>
                     <button class="btn btn-shadow" type="reset">Сбросить</button>
                 </div>
             </form>
@@ -107,7 +116,6 @@
             return {
                 banner: {
                     description: null,
-                    id: null,
                     image: null,
                     link: null,
                     slogan: null,
@@ -138,7 +146,7 @@
             uploadBannerEditErrorResponse(response) {
                 console.log(response);
             },
-            createBanner() {
+            onSubmit() {
                 axios.post('/api/v1/banners/', this.banner)
             },
             deleteImage() {

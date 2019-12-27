@@ -9,7 +9,7 @@
                             <th>ID</th>
                             <th>Название</th>
                             <th>Дата создания</th>
-                            <th><span style="width:100px;">Status</span></th>
+                            <th><span style="width:100px;">Статус</span></th>
                             <th>Действия</th>
                         </tr>
                         </thead>
@@ -26,7 +26,7 @@
                             </td>
                             <td class="td-actions">
                                 <a v-bind:href="'/admin/banners/' + item.id"><i class="la la-edit edit"></i></a>
-                                <a v-bind:href="'/admin/banners/' + item.id"><i class="la la-close delete"></i></a>
+                                <a href="javascript:;" v-on:click.prevent="onDelete(item.id)"><i class="la la-close delete"></i></a>
                             </td>
                         </tr>
 
@@ -74,11 +74,15 @@
             };
         },
         mounted() {
-            axios.get("/api/v1/banners")
+            axios.get('/api/v1/banners')
                 .then(({data}) => this.getBannersListSuccessResponse(data))
                 .catch((response) => this.getBannersListErrorResponse(response));
         },
         methods: {
+            onDelete(id) {
+                axios.delete('/api/v1/banners/' + id)
+                    .then(() => this.fetch(1))
+            },
             fetch(page = 1) {
                 axios.get(this.endpoint + page)
                     .then(({data}) => {

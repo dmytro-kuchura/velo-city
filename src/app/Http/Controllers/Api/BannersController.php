@@ -37,7 +37,7 @@ class BannersController extends Controller
         ]);
     }
 
-    public function store(BannerCreateRequest $bannerCreateRequest)
+    public function create(BannerCreateRequest $bannerCreateRequest)
     {
         $this->repository->create($bannerCreateRequest->all());
 
@@ -66,5 +66,6 @@ class BannersController extends Controller
 
     public function delete($id)
     {
+        $this->repository->destroy($id);
     }
 }

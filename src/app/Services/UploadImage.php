@@ -17,7 +17,7 @@ class UploadImage
 
         foreach ($config as $key => $value) {
             if (isset($value['resize']) && (bool)$value['resize']) {
-                $img = Image::make($request->image)->resize($value['width'], $value['height']);
+                $img = Image::make($request->image)->fit($value['width'], $value['height']);
 
                 // add watermark
                 if (isset($value['resize']) && (bool)$value['watermark']) {

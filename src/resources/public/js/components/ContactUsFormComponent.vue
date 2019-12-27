@@ -8,8 +8,8 @@
                 <input type="email" placeholder="Email" required>
             </div>
             <div class="field">
-                                        <textarea name="Message" placeholder="Message" required id="message" cols="5"
-                                                  rows="2"></textarea>
+                <textarea name="Message" placeholder="Message" required id="message" cols="5"
+                          rows="2"></textarea>
             </div>
             <div class="field">
                 <button title="Subscribe" class="btn-color">Submit</button>

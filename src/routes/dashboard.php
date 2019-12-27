@@ -20,7 +20,7 @@ Route::prefix('order')->group(function () {
 
 Route::prefix('banners')->group(function () {
     Route::get('/', 'Dashboard\BannersController@index')->name('dashboard.banners.index');
-    Route::get('/{id}', 'Dashboard\BannersController@edit')->name('dashboard.banners.edit');
     Route::get('/create', 'Dashboard\BannersController@create')->name('dashboard.banners.create');
+    Route::get('/{id}', 'Dashboard\BannersController@edit')->name('dashboard.banners.edit');
 });
 

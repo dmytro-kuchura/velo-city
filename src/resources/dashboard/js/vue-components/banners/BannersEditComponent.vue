@@ -107,8 +107,8 @@
                 </div>
 
                 <div class="text-right">
-                    <button class="btn btn-gradient-01" type="submit" v-on:click="updateBanner">Обновить</button>
-                    <button class="btn btn-shadow" type="reset">Сбросить</button>
+                    <button class="btn btn-gradient-01" type="submit" v-on:click.prevent="updateBanner">Обновить</button>
+                    <button class="btn btn-shadow" type="reset">Отмена</button>
                 </div>
             </form>
         </div>
