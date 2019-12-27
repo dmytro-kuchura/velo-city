@@ -4,8 +4,8 @@
             <li>
                 <a href="#dropdown-products" aria-expanded="false" data-toggle="collapse"><i class="la la-columns"></i><span>Товары</span></a>
                 <ul id="dropdown-products" class="collapse list-unstyled pt-0">
-                    <li><a href="db-clean.html">Товары</a></li>
-                    <li><a href="db-compact.html">Добавить товар</a></li>
+                    <li><a href="{{ route('dashboard.products.index') }}">Товары</a></li>
+                    <li><a href="{{ route('dashboard.products.create') }}">Добавить товар</a></li>
                     <li><a href="db-modern.html">Категории</a></li>
                     <li><a href="db-social.html">Добавить категорию</a></li>
                     <li><a href="db-smarthome.html">Бренды</a></li>

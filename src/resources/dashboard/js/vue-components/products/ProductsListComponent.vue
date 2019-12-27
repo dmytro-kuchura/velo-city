@@ -9,7 +9,7 @@
                             <th>ID</th>
                             <th>Название</th>
                             <th>Дата создания</th>
-                            <th><span style="width:100px;">Status</span></th>
+                            <th><span style="width:100px;">Статус</span></th>
                             <th>Действия</th>
                         </tr>
                         </thead>
@@ -20,13 +20,13 @@
                             <td>{{ item.title }}</td>
                             <td>{{ moment(item.created_at).format('MMMM Do YYYY, h:mm') }}</td>
                             <td>
-                                <span style="width:150px;">
+                                <span style="width:115px;">
                                     <span class="badge-text badge-text-small" v-bind:class="getClass(item.status)">{{ getLabel(item.status) }}</span>
                                 </span>
                             </td>
-                            <td class="td-actions">
+                            <td class="td-actions" style="width:115px;">
                                 <a v-bind:href="'/admin/products/' + item.id"><i class="la la-edit edit"></i></a>
-                                <a v-bind:href="'/admin/products/' + item.id"><i class="la la-close delete"></i></a>
+                                <a href="javascript:;" v-on:click.prevent="onDelete(item.id)"><i class="la la-close delete"></i></a>
                             </td>
                         </tr>
 
@@ -79,6 +79,10 @@
                 .catch((response) => this.getBannersListErrorResponse(response));
         },
         methods: {
+            onDelete(id) {
+                axios.delete('/api/v1/products/' + id)
+                    .then(() => this.fetch(1))
+            },
             fetch(page = 1) {
                 axios.get(this.endpoint + page)
                     .then(({data}) => {

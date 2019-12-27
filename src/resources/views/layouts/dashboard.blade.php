@@ -40,7 +40,7 @@
             <div class="navbar-holder d-flex align-items-center align-middle justify-content-between">
                 <!-- Begin Logo -->
                 <div class="navbar-header">
-                    <a href="db-default.html" class="navbar-brand">
+                    <a href="{{ route('dashboard') }}" class="navbar-brand">
                         <div class="brand-image brand-big">
                             <img src="/images/logo-new.png" alt="logo" class="logo-big">
                         </div>

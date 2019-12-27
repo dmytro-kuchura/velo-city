@@ -16,14 +16,24 @@ class ProductResource extends Resource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'link' => $this->link,
-            'slogan' => $this->slogan,
-            'description' => $this->description,
-            'image' => $this->image,
+            'name' => $this->name,
+            'alias' => $this->alias,
+            'category_id' => $this->category_id,
             'status' => $this->status,
-            'updated' => $this->updated_at->toDateTimeString(),
-            'created' => $this->created_at->toDateTimeString(),
+            'new' => $this->new,
+            'sale' => $this->sale,
+            'top' => $this->top,
+            'available' => $this->available,
+            'cost' => $this->cost,
+            'cost_old' => $this->cost_old,
+            'brand' => $this->brand,
+            'artikul' => $this->artikul,
+            'image' => $this->image,
+            'specifications' => $this->specifications,
+            'information' => $this->information,
+            'title' => $this->title,
+            'description' => $this->description,
+            'keywords' => $this->keywords,
         ];
     }
 }

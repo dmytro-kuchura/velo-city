@@ -24,3 +24,8 @@ Route::prefix('banners')->group(function () {
     Route::get('/{id}', 'Dashboard\BannersController@edit')->name('dashboard.banners.edit');
 });
 
+Route::prefix('products')->group(function () {
+    Route::get('/', 'Dashboard\ProductsController@index')->name('dashboard.products.index');
+    Route::get('/create', 'Dashboard\ProductsController@create')->name('dashboard.products.create');
+    Route::get('/{id}', 'Dashboard\ProductsController@edit')->name('dashboard.products.edit');
+});

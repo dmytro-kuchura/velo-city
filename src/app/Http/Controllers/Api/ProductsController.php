@@ -66,6 +66,10 @@ class ProductsController extends Controller
 
     public function delete($id)
     {
+        $this->repository->destroy($id);
 
+        return $this->returnResponse([
+            'success' => true,
+        ]);
     }
 }

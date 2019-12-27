@@ -28,9 +28,9 @@ Vue.component('banner-list', require('./vue-components/banners/BannersListCompon
 Vue.component('banner-edit', require('./vue-components/banners/BannersEditComponent').default);
 Vue.component('banner-create', require('./vue-components/banners/BannersCreateComponent').default);
 
-// Vue.component('product-list', require('./vue-components/banners/BannersListComponent').default);
-// Vue.component('product-edit', require('./vue-components/banners/BannersEditComponent').default);
-// Vue.component('product-create', require('./vue-components/banners/BannersCreateComponent').default);
+Vue.component('product-list', require('./vue-components/products/ProductsListComponent').default);
+Vue.component('product-edit', require('./vue-components/products/ProductsEditComponent').default);
+// Vue.component('product-create', require('./vue-components/products/ProductsCreateComponent').default);
 
 new Vue({
     el: '#dashboard',

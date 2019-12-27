@@ -21,13 +21,24 @@ class ProductUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', 'integer'],
-            'link' => ['required', 'string', 'max:255'],
-            'image' => ['required', 'string', 'max:255'],
-            'title' => ['required', 'string', 'max:255'],
-            'slogan' => ['required', 'string', 'max:255'],
-            'description' => ['string'],
-            'status' => ['required', 'integer',],
+            'name' => 'string|required|max:255',
+            'alias' => 'string|required|max:255',
+            'category_id' => 'integer|required',
+            'status' => 'integer|required',
+            'new' => 'integer|required',
+            'sale' => 'integer|required',
+            'top' => 'integer|required',
+            'available' => 'integer|required',
+            'cost' => 'string|required',
+            'cost_old' => 'string',
+            'brand' => 'integer|required',
+            'artikul' => 'string|required|max:255',
+            'image' => 'string|required|max:255',
+            'specifications' => 'string',
+            'information' => 'string',
+            'title' => 'string|max:255',
+            'description' => 'string',
+            'keywords' => 'string',
         ];
     }
 

@@ -21,13 +21,13 @@ class BannerUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', 'integer'],
-            'link' => ['required', 'string', 'max:255'],
-            'image' => ['required', 'string', 'max:255'],
-            'title' => ['required', 'string', 'max:255'],
-            'slogan' => ['required', 'string', 'max:255'],
-            'description' => ['string'],
-            'status' => ['required', 'integer',],
+            'id' => 'required|integer',
+            'link' => 'required|string|max:255',
+            'image' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'slogan' => 'required|string|max:255',
+            'description' => 'string',
+            'status' => 'required|integer',
         ];
     }
 

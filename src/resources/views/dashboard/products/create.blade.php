@@ -8,11 +8,9 @@
                     <h2 class="page-header-title">Создание баннера</h2>
                     <div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('dashboard') }}"><i class="ti ti-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('dashboard.banners.index') }}">Баннеры</a>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i
+                                            class="ti ti-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard.banners.index') }}">Баннеры</a>
                             </li>
                             <li class="breadcrumb-item active">Создание баннера</li>
                         </ul>

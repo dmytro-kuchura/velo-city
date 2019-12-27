@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Models\Enum\ProductConstants;
 
@@ -14,24 +15,50 @@ class ProductsRepository
         return $this->model::paginate(12);
     }
 
-    public function list() {
+    public function list()
+    {
 
     }
 
-    public function find($id) {
-        return $this->model::where('id', $id)->where('status', ProductConstants::STATUS_ACTIVE)->first();
+    public function find($id)
+    {
+        $product = $this->model::where('id', $id)->first();
+
+        return new ProductResource($product);
     }
 
-    public function store($id, $data) {
+    public function store($id, $data)
+    {
+        return $this->model::where('id', $id)->update([
+            'name' => $data['name'],
+            'alias' => $data['alias'],
+            'category_id' => $data['category_id'],
+            'status' => $data['status'],
+            'new' => $data['new'],
+            'sale' => $data['sale'],
+            'top' => $data['top'],
+            'available' => $data['available'],
+            'cost' => $data['cost'],
+            'cost_old' => $data['cost_old'],
+            'brand' => $data['brand'],
+            'artikul' => $data['artikul'],
+            'image' => $data['image'],
+            'specifications' => $data['specifications'],
+            'information' => $data['information'],
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'keywords' => $data['keywords'],
+        ]);
+    }
+
+    public function create($data)
+    {
 
     }
 
-    public function create($data) {
-
-    }
-
-    public function destroy($id) {
-
+    public function destroy($id)
+    {
+        return $this->model::where('id', $id)->delete();
     }
 
     public function updateImage($data)
@@ -39,14 +66,16 @@ class ProductsRepository
         return $this->model::where('id', $data['id'])->update(['image' => $data['link']]);
     }
 
-    public function getFeatured(int $limit) {
+    public function getFeatured(int $limit)
+    {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
             ->limit($limit)
             ->inRandomOrder()
             ->get();
     }
 
-    public function getSpecial(int $limit) {
+    public function getSpecial(int $limit)
+    {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
             ->where(function ($query) {
                 $query->where('sale', ProductConstants::IS_SALE)
@@ -57,14 +86,16 @@ class ProductsRepository
             ->get();
     }
 
-    public function getMostViewed(int $limit) {
+    public function getMostViewed(int $limit)
+    {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
             ->limit($limit)
             ->inRandomOrder()
             ->get();
     }
 
-    public function getLatest(int $limit) {
+    public function getLatest(int $limit)
+    {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
             ->where('new', ProductConstants::IS_NEW)
             ->limit($limit)

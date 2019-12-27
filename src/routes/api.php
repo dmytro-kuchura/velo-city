@@ -61,5 +61,22 @@ Route::middleware('authentication')->group(function () {
             Route::put('/{id}', 'Api\BannersController@update')->name('api.banners.update');
             Route::delete('/{id}', 'Api\BannersController@delete')->name('api.banners.delete');
         });
+
+        Route::prefix('products')->group(function () {
+            Route::get('/', 'Api\ProductsController@index')->name('api.products.index');
+            Route::post('/', 'Api\ProductsController@create')->name('api.products.create');
+            Route::put('/image-update', 'Api\ProductsController@image')->name('api.products.image');
+            Route::get('/{id}', 'Api\ProductsController@show')->name('api.products.show');
+            Route::put('/{id}', 'Api\ProductsController@update')->name('api.products.update');
+            Route::delete('/{id}', 'Api\ProductsController@delete')->name('api.products.delete');
+        });
+
+        Route::prefix('categories')->group(function () {
+            Route::get('/', 'Api\CategoriesController@index')->name('api.categories.index');
+        });
+
+        Route::prefix('brands')->group(function () {
+            Route::get('/', 'Api\BrandsController@index')->name('api.brands.index');
+        });
     });
 });

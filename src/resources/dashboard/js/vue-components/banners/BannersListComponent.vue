@@ -20,11 +20,11 @@
                             <td>{{ item.title }}</td>
                             <td>{{ moment(item.created_at).format('MMMM Do YYYY, h:mm') }}</td>
                             <td>
-                                <span style="width:150px;">
+                                <span style="width:115px;">
                                     <span class="badge-text badge-text-small" v-bind:class="getClass(item.status)">{{ getLabel(item.status) }}</span>
                                 </span>
                             </td>
-                            <td class="td-actions">
+                            <td class="td-actions" style="width:115px;">
                                 <a v-bind:href="'/admin/banners/' + item.id"><i class="la la-edit edit"></i></a>
                                 <a href="javascript:;" v-on:click.prevent="onDelete(item.id)"><i class="la la-close delete"></i></a>
                             </td>
