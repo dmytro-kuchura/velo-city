@@ -9,6 +9,11 @@ class ProductsRepository
 {
     protected $model = Product::class;
 
+    public function all()
+    {
+        return $this->model::paginate(12);
+    }
+
     public function list() {
 
     }
@@ -27,6 +32,11 @@ class ProductsRepository
 
     public function destroy($id) {
 
+    }
+
+    public function updateImage($data)
+    {
+        return $this->model::where('id', $data['id'])->update(['image' => $data['link']]);
     }
 
     public function getFeatured(int $limit) {

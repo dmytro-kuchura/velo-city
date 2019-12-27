@@ -12,7 +12,7 @@ class BannersRepository
 
     public function all()
     {
-        return $this->model::paginate(4);
+        return $this->model::paginate(12);
     }
 
     public function list()
