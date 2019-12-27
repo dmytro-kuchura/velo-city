@@ -44,5 +44,31 @@ return [
                 'resize' => 0,
             ],
         ],
+        'products' => [
+            [
+                'path' => 'main',
+                'width' => 750,
+                'height' => 750,
+                'resize' => 1,
+                'watermark' => 0,
+            ],
+            [
+                'path' => 'original',
+                'resize' => 0,
+            ],
+        ],
+        'brands' => [
+            [
+                'path' => 'main',
+                'width' => 170,
+                'height' => 120,
+                'resize' => 0,
+                'watermark' => 0,
+            ],
+            [
+                'path' => 'original',
+                'resize' => 0,
+            ],
+        ],
     ],
 ];

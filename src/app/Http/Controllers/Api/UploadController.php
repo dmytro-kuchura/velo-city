@@ -19,7 +19,7 @@ class UploadController extends Controller
     public function image(ImageUploadRequest $request)
     {
         try {
-            $path = $this->service->upload($request, 'banners');
+            $path = $this->service->upload($request, $request->get('type'));
         } catch (\Throwable $exception) {
             Log::error($exception->getMessage());
 

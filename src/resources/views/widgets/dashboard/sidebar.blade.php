@@ -8,8 +8,8 @@
                     <li><a href="{{ route('dashboard.products.create') }}">Добавить товар</a></li>
                     <li><a href="db-modern.html">Категории</a></li>
                     <li><a href="db-social.html">Добавить категорию</a></li>
-                    <li><a href="db-smarthome.html">Бренды</a></li>
-                    <li><a href="db-all.html">Добавить бренд</a></li>
+                    <li><a href="{{ route('dashboard.brands.index') }}">Бренды</a></li>
+                    <li><a href="{{ route('dashboard.brands.create') }}">Добавить бренд</a></li>
                 </ul>
             </li>
             <li>
