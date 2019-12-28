@@ -65,13 +65,13 @@
                         <div class="form-group row d-flex align-items-center mb-5">
                             <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Информация</label>
                             <div class="col-lg-8">
-                                <vue-editor v-model="product.information"></vue-editor>
+                                <ckeditor :editor="editor" v-model="product.information" :config="editorConfig"></ckeditor>
                             </div>
                         </div>
                         <div class="form-group row d-flex align-items-center mb-5">
                             <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Спецификации</label>
                             <div class="col-lg-8">
-                                <vue-editor v-model="product.specifications"></vue-editor>
+                                <ckeditor :editor="editor" v-model="product.specifications" :config="editorConfig"></ckeditor>
                             </div>
                         </div>
 
@@ -342,14 +342,15 @@
 </template>
 
 <script>
-    import {VueEditor} from "vue2-editor";
+    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
     export default {
-        components: {
-            VueEditor
-        },
         data() {
             return {
+                editor: ClassicEditor,
+                editorConfig: {
+                    // The configuration of the rich-text editor.
+                },
                 product: {
                     id: null,
                     name: null,

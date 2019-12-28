@@ -17,6 +17,9 @@ import Vuex from 'vuex';
 import paginate from "vuejs-paginate";
 import store from "./store";
 
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
+Vue.use(CKEditor);
 Vue.use(Vuex);
 
 Vue.component('paginate', paginate);

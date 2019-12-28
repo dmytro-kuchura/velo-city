@@ -30,15 +30,15 @@ class ProductUpdateRequest extends FormRequest
             'top' => 'integer|required',
             'available' => 'integer|required',
             'cost' => 'string|required',
-            'cost_old' => 'string',
+            'cost_old' => 'string|nullable',
             'brand' => 'integer|required',
             'artikul' => 'string|required|max:255',
             'image' => 'string|required|max:255',
-            'specifications' => 'string',
-            'information' => 'string',
-            'title' => 'string|max:255',
-            'description' => 'string',
-            'keywords' => 'string',
+            'specifications' => 'string|nullable',
+            'information' => 'string|nullable',
+            'title' => 'string|nullable|max:255',
+            'description' => 'string|nullable',
+            'keywords' => 'string|nullable',
         ];
     }
 

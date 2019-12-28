@@ -25,15 +25,7 @@
                     <div class="row">
                         <div class="col-lg-5 col-md-5 mb-xs-30">
                             <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
-                                <a href="#"><img src="/images/1.jpg" alt="Roadie"></a>
-                                <a href="#"><img src="/images/2.jpg" alt="Roadie"></a>
-                                <a href="#"><img src="/images/3.jpg" alt="Roadie"></a>
-                                <a href="#"><img src="/images/4.jpg" alt="Roadie"></a>
-                                <a href="#"><img src="/images/5.jpg" alt="Roadie"></a>
-                                <a href="#"><img src="/images/6.jpg" alt="Roadie"></a>
-                                <a href="#"><img src="/images/4.jpg" alt="Roadie"></a>
-                                <a href="#"><img src="/images/5.jpg" alt="Roadie"></a>
-                                <a href="#"><img src="/images/6.jpg" alt="Roadie"></a>
+                                <a href="#"><img src="{{ $result->image }}" alt="Roadie"></a>
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-7">
@@ -51,16 +43,15 @@
                                             </div>
                                             <div class="product-info-stock-sku">
                                                 <div>
-                                                    <label>Availability: </label>
-                                                    <span class="info-deta">In stock</span>
+                                                    <label>Наличие: </label>
+                                                    <span class="info-deta">В наличии</span>
+                                                    <span class="info-deta">Отсутсвует</span>
                                                 </div>
                                                 <div>
-                                                    <label>SKU: </label>
+                                                    <label>Акртикул: </label>
                                                     <span class="info-deta">{{ $result->artikul }}</span>
                                                 </div>
                                             </div>
-                                            <hr class="mb-20">
-                                            <p>{{ $result->information }}</p>
                                             <ul class="product-list">
                                                 <li><i class="fa fa-check"></i> Satisfaction 100% Guaranteed</li>
                                                 <li><i class="fa fa-check"></i> Free shipping on orders over $99</li>
@@ -92,27 +83,22 @@
                     <div class="col-lg-12">
                         <div id="tabs">
                             <ul class="nav nav-tabs">
-                                <li><a class="tab-Description selected" title="Description">Description</a></li>
-                                <li><a class="tab-Product-Tags" title="Product-Tags">Product-Tags</a></li>
-                                <li><a class="tab-Reviews" title="Reviews">Reviews</a></li>
+                                <li><a class="tab-description selected" title="Description">Характеристики</a></li>
+                                <li><a class="tab-Product-Tags" title="Product-Tags">Описание</a></li>
+{{--                                <li><a class="tab-Reviews" title="Reviews">Отзывы</a></li>--}}
                             </ul>
                         </div>
                         <div id="items">
                             <div class="tab_content">
                                 <ul>
                                     <li>
-                                        <div class="items-Description selected ">
-                                            <div class="Description">{{ $result->specification }}</div>
+                                        <div class="items-Description selected">
+                                            <div class="Description">{!! $result->specifications !!}</div>
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="items-Product-Tags"><strong>Section 1.10.32 of "de Finibus Bonorum
-                                                et Malorum", written by Cicero in 45 BC</strong><br/>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                                            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                                            ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                            consequuntur
+                                        <div class="items-Product-Tags">
+                                            <p>{!! $result->information !!}</p>
                                         </div>
                                     </li>
                                     <li>
@@ -120,58 +106,6 @@
                                             <div class="comments-area">
                                                 <h4>Comments<span>(2)</span></h4>
                                                 <ul class="comment-list mt-30">
-                                                    <li>
-                                                        <div class="comment-user"><img src="/images/comment-user.jpg"
-                                                                                       alt="Roadie"></div>
-                                                        <div class="comment-detail">
-                                                            <div class="user-name">John Doe</div>
-                                                            <div class="post-info">
-                                                                <ul>
-                                                                    <li>Fab 11, 2016</li>
-                                                                    <li><a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <p>Consectetur adipiscing elit integer sit amet augue
-                                                                laoreet maximus nuncac.</p>
-                                                        </div>
-                                                        <ul class="comment-list child-comment">
-                                                            <li>
-                                                                <div class="comment-user"><img
-                                                                        src="/images/comment-user2.jpg" alt="Roadie">
-                                                                </div>
-                                                                <div class="comment-detail">
-                                                                    <div class="user-name">Joseph</div>
-                                                                    <div class="post-info">
-                                                                        <ul>
-                                                                            <li>Fab 11, 2016</li>
-                                                                            <li><a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <p>Consectetur adipiscing elit integer sit amet
-                                                                        augue laoreet maximus nuncac.</p>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="comment-user"><img
-                                                                        src="/images/comment-user2.jpg" alt="Roadie">
-                                                                </div>
-                                                                <div class="comment-detail">
-                                                                    <div class="user-name">Joseph</div>
-                                                                    <div class="post-info">
-                                                                        <ul>
-                                                                            <li>Fab 11, 2016</li>
-                                                                            <li><a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <p>Consectetur adipiscing elit integer sit amet
-                                                                        augue laoreet maximus nuncac.</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
                                                     <li>
                                                         <div class="comment-user"><img src="/images/comment-user3.jpg"
                                                                                        alt="Roadie"></div>
@@ -191,7 +125,7 @@
                                                 </ul>
                                             </div>
                                             <div class="main-form mt-30">
-                                                <h4>Leave a comments</h4>
+                                                <h4>Оставьте комменатрий</h4>
                                                 <form>
                                                     <div class="row mt-30">
                                                         <div class="col-md-4 mb-30">
