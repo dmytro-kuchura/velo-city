@@ -19,6 +19,16 @@ class BrandsController extends Controller
 
     public function index()
     {
+        $result = $this->repository->paginate();
+
+        return $this->returnResponse([
+            'success' => true,
+            'result' => $result,
+        ]);
+    }
+
+    public function all()
+    {
         $result = $this->repository->all();
 
         return $this->returnResponse([

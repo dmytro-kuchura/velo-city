@@ -14,7 +14,7 @@ class CategoriesController extends Controller
         $this->repository = $categoriesRepository;
     }
 
-    public function index()
+    public function all()
     {
         $result = $this->repository->all();
 

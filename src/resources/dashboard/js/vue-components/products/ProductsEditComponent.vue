@@ -266,17 +266,16 @@
                             <div class="col-lg-8">
                                 <select class="form-control" v-model="product.category_id">
                                     <option>Выберите категорию</option>
-                                    <option v-bind:value="category.id" v-for="category in categories">{{ category.name
-                                        }}
-                                    </option>
+                                    <option v-bind:value="category.id" v-for="category in categories">{{ category.name }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row d-flex align-items-center mb-5">
                             <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Бренд</label>
                             <div class="col-lg-8">
-                                <select class="form-control">
+                                <select class="form-control" v-model="product.brand">
                                     <option>Выберите бренд</option>
+                                    <option v-bind:value="brand.id" v-for="brand in brands">{{ brand.name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -360,11 +359,12 @@
                     .catch((response) => this.getProductsEditErrorResponse(response));
             },
             getCategories() {
-                axios.get('/api/v1/categories/')
+                axios.get('/api/v1/categories/all')
                     .then(({data}) => (this.categories = data.result))
             },
             getBrands() {
-                axios.get('/api/v1/brands/')
+                axios.get('/api/v1/brands/all')
+                    .then(({data}) => (this.brands = data.result))
             },
             getProductsEditSuccessResponse(data) {
                 this.product = data.result;

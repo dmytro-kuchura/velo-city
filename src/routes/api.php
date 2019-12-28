@@ -64,6 +64,7 @@ Route::middleware('authentication')->group(function () {
 
         Route::prefix('brands')->group(function () {
             Route::get('/', 'Api\BrandsController@index')->name('api.brands.index');
+            Route::get('/all', 'Api\BrandsController@all')->name('api.brands.all');
             Route::post('/', 'Api\BrandsController@create')->name('api.brands.create');
             Route::put('/image-update', 'Api\BrandsController@image')->name('api.brands.image');
             Route::get('/{id}', 'Api\BrandsController@show')->name('api.brands.show');
@@ -81,11 +82,7 @@ Route::middleware('authentication')->group(function () {
         });
 
         Route::prefix('categories')->group(function () {
-            Route::get('/', 'Api\CategoriesController@index')->name('api.categories.index');
-        });
-
-        Route::prefix('brands')->group(function () {
-            Route::get('/', 'Api\BrandsController@index')->name('api.brands.index');
+            Route::get('/all', 'Api\CategoriesController@all')->name('api.categories.all');
         });
     });
 });

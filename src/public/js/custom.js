@@ -2833,6 +2833,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateBanner: function updateBanner() {
       axios.put('/api/v1/banners/' + this.banner.id, this.banner);
+      swal({
+        title: "Обновлено!",
+        text: "Бренд был обновлен",
+        icon: "success"
+      });
     },
     deleteImage: function deleteImage() {
       this.banner.image = null;
@@ -3333,6 +3338,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateBrand: function updateBrand() {
       axios.put('/api/v1/brands/' + this.brand.id, this.brand);
+      swal({
+        title: "Обновлено!",
+        text: "Бренд был обновлен",
+        icon: "success"
+      });
     },
     deleteImage: function deleteImage() {
       this.brand.image = null;
@@ -3821,7 +3831,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3878,13 +3887,18 @@ __webpack_require__.r(__webpack_exports__);
     getCategories: function getCategories() {
       var _this2 = this;
 
-      axios.get('/api/v1/categories/').then(function (_ref2) {
+      axios.get('/api/v1/categories/all').then(function (_ref2) {
         var data = _ref2.data;
         return _this2.categories = data.result;
       });
     },
     getBrands: function getBrands() {
-      axios.get('/api/v1/brands/');
+      var _this3 = this;
+
+      axios.get('/api/v1/brands/all').then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.brands = data.result;
+      });
     },
     getProductsEditSuccessResponse: function getProductsEditSuccessResponse(data) {
       this.product = data.result;
@@ -3893,7 +3907,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(response);
     },
     uploadFile: function uploadFile(event) {
-      var _this3 = this;
+      var _this4 = this;
 
       var formData = new FormData();
       formData.append('image', event.target.files[0]);
@@ -3902,23 +3916,23 @@ __webpack_require__.r(__webpack_exports__);
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(function (_ref3) {
-        var data = _ref3.data;
-        return _this3.uploadProductSuccessResponse(data);
+      }).then(function (_ref4) {
+        var data = _ref4.data;
+        return _this4.uploadProductSuccessResponse(data);
       })["catch"](function (response) {
-        return _this3.uploadProductEditErrorResponse(response);
+        return _this4.uploadProductEditErrorResponse(response);
       });
     },
     uploadProductSuccessResponse: function uploadProductSuccessResponse(data) {
-      var _this4 = this;
+      var _this5 = this;
 
       if (data.success) {
         axios.put('/api/v1/banners/image-update/', {
           'id': this.product.id,
           'link': data.url
-        }).then(function (_ref4) {
-          var data = _ref4.data;
-          return _this4.successImageUpdate(data);
+        }).then(function (_ref5) {
+          var data = _ref5.data;
+          return _this5.successImageUpdate(data);
         });
       }
     },
@@ -41026,12 +41040,7 @@ var render = function() {
                           return _c(
                             "option",
                             { domProps: { value: category.id } },
-                            [
-                              _vm._v(
-                                _vm._s(category.name) +
-                                  "\n                                "
-                              )
-                            ]
+                            [_vm._v(_vm._s(category.name))]
                           )
                         })
                       ],
@@ -41041,7 +41050,70 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(1),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Бренд")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.brand,
+                            expression: "product.brand"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.product,
+                              "brand",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", [_vm._v("Выберите бренд")]),
+                        _vm._v(" "),
+                        _vm._l(_vm.brands, function(brand) {
+                          return _c(
+                            "option",
+                            { domProps: { value: brand.id } },
+                            [_vm._v(_vm._s(brand.name))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "em-separator separator-dashed" }),
               _vm._v(" "),
@@ -41179,31 +41251,6 @@ var staticRenderFns = [
           "widget-header bordered no-actions d-flex align-items-center"
       },
       [_c("h4", [_vm._v("Форма редактирования")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "form-group row d-flex align-items-center mb-5" },
-      [
-        _c(
-          "label",
-          {
-            staticClass:
-              "col-lg-3 form-control-label d-flex justify-content-lg-end"
-          },
-          [_vm._v("Бренд")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-8" }, [
-          _c("select", { staticClass: "form-control" }, [
-            _c("option", [_vm._v("Выберите бренд")])
-          ])
-        ])
-      ]
     )
   }
 ]

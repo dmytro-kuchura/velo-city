@@ -12,6 +12,11 @@ class BrandsRepository
 
     public function all()
     {
+        return $this->model::orderBy('id', 'asc')->get();
+    }
+
+    public function paginate()
+    {
         return $this->model::paginate(12);
     }
 

@@ -12,7 +12,7 @@
                                 <a href="{{ route('dashboard') }}"><i class="ti ti-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('dashboard.banners.index') }}">Бренды</a>
+                                <a href="{{ route('dashboard.brands.index') }}">Бренды</a>
                             </li>
                             <li class="breadcrumb-item active">Создание бренда</li>
                         </ul>
