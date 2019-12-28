@@ -74,8 +74,9 @@ Route::middleware('authentication')->group(function () {
 
         Route::prefix('products')->group(function () {
             Route::get('/', 'Api\ProductsController@index')->name('api.products.index');
-            Route::post('/', 'Api\ProductsController@create')->name('api.products.create');
+            Route::post('/', 'Api\ProductsController@store')->name('api.products.create');
             Route::put('/image-update', 'Api\ProductsController@image')->name('api.products.image');
+            Route::post('/images', 'Api\ProductsController@images')->name('api.products.images');
             Route::get('/{id}', 'Api\ProductsController@show')->name('api.products.show');
             Route::put('/{id}', 'Api\ProductsController@update')->name('api.products.update');
             Route::delete('/{id}', 'Api\ProductsController@delete')->name('api.products.delete');

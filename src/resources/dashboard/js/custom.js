@@ -30,7 +30,7 @@ Vue.component('banner-create', require('./vue-components/banners/BannersCreateCo
 
 Vue.component('product-list', require('./vue-components/products/ProductsListComponent').default);
 Vue.component('product-edit', require('./vue-components/products/ProductsEditComponent').default);
-// Vue.component('product-create', require('./vue-components/products/ProductsCreateComponent').default);
+Vue.component('product-create', require('./vue-components/products/ProductsCreateComponent').default);
 
 Vue.component('brands-list', require('./vue-components/brands/BrandsListComponent').default);
 Vue.component('brand-create', require('./vue-components/brands/BrandsCreateComponent').default);

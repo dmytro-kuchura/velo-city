@@ -1,7 +1,7 @@
 <template>
     <div class="widget has-shadow">
         <div class="widget-header bordered no-actions d-flex align-items-center">
-            <h4>Форма редактирования</h4>
+            <h4>Форма создания</h4>
         </div>
         <div class="widget-body">
             <form class="needs-validation" novalidate>
@@ -22,7 +22,6 @@
                             <div class="col-lg-8">
                                 <input type="text" class="form-control" placeholder="Введите навзвание"
                                        v-model="product.alias">
-                                <p><code>http://velo-city.store/{{ product.alias }}/p-{{ product.id }}</code></p>
                                 <div class="invalid-feedback">
                                     Please enter a custom message
                                 </div>
@@ -266,7 +265,9 @@
                             <div class="col-lg-8">
                                 <select class="form-control" v-model="product.category_id">
                                     <option>Выберите категорию</option>
-                                    <option v-bind:value="category.id" v-for="category in categories">{{ category.name }}</option>
+                                    <option v-bind:value="category.id" v-for="category in categories">{{ category.name
+                                        }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -279,61 +280,11 @@
                                 </select>
                             </div>
                         </div>
-
-                        <div class="em-separator separator-dashed"></div>
-
-                        <div class="form-group row d-flex align-items-center mb-5">
-                            <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Создано</label>
-                            <div class="col-lg-8">
-                                <input type="string" class="form-control" disabled placeholder="MM/DD/YYYY"
-                                       v-model="product.created">
-                            </div>
-                        </div>
-                        <div class="form-group row d-flex align-items-center mb-5">
-                            <label class="col-lg-3 form-control-label d-flex justify-content-lg-end">Изменено</label>
-                            <div class="col-lg-8">
-                                <input type="string" class="form-control" disabled placeholder="MM/DD/YYYY"
-                                       v-model="product.updated">
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group row d-flex align-items-center">
-                            <div class="col-md-12">
-                                <div class="area">
-                                    <div id="multipleDropZone" @click="$refs.images.click()">Нажмите сюда для загрузки</div>
-                                    <input type="file" ref="images" multiple class="hidden-input" v-on:change="uploadMultipleImages">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="em-separator separator-dashed"></div>
-
-                        <div class="form-group row d-flex align-items-center" v-if="images !== null">
-                            <div class="row">
-                                <div class="col-md-3"  v-for="image in images">
-                                    <div class="widget has-shadow">
-                                        <figure class="img-hover-01">
-                                            <img :src="image" class="img-fluid" alt="...">
-                                            <div>
-                                                <a href="#" v-on:click="deleteImage">
-                                                    <i class="la la-trash-o"></i>
-                                                </a>
-                                                <a v-bind:href="image" data-lity data-lity-desc="...">
-                                                    <i class="la la-expand"></i>
-                                                </a>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="text-right">
-                    <button class="btn btn-gradient-01" type="submit" v-on:click.prevent="updateProduct">Обновить</button>
+                    <button class="btn btn-gradient-01" type="submit" v-on:click.prevent="createProduct">Создать</button>
                     <a href="/admin/products" class="btn btn-shadow">Отмена</a>
                 </div>
             </form>
@@ -351,7 +302,6 @@
         data() {
             return {
                 product: {
-                    id: null,
                     name: null,
                     alias: null,
                     category_id: null,
@@ -370,29 +320,16 @@
                     title: null,
                     description: null,
                     keywords: null,
-                    created_at: null,
-                    updated_at: null,
                 },
                 categories: [],
                 brands: [],
-                images: [],
             };
         },
         mounted() {
-            let str = window.location.pathname;
-            let n = str.lastIndexOf('/');
-            let id = str.substring(n + 1);
-
-            this.getProduct(id);
             this.getCategories();
             this.getBrands();
         },
         methods: {
-            getProduct(id) {
-                axios.get('/api/v1/products/' + id)
-                    .then(({data}) => this.getProductsEditSuccessResponse(data))
-                    .catch((response) => this.getProductsEditErrorResponse(response));
-            },
             getCategories() {
                 axios.get('/api/v1/categories/all')
                     .then(({data}) => (this.categories = data.result))
@@ -400,12 +337,6 @@
             getBrands() {
                 axios.get('/api/v1/brands/all')
                     .then(({data}) => (this.brands = data.result))
-            },
-            getProductsEditSuccessResponse(data) {
-                this.product = data.result;
-            },
-            getProductsEditErrorResponse(response) {
-                console.log(response);
             },
             uploadImage(event) {
                 let formData = new FormData();
@@ -420,49 +351,22 @@
                     .then(({data}) => this.uploadProductSuccessResponse(data))
                     .catch((response) => this.uploadProductEditErrorResponse(response));
             },
-            uploadMultipleImages(event) {
-                const self = this;
-
-                Array.from(event.target.files).forEach(function (image) {
-                    const formData = new FormData();
-
-                    formData.append('image', image);
-                    formData.append('type', 'products');
-
-                    axios.post('/api/v1/upload/image/', formData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
-                    })
-                        .then(({data}) => self.setImage(data));
-                });
-            },
             uploadProductSuccessResponse(data) {
                 if (data.success) {
-                    axios.put('/api/v1/products/image-update/', {'id': this.product.id, 'link': data.url})
-                        .then(({data}) => this.successImageUpdate(data))
+                    this.product.image = data.url;
                 }
             },
             uploadProductEditErrorResponse(response) {
                 console.log(response);
             },
-            successImageUpdate(data) {
-                if (data.success) {
-                    this.getProduct(this.product.id)
-                }
-            },
-            updateProduct() {
-                axios.put('/api/v1/products/' + this.product.id, this.product);
-                axios.post('/api/v1/products/images' + this.product.id, this.images);
+            createProduct() {
+                axios.post('/api/v1/products/', this.product);
 
                 swal({
-                    title: 'Обновлено!',
-                    text: 'Товар был обновлен',
+                    title: 'Создано!',
+                    text: 'Товар был создан',
                     icon: 'success',
                 });
-            },
-            setImage(data) {
-                this.images.push(data.url)
             },
             deleteImage() {
                 this.product.image = null

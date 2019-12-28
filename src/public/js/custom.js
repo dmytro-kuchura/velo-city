@@ -3517,6 +3517,403 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-editor */ "./node_modules/vue2-editor/dist/vue2-editor.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    VueEditor: vue2_editor__WEBPACK_IMPORTED_MODULE_0__["VueEditor"]
+  },
+  data: function data() {
+    return {
+      product: {
+        name: null,
+        alias: null,
+        category_id: null,
+        status: null,
+        "new": null,
+        sale: null,
+        top: null,
+        available: null,
+        cost: null,
+        cost_old: null,
+        brand: null,
+        artikul: null,
+        image: null,
+        specifications: null,
+        information: null,
+        title: null,
+        description: null,
+        keywords: null
+      },
+      categories: [],
+      brands: []
+    };
+  },
+  mounted: function mounted() {
+    this.getCategories();
+    this.getBrands();
+  },
+  methods: {
+    getCategories: function getCategories() {
+      var _this = this;
+
+      axios.get('/api/v1/categories/all').then(function (_ref) {
+        var data = _ref.data;
+        return _this.categories = data.result;
+      });
+    },
+    getBrands: function getBrands() {
+      var _this2 = this;
+
+      axios.get('/api/v1/brands/all').then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.brands = data.result;
+      });
+    },
+    uploadImage: function uploadImage(event) {
+      var _this3 = this;
+
+      var formData = new FormData();
+      formData.append('image', event.target.files[0]);
+      formData.append('type', 'products');
+      axios.post('/api/v1/upload/image/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.uploadProductSuccessResponse(data);
+      })["catch"](function (response) {
+        return _this3.uploadProductEditErrorResponse(response);
+      });
+    },
+    uploadProductSuccessResponse: function uploadProductSuccessResponse(data) {
+      if (data.success) {
+        this.product.image = data.url;
+      }
+    },
+    uploadProductEditErrorResponse: function uploadProductEditErrorResponse(response) {
+      console.log(response);
+    },
+    createProduct: function createProduct() {
+      axios.post('/api/v1/products/', this.product);
+      swal({
+        title: 'Создано!',
+        text: 'Товар был создан',
+        icon: 'success'
+      });
+    },
+    deleteImage: function deleteImage() {
+      this.product.image = null;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsEditComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/dashboard/js/vue-components/products/ProductsEditComponent.vue?vue&type=script&lang=js& ***!
@@ -3527,6 +3924,26 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-editor */ "./node_modules/vue2-editor/dist/vue2-editor.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3881,7 +4298,8 @@ __webpack_require__.r(__webpack_exports__);
         updated_at: null
       },
       categories: [],
-      brands: []
+      brands: [],
+      images: []
     };
   },
   mounted: function mounted() {
@@ -3925,12 +4343,12 @@ __webpack_require__.r(__webpack_exports__);
     getProductsEditErrorResponse: function getProductsEditErrorResponse(response) {
       console.log(response);
     },
-    uploadFile: function uploadFile(event) {
+    uploadImage: function uploadImage(event) {
       var _this4 = this;
 
       var formData = new FormData();
       formData.append('image', event.target.files[0]);
-      formData.append('type', 'product');
+      formData.append('type', 'products');
       axios.post('/api/v1/upload/image/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -3942,20 +4360,36 @@ __webpack_require__.r(__webpack_exports__);
         return _this4.uploadProductEditErrorResponse(response);
       });
     },
+    uploadMultipleImages: function uploadMultipleImages(event) {
+      var self = this;
+      Array.from(event.target.files).forEach(function (image) {
+        var formData = new FormData();
+        formData.append('image', image);
+        formData.append('type', 'products');
+        axios.post('/api/v1/upload/image/', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function (_ref5) {
+          var data = _ref5.data;
+          return self.setImage(data);
+        });
+      });
+    },
     uploadProductSuccessResponse: function uploadProductSuccessResponse(data) {
       var _this5 = this;
 
       if (data.success) {
-        axios.put('/api/v1/banners/image-update/', {
+        axios.put('/api/v1/products/image-update/', {
           'id': this.product.id,
           'link': data.url
-        }).then(function (_ref5) {
-          var data = _ref5.data;
+        }).then(function (_ref6) {
+          var data = _ref6.data;
           return _this5.successImageUpdate(data);
         });
       }
     },
-    uploadBannerEditErrorResponse: function uploadBannerEditErrorResponse(response) {
+    uploadProductEditErrorResponse: function uploadProductEditErrorResponse(response) {
       console.log(response);
     },
     successImageUpdate: function successImageUpdate(data) {
@@ -3965,11 +4399,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateProduct: function updateProduct() {
       axios.put('/api/v1/products/' + this.product.id, this.product);
+      axios.post('/api/v1/products/images' + this.product.id, this.images);
       swal({
-        title: "Обновлено!",
-        text: "Товар был обновлен",
-        icon: "success"
+        title: 'Обновлено!',
+        text: 'Товар был обновлен',
+        icon: 'success'
       });
+    },
+    setImage: function setImage(data) {
+      this.images.push(data.url);
     },
     deleteImage: function deleteImage() {
       this.product.image = null;
@@ -6175,6 +6613,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, "\n.area {\n    padding: 15px;\n    border: 5px dashed white;\n    background: #EB6A5A;\n}\n#dropZone {\n    border: 2px dashed white;\n    border-radius: 5px;\n    padding: 50px;\n    text-align: center;\n    font: 21pt bold arial;\n    color: white;\n    cursor: pointer;\n}\n.hidden-input {\n    display: none;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--8-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.area {\n    padding: 15px;\n    border: 5px dashed white;\n    background: #EB6A5A;\n}\n#dropZone {\n    border: 2px dashed white;\n    border-radius: 5px;\n    padding: 50px;\n    text-align: center;\n    font: 21pt bold arial;\n    color: white;\n    cursor: pointer;\n}\n#multipleDropZone {\n    border: 2px dashed white;\n    border-radius: 5px;\n    padding: 50px;\n    text-align: center;\n    font: 21pt bold arial;\n    color: white;\n    cursor: pointer;\n}\n.hidden-input {\n    display: none;\n}\n", ""]);
 
 // exports
 
@@ -36084,6 +36541,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--8-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--8-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ProductsCreateComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsEditComponent.vue?vue&type=style&index=0&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--8-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/dashboard/js/vue-components/products/ProductsEditComponent.vue?vue&type=style&index=0&lang=css& ***!
@@ -39847,6 +40334,1340 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=template&id=9aee091e&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=template&id=9aee091e& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "widget has-shadow" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "widget-body" }, [
+      _c(
+        "form",
+        { staticClass: "needs-validation", attrs: { novalidate: "" } },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-8" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Название")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.product.name,
+                          expression: "product.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Введите навзвание" },
+                      domProps: { value: _vm.product.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.product, "name", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Please enter a custom message\n                            "
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Алиас")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.product.alias,
+                          expression: "product.alias"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Введите навзвание" },
+                      domProps: { value: _vm.product.alias },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.product, "alias", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Please enter a custom message\n                            "
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Артикул")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.product.artikul,
+                          expression: "product.artikul"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Введите навзвание" },
+                      domProps: { value: _vm.product.artikul },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.product, "artikul", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Please enter a custom message\n                            "
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Цена, (грн)")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.product.cost,
+                          expression: "product.cost"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Введите навзвание" },
+                      domProps: { value: _vm.product.cost },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.product, "cost", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Please enter a custom message\n                            "
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Старая цена,\n                            (грн)")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.product.cost_old,
+                          expression: "product.cost_old"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Введите навзвание" },
+                      domProps: { value: _vm.product.cost_old },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.product, "cost_old", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Please enter a custom message\n                            "
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "em-separator separator-dashed" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Информация")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-8" },
+                    [
+                      _c("vue-editor", {
+                        model: {
+                          value: _vm.product.information,
+                          callback: function($$v) {
+                            _vm.$set(_vm.product, "information", $$v)
+                          },
+                          expression: "product.information"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Спецификации")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-8" },
+                    [
+                      _c("vue-editor", {
+                        model: {
+                          value: _vm.product.specifications,
+                          callback: function($$v) {
+                            _vm.$set(_vm.product, "specifications", $$v)
+                          },
+                          expression: "product.specifications"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "em-separator separator-dashed" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Title")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.product.title,
+                          expression: "product.title"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Введите Title ..." },
+                      domProps: { value: _vm.product.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.product, "title", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Please enter a custom message\n                            "
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Keywords")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.product.keywords,
+                          expression: "product.keywords"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { placeholder: "Введите Keywords ..." },
+                      domProps: { value: _vm.product.keywords },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.product, "keywords", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Please enter a custom message\n                            "
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Description")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.product.description,
+                          expression: "product.description"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { placeholder: "Введите Description ..." },
+                      domProps: { value: _vm.product.description },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.product,
+                            "description",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Please enter a custom message\n                            "
+                      )
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "em-separator separator-dashed" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row mb-5" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                  },
+                  [_vm._v("Статус *")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.status,
+                            expression: "product.status"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "1",
+                          id: "opt-01",
+                          required: ""
+                        },
+                        domProps: { checked: _vm._q(_vm.product.status, "1") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "status", "1")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "opt-01" }
+                        },
+                        [_vm._v("Опубликовано")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Toggle this custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.status,
+                            expression: "product.status"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "0",
+                          id: "opt-02",
+                          required: ""
+                        },
+                        domProps: { checked: _vm._q(_vm.product.status, "0") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "status", "0")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "opt-02" }
+                        },
+                        [_vm._v("Не опубликовано")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Or toggle this other custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _vm.product.image !== null
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "form-group row d-flex align-items-center mb-5"
+                    },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                        },
+                        [_vm._v("Изображение")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-8" }, [
+                        _c("div", { staticClass: "widget has-shadow" }, [
+                          _c("figure", { staticClass: "img-hover-01" }, [
+                            _c("img", {
+                              staticClass: "img-fluid",
+                              attrs: { src: _vm.product.image, alt: "..." }
+                            }),
+                            _vm._v(" "),
+                            _c("div", [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: { click: _vm.deleteImage }
+                                },
+                                [_c("i", { staticClass: "la la-trash-o" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href: _vm.product.image,
+                                    "data-lity": "",
+                                    "data-lity-desc": "..."
+                                  }
+                                },
+                                [_c("i", { staticClass: "la la-expand" })]
+                              )
+                            ])
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.product.image === null
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "form-group row d-flex align-items-center mb-5"
+                    },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                        },
+                        [
+                          _vm._v(
+                            "Загрузка\n                            изображения"
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-8" }, [
+                        _c("div", { staticClass: "area" }, [
+                          _c(
+                            "div",
+                            {
+                              attrs: { id: "dropZone" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.$refs.file.click()
+                                }
+                              }
+                            },
+                            [_vm._v("Нажмите сюда для загрузки")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            ref: "file",
+                            staticClass: "hidden-input",
+                            attrs: { type: "file" },
+                            on: { change: _vm.uploadImage }
+                          })
+                        ])
+                      ])
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "em-separator separator-dashed" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row mb-5" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                  },
+                  [_vm._v("Доступен")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.available,
+                            expression: "product.available"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "1",
+                          id: "available-01",
+                          required: ""
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.product.available, "1")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "available", "1")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "available-01" }
+                        },
+                        [_vm._v("Да")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Toggle this custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.available,
+                            expression: "product.available"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "0",
+                          id: "available-02",
+                          required: ""
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.product.available, "0")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "available", "0")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "available-02" }
+                        },
+                        [_vm._v("Нет")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Or toggle this other custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row mb-5" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                  },
+                  [_vm._v("Скидка")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.sale,
+                            expression: "product.sale"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "1",
+                          id: "sale-01",
+                          required: ""
+                        },
+                        domProps: { checked: _vm._q(_vm.product.sale, "1") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "sale", "1")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "sale-01" }
+                        },
+                        [_vm._v("Да")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Toggle this custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.sale,
+                            expression: "product.sale"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "0",
+                          id: "sale-02",
+                          required: ""
+                        },
+                        domProps: { checked: _vm._q(_vm.product.sale, "0") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "sale", "0")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "sale-02" }
+                        },
+                        [_vm._v("Нет")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Or toggle this other custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row mb-5" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                  },
+                  [_vm._v("Новинка")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.new,
+                            expression: "product.new"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "1",
+                          id: "new-01",
+                          required: ""
+                        },
+                        domProps: { checked: _vm._q(_vm.product.new, "1") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "new", "1")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "new-01" }
+                        },
+                        [_vm._v("Да")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Toggle this custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.new,
+                            expression: "product.new"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "0",
+                          id: "new-02",
+                          required: ""
+                        },
+                        domProps: { checked: _vm._q(_vm.product.new, "0") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "new", "0")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "new-02" }
+                        },
+                        [_vm._v("Нет")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Or toggle this other custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row mb-5" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                  },
+                  [_vm._v("Топ")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.top,
+                            expression: "product.top"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "1",
+                          id: "top-01",
+                          required: ""
+                        },
+                        domProps: { checked: _vm._q(_vm.product.top, "1") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "top", "1")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "top-01" }
+                        },
+                        [_vm._v("Да")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Toggle this custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-radio styled-radio mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.top,
+                            expression: "product.top"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: {
+                          type: "radio",
+                          value: "0",
+                          id: "top-02",
+                          required: ""
+                        },
+                        domProps: { checked: _vm._q(_vm.product.top, "0") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.product, "top", "0")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-descfeedback",
+                          attrs: { for: "top-02" }
+                        },
+                        [_vm._v("Нет")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                                    Or toggle this other custom radio\n                                "
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "em-separator separator-dashed" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Категория")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.category_id,
+                            expression: "product.category_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.product,
+                              "category_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", [_vm._v("Выберите категорию")]),
+                        _vm._v(" "),
+                        _vm._l(_vm.categories, function(category) {
+                          return _c(
+                            "option",
+                            { domProps: { value: category.id } },
+                            [
+                              _vm._v(
+                                _vm._s(category.name) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group row d-flex align-items-center mb-5"
+                },
+                [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "col-lg-3 form-control-label d-flex justify-content-lg-end"
+                    },
+                    [_vm._v("Бренд")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-8" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.product.brand,
+                            expression: "product.brand"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.product,
+                              "brand",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", [_vm._v("Выберите бренд")]),
+                        _vm._v(" "),
+                        _vm._l(_vm.brands, function(brand) {
+                          return _c(
+                            "option",
+                            { domProps: { value: brand.id } },
+                            [_vm._v(_vm._s(brand.name))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-gradient-01",
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.createProduct($event)
+                  }
+                }
+              },
+              [_vm._v("Создать")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-shadow",
+                attrs: { href: "/admin/products" }
+              },
+              [_vm._v("Отмена")]
+            )
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "widget-header bordered no-actions d-flex align-items-center"
+      },
+      [_c("h4", [_vm._v("Форма создания")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsEditComponent.vue?vue&type=template&id=9b5119ba&":
 /*!***********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/dashboard/js/vue-components/products/ProductsEditComponent.vue?vue&type=template&id=9b5119ba& ***!
@@ -40544,7 +42365,7 @@ var render = function() {
                             ref: "file",
                             staticClass: "hidden-input",
                             attrs: { type: "file" },
-                            on: { change: _vm.uploadFile }
+                            on: { change: _vm.uploadImage }
                           })
                         ])
                       ])
@@ -41242,7 +43063,7 @@ var render = function() {
                           attrs: { id: "multipleDropZone" },
                           on: {
                             click: function($event) {
-                              return _vm.$refs.file.click()
+                              return _vm.$refs.images.click()
                             }
                           }
                         },
@@ -41250,17 +43071,66 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("input", {
-                        ref: "file",
+                        ref: "images",
                         staticClass: "hidden-input",
-                        attrs: { type: "file" },
-                        on: { change: _vm.uploadFile }
+                        attrs: { type: "file", multiple: "" },
+                        on: { change: _vm.uploadMultipleImages }
                       })
                     ])
                   ])
                 ]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "em-separator separator-dashed" })
+              _c("div", { staticClass: "em-separator separator-dashed" }),
+              _vm._v(" "),
+              _vm.images !== null
+                ? _c(
+                    "div",
+                    { staticClass: "form-group row d-flex align-items-center" },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "row" },
+                        _vm._l(_vm.images, function(image) {
+                          return _c("div", { staticClass: "col-md-3" }, [
+                            _c("div", { staticClass: "widget has-shadow" }, [
+                              _c("figure", { staticClass: "img-hover-01" }, [
+                                _c("img", {
+                                  staticClass: "img-fluid",
+                                  attrs: { src: image, alt: "..." }
+                                }),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: { href: "#" },
+                                      on: { click: _vm.deleteImage }
+                                    },
+                                    [_c("i", { staticClass: "la la-trash-o" })]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href: image,
+                                        "data-lity": "",
+                                        "data-lity-desc": "..."
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "la la-expand" })]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                : _vm._e()
             ])
           ]),
           _vm._v(" "),
@@ -69871,8 +71741,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('banner-list', __webpack_re
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('banner-edit', __webpack_require__(/*! ./vue-components/banners/BannersEditComponent */ "./resources/dashboard/js/vue-components/banners/BannersEditComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('banner-create', __webpack_require__(/*! ./vue-components/banners/BannersCreateComponent */ "./resources/dashboard/js/vue-components/banners/BannersCreateComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('product-list', __webpack_require__(/*! ./vue-components/products/ProductsListComponent */ "./resources/dashboard/js/vue-components/products/ProductsListComponent.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('product-edit', __webpack_require__(/*! ./vue-components/products/ProductsEditComponent */ "./resources/dashboard/js/vue-components/products/ProductsEditComponent.vue")["default"]); // Vue.component('product-create', require('./vue-components/products/ProductsCreateComponent').default);
-
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('product-edit', __webpack_require__(/*! ./vue-components/products/ProductsEditComponent */ "./resources/dashboard/js/vue-components/products/ProductsEditComponent.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('product-create', __webpack_require__(/*! ./vue-components/products/ProductsCreateComponent */ "./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('brands-list', __webpack_require__(/*! ./vue-components/brands/BrandsListComponent */ "./resources/dashboard/js/vue-components/brands/BrandsListComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('brand-create', __webpack_require__(/*! ./vue-components/brands/BrandsCreateComponent */ "./resources/dashboard/js/vue-components/brands/BrandsCreateComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('brand-edit', __webpack_require__(/*! ./vue-components/brands/BrandsEditComponent */ "./resources/dashboard/js/vue-components/brands/BrandsEditComponent.vue")["default"]);
@@ -70758,6 +72628,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BrandsListComponent_vue_vue_type_template_id_328e0a62___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BrandsListComponent_vue_vue_type_template_id_328e0a62___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue":
+/*!************************************************************************************!*\
+  !*** ./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProductsCreateComponent_vue_vue_type_template_id_9aee091e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProductsCreateComponent.vue?vue&type=template&id=9aee091e& */ "./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=template&id=9aee091e&");
+/* harmony import */ var _ProductsCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductsCreateComponent.vue?vue&type=script&lang=js& */ "./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ProductsCreateComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProductsCreateComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ProductsCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProductsCreateComponent_vue_vue_type_template_id_9aee091e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProductsCreateComponent_vue_vue_type_template_id_9aee091e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ProductsCreateComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--8-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ProductsCreateComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=template&id=9aee091e&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=template&id=9aee091e& ***!
+  \*******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_template_id_9aee091e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ProductsCreateComponent.vue?vue&type=template&id=9aee091e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/dashboard/js/vue-components/products/ProductsCreateComponent.vue?vue&type=template&id=9aee091e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_template_id_9aee091e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsCreateComponent_vue_vue_type_template_id_9aee091e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
