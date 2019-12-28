@@ -298,6 +298,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row d-flex align-items-center">
+                            <div class="col-md-12">
+                                <div class="area">
+                                    <div id="multipleDropZone" @click="$refs.file.click()">Нажмите сюда для загрузки</div>
+                                    <input type="file" ref="file" class="hidden-input" v-on:change="uploadFile">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="em-separator separator-dashed"></div>
+                    </div>
+                </div>
                 <div class="text-right">
                     <button class="btn btn-gradient-01" type="submit" v-on:click.prevent="updateProduct">Обновить</button>
                     <a href="/admin/products" class="btn btn-shadow">Отмена</a>
@@ -423,6 +437,17 @@
     }
 
     #dropZone {
+        border: 2px dashed white;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        padding: 50px;
+        text-align: center;
+        font: 21pt bold arial;
+        color: white;
+        cursor: pointer;
+    }
+
+    #multipleDropZone {
         border: 2px dashed white;
         -webkit-border-radius: 5px;
         border-radius: 5px;

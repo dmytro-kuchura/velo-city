@@ -2,8 +2,8 @@
     <nav class="side-navbar box-scroll sidebar-scroll">
         <ul class="list-unstyled">
             <li>
-                <a href="#dropdown-products" aria-expanded="false" data-toggle="collapse"><i class="la la-columns"></i><span>Товары</span></a>
-                <ul id="dropdown-products" class="collapse list-unstyled pt-0">
+                <a href="#dropdown-products" aria-expanded="{{ in_array($route, ['dashboard.products.index', 'dashboard.products.create', 'dashboard.brands.index', 'dashboard.brands.create']) ? 'true' : 'false' }}" data-toggle="collapse"><i class="la la-columns"></i><span>Товары</span></a>
+                <ul id="dropdown-products" class="collapse list-unstyled {{ in_array($route, ['dashboard.products.index', 'dashboard.products.create', 'dashboard.brands.index', 'dashboard.brands.create']) ? 'show' : '' }} pt-0">
                     <li><a href="{{ route('dashboard.products.index') }}">Товары</a></li>
                     <li><a href="{{ route('dashboard.products.create') }}">Добавить товар</a></li>
                     <li><a href="db-modern.html">Категории</a></li>
