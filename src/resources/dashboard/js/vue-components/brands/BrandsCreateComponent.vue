@@ -126,7 +126,13 @@
                 console.log(response);
             },
             onSubmit() {
-                axios.post('/api/v1/brands/', this.brand)
+                axios.post('/api/v1/brands/', this.brand);
+
+                swal({
+                    title: "Создано!",
+                    text: "Бренд был добавлен",
+                    icon: "success",
+                });
             },
             deleteImage() {
                 this.brand.image = null

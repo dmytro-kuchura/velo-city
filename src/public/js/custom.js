@@ -3148,6 +3148,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     onSubmit: function onSubmit() {
       axios.post('/api/v1/brands/', this.brand);
+      swal({
+        title: "Создано!",
+        text: "Бренд был добавлен",
+        icon: "success"
+      });
     },
     deleteImage: function deleteImage() {
       this.brand.image = null;
