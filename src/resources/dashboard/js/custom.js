@@ -13,14 +13,12 @@ window.swal = require('sweetalert');
 moment.locale('ru');
 
 import Vue from "vue";
+
 import Vuex from 'vuex';
 import paginate from "vuejs-paginate";
-import store from "./store";
-
 import CKEditor from '@ckeditor/ckeditor5-vue';
-
-Vue.use(CKEditor);
-Vue.use(Vuex);
+import VueDragTree from 'ml-vue-drag-tree'
+// https://github.com/qq240814476/ml-vue-drag-tree
 
 Vue.component('paginate', paginate);
 Vue.component('orders-list', require('./vue-components/OrdersListComponent.vue').default);
@@ -42,6 +40,12 @@ Vue.component('brand-edit', require('./vue-components/brands/BrandsEditComponent
 Vue.component('categories-list', require('./vue-components/categories/CategoriesListListComponent').default);
 Vue.component('category-create', require('./vue-components/categories/CategoryCreateComponent').default);
 Vue.component('category-edit', require('./vue-components/categories/CategoryEditComponent').default);
+
+import store from "./store";
+
+Vue.use(VueDragTree);
+Vue.use(CKEditor);
+Vue.use(Vuex);
 
 new Vue({
     el: '#dashboard',

@@ -348,9 +348,6 @@
         data() {
             return {
                 editor: ClassicEditor,
-                editorConfig: {
-                    // The configuration of the rich-text editor.
-                },
                 product: {
                     id: null,
                     name: null,
