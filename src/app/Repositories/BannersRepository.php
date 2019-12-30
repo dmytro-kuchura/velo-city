@@ -12,7 +12,12 @@ class BannersRepository
 
     public function all()
     {
-        return $this->model::paginate(12);
+        return $this->model::orderBy('id', 'asc')->get();
+    }
+
+    public function paginate()
+    {
+        return $this->model::orderBy('id', 'desc')->paginate(12);
     }
 
     public function list()
