@@ -26,9 +26,8 @@ Route::post('/register', 'Auth\RegisterController@register')->name('register');
     Route::prefix('shop')->group(function () {
         Route::get('/', 'ShopController@index')->name('shop.index');
         Route::get('/{category}', 'ShopController@category')->name('shop.category');
+        Route::get('/{alias}/p{id}', 'ShopController@item')->name('shop.item');
     });
-
-    Route::get('/{alias}/p-{id}', 'ShopController@item')->name('shop.item');
 
     Route::get('/cart', 'CartController@cart')->name('cart');
 

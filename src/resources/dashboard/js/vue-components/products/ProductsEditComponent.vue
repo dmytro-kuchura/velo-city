@@ -22,7 +22,7 @@
                             <div class="col-lg-8">
                                 <input type="text" class="form-control" placeholder="Введите навзвание"
                                        v-model="product.alias">
-                                <p><code>http://velo-city.store/{{ product.alias }}/p-{{ product.id }}</code></p>
+                                <p><code>http://velo-city.store/{category}/{{ product.alias }}/p{{ product.id }}</code></p>
                                 <div class="invalid-feedback">
                                     Please enter a custom message
                                 </div>
