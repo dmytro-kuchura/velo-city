@@ -39,6 +39,10 @@ Vue.component('brands-list', require('./vue-components/brands/BrandsListComponen
 Vue.component('brand-create', require('./vue-components/brands/BrandsCreateComponent').default);
 Vue.component('brand-edit', require('./vue-components/brands/BrandsEditComponent').default);
 
+Vue.component('categories-list', require('./vue-components/categories/CategoriesListListComponent').default);
+Vue.component('category-create', require('./vue-components/categories/CategoryCreateComponent').default);
+Vue.component('category-edit', require('./vue-components/categories/CategoryEditComponent').default);
+
 new Vue({
     el: '#dashboard',
     store: new Vuex.Store(store),
