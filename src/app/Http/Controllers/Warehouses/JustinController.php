@@ -43,5 +43,9 @@ class JustinController extends Controller
                 ]
             );
         }
+
+        return $this->returnResponse([
+            'success' => true,
+        ]);
     }
 }
