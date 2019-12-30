@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('justin', 'Warehouses\JustinController@import')->name('justin.import');
+
 Route::get('sitemap.xml', 'SiteController@sitemap')->name('sitemap.xml');
 
 Route::post('/login', 'Auth\LoginController@login')->name('login');
