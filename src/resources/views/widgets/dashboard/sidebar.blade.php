@@ -2,8 +2,12 @@
     <nav class="side-navbar box-scroll sidebar-scroll">
         <ul class="list-unstyled">
             <li>
-                <a href="#dropdown-products" aria-expanded="{{ in_array($route, ['dashboard.products.index', 'dashboard.products.edit', 'dashboard.products.create', 'dashboard.brands.index', 'dashboard.brands.create']) ? 'true' : 'false' }}" data-toggle="collapse"><i class="la la-shopping-cart"></i><span>Товары</span></a>
-                <ul id="dropdown-products" class="collapse list-unstyled {{ in_array($route, ['dashboard.products.index', 'dashboard.products.edit', 'dashboard.products.create', 'dashboard.brands.index', 'dashboard.brands.create']) ? 'show' : '' }} pt-0">
+                <a href="#dropdown-products" aria-expanded="{{ $menu === 'products' ? 'true' : 'false' }}"
+                   data-toggle="collapse">
+                    <i class="la la-shopping-cart"></i>
+                    <span>Товары</span>
+                </a>
+                <ul id="dropdown-products" class="collapse list-unstyled {{ $menu === 'products' ? 'show' : '' }} pt-0">
                     <li><a href="{{ route('dashboard.products.index') }}">Товары</a></li>
                     <li><a href="{{ route('dashboard.products.create') }}">Добавить товар</a></li>
                     <li><a href="{{ route('dashboard.categories.index') }}">Категории</a></li>
@@ -13,19 +17,35 @@
                 </ul>
             </li>
             <li>
-                <a href="#dropdown-banners" aria-expanded="{{ in_array($route, ['dashboard.banners.index', 'dashboard.banners.create']) ? 'true' : 'false' }}" data-toggle="collapse">
+                <a href="#dropdown-orders" aria-expanded="{{ $menu === 'orders' ? 'true' : 'false' }}"
+                   data-toggle="collapse">
+                    <i class="la la-bicycle"></i>
+                    <span>Заказы</span>
+                </a>
+                <ul id="dropdown-orders" class="collapse list-unstyled {{ $menu === 'orders' ? 'show' : '' }} pt-0">
+                    <li><a href="{{ route('dashboard.orders.index') }}">Список заказов</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#dropdown-banners" aria-expanded="{{ $menu === 'banners' ? 'true' : 'false' }}"
+                   data-toggle="collapse">
                     <i class="la la-puzzle-piece"></i>
                     <span>Баннеры</span>
                 </a>
-                <ul id="dropdown-banners" class="collapse list-unstyled {{ in_array($route, ['dashboard.banners.index', 'dashboard.banners.create']) ? 'show' : '' }} pt-0">
+                <ul id="dropdown-banners" class="collapse list-unstyled {{ $menu === 'banners' ? 'show' : '' }} pt-0">
                     <li><a href="{{ route('dashboard.banners.index') }}">Баннеры</a></li>
                     <li><a href="{{ route('dashboard.banners.create') }}">Добавить баннер</a></li>
                 </ul>
             </li>
-            <li><a href="#dropdown-news" aria-expanded="false" data-toggle="collapse"><i class="la la-columns"></i><span>Новости</span></a>
-                <ul id="dropdown-news" class="collapse list-unstyled pt-0">
-                    <li><a href="app-calendar.html">Список новостей</a></li>
-                    <li><a href="app-chat.html">Добавить новость</a></li>
+            <li>
+                <a href="#dropdown-news" aria-expanded="{{ $menu === 'news' ? 'true' : 'false' }}"
+                   data-toggle="collapse">
+                    <i class="la la-columns">
+                    </i><span>Новости</span>
+                </a>
+                <ul id="dropdown-news" class="collapse list-unstyled {{ $menu === 'banners' ? 'news' : '' }} pt-0">
+                    <li><a href="{{ route('dashboard.news.index') }}">Список новостей</a></li>
+                    <li><a href="{{ route('dashboard.news.create') }}">Добавить новость</a></li>
                 </ul>
             </li>
         </ul>
@@ -37,7 +57,8 @@
                     <li><a href="components-alerts.html">Верхенее меню</a></li>
                 </ul>
             </li>
-            <li><a href="#dropdown-settings" aria-expanded="false" data-toggle="collapse"><i class="la la-cog"></i><span>Настройки</span></a>
+            <li><a href="#dropdown-settings" aria-expanded="false" data-toggle="collapse"><i
+                            class="la la-cog"></i><span>Настройки</span></a>
                 <ul id="dropdown-settings" class="collapse list-unstyled pt-0">
                     <li><a href="components-buttons.html">Основные настройки</a></li>
                     <li><a href="components-alerts.html">Скрипты сайта</a></li>
@@ -52,7 +73,8 @@
                     <li><a href="pages-404-02.html">Статистика просмотров</a></li>
                 </ul>
             </li>
-            <li><a href="#dropdown-error" aria-expanded="false" data-toggle="collapse"><i class="la la-exclamation-triangle"></i><span>Статистика посещений</span></a>
+            <li><a href="#dropdown-error" aria-expanded="false" data-toggle="collapse"><i
+                            class="la la-exclamation-triangle"></i><span>Статистика посещений</span></a>
                 <ul id="dropdown-error" class="collapse list-unstyled pt-0">
                     <li><a href="pages-404-01.html">Песещения сайта</a></li>
                     <li><a href="pages-404-02.html">Статистика переходов</a></li>

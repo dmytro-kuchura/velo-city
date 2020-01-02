@@ -22,8 +22,34 @@ class DashboardSidebar extends AbstractWidget
     {
         $route = Route::currentRouteName();
 
+        $menu = '';
+
+        switch ($route) {
+            case 'dashboard.products.index':
+            case 'dashboard.products.edit':
+            case 'dashboard.products.create':
+            case 'dashboard.brands.index':
+            case 'dashboard.brands.create':
+            case 'dashboard.categories.index':
+            case 'dashboard.categories.create':
+                $menu = 'products';
+                break;
+            case 'dashboard.orders.create':
+                $menu = 'orders';
+                break;
+
+            case 'dashboard.banners.index':
+            case 'dashboard.banners.create':
+                $menu = 'banners';
+                break;
+            case 'dashboard.news.index':
+            case 'dashboard.news.create':
+                $menu = 'news';
+                break;
+        }
+
         return view('widgets.dashboard.sidebar', [
-            'route' => $route,
+            'menu' => $menu,
             'config' => $this->config,
         ]);
     }

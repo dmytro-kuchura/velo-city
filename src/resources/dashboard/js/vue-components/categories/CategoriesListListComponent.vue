@@ -4,10 +4,16 @@
             <div class="widget-body">
                 <div class="table-responsive">
 
-                    <vue-drag-tree :data='data' :allowDrag='allowDrag' :allowDrop='allowDrop' :defaultText='"New Node"' @current-node-clicked='curNodeClicked' @drag="dragHandler" @drag-enter="dragEnterHandler" @drag-leave="dragLeaveHandler" @drag-over="dragOverHandler" @drag-end="dragEndHandler" @drop="dropHandler" v-slot="slotProps">
-                        <span :class="[slotProps.isClicked ? 'i-am-clicked' : 'i-am-not-clicked']"></span>
-                        <span class='i-am-node-name'>{{slotProps.nodeName}}</span>
-                    </vue-drag-tree>
+                    <button class="btn btn-gradient-01" type="submit">Создать</button>
+
+                    <vue-tree-list
+                            @click="onClick"
+                            @delete-node="onDel"
+                            :model="data"
+                            v-bind:default-expanded="true">
+                        <span class="icon" slot="delNodeIcon">🗑️</span>
+                        <span class="icon" slot="treeNodeIcon">🚲</span>
+                    </vue-tree-list>
 
                 </div>
             </div>
@@ -17,121 +23,57 @@
 </template>
 
 <script>
+    import {VueTreeList, Tree} from 'vue-tree-list'
+    // https://github.com/ParadeTo/vue-tree-list
+
     export default {
+        components: {
+            VueTreeList
+        },
         data() {
             return {
-                data: [
+                data: new Tree([
                     {
-                        title: "Node 0-0",
-                        id: 0,
-                        icon: 'ios-car-outline',
+                        name: 'Node 1',
+                        id: 1,
+                        addTreeNodeDisabled: true,
+                        addLeafNodeDisabled: true,
+                        editNodeDisabled: true,
                         children: [
                             {
-                                title: "Node 1-1",
-                                id: 3,
-                                icon: 'ios-car-outline',
-                                children: [
-                                    {
-                                        title: "Node 2-1",
-                                        icon: 'ios-car-outline',
-                                        id: 4
-                                    },
-                                    {
-                                        title: "Node 2-2",
-                                        icon: 'ios-car-outline',
-                                        id: 10
-                                    }
-                                ]
-                            },
-                            {
-                                title: "sdfgsdfgsdfg",
-                                icon: 'ios-car-outline',
-                                id: 13,
-                                children: []
+                                name: 'Node 1-2',
+                                id: 2,
+                                addTreeNodeDisabled: true,
+                                addLeafNodeDisabled: true,
+                                editNodeDisabled: true,
                             }
                         ]
                     },
                     {
-                        title: "Node 0-1",
-                        icon: 'ios-car-outline',
-                        id: 14
+                        name: 'Node 2',
+                        id: 3,
+                        addTreeNodeDisabled: true,
+                        addLeafNodeDisabled: true,
+                        editNodeDisabled: true,
+                    },
+                    {
+                        name: 'Node 3',
+                        id: 4,
+                        addTreeNodeDisabled: true,
+                        addLeafNodeDisabled: true,
+                        editNodeDisabled: true,
                     }
-                ]
+                ])
             }
-        },
-        mounted() {
-            axios.get('/api/v1/categories')
-                .then(({data}) => this.getCategoriesListSuccessResponse(data))
-                .catch((response) => this.getCategoriesListErrorResponse(response));
         },
         methods: {
-            onDelete(id) {
-                axios.delete('/api/v1/categories/' + id)
-                    .then(function () {
-                        axios.get('/api/v1/categories')
-                            .then(({data}) => this.getCategoriesListSuccessResponse(data))
-                            .catch((response) => this.getCategoriesListErrorResponse(response));
-                    })
+            onDel(node) {
+                console.log(node);
+                node.remove()
             },
-            getCategoriesListSuccessResponse(data) {
-                this.data = data.result.data;
+            onClick(params) {
+                console.log(params)
             },
-            getCategoriesListErrorResponse(response) {
-                console.log(response);
-            },
-            getClass(status) {
-                switch (status) {
-                    case 0:
-                        return 'danger';
-                    case 1:
-                        return 'success';
-                }
-            },
-            getLabel(status) {
-                switch (status) {
-                    case 0:
-                        return 'Не акитивен';
-                    case 1:
-                        return 'Активен';
-                }
-            },
-            allowDrag(model, component) {
-                if (model.name === 'Node 0-1') {
-                    // can't be dragged
-                    return false;
-                }
-                // can be dragged
-                return true;
-            },
-            allowDrop(model, component) {
-                if (model.name === 'Node 2-2') {
-                    // can't be placed
-                    return false;
-                }
-                // can be placed
-                return true;
-            },
-            curNodeClicked(model, component) {
-                // console.log('curNodeClicked', model, component);
-            },
-            dragHandler(model, component, e) {
-                // console.log('dragHandler: ', model, component, e);
-            },
-            dragEnterHandler(model, component, e) {
-                // console.log('dragEnterHandler: ', model, component, e);
-            },
-            dragLeaveHandler(model, component, e) {
-                // console.log('dragLeaveHandler: ', model, component, e);
-            },
-            dragOverHandler(model, component, e) {
-                // console.log('dragOverHandler: ', model, component, e);
-            },
-            dragEndHandler(model, component, e) {
-                // console.log('dragEndHandler: ', model, component, e);
-            },
-            dropHandler(model, component, e) {
-                // console.log('dropHandler: ', model, component, e);
-            }
         }
     }
 </script>

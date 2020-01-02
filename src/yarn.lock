@@ -1852,6 +1852,11 @@ core-js-compat@^3.1.1:
     browserslist "^4.7.3"
     semver "^6.3.0"
 
+core-js@^3.4.3:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.1.tgz#39d5e2e346258cc01eb7d44345b1c3c014ca3f05"
+  integrity sha512-186WjSik2iTGfDjfdCZAxv2ormxtKgemjC3SI6PL31qOA0j5LhTDVjHChccoc7brwLvpvLPiMyRlcO88C4l1QQ==
+
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -6649,13 +6654,6 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-drag-tree@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/vue-drag-tree/-/vue-drag-tree-1.1.8.tgz#60571eb8f8b3fbbc6819792da3f6734d069e97b4"
-  integrity sha512-ITUSjcO57rDrFfUOxo/8F7fp0r6GJX7N//oLCMFI2vTrJoG1bAFJoQig6LbjE/rah9MQN5SahIhRukC/gu9Nsg==
-  dependencies:
-    vue "^2.6.10"
-
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
@@ -6692,6 +6690,14 @@ vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
+
+vue-tree-list@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/vue-tree-list/-/vue-tree-list-1.4.1.tgz#d2a9923572fcc68618c00206e49897de888b7fa8"
+  integrity sha512-vQv3xIdi/koSAPfFvMx/f57TtVRX+dUg93bKgnEVJosXsHUb80s9xs0JWVMevKZnu4y5+tlTGD7cYkKoOQ3A/A==
+  dependencies:
+    core-js "^3.4.3"
+    vue "^2.6.10"
 
 vue@^2.6.10:
   version "2.6.10"

@@ -41,3 +41,14 @@ Route::prefix('products')->group(function () {
     Route::get('/create', 'Dashboard\ProductsController@create')->name('dashboard.products.create');
     Route::get('/{id}', 'Dashboard\ProductsController@edit')->name('dashboard.products.edit');
 });
+
+Route::prefix('news')->group(function () {
+    Route::get('/', 'Dashboard\NewsController@index')->name('dashboard.news.index');
+    Route::get('/create', 'Dashboard\NewsController@create')->name('dashboard.news.create');
+    Route::get('/{id}', 'Dashboard\NewsController@edit')->name('dashboard.news.edit');
+});
+
+Route::prefix('orders')->group(function () {
+    Route::get('/', 'Dashboard\OrdersController@index')->name('dashboard.orders.index');
+    Route::get('/{id}', 'Dashboard\OrdersController@edit')->name('dashboard.orders.edit');
+});
