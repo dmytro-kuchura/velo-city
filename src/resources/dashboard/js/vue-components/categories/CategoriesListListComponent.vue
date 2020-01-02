@@ -3,60 +3,15 @@
         <div class="widget has-shadow">
             <div class="widget-body">
                 <div class="table-responsive">
-                    <table class="table mb-0">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Название</th>
-                            <th>Дата создания</th>
-                            <th><span style="width:100px;">Статус</span></th>
-                            <th>Действия</th>
-                        </tr>
-                        </thead>
-                        <tbody>
 
-                        <tr v-for="item in list">
-                            <td><span class="text-primary"># {{ item.id }}</span></td>
-                            <td>{{ item.title }}</td>
-                            <td>{{ moment(item.created_at).format('MMMM Do YYYY, h:mm') }}</td>
-                            <td>
-                                <span style="width:115px;">
-                                    <span class="badge-text badge-text-small" v-bind:class="getClass(item.status)">{{ getLabel(item.status) }}</span>
-                                </span>
-                            </td>
-                            <td class="td-actions" style="width:115px;">
-                                <a v-bind:href="'/admin/products/' + item.id"><i class="la la-edit edit"></i></a>
-                                <a href="javascript:;" v-on:click.prevent="onDelete(item.id)"><i class="la la-close delete"></i></a>
-                            </td>
-                        </tr>
+                    <vue-drag-tree :data='data' :allowDrag='allowDrag' :allowDrop='allowDrop' :defaultText='"New Node"' @current-node-clicked='curNodeClicked' @drag="dragHandler" @drag-enter="dragEnterHandler" @drag-leave="dragLeaveHandler" @drag-over="dragOverHandler" @drag-end="dragEndHandler" @drop="dropHandler" v-slot="slotProps">
+                        <span :class="[slotProps.isClicked ? 'i-am-clicked' : 'i-am-not-clicked']"></span>
+                        <span class='i-am-node-name'>{{slotProps.nodeName}}</span>
+                    </vue-drag-tree>
 
-                        </tbody>
-                    </table>
                 </div>
             </div>
 
-            <div class="widget-footer d-flex align-items-center">
-                <div class="mr-auto p-2">
-                    <span class="display-items">Показано {{ showingFrom }}-{{ showingTo }} / {{ total }} Записей</span>
-                </div>
-                <div class="p-2">
-                    <nav aria-label="...">
-                        <paginate
-                                :page-count="pageCount"
-                                :page-range="3"
-                                :margin-pages="2"
-                                :click-handler="fetch"
-                                :prev-text="'<'"
-                                :next-text="'>'"
-                                :container-class="'pagination justify-content-end'"
-                                :page-link-class="'page-link'"
-                                :prev-link-class="'page-link'"
-                                :next-link-class="'page-link'"
-                                :page-class="'page-item'">
-                        </paginate>
-                    </nav>
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -65,45 +20,63 @@
     export default {
         data() {
             return {
-                list: [],
-                pageCount: 1,
-                showingFrom: 1,
-                showingTo: 1,
-                total: 1,
-                endpoint: '/api/v1/products?page='
-            };
+                data: [
+                    {
+                        title: "Node 0-0",
+                        id: 0,
+                        icon: 'ios-car-outline',
+                        children: [
+                            {
+                                title: "Node 1-1",
+                                id: 3,
+                                icon: 'ios-car-outline',
+                                children: [
+                                    {
+                                        title: "Node 2-1",
+                                        icon: 'ios-car-outline',
+                                        id: 4
+                                    },
+                                    {
+                                        title: "Node 2-2",
+                                        icon: 'ios-car-outline',
+                                        id: 10
+                                    }
+                                ]
+                            },
+                            {
+                                title: "sdfgsdfgsdfg",
+                                icon: 'ios-car-outline',
+                                id: 13,
+                                children: []
+                            }
+                        ]
+                    },
+                    {
+                        title: "Node 0-1",
+                        icon: 'ios-car-outline',
+                        id: 14
+                    }
+                ]
+            }
         },
         mounted() {
-            axios.get("/api/v1/products")
-                .then(({data}) => this.getBannersListSuccessResponse(data))
-                .catch((response) => this.getBannersListErrorResponse(response));
+            axios.get('/api/v1/categories')
+                .then(({data}) => this.getCategoriesListSuccessResponse(data))
+                .catch((response) => this.getCategoriesListErrorResponse(response));
         },
         methods: {
             onDelete(id) {
-                axios.delete('/api/v1/products/' + id)
-                    .then(() => this.fetch(1))
+                axios.delete('/api/v1/categories/' + id)
+                    .then(function () {
+                        axios.get('/api/v1/categories')
+                            .then(({data}) => this.getCategoriesListSuccessResponse(data))
+                            .catch((response) => this.getCategoriesListErrorResponse(response));
+                    })
             },
-            fetch(page = 1) {
-                axios.get(this.endpoint + page)
-                    .then(({data}) => {
-                        this.list = data.result.data;
-                        this.total = data.result.total;
-                        this.showingFrom = data.result.from;
-                        this.showingTo = data.result.to;
-                        this.pageCount = data.result.last_page;
-                    });
+            getCategoriesListSuccessResponse(data) {
+                this.data = data.result.data;
             },
-            moment: function () {
-                return moment();
-            },
-            getBannersListSuccessResponse(data) {
-                this.list = data.result.data;
-                this.total = data.result.total;
-                this.showingFrom = data.result.from;
-                this.showingTo = data.result.to;
-                this.pageCount = data.result.last_page;
-            },
-            getBannersListErrorResponse(response) {
+            getCategoriesListErrorResponse(response) {
                 console.log(response);
             },
             getClass(status) {
@@ -121,6 +94,43 @@
                     case 1:
                         return 'Активен';
                 }
+            },
+            allowDrag(model, component) {
+                if (model.name === 'Node 0-1') {
+                    // can't be dragged
+                    return false;
+                }
+                // can be dragged
+                return true;
+            },
+            allowDrop(model, component) {
+                if (model.name === 'Node 2-2') {
+                    // can't be placed
+                    return false;
+                }
+                // can be placed
+                return true;
+            },
+            curNodeClicked(model, component) {
+                // console.log('curNodeClicked', model, component);
+            },
+            dragHandler(model, component, e) {
+                // console.log('dragHandler: ', model, component, e);
+            },
+            dragEnterHandler(model, component, e) {
+                // console.log('dragEnterHandler: ', model, component, e);
+            },
+            dragLeaveHandler(model, component, e) {
+                // console.log('dragLeaveHandler: ', model, component, e);
+            },
+            dragOverHandler(model, component, e) {
+                // console.log('dragOverHandler: ', model, component, e);
+            },
+            dragEndHandler(model, component, e) {
+                // console.log('dragEndHandler: ', model, component, e);
+            },
+            dropHandler(model, component, e) {
+                // console.log('dropHandler: ', model, component, e);
             }
         }
     }

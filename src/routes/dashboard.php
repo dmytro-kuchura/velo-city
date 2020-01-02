@@ -24,6 +24,12 @@ Route::prefix('banners')->group(function () {
     Route::get('/{id}', 'Dashboard\BannersController@edit')->name('dashboard.banners.edit');
 });
 
+Route::prefix('categories')->group(function () {
+    Route::get('/', 'Dashboard\CategoriesController@index')->name('dashboard.categories.index');
+    Route::get('/create', 'Dashboard\CategoriesController@create')->name('dashboard.categories.create');
+    Route::get('/{id}', 'Dashboard\CategoriesController@edit')->name('dashboard.categories.edit');
+});
+
 Route::prefix('brands')->group(function () {
     Route::get('/', 'Dashboard\BrandsController@index')->name('dashboard.brands.index');
     Route::get('/create', 'Dashboard\BrandsController@create')->name('dashboard.brands.create');

@@ -17,8 +17,11 @@ import Vue from "vue";
 import Vuex from 'vuex';
 import paginate from "vuejs-paginate";
 import CKEditor from '@ckeditor/ckeditor5-vue';
-import VueDragTree from 'ml-vue-drag-tree'
-// https://github.com/qq240814476/ml-vue-drag-tree
+
+import VueDragTree from 'vue-drag-tree'
+import 'vue-drag-tree/dist/vue-drag-tree.min.css'
+
+Vue.use(VueDragTree);
 
 Vue.component('paginate', paginate);
 Vue.component('orders-list', require('./vue-components/OrdersListComponent.vue').default);
@@ -43,7 +46,6 @@ Vue.component('category-edit', require('./vue-components/categories/CategoryEdit
 
 import store from "./store";
 
-Vue.use(VueDragTree);
 Vue.use(CKEditor);
 Vue.use(Vuex);
 

@@ -83,6 +83,7 @@ Route::middleware('authentication')->group(function () {
         });
 
         Route::prefix('categories')->group(function () {
+            Route::get('/', 'Api\CategoriesController@index')->name('api.categories.index');
             Route::get('/all', 'Api\CategoriesController@all')->name('api.categories.all');
         });
     });

@@ -24,4 +24,13 @@ class CategoriesController extends Controller
         ]);
     }
 
+    public function index()
+    {
+        $result = $this->repository->all();
+
+        return $this->returnResponse([
+            'success' => true,
+            'result' => $result,
+        ]);
+    }
 }
