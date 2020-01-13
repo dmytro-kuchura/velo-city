@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentssTable extends Migration
+class CreateNovaposhtaWarehousesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreatePaymentssTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('novaposhta_warehouses', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->string('name');
-            $table->tinyInteger('status');
-
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreatePaymentssTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('novaposhta_warehouses');
     }
 }

@@ -22,7 +22,7 @@
                                     @endif
                                     <div class="product-image">
                                         <a href="{{ route('shop.item', ['alias' => $item->alias, 'id' => $item->id]) }}">
-                                            <img src="/images/4.jpg" alt="Roadie">
+                                            <img src="{{ $item->image ? $item->image : '/images/no-image.png' }}" alt="{{ $item->name }}">
                                         </a>
                                     </div>
                                     <div class="product-details">
