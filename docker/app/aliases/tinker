@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-APP_DIR="${APP_DIR:-/app}";
-
-php "$APP_DIR/artisan" tinker "$@"
