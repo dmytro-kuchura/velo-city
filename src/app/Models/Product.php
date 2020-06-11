@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $cost_old
  * @property int $views
  * @property int $brand
- * @property string $article
+ * @property string $artikul
  * @property string $image
  * @property string $specifications
  * @property string $information
@@ -44,5 +44,5 @@ class Product extends Model
      */
     public $timestamps = true;
 
-    protected $fillable = ['name', 'alias', 'category_id', 'status', 'new', 'sale', 'top', 'available', 'cost', 'cost_old', 'views', 'brand', 'article', 'image', 'specifications', 'information', 'title', 'keywords', 'description', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'alias', 'category_id', 'status', 'new', 'sale', 'top', 'available', 'cost', 'cost_old', 'views', 'brand', 'artikul', 'image', 'specifications', 'information', 'title', 'keywords', 'description', 'created_at', 'updated_at'];
 }

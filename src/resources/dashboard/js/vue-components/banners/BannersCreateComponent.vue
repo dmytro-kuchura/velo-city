@@ -147,7 +147,13 @@
                 console.log(response);
             },
             onSubmit() {
-                axios.post('/api/v1/banners/', this.banner)
+                axios.post('/api/v1/banners/', this.banner);
+
+                swal({
+                    title: 'Создано!',
+                    text: 'Баннер был добавлен',
+                    icon: 'success',
+                });
             },
             deleteImage() {
                 this.banner.image = null

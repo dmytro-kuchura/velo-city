@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('parse-products', 'ParserController@parseProducts')->name('parse.products');
 Route::get('parse-categories', 'ParserController@parseCategories')->name('parse.categories');
 
 Route::get('justin', 'Warehouses\JustinController@import')->name('justin.import');

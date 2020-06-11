@@ -6,7 +6,7 @@
                     <div id="menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             @if($tree)
-                                @foreach($tree[0] as $obj)
+                                @foreach($tree[1202] as $obj)
                                     <li class="level dropdown"><span class="opener plus"></span> <a
                                             href="javascript:void(0)" class="page-scroll">{{ $obj->name }}</a>
                                         <div class="megamenu mobile-sub-menu">
