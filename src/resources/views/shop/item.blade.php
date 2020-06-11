@@ -25,7 +25,9 @@
                     <div class="row">
                         <div class="col-lg-5 col-md-5 mb-xs-30">
                             <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
-                                <a href="#"><img src="{{ $result->image }}" alt="Roadie"></a>
+                                <a href="#">
+                                    <img src="{{ $result->image }}" alt="Roadie">
+                                </a>
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-7">
@@ -44,8 +46,11 @@
                                             <div class="product-info-stock-sku">
                                                 <div>
                                                     <label>Наличие: </label>
-                                                    <span class="info-deta">В наличии</span>
-                                                    <span class="info-deta">Отсутсвует</span>
+                                                    @if($result->available === 1)
+                                                        <span class="info-deta">В наличии</span>
+                                                    @else
+                                                        <span class="info-deta">Отсутсвует</span>
+                                                    @endif
                                                 </div>
                                                 <div>
                                                     <label>Акртикул: </label>
@@ -53,9 +58,9 @@
                                                 </div>
                                             </div>
                                             <ul class="product-list">
-                                                <li><i class="fa fa-check"></i> Satisfaction 100% Guaranteed</li>
-                                                <li><i class="fa fa-check"></i> Free shipping on orders over $99</li>
-                                                <li><i class="fa fa-check"></i> 14 day easy Return</li>
+                                                <li><i class="fa fa-check"></i> Официальная гарантия от производителя</li>
+                                                <li><i class="fa fa-check"></i> Рассрочка 0% без переплат</li>
+                                                <li><i class="fa fa-check"></i> Доставка по всей Украине</li>
                                             </ul>
                                             <hr class="mb-20">
                                             <add-to-cart :item="{{ $result->id }}"></add-to-cart>
@@ -83,9 +88,9 @@
                     <div class="col-lg-12">
                         <div id="tabs">
                             <ul class="nav nav-tabs">
-                                <li><a class="tab-description selected" title="Description">Характеристики</a></li>
-                                <li><a class="tab-Product-Tags" title="Product-Tags">Описание</a></li>
-{{--                                <li><a class="tab-Reviews" title="Reviews">Отзывы</a></li>--}}
+                                <li><a class="tab-Description selected" title="Description">Описание</a></li>
+                                <li><a class="tab-Product-Tags" title="Product-Tags">Характеристики</a></li>
+                                {{--<li><a class="tab-Reviews" title="Reviews">Отзывы</a></li>--}}
                             </ul>
                         </div>
                         <div id="items">
@@ -93,12 +98,12 @@
                                 <ul>
                                     <li>
                                         <div class="items-Description selected">
-                                            <div class="Description">{!! $result->specifications !!}</div>
+                                            <div class="Description">{!! $result->information !!}</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="items-Product-Tags">
-                                            <p>{!! $result->information !!}</p>
+                                            <p>{!! $result->specification !!}</p>
                                         </div>
                                     </li>
                                     <li>

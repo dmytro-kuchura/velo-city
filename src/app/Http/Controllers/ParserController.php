@@ -37,7 +37,7 @@ class ParserController
             $model->top = rand(0, 1);
             $model->cost = $item->price;
             $model->cost_old = $item->oldprice;
-            $model->description = $item->description;
+            $model->information = $item->description;
             $model->image = is_array($item->picture) ? $item->picture[0] : $item->picture;
             $model->artikul = $item->vendorCode;
             $model->available = $item->available === 'false' ? 0 : 1;
