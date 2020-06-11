@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('parse-categories', 'ParserController@parseCategories')->name('parse.categories');
+
 Route::get('justin', 'Warehouses\JustinController@import')->name('justin.import');
 
 Route::get('sitemap.xml', 'SiteController@sitemap')->name('sitemap.xml');

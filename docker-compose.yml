@@ -16,7 +16,6 @@ services:
   php:
     container_name: shop_php
     build: .docker/php
-    user: '${UID}:${GID}'
     volumes:
       - './.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini'
       - './.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini'
@@ -25,7 +24,6 @@ services:
   composer:
     container_name: shop_composer
     image: composer
-    user: '${UID}:${GID}'
     volumes:
       - './src/:/app'
     command: install --no-dev
