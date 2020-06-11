@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Log;
 use Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -30,7 +31,11 @@ class UploadImage
                 $img = Image::make($request->image)->encode('jpg');
             }
 
-            Storage::disk('s3')->put('/' . $param . '/' . $value['path'] . '/' . $filename, $img->getEncoded());
+            try {
+                Storage::disk('s3')->put('/' . $param . '/' . $value['path'] . '/' . $filename, $img->getEncoded());
+            } catch (\Throwable $exception) {
+                Log::error($exception->getMessage());
+            }
         }
 
         return 'https://velo-city.s3-eu-west-1.amazonaws.com/' . $param . '/main/' . $filename;

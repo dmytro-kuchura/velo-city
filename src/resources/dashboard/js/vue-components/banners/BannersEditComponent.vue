@@ -154,7 +154,7 @@
             uploadFile(event) {
                 let formData = new FormData();
                 formData.append("image", event.target.files[0]);
-                formData.append("type", 'banner');
+                formData.append("type", 'banners');
 
                 axios.post('/api/v1/upload/image/', formData, {
                     headers: {
