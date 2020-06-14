@@ -7,36 +7,31 @@
                         <ul class="nav navbar-nav">
                             @if($tree)
                                 @foreach($tree[1202] as $obj)
-                                    <li class="level dropdown"><span class="opener plus"></span> <a
-                                            href="javascript:void(0)" class="page-scroll">{{ $obj->name }}</a>
+                                    <li class="level dropdown">
+                                        <span class="opener plus"></span>
+                                        <a href="{{ route('shop.category', ['category' => $obj->alias]) }}" class="page-scroll">{{ $obj->name }}</a>
                                         <div class="megamenu mobile-sub-menu">
                                             <div class="megamenu-inner-top">
-                                                <ul class="sub-menu-level1">
-                                                    <li class="level2">
-                                                        <ul class="sub-menu-level2 ">
-                                                            <li class="level3"><a
-                                                                    href="shop.html"><span>■</span>Shop</a>
+                                                @if(isset($tree[$obj->id]))
+                                                    <ul class="sub-menu-level1">
+                                                        @foreach($tree[$obj->id] as $subItem)
+                                                            <li class="level2 ">
+                                                                <a href="{{ route('shop.category', ['category' => $subItem->alias]) }}"><span>{{ $subItem->name }}</span></a>
+                                                                @if(isset($tree[$subItem->id]))
+                                                                    <ul class="sub-menu-level2">
+                                                                        @foreach($tree[$subItem->id] as $item)
+                                                                            <li class="level3">
+                                                                                <a href="{{ route('shop.category', ['category' => $item->alias]) }}">
+                                                                                    <span>■</span>{{ $item->name }}
+                                                                                </a>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @endif
                                                             </li>
-                                                            <li class="level3"><a href="shop_2.html"><span>■</span>Shop
-                                                                    2</a></li>
-                                                            <li class="level3"><a
-                                                                    href="product-page.html"><span>■</span>product-page</a>
-                                                            </li>
-                                                            <li class="level3"><a href="about.html"><span>■</span>About
-                                                                    Us</a></li>
-                                                            <li class="level3"><a href="about-2.html"><span>■</span>About
-                                                                    Us
-                                                                    2</a></li>
-                                                            <li class="level3"><a href="about-3.html"><span>■</span>About
-                                                                    Us
-                                                                    3</a></li>
-                                                            <li class="level3"><a href="account.html"><span>■</span>Account</a>
-                                                            </li>
-                                                            <li class="level3"><a href="checkout.html"><span>■</span>Checkout</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
                                             </div>
                                         </div>
                                     </li>
@@ -49,7 +44,7 @@
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
                             <a class="navbar-brand page-scroll" href="{{ route('home') }}">
-                                <img alt="VeloCity" src="/images/logo-new.png">
+                                <img alt="Velo - City" src="/images/logo-new.png">
                             </a>
                         </div>
                     </div>

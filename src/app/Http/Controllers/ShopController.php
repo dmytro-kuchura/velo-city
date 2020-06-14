@@ -7,27 +7,38 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+    private $repository;
+
+    public function __construct(ProductsRepository $productsRepository)
+    {
+        $this->repository = $productsRepository;
+    }
+
     public function index()
     {
 
     }
 
-    public function category()
+    public function category(Request $request)
     {
+        $result = $this->repository->category($request->route('category'));
 
+        if (!$result) {
+            abort(404, 'Page not found');
+        }
+
+        return view('shop.category', [
+            'result' => $result
+        ]);
     }
 
     /**
      * @param Request $request
-     * @param ProductsRepository $productsRepository
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function item(
-        Request $request,
-        ProductsRepository $productsRepository
-    )
+    public function item(Request $request)
     {
-        $result = $productsRepository->find($request->route('id'));
+        $result = $this->repository->find($request->route('id'));
 
         if (!$result) {
             abort(404, 'Page not found');

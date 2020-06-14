@@ -27,6 +27,15 @@ class ProductsRepository
         return new ProductResource($product);
     }
 
+    public function category($alias)
+    {
+        return $this->model::
+            join('catalog', 'catalog.id', '=', 'products.category_id')
+            ->select('products.*')
+            ->where('catalog.alias', $alias)
+            ->paginate(12);
+    }
+
     public function store($id, $data)
     {
         return $this->model::where('id', $id)->update([
