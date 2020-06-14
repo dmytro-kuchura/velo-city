@@ -1,19 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="banner inner-banner1 ">
-        <div class="container">
-            <section class="banner-detail center-xs">
-                <h1 class="banner-title">Women</h1>
-                <div class="bread-crumb right-side float-none-xs">
-                    <ul>
-                        <li><a href="index.html">Home</a>/</li>
-                        <li><span>Women</span></li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
+    @widget('breadcrumbs')
 
     <section class="ptb-70">
         <div class="container">
@@ -64,9 +52,9 @@
                                         </fieldset>
                                     </div>
                                     <span>на страницу</span>
-                                    <div class="compare float-right-sm">
-                                        <a href="compare.html" class="btn btn-color">Сравнение (0)</a>
-                                    </div>
+{{--                                    <div class="compare float-right-sm">--}}
+{{--                                        <a href="compare.html" class="btn btn-color">Сравнение (0)</a>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
@@ -110,10 +98,7 @@
                                                                 @endif
                                                             </div>
                                                             <div class="product-des">
-                                                                <p>Proin lectus ipsum, gravida et mattis vulputate,
-                                                                    tristique ut lectus. Sed et lorem nunc. ipsum primis
-                                                                    in
-                                                                    faucibus orci luctus et ultrices.</p>
+                                                                <p>{{ $item->getShortAttribute() }}</p>
                                                             </div>
                                                         </div>
                                                         <div class="product-detail-inner">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\ShortDescription;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -30,6 +31,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
+    use ShortDescription;
+
     /**
      * Database table name
      *
@@ -45,4 +48,9 @@ class Product extends Model
     public $timestamps = true;
 
     protected $fillable = ['name', 'alias', 'category_id', 'status', 'new', 'sale', 'top', 'available', 'cost', 'cost_old', 'views', 'brand', 'artikul', 'image', 'specifications', 'information', 'title', 'keywords', 'description', 'created_at', 'updated_at'];
+
+    public function getShortAttribute()
+    {
+        return $this->getShortContent($this->information);
+    }
 }

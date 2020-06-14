@@ -21,4 +21,40 @@ class CatalogRepository
 
         return $tree;
     }
+
+    public function getTreeForBreadcrumbs(string $alias): array
+    {
+        $tree = [];
+
+        /** @var Catalog $result */
+        $result = $this->model::where('alias', $alias)->first();
+
+        $tree[] = $result;
+
+        /** @var Catalog $parent */
+        $parent = $this->findById($result->parent_id);
+
+        if ($parent) {
+            $tree[] = $parent;
+
+            $subParent = $this->findById($parent->parent_id);
+
+            if ($subParent) {
+                $tree[] = $subParent;
+
+                $child = $this->findById($subParent->parent_id);
+
+                if ($child) {
+                    $tree[] = $child;
+                }
+            }
+        }
+
+        return $tree;
+    }
+
+    public function findById(int $id)
+    {
+        return $this->model::where('id', $id)->first();
+    }
 }
