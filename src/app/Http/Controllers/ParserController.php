@@ -36,7 +36,7 @@ class ParserController
     {
         set_time_limit(800);
 
-        $items = Query::orderBy('id', 'asc')->limit(15)->get();
+        $items = Query::orderBy('id', 'asc')->limit(90)->get();
 
         /** @var Query $item */
         foreach ($items as $item) {
@@ -48,7 +48,6 @@ class ParserController
                 $model = new Product();
             }
 
-
             $model->name = $product->model;
             $model->title = $product->model;
             $model->alias = Text::cyrillic(strtolower($product->model));
@@ -58,7 +57,7 @@ class ParserController
             $model->top = rand(0, 1);
             $model->cost = $product->price;
             $model->cost_old = $product->oldprice;
-            $model->information = !$product->description ? null : $product->description;
+            $model->information = is_string($product->description) ? $product->description : null;
             $model->artikul = $product->vendorCode;
             $model->available = 1;
 
@@ -70,7 +69,7 @@ class ParserController
                 $item->delete();
             }
 
-            echo 'Imported: ' . $product->model . ' / ' . $item->id . '<br>';
+            echo 'Imported: ' . $item->id . '<br>';
         }
     }
 
