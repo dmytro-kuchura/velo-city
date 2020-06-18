@@ -41,6 +41,7 @@ class ParserController
         /** @var Query $item */
         foreach ($items as $item) {
             $product = json_decode($item->data, true);
+            dd($product);
 
             $model = Product::where('alias', Text::cyrillic(strtolower($product->model)))->first();
 
@@ -48,7 +49,6 @@ class ParserController
                 $model = new Product();
             }
 
-            dd((string)$product->description);
 
             $model->name = $product->model;
             $model->title = $product->model;
