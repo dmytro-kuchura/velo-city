@@ -34,6 +34,7 @@ class ParserController
 
     public function uploadProduct()
     {
+        ini_set('memory_limit', '256M');
         set_time_limit(8000);
 
         $items = Query::orderBy('id', 'asc')->limit(15)->get();
