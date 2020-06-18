@@ -48,6 +48,8 @@ class ParserController
                 $model = new Product();
             }
 
+            dd($product->description);
+
             $model->name = $product->model;
             $model->title = $product->model;
             $model->alias = Text::cyrillic(strtolower($product->model));
@@ -64,9 +66,10 @@ class ParserController
             $model->save();
 
             $model->image = isset($product->picture) ? $this->uploadImages((array)$product->picture, $model->id) : null;
-            $model->save();
 
-            $item->delete();
+            if ($model->save()) {
+                $item->delete();
+            }
 
             echo 'Imported: ' . $product->model . ' / ' . $item->id . '<br>';
         }
