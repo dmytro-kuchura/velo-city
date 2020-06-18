@@ -22,7 +22,12 @@
                                     @endif
                                     <div class="product-image">
                                         <a href="{{ route('shop.item', ['alias' => $item->alias, 'id' => $item->id]) }}">
-                                            <img src="{{ $item->image ? $item->image : '/images/no-image.png' }}" alt="{{ $item->name }}">
+                                            @if(count($item->images) > 0)
+                                                <img src="{{ $item->images[0]->link }}" alt="{{ $item->name }}">
+                                            @else
+                                                <img src="{{ $item->image ? $item->image : '/images/no-image.png' }}"
+                                                     alt="{{ $item->name }}">
+                                            @endif
                                         </a>
                                     </div>
                                     <div class="product-details">

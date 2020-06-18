@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property string $created_at
  * @property string $updated_at
+ * @property ProductImages $images
  */
 class Product extends Model
 {
@@ -52,5 +53,10 @@ class Product extends Model
     public function getShortAttribute()
     {
         return $this->getShortContent($this->information);
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\Models\ProductImages', 'product_id');
     }
 }

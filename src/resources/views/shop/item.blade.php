@@ -9,11 +9,21 @@
                 <div class="col-xl-9 col-12">
                     <div class="row">
                         <div class="col-lg-5 col-md-5 mb-xs-30">
+
                             <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
-                                <a href="#">
-                                    <img src="{{ $result->image }}" alt="Roadie">
-                                </a>
+                                @if(count($result->images) > 0)
+                                    @foreach($result->images as $image)
+                                        <a href="#">
+                                            <img src="{{ $image->link }}" alt="{{ $result->name }}">
+                                        </a>
+                                    @endforeach
+                                @else
+                                    <a href="#">
+                                        <img src="{{ $result->image }}" alt="{{ $result->name }}">
+                                    </a>
+                                @endif
                             </div>
+
                         </div>
                         <div class="col-lg-7 col-md-7">
                             <div class="row">
