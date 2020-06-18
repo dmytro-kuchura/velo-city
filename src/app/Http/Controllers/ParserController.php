@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Helpers\Text;
 use App\Models\Catalog;
 use App\Models\Product;
+use App\Models\ProductImages;
+use App\Models\Query;
+use App\Services\UploadImage;
 
 class ParserController
 {
@@ -22,28 +25,80 @@ class ParserController
         $xml = simplexml_load_string($this->data);
 
         foreach ($xml->shop->offers->offer as $item) {
-//            if ($item->attributes()->id == 31142) {
-//                dd($item);
-//            }
+            $model = new Query();
 
-            $model = new Product();
+            $model->data = json_encode($item);
+            $model->save();
+        }
+    }
 
-            $model->name = $item->model;
-            $model->title = $item->model;
-            $model->alias = Text::cyrillic(strtolower($item->model));
-            $model->category_id = $item->categoryId;
+    public function uploadProduct()
+    {
+        set_time_limit(800);
+
+        $items = Query::orderBy('id', 'asc')->limit(15)->get();
+
+        /** @var Query $item */
+        foreach ($items as $item) {
+            $product = json_decode($item->data);
+
+            $model = Product::where('alias', Text::cyrillic(strtolower($product->model)))->first();
+
+            if (!$model) {
+                $model = new Product();
+            }
+
+            $model->name = $product->model;
+            $model->title = $product->model;
+            $model->alias = Text::cyrillic(strtolower($product->model));
+            $model->category_id = $product->categoryId;
             $model->new = rand(0, 1);
             $model->sale = rand(0, 1);
             $model->top = rand(0, 1);
-            $model->cost = $item->price;
-            $model->cost_old = $item->oldprice;
-            $model->information = $item->description;
-            $model->image = is_array($item->picture) ? $item->picture[0] : $item->picture;
-            $model->artikul = $item->vendorCode;
-            $model->available = $item->available === 'false' ? 0 : 1;
+            $model->cost = $product->price;
+            $model->cost_old = $product->oldprice;
+            $model->information = $product->description;
+            $model->artikul = $product->vendorCode;
+            $model->available = 1;
 
             $model->save();
+
+            $model->image = isset($product->picture) ? $this->uploadImages((array)$product->picture, $model->id) : null;
+            $model->save();
+
+            $item->delete();
+
+            echo 'Imported: ' . $product->model . ' / ' . $item->id . '<br>';
         }
+    }
+
+    public function uploadImages(array $images, int $id): string
+    {
+        if (count($images) === 1) {
+            $service = new UploadImage();
+            $link = $service->uploadByLink(reset($images), 'products');
+
+            $model = new ProductImages();
+            $model->link = $link;
+            $model->product_id = $id;
+            $model->status = 1;
+            $model->save();
+
+            return $model->link;
+        }
+
+        foreach ($images as $image) {
+            $service = new UploadImage();
+            $link = $service->uploadByLink($image, 'products');
+
+            $model = new ProductImages();
+            $model->link = $link;
+            $model->product_id = $id;
+            $model->status = 1;
+            $model->save();
+        }
+
+        return $model->link;
     }
 
     public function parseCategories()

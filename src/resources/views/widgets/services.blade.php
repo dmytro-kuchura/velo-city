@@ -7,8 +7,10 @@
                         <div class="feature-box ">
                             <div class="feature-icon feature1"></div>
                             <div class="feature-detail">
-                                <div class="ser-title">Free Delivery</div>
-                                <div class="ser-subtitle">From $59.89</div>
+                                <div class="ser-title">
+                                    Бесплатная доставка
+                                </div>
+                                <div class="ser-subtitle">от 1500 грн</div>
                             </div>
                         </div>
                     </div>
@@ -16,8 +18,10 @@
                         <div class="feature-box">
                             <div class="feature-icon feature2"></div>
                             <div class="feature-detail">
-                                <div class="ser-title">Support 24/7</div>
-                                <div class="ser-subtitle">Online 24 hours</div>
+                                <div class="ser-title">
+                                    Гарантия
+                                </div>
+                                <div class="ser-subtitle">от производителя</div>
                             </div>
                         </div>
                     </div>
@@ -25,8 +29,10 @@
                         <div class="feature-box ">
                             <div class="feature-icon feature3"></div>
                             <div class="feature-detail">
-                                <div class="ser-title">Free return</div>
-                                <div class="ser-subtitle">365 a day</div>
+                                <div class="ser-title">
+                                    Обмен товара
+                                </div>
+                                <div class="ser-subtitle">365 дней</div>
                             </div>
                         </div>
                     </div>
@@ -34,8 +40,10 @@
                         <div class="feature-box ">
                             <div class="feature-icon feature4"></div>
                             <div class="feature-detail">
-                                <div class="ser-title">Big Saving</div>
-                                <div class="ser-subtitle">Weeken Sales</div>
+                                <div class="ser-title">
+                                    Рассрочка 0%
+                                </div>
+                                <div class="ser-subtitle">без переплат</div>
                             </div>
                         </div>
                     </div>

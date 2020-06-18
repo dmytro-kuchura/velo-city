@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNovaposhtaWarehousesTable extends Migration
+class CreateQueryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateNovaposhtaWarehousesTable extends Migration
      */
     public function up()
     {
-        Schema::create('novaposhta_warehouses', function (Blueprint $table) {
+        Schema::create('query', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->longText('data');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateNovaposhtaWarehousesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('novaposhta_warehouses');
+        Schema::dropIfExists('query');
     }
 }

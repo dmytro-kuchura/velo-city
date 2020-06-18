@@ -4,14 +4,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="heading-part align-center mb-30">
-                        <h2 class="main_title heading">Our Products</h2>
+                        <h2 class="main_title heading">Наши товары</h2>
                         <div id="tabs" class="category-bar mt-20">
                             <ul class="tab-stap">
-                                <li><a class="tab-step1 selected" title="step1">Special</a></li>
+                                <li><a class="tab-step1 selected" title="step1">Специальные предложения</a></li>
                                 <li>-</li>
-                                <li><a class="tab-step2" title="step2">Most Viewed</a></li>
+                                <li><a class="tab-step2" title="step2">Найболее просматриваемые</a></li>
                                 <li>-</li>
-                                <li><a class="tab-step3" title="step3">Latest</a></li>
+                                <li><a class="tab-step3" title="step3">Последние добавленые</a></li>
                             </ul>
                         </div>
                     </div>
