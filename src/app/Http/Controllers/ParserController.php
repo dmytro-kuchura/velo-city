@@ -36,7 +36,7 @@ class ParserController
     {
         set_time_limit(800);
 
-        $items = Query::orderBy('id', 'asc')->limit(25)->get();
+        $items = Query::orderBy('id', 'asc')->limit(20)->get();
 
         /** @var Query $item */
         foreach ($items as $item) {
