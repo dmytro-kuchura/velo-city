@@ -38,6 +38,8 @@ class ParserController
 
         $items = Query::orderBy('id', 'asc')->limit(20)->get();
 
+        $count = 0;
+
         /** @var Query $item */
         foreach ($items as $item) {
             $product = json_decode($item->data);
@@ -69,8 +71,12 @@ class ParserController
                 $item->delete();
             }
 
-            echo 'Imported: ' . $item->id . '<br>';
+            $count++;
         }
+
+        return response()->json([
+            'imported' => $count
+        ], 200);
     }
 
     public function uploadImages(array $images, int $id): string
