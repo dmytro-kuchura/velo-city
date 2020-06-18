@@ -40,8 +40,7 @@ class ParserController
 
         /** @var Query $item */
         foreach ($items as $item) {
-            $product = json_decode($item->data, true);
-            dd($product->description);
+            $product = json_decode($item->data);
 
             $model = Product::where('alias', Text::cyrillic(strtolower($product->model)))->first();
 
@@ -59,7 +58,7 @@ class ParserController
             $model->top = rand(0, 1);
             $model->cost = $product->price;
             $model->cost_old = $product->oldprice;
-            $model->information = $product->description;
+            $model->information = !$product->description ? null : $product->description;
             $model->artikul = $product->vendorCode;
             $model->available = 1;
 
