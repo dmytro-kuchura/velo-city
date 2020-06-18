@@ -34,7 +34,7 @@ class ParserController
 
     public function uploadProduct()
     {
-        set_time_limit(800);
+        set_time_limit(8000);
 
         $items = Query::orderBy('id', 'asc')->limit(20)->get();
 
