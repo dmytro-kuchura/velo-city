@@ -2,16 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\CatalogRepository;
 use App\Repositories\ProductsRepository;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
-    private $repository;
+    /**+
+     * @var CatalogRepository
+     */
+    private $catalogRepository;
 
-    public function __construct(ProductsRepository $productsRepository)
+    /**
+     * @var ProductsRepository
+     */
+    private $productsRepository;
+
+    public function __construct(
+        ProductsRepository $productsRepository,
+        CatalogRepository $catalogRepository
+    )
     {
-        $this->repository = $productsRepository;
+        $this->productsRepository = $productsRepository;
+        $this->catalogRepository = $catalogRepository;
     }
 
     public function index()
@@ -21,14 +34,13 @@ class ShopController extends Controller
 
     public function category(Request $request)
     {
-        $result = $this->repository->category($request->route('category'));
+        $result = $this->productsRepository->category($request->route('category'));
 
-        if (!$result) {
-            abort(404, 'Page not found');
-        }
+        $categories = $this->catalogRepository->getParents($request->route('category'));
 
         return view('shop.category', [
-            'result' => $result
+            'result' => $result,
+            'categories' => $categories,
         ]);
     }
 
@@ -38,7 +50,7 @@ class ShopController extends Controller
      */
     public function item(Request $request)
     {
-        $result = $this->repository->find($request->route('id'));
+        $result = $this->productsRepository->find($request->route('id'));
 
         if (!$result) {
             abort(404, 'Page not found');

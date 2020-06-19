@@ -27,45 +27,6 @@ class Breadcrumbs extends AbstractWidget
         $alias = $request->route('alias') ?? $request->route('alias');
 
         switch ($uri) {
-            case 'about':
-                $breadcrumbs = [
-                    [
-                        'label' => __('breadcrumbs.index.title'),
-                        'link' => route('home'),
-                    ],
-                    [
-                        'label' => __('breadcrumbs.about.title'),
-                    ],
-                ];
-
-                $page = __('breadcrumbs.about.title');
-                break;
-            case 'contacts':
-                $breadcrumbs = [
-                    [
-                        'label' => __('breadcrumbs.index.title'),
-                        'link' => route('home'),
-                    ],
-                    [
-                        'label' => __('breadcrumbs.contacts.title'),
-                    ],
-                ];
-
-                $page = __('breadcrumbs.contacts.title');
-                break;
-            case 'search':
-                $breadcrumbs = [
-                    [
-                        'label' => __('breadcrumbs.index.title'),
-                        'link' => route('home'),
-                    ],
-                    [
-                        'label' => __('breadcrumbs.search.title'),
-                    ],
-                ];
-
-                $page = __('breadcrumbs.search.title');
-                break;
             case 'shop.category':
                 $categories = $catalogRepository->getTreeForBreadcrumbs(Route::current()->parameter('category'));
 
@@ -93,6 +54,35 @@ class Breadcrumbs extends AbstractWidget
                 }
 
                 $page = $category->title ? $category->title : $category->name;
+                break;
+            case 'shop.item':
+                $item = $productsRepository->find(Route::current()->parameter('id'));
+                $category = $catalogRepository->findById($item->category_id);
+                $categories = $catalogRepository->getTreeForBreadcrumbs($category->alias);
+
+                $breadcrumbs = [
+                    [
+                        'label' => __('breadcrumbs.index.title'),
+                        'link' => route('home'),
+                    ],
+                ];
+
+                $categories = array_reverse($categories);
+
+                foreach ($categories as $key => $category) {
+                    $breadcrumbs[] = [
+                        'label' => $category->name,
+                        'link' => route('shop.category', ['category' => $category->alias])
+                    ];
+                }
+
+                $pageName = explode(',', $item->name);
+
+                $breadcrumbs[] = [
+                    'label' => $pageName[0],
+                ];
+
+                $page = $pageName[0];
                 break;
             default:
                 $breadcrumbs = [];

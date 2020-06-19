@@ -53,8 +53,20 @@ class CatalogRepository
         return $tree;
     }
 
+    public function findByAlias(string $alias)
+    {
+        return $this->model::where('alias', $alias)->first();
+    }
+
     public function findById(int $id)
     {
         return $this->model::where('id', $id)->first();
+    }
+
+    public function getParents(string $alias)
+    {
+        $category = $this->findByAlias($alias);
+
+        return $this->model::where('parent_id', $category->id)->get();
     }
 }
