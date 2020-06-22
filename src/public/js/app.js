@@ -2734,11 +2734,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      cart: this.$store.state
+      form: {
+        name: null,
+        email: null,
+        message: null
+      },
+      errors: []
     };
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      this.isLoading = true;
+      axios.post("/api/v1/contacts", this.form).then(function () {
+        return _this.setSuccessResponse();
+      })["catch"](function (_ref) {
+        var response = _ref.response;
+        return _this.setErrorResponse(response);
+      });
+    },
+    setSuccessResponse: function setSuccessResponse() {
+      this.isLoading = false;
+      this.form.name = null;
+      this.form.email = null;
+      this.form.description = null;
+      this.errors = [];
+      swal({
+        title: "Отлично!",
+        text: "Запрос отправлен!",
+        icon: "success"
+      });
+    },
+    setErrorResponse: function setErrorResponse(response) {
+      this.isLoading = false;
+      this.errors = response.data.errors;
+      swal({
+        title: "Ошибка!",
+        text: "Указан не верный email или слишком частый выполняется отправка!",
+        icon: "error"
+      });
+    }
   }
 });
 
@@ -39285,7 +39326,19 @@ var render = function() {
       _vm._l(_vm.cart.list, function(item) {
         return _c("tr", [
           _c("td", [
-            _c("a", { attrs: { href: item.alias } }, [_vm._m(1, true)])
+            _c("a", { attrs: { href: item.alias } }, [
+              _c("div", { staticClass: "product-image" }, [
+                _c("img", {
+                  attrs: {
+                    alt: item.name,
+                    src:
+                      item.image.length > 1
+                        ? item.image
+                        : "/images/no-image.png"
+                  }
+                })
+              ])
+            ])
           ]),
           _vm._v(" "),
           _c("td", [
@@ -39407,14 +39460,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Действие")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "product-image" }, [
-      _c("img", { attrs: { alt: "Roadie", src: "images/1.jpg" } })
     ])
   }
 ]
@@ -40122,48 +40167,120 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "footer-block-contant" }, [
+    _c(
+      "form",
+      {
+        attrs: { name: "contactform" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.onSubmit($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "field" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.name,
+                expression: "form.name"
+              }
+            ],
+            class: { "has-error": _vm.errors.name },
+            attrs: {
+              type: "text",
+              placeholder: "Введите Ваше имя",
+              required: ""
+            },
+            domProps: { value: _vm.form.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "name", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.name,
+                expression: "form.name"
+              }
+            ],
+            class: { "has-error": _vm.errors.name },
+            attrs: {
+              type: "text",
+              placeholder: "Введите Ваш Email",
+              required: ""
+            },
+            domProps: { value: _vm.form.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "name", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.message,
+                expression: "form.message"
+              }
+            ],
+            class: { "has-error": _vm.errors.message },
+            attrs: {
+              placeholder: "Что именно Вас интересует?",
+              rows: "2",
+              cols: "5",
+              name: "message"
+            },
+            domProps: { value: _vm.form.message },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "message", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "footer-block-contant" }, [
-      _c("form", [
-        _c("div", { staticClass: "field" }, [
-          _c("input", {
-            attrs: { type: "text", placeholder: "Name", required: "" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "field" }, [
-          _c("input", {
-            attrs: { type: "email", placeholder: "Email", required: "" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "field" }, [
-          _c("textarea", {
-            attrs: {
-              name: "Message",
-              placeholder: "Message",
-              required: "",
-              id: "message",
-              cols: "5",
-              rows: "2"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "field" }, [
-          _c(
-            "button",
-            { staticClass: "btn-color", attrs: { title: "Subscribe" } },
-            [_vm._v("Submit")]
-          )
-        ])
-      ])
+    return _c("div", { staticClass: "field" }, [
+      _c(
+        "button",
+        { staticClass: "btn-color", attrs: { title: "Subscribe" } },
+        [_vm._v("Submit")]
+      )
     ])
   }
 ]

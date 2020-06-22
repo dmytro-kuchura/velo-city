@@ -1,4 +1,4 @@
-/* 
+/*
  * 	Responsive CSS File
  *	v1.0
  */
@@ -741,6 +741,17 @@
 
 }
 
+@media (min-width: 992px) and (max-width: 1778px) {
+    #menu {
+        font-size: 10px;
+    }
+
+    .navbar-nav > li > a {
+        padding: 33px 1px;
+        font-weight: 500;
+    }
+}
+
 @media (min-width: 992px) {
     .mobilemenu-content {
         display: block !important;
@@ -753,8 +764,6 @@
     .sidebar-box .sidebar-contant {
         display: block !important;
     }
-
-
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
