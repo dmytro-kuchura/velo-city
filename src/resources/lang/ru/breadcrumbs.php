@@ -6,4 +6,5 @@ return [
     'shop.category' => 'Категория товаров: ',
     'shop.title' => 'Каталог товаров',
     'search.title' => 'Поиск',
+    'cart.title' => 'Ваша корзина',
 ];

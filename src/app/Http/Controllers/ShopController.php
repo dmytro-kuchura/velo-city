@@ -44,10 +44,6 @@ class ShopController extends Controller
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function item(Request $request)
     {
         $result = $this->productsRepository->find($request->route('id'));

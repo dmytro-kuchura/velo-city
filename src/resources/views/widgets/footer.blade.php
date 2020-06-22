@@ -29,8 +29,9 @@
                                         @if($tree)
                                             @foreach($tree[0] as $obj)
                                                 <li>
-                                                    <a href="javascript:void(0)"><i
-                                                            class="fa fa-angle-right"></i>{{ $obj->name }}</a>
+                                                    <a href="{{ route('shop.category', ['category' => $obj->alias]) }}">
+                                                        <i class="fa fa-angle-right"></i>{{ $obj->name }}
+                                                    </a>
                                                 </li>
                                             @endforeach
                                         @endif
@@ -38,7 +39,8 @@
                                 </div>
                             </div>
                             <div class="col-xl-4 f-col">
-                                <div class="footer-static-block"><span class="opener plus"></span>
+                                <div class="footer-static-block">
+                                    <span class="opener plus"></span>
                                     <h3 class="title">Guidance <span></span></h3>
                                     <ul class="footer-block-contant link">
                                         <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Delivery
@@ -141,7 +143,8 @@
                 </div>
                 <div class="col-12">
                     <div class="">
-                        <div class="copy-right ">© 2018 All Rights Reserved. Design By <a href="javascript:void(0)">Aaryaweb</a>
+                        <div class="copy-right ">
+                            Make with <i class="fa fa-heart" style="color: red"> </i> by <a href="https://www.instagram.com/dmitry.k__/">Dmytro Kuchura</a>
                         </div>
                     </div>
                 </div>

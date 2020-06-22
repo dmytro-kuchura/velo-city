@@ -133,7 +133,7 @@
                                 <td>
                                     <a v-bind:href="item.alias">
                                         <div class="product-image">
-                                            <img alt="Honour" src="images/1.jpg">
+                                            <img v-bind:alt="item.name" :src="item.image.length > 1 ? item.image : '/images/no-image.png'">
                                         </div>
                                     </a>
                                 </td>

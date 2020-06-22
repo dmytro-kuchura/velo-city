@@ -1,19 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="banner inner-banner1 ">
-        <div class="container">
-            <section class="banner-detail center-xs">
-                <h1 class="banner-title">Shopping Cart</h1>
-                <div class="bread-crumb right-side float-none-xs">
-                    <ul>
-                        <li><a href="index.html">Home</a>/</li>
-                        <li><span>Shopping Cart</span></li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
+    @widget('breadcrumbs')
 
     <section class="ptb-70">
         <div class="container">
@@ -32,13 +20,14 @@
                         <div class="mt-30 mt-xs-15">
                             <a href="{{ route('shop.index') }}" class="btn btn-color">
                                 <span><i class="fa fa-angle-left"></i></span>
-                                Continue Shopping
+                                Продолжить покупки
                             </a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mt-30 mt-xs-15 right-side xs-float-none">
-                            <a href="{{ route('checkout') }}" class="btn btn-color">Proceed to checkout
+                            <a href="{{ route('checkout') }}" class="btn btn-color">
+                                Оформить заказ
                                 <span><i class="fa fa-angle-right"></i></span>
                             </a>
                         </div>

@@ -27,6 +27,19 @@ class Breadcrumbs extends AbstractWidget
         $alias = $request->route('alias') ?? $request->route('alias');
 
         switch ($uri) {
+            case 'cart':
+                $breadcrumbs = [
+                    [
+                        'label' => __('breadcrumbs.index.title'),
+                        'link' => route('home'),
+                    ],
+                    [
+                        'label' => __('breadcrumbs.cart.title'),
+                    ],
+                ];
+
+                $page = __('breadcrumbs.cart.title');
+                break;
             case 'shop.category':
                 $categories = $catalogRepository->getTreeForBreadcrumbs(Route::current()->parameter('category'));
 

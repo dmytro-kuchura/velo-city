@@ -9,8 +9,8 @@
                 <div class="col-12">
                     <div class="checkout-step mb-40">
                         <ul>
-                            <li class="active-checkout-step">
-                                <a href="{{ route('checkout') }}">
+                            <li>
+                                <a href="javascript:void(0)">
                                     <div class="step">
                                         <div class="line"></div>
                                         <div class="circle">1</div>
@@ -18,7 +18,7 @@
                                     <span>Оформление заказа</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="active-checkout-step">
                                 <a href="javascript:void(0)">
                                     <div class="step">
                                         <div class="line"></div>
@@ -27,7 +27,7 @@
                                     <span>Завершение заказа</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="active-checkout-step">
                                 <div class="step">
                                     <div class="line"></div>
                                 </div>
@@ -35,7 +35,6 @@
                         </ul>
                         <hr>
                     </div>
-                    <checkout></checkout>
                 </div>
             </div>
         </div>

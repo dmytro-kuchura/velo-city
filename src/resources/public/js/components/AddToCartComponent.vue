@@ -58,24 +58,24 @@
                 }
             },
             onSubmit() {
-                axios.post("/api/v1/cart/add", this.item)
+                axios.post('/api/v1/cart/add', this.item)
                     .then(({data}) => this.setSuccessResponse(data))
                     .catch(({response}) => this.setErrorResponse(response));
             },
             setSuccessResponse(data) {
-                this.$store.commit("loadCart");
+                this.$store.commit('loadCart');
 
                 swal({
-                    title: "Добавлено!",
-                    text: "Товар в корзине :)",
-                    icon: "success",
+                    title: 'Добавлено!',
+                    text: 'Товар в корзине :)',
+                    icon: 'success',
                 });
             },
             setErrorResponse(response) {
                 swal({
-                    title: "Ошибка!",
-                    text: "Что то сломалось :(",
-                    icon: "error",
+                    title: 'Ошибка!',
+                    text: 'Что то сломалось :(',
+                    icon: 'error',
                 });
             }
         }

@@ -102,7 +102,7 @@ class ShoppingCart
                     'id' => $product->id,
                     'alias' => route('shop.item', ['alias' => $product->alias, 'id' => $product->id]),
                     'name' => $product->name,
-                    'image' => '',
+                    'image' => $product->image,
                     'count' => $item->count,
                     'price' => number_format($product->cost, 2, '.', ''),
                     'maxcount' => 50,

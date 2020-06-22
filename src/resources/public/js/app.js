@@ -28,7 +28,8 @@ Vue.use(Vuex);
 Vue.component('cart', require('./components/CartComponent.vue').default);
 Vue.component('cart-list', require('./components/CartTableComponent.vue').default);
 Vue.component('cart-total', require('./components/CartTotalComponent.vue').default);
-Vue.component('add-to-cart', require('./components/AddToCartComponet.vue').default);
+Vue.component('add-to-cart', require('./components/AddToCartComponent.vue').default);
+Vue.component('add-to-cart-and-wishlist', require('./components/AddToCartAndWishlistComponent.vue').default);
 Vue.component('checkout', require('./components/CheckoutComponent.vue').default);
 Vue.component('contact-us-form', require('./components/ContactUsFormComponent.vue').default);
 
