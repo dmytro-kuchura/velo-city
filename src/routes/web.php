@@ -20,6 +20,8 @@ Route::get('sitemap.xml', 'SiteController@sitemap')->name('sitemap.xml');
 
 Auth::routes();
 Route::get('profile', 'ProfileController@profile')->name('profile');
+Route::post('change', 'ProfileController@change')->name('profile.change');
+Route::post('change-password', 'ProfileController@changePassword')->name('profile.change.password');
 
 //$routes = function() {
     Route::get('/', 'SiteController@index')->name('home');

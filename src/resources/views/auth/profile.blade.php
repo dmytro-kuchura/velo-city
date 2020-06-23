@@ -50,13 +50,51 @@
                                         <h3 class="sub-heading">Вы авторизованы как, {{ $user->name }}</h3>
                                     </div>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consec adipiscing elit. Donec eros tellus, nec consec
-                                        elit. Donec eros tellus laoreet sit amet.<a class="account-link"
-                                                                                    id="subscribelink"
-                                                                                    href="javascript:void(0)">Click
-                                            Here</a></p>
+                                        На это странице Вы сможете сменить свои персональные данные.
+                                    </p>
                                 </div>
                             </div>
+                            <form class="main-form full" method="POST" action="{{ route('profile.change') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="input-box">
+                                            <label for="name">Ваше имя</label>
+                                            <input type="text" placeholder="Ваше имя" required
+                                                   value="{{ $user->name }}"
+                                                   name="name" id="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-box">
+                                            <label for="last_name">Ваша фамилия</label>
+                                            <input type="text" placeholder="Введите вашу фамилию" required
+                                                   value="{{ $user->last_name ?? '' }}"
+                                                   name="last_name" id="last_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-box">
+                                            <label for="middle_name">Ваше отчество</label>
+                                            <input type="text" placeholder="Введите ваше отчество" required
+                                                   value="{{ $user->middle_name ?? '' }}"
+                                                   name="middle_name" id="middle_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-box">
+                                            <label for="name">Ваш телефон</label>
+                                            <input type="text" placeholder="Ваш телефон" required
+                                                   value="{{ $user->phone ?? '' }}"
+                                                   name="name" id="name">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn-color" type="submit">Сменить данные</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div id="data-step2" class="account-content" data-temp="tabdata" style="display:none">
@@ -80,7 +118,7 @@
                                                             <ul>
                                                                 <li>
                                                                     <span>Заказ создан</span>
-                                                                    <span>17 December 2016</span>
+                                                                    <span>{{ strftime("%d %B , %Y", strtotime($order->created_at)) }}</span>
                                                                 </li>
                                                                 <li class="price-box">
                                                                     <span>Итого</span>
@@ -100,8 +138,9 @@
                                                             <td>
                                                                 <a href="{{ route('shop.item', ['alias' => $item->product->alias, 'id' => $item->product->id]) }}">
                                                                     <div class="product-image">
-                                                                        <img src="{{ $item->product->image ? $item->product->image : '/images/no-image.png' }}"
-                                                                             alt="{{ $item->product->name }}">
+                                                                        <img
+                                                                            src="{{ $item->product->image ? $item->product->image : '/images/no-image.png' }}"
+                                                                            alt="{{ $item->product->name }}">
                                                                     </div>
                                                                 </a>
                                                             </td>
@@ -114,7 +153,8 @@
                                                                 <div class="product-info-stock-sku m-0">
                                                                     <div>
                                                                         <label>Кол-во: </label>
-                                                                        <span class="info-deta">{{ $item->count }}</span>
+                                                                        <span
+                                                                            class="info-deta">{{ $item->count }}</span>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -138,34 +178,36 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="heading-part heading-bg mb-30">
-                                    <h2 class="heading m-0">Change Password</h2>
+                                    <h2 class="heading m-0">Смена пароля</h2>
                                 </div>
                             </div>
                         </div>
-                        <form class="main-form full">
+                        <form class="main-form full" method="POST" action="{{ route('profile.change.password') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-box">
-                                        <label for="old-pass">Old-Password</label>
-                                        <input type="password" placeholder="Old Password" required id="old-pass">
+                                        <label for="password">Старый пароль</label>
+                                        <input type="password" placeholder="Старый пароль" required
+                                               name="password" id="password">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-box">
-                                        <label for="login-pass">Password</label>
-                                        <input type="password" placeholder="Enter your Password" required
-                                               id="login-pass">
+                                        <label for="new_password">Новый пароль</label>
+                                        <input type="password" placeholder="Введите новый пароль" required
+                                               name="new_password" id="new_password">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-box">
-                                        <label for="re-enter-pass">Re-enter Password</label>
-                                        <input type="password" placeholder="Re-enter your Password" required
-                                               id="re-enter-pass">
+                                        <label for="new_password_confirmation">Подтверждение нового пароля</label>
+                                        <input type="password" placeholder="Подтвердите новый пароль" required
+                                               name="new_password_confirmation" id="new_password_confirmation">
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn-color" type="submit" name="submit">Change Password</button>
+                                    <button class="btn-color" type="submit">Сменить пароль</button>
                                 </div>
                             </div>
                         </form>
