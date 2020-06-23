@@ -35,7 +35,7 @@
                         </ul>
                         <hr>
                     </div>
-                    <checkout></checkout>
+                    <checkout :user="{{ $user }}"></checkout>
                 </div>
             </div>
         </div>

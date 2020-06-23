@@ -3,7 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\Enum\OrderStatus;
-use App\Models\Orders;use Illuminate\Support\Facades\DB;
+use App\Models\Orders;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrdersRepository
 {
@@ -19,10 +21,22 @@ class OrdersRepository
             ->get();
     }
 
+    public function getOrdersByUser(int $userId) {
+        return $this->model::select(DB::raw('SUM(order_items.count * order_items.cost) as total'), 'orders.*')
+            ->leftJoin('order_items', 'orders.id', '=', 'order_items.order_id')
+            ->where('orders.user_id', $userId)
+            ->with('items', 'items.product')
+            ->orderBy('orders.id', 'desc')
+            ->groupBy('orders.id')
+            ->get();
+    }
+
     public function create(array $data): Orders
     {
         /** @var Orders $order */
         $order = new $this->model;
+
+        $order->user_id = $data['user_id'];
         $order->first_name = $data['first_name'];
         $order->last_name = $data['last_name'];
         $order->middle_name = $data['middle_name'];

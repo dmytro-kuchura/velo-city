@@ -19,31 +19,36 @@
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="text" v-model="order.first_name" :class="{'has-error': errors.first_name}" placeholder="Имя *">
+                                <input type="text" v-model="order.first_name" :class="{'has-error': errors.first_name}"
+                                       placeholder="Имя *">
                                 <span v-if="errors.first_name" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="text" v-model="order.last_name" :class="{'has-error': errors.last_name}" placeholder="Фамилия *">
+                                <input type="text" v-model="order.last_name" :class="{'has-error': errors.last_name}"
+                                       placeholder="Фамилия *">
                                 <span v-if="errors.last_name" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="text" v-model="order.middle_name" :class="{'has-error': errors.middle_name}" placeholder="Отчество">
+                                <input type="text" v-model="order.middle_name"
+                                       :class="{'has-error': errors.middle_name}" placeholder="Отчество">
                                 <span v-if="errors.middle_name" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="email" v-model="order.email" :class="{'has-error': errors.email}" placeholder="Ваш Email *">
+                                <input type="email" v-model="order.email" :class="{'has-error': errors.email}"
+                                       placeholder="Ваш Email *">
                                 <span v-if="errors.email" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-box">
-                                <input type="text" v-model="order.phone" :class="{'has-error': errors.phone}" placeholder="Номер телефона *">
+                                <input type="text" v-model="order.phone" :class="{'has-error': errors.phone}"
+                                       placeholder="Номер телефона *">
                                 <span v-if="errors.phone" class="has-error">Please include landmark.</span>
                             </div>
                         </div>
@@ -60,7 +65,9 @@
                                 <fieldset>
                                     <select name="delivery" class="option-drop" @change="selectDelivery($event)">
                                         <option selected="" value="">Вариант доставки</option>
-                                        <option v-bind:value="delivery.id" v-for="delivery in deliveries">{{ delivery.name }}</option>
+                                        <option v-bind:value="delivery.id" v-for="delivery in deliveries">{{
+                                            delivery.name }}
+                                        </option>
                                     </select>
                                 </fieldset>
                                 <span v-show="order.delivery_id === 1">Херсон, улица Крымская 137, район Днепровского рынка</span>
@@ -69,9 +76,11 @@
                         <div class="col-md-6">
                             <div class="input-box select-dropdown">
                                 <fieldset>
-                                    <select name="region" class="option-drop"  @change="selectRegion($event)">
+                                    <select name="region" class="option-drop" @change="selectRegion($event)">
                                         <option selected="" value="">Выберите область</option>
-                                        <option v-bind:value="region.id" v-for="region in regions">{{ region.name_ru }}</option>
+                                        <option v-bind:value="region.id" v-for="region in regions">{{ region.name_ru
+                                            }}
+                                        </option>
                                     </select>
                                 </fieldset>
                             </div>
@@ -81,7 +90,8 @@
                                 <fieldset>
                                     <select name="city" class="option-drop" @change="selectCity($event)">
                                         <option value="">Выберите город</option>
-                                        <option v-bind:value="city.id" v-for="city in cities">{{ city.name_ru }}</option>
+                                        <option v-bind:value="city.id" v-for="city in cities">{{ city.name_ru }}
+                                        </option>
                                     </select>
                                 </fieldset>
                             </div>
@@ -133,7 +143,8 @@
                                 <td>
                                     <a v-bind:href="item.alias">
                                         <div class="product-image">
-                                            <img v-bind:alt="item.name" :src="item.image.length > 1 ? item.image : '/images/no-image.png'">
+                                            <img v-bind:alt="item.name"
+                                                 :src="item.image.length > 1 ? item.image : '/images/no-image.png'">
                                         </div>
                                     </a>
                                 </td>
@@ -144,7 +155,7 @@
                                             <div>
                                                 <label>Цена: </label>
                                                 <div class="price-box"><span
-                                                        class="info-deta price">₴ {{ item.price }}</span>
+                                                    class="info-deta price">₴ {{ item.price }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -232,28 +243,38 @@
                     delivery_id: null,
                     region_id: null,
                     city_id: null,
+                    user_id: null,
                     payment_id: null,
                 },
                 errors: []
             }
         },
         mounted() {
-            axios.get("api/v1/regions/list")
+            if (this.$attrs.user.hasOwnProperty('id')) {
+                this.order.user_id = this.$attrs.user.id;
+                this.order.first_name = this.$attrs.user.name;
+                this.order.last_name = this.$attrs.user.last_name;
+                this.order.middle_name = this.$attrs.user.middle_name;
+                this.order.email = this.$attrs.user.email;
+                this.order.phone = this.$attrs.user.phone;
+            }
+
+            axios.get('api/v1/regions/list')
                 .then(({data}) => this.setRegionsSuccessResponse(data))
                 .catch((response) => this.setRegionsErrorResponse(response));
 
-            axios.get("api/v1/deliveries/list")
+            axios.get('api/v1/deliveries/list')
                 .then(({data}) => this.setDeliveriesSuccessResponse(data))
                 .catch((response) => this.setDeliveriesErrorResponse(response));
 
-            axios.get("api/v1/payments/list")
+            axios.get('api/v1/payments/list')
                 .then(({data}) => this.setPaymentsSuccessResponse(data))
                 .catch((response) => this.setPaymentsErrorResponse(response));
         },
         methods: {
             onSubmit() {
                 this.isLoading = true;
-                axios.post("/api/v1/orders/create", this.order)
+                axios.post('/api/v1/orders/create', this.order)
                     .then(() => this.setOnSubmitSuccessResponse())
                     .catch(({response}) => this.setOnSubmitErrorResponse(response));
             },
@@ -271,10 +292,12 @@
                 this.order.payment_id = null;
 
                 swal({
-                    title: "Оформлен!",
-                    text: "Ваш заказ был оформлен мы свяжемся с Вами в ближайшее время :)",
-                    icon: "success",
+                    title: 'Оформлен!',
+                    text: 'Ваш заказ был оформлен мы свяжемся с Вами в ближайшее время :)',
+                    icon: 'success',
                 });
+
+                location.href = '/thank';
             },
             setOnSubmitErrorResponse(response) {
                 this.isLoading = false;
@@ -319,7 +342,7 @@
 
                 this.order.region_id = parseInt(region);
 
-                axios.get("api/v1/cities/" + region)
+                axios.get('api/v1/cities/' + region)
                     .then(({data}) => this.setCitiesSuccessResponse(data))
                     .catch((response) => this.setCitiesErrorResponse(response));
             },
@@ -332,7 +355,7 @@
                 console.log(response);
             },
             removeFromCart(id) {
-                axios.delete("/api/v1/cart/delete/" + id)
+                axios.delete('/api/v1/cart/delete/' + id)
                     .then(() => this.deleteCartListSuccessResponse())
                     .catch((response) => this.deleteCartListErrorResponse(response));
             },

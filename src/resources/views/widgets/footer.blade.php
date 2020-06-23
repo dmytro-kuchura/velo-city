@@ -132,14 +132,11 @@
                 <div class="col-12 mb-30">
                     <div class="site-link">
                         <ul>
-                            <li><a href="javascript:void(0)">About Us</a>/</li>
-                            <li><a href="javascript:void(0)">Contact Us</a>/</li>
-                            <li><a href="javascript:void(0)">Customer </a>/</li>
-                            <li><a href="javascript:void(0)">Service</a>/</li>
-                            <li><a href="javascript:void(0)">Privacy</a>/</li>
-                            <li><a href="javascript:void(0)">Policy </a>/</li>
-                            <li><a href="javascript:void(0)">Accessibility</a>/</li>
-                            <li><a href="javascript:void(0)">Directory </a></li>
+                            <li><a href="javascript:void(0)">О магазине</a>/</li>
+                            <li><a href="javascript:void(0)">Оплата</a>/</li>
+                            <li><a href="javascript:void(0)">Доставка</a>/</li>
+                            <li><a href="javascript:void(0)">Гарантия</a>/</li>
+                            <li><a href="javascript:void(0)">Возврат</a></li>
                         </ul>
                     </div>
                 </div>

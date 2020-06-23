@@ -27,6 +27,32 @@ class Breadcrumbs extends AbstractWidget
         $alias = $request->route('alias') ?? $request->route('alias');
 
         switch ($uri) {
+            case 'login':
+                $breadcrumbs = [
+                    [
+                        'label' => __('breadcrumbs.index.title'),
+                        'link' => route('home'),
+                    ],
+                    [
+                        'label' => __('breadcrumbs.login.title'),
+                    ],
+                ];
+
+                $page = __('breadcrumbs.login.title');
+                break;
+            case 'register':
+                $breadcrumbs = [
+                    [
+                        'label' => __('breadcrumbs.index.title'),
+                        'link' => route('home'),
+                    ],
+                    [
+                        'label' => __('breadcrumbs.register.title'),
+                    ],
+                ];
+
+                $page = __('breadcrumbs.register.title');
+                break;
             case 'cart':
                 $breadcrumbs = [
                     [

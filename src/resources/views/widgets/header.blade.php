@@ -9,7 +9,8 @@
                                 @foreach($tree[1202] as $obj)
                                     <li class="level dropdown">
                                         <span class="opener plus"></span>
-                                        <a href="{{ route('shop.category', ['category' => $obj->alias]) }}" class="page-scroll">{{ $obj->name }}</a>
+                                        <a href="{{ route('shop.category', ['category' => $obj->alias]) }}"
+                                           class="page-scroll">{{ $obj->name }}</a>
                                         <div class="megamenu mobile-sub-menu">
                                             <div class="megamenu-inner-top">
                                                 @if(isset($tree[$obj->id]))
@@ -58,18 +59,48 @@
                             <li class="account-icon"><a href="javascript:void(0)"><span></span></a>
                                 <div class="header-link-dropdown account-link-dropdown">
                                     <ul class="link-dropdown-list">
-                                        <li><span class="dropdown-title">Default welcome msg!</span>
-                                            <ul>
-                                                <li><a href="login.html">Sign In</a></li>
-                                                <li><a href="register.html">Create an Account</a></li>
-                                            </ul>
+                                        <li>
+                                            @guest
+                                                <span class="dropdown-title">Добро пожаловать, гость!</span>
+                                                <ul>
+                                                    <li>
+                                                        <a href="{{ route('login') }}">Авторизация</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('register') }}">Регистрация</a>
+                                                    </li>
+                                                </ul>
+                                            @else
+                                                <span class="dropdown-title">Добро пожаловать, {{ Auth::user()->name }}!</span>
+                                                <ul>
+                                                    <li>
+                                                        <a href="{{ route('profile') }}">Профиль</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('profile') }}">Заказы</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ route('logout') }}"
+                                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                            Выход
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                                <form id="logout-form" action="{{ route('logout') }}"
+                                                      method="POST"
+                                                      style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            @endguest
                                         </li>
-                                        <li><span class="dropdown-title">Language :</span>
-                                            <ul>
-                                                <li><a class="active" href="javascript:void(0)">Русский</a></li>
-                                                <li><a href="javascript:void(0)">Украинский</a></li>
-                                            </ul>
-                                        </li>
+{{--                                        <li>--}}
+{{--                                            <span class="dropdown-title">Язык :</span>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a class="active" href="javascript:void(0)">Русский</a></li>--}}
+{{--                                                <li><a href="javascript:void(0)">Украинский</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
                                     </ul>
                                 </div>
                             </li>

@@ -2553,6 +2553,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2571,6 +2582,7 @@ __webpack_require__.r(__webpack_exports__);
         delivery_id: null,
         region_id: null,
         city_id: null,
+        user_id: null,
         payment_id: null
       },
       errors: []
@@ -2579,19 +2591,28 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("api/v1/regions/list").then(function (_ref) {
+    if (this.$attrs.user.hasOwnProperty('id')) {
+      this.order.user_id = this.$attrs.user.id;
+      this.order.first_name = this.$attrs.user.name;
+      this.order.last_name = this.$attrs.user.last_name;
+      this.order.middle_name = this.$attrs.user.middle_name;
+      this.order.email = this.$attrs.user.email;
+      this.order.phone = this.$attrs.user.phone;
+    }
+
+    axios.get('api/v1/regions/list').then(function (_ref) {
       var data = _ref.data;
       return _this.setRegionsSuccessResponse(data);
     })["catch"](function (response) {
       return _this.setRegionsErrorResponse(response);
     });
-    axios.get("api/v1/deliveries/list").then(function (_ref2) {
+    axios.get('api/v1/deliveries/list').then(function (_ref2) {
       var data = _ref2.data;
       return _this.setDeliveriesSuccessResponse(data);
     })["catch"](function (response) {
       return _this.setDeliveriesErrorResponse(response);
     });
-    axios.get("api/v1/payments/list").then(function (_ref3) {
+    axios.get('api/v1/payments/list').then(function (_ref3) {
       var data = _ref3.data;
       return _this.setPaymentsSuccessResponse(data);
     })["catch"](function (response) {
@@ -2603,7 +2624,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.isLoading = true;
-      axios.post("/api/v1/orders/create", this.order).then(function () {
+      axios.post('/api/v1/orders/create', this.order).then(function () {
         return _this2.setOnSubmitSuccessResponse();
       })["catch"](function (_ref4) {
         var response = _ref4.response;
@@ -2622,10 +2643,11 @@ __webpack_require__.r(__webpack_exports__);
       this.order.city_id = null;
       this.order.payment_id = null;
       swal({
-        title: "Оформлен!",
-        text: "Ваш заказ был оформлен мы свяжемся с Вами в ближайшее время :)",
-        icon: "success"
+        title: 'Оформлен!',
+        text: 'Ваш заказ был оформлен мы свяжемся с Вами в ближайшее время :)',
+        icon: 'success'
       });
+      location.href = '/thank';
     },
     setOnSubmitErrorResponse: function setOnSubmitErrorResponse(response) {
       this.isLoading = false;
@@ -2669,7 +2691,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var region = event.target.value;
       this.order.region_id = parseInt(region);
-      axios.get("api/v1/cities/" + region).then(function (_ref5) {
+      axios.get('api/v1/cities/' + region).then(function (_ref5) {
         var data = _ref5.data;
         return _this3.setCitiesSuccessResponse(data);
       })["catch"](function (response) {
@@ -2687,7 +2709,7 @@ __webpack_require__.r(__webpack_exports__);
     removeFromCart: function removeFromCart(id) {
       var _this4 = this;
 
-      axios["delete"]("/api/v1/cart/delete/" + id).then(function () {
+      axios["delete"]('/api/v1/cart/delete/' + id).then(function () {
         return _this4.deleteCartListSuccessResponse();
       })["catch"](function (response) {
         return _this4.deleteCartListErrorResponse(response);
@@ -39747,7 +39769,12 @@ var render = function() {
                         return _c(
                           "option",
                           { domProps: { value: delivery.id } },
-                          [_vm._v(_vm._s(delivery.name))]
+                          [
+                            _vm._v(
+                              _vm._s(delivery.name) +
+                                "\n                                    "
+                            )
+                          ]
                         )
                       })
                     ],
@@ -39799,7 +39826,12 @@ var render = function() {
                         return _c(
                           "option",
                           { domProps: { value: region.id } },
-                          [_vm._v(_vm._s(region.name_ru))]
+                          [
+                            _vm._v(
+                              _vm._s(region.name_ru) +
+                                "\n                                    "
+                            )
+                          ]
                         )
                       })
                     ],
@@ -39830,7 +39862,10 @@ var render = function() {
                       _vm._v(" "),
                       _vm._l(_vm.cities, function(city) {
                         return _c("option", { domProps: { value: city.id } }, [
-                          _vm._v(_vm._s(city.name_ru))
+                          _vm._v(
+                            _vm._s(city.name_ru) +
+                              "\n                                    "
+                          )
                         ])
                       })
                     ],

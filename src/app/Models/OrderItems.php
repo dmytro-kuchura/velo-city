@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $count
  * @property string $created_at
  * @property string $updated_at
+ *
+ * @property Product $product
  */
 class OrderItems extends Model
 {
@@ -30,4 +32,9 @@ class OrderItems extends Model
     public $timestamps = true;
 
     protected $fillable = ['hash', 'order_id', 'product_id', 'count', 'cost', 'created_at', 'updated_at'];
+
+    public function product()
+    {
+        return $this->hasOne('App\Models\Product', 'id');
+    }
 }

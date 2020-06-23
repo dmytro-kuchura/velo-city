@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $ip
  * @property string $created_at
  * @property string $updated_at
+ *
+ * @property OrderItems $items
  */
 class Orders extends Model
 {
@@ -38,4 +40,9 @@ class Orders extends Model
     public $timestamps = true;
 
     protected $fillable = ['$user_id', '$delivery', '$payment', '$status', 'created_at', 'updated_at'];
+
+    public function items()
+    {
+        return $this->hasMany('App\Models\OrderItems', 'order_id');
+    }
 }

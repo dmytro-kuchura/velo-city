@@ -16,12 +16,10 @@ Route::get('upload-products', 'ParserController@uploadProduct')->name('upload.pr
 Route::get('parse-categories', 'ParserController@parseCategories')->name('parse.categories');
 
 Route::get('justin', 'Warehouses\JustinController@import')->name('justin.import');
-
 Route::get('sitemap.xml', 'SiteController@sitemap')->name('sitemap.xml');
 
-Route::post('/login', 'Auth\LoginController@login')->name('login');
-Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::post('/register', 'Auth\RegisterController@register')->name('register');
+Auth::routes();
+Route::get('profile', 'ProfileController@profile')->name('profile');
 
 //$routes = function() {
     Route::get('/', 'SiteController@index')->name('home');
@@ -36,7 +34,6 @@ Route::post('/register', 'Auth\RegisterController@register')->name('register');
     });
 
     Route::get('/cart', 'CartController@cart')->name('cart');
-
     Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
     Route::get('/thank', 'CheckoutController@thank')->name('thank');
 //};
