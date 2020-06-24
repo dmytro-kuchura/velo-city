@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\LogsRepository;
+use App\Repositories\SubscribersRepository;
 
 class Log
 {
@@ -14,7 +14,7 @@ class Log
 
     private $repository;
 
-    public function __construct(LogsRepository $logsRepository)
+    public function __construct(SubscribersRepository $logsRepository)
     {
         $this->repository = $logsRepository;
     }

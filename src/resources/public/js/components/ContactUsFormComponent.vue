@@ -6,7 +6,7 @@
                        placeholder="Введите Ваше имя" required>
             </div>
             <div class="field">
-                <input type="text" v-model="form.name" :class="{'has-error': errors.name}"
+                <input type="text" v-model="form.email" :class="{'has-error': errors.email}"
                        placeholder="Введите Ваш Email" required>
             </div>
             <div class="field">

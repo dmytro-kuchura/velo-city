@@ -32,6 +32,7 @@ Vue.component('add-to-cart', require('./components/AddToCartComponent.vue').defa
 Vue.component('add-to-cart-and-wishlist', require('./components/AddToCartAndWishlistComponent.vue').default);
 Vue.component('checkout', require('./components/CheckoutComponent.vue').default);
 Vue.component('contact-us-form', require('./components/ContactUsFormComponent.vue').default);
+Vue.component('subscribe-form', require('./components/SubscribeFormComponent.vue').default);
 Vue.component('alert-messages', require('./components/MessagesComponent.vue').default);
 
 new Vue({
