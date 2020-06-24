@@ -1,4 +1,30 @@
 <header class="navbar navbar-custom container-full-sm" id="header">
+    @auth
+        @if(Auth::user()->role == 2)
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="top-left"></div>
+                        </div>
+                        <div class="col-6">
+                            <div class="top-right-link right-side">
+                                <ul>
+                                    <li class="info-link checkout-icon">
+                                        <a href="{{ route('dashboard') }}" title="Панель администратора">
+                                            <img src="/images/top-icon4.png" alt="Панель администратора">Панель
+                                            администратора
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    @endauth
+
     <div class="header-middle">
         <div class="container position-s">
             <div class="row m-0">
@@ -71,7 +97,8 @@
                                                     </li>
                                                 </ul>
                                             @else
-                                                <span class="dropdown-title">Добро пожаловать, {{ Auth::user()->name }}!</span>
+                                                <span
+                                                    class="dropdown-title">Добро пожаловать, {{ Auth::user()->name }}!</span>
                                                 <ul>
                                                     <li>
                                                         <a href="{{ route('profile') }}">Профиль</a>
@@ -91,13 +118,13 @@
                                                 </form>
                                             @endguest
                                         </li>
-{{--                                        <li>--}}
-{{--                                            <span class="dropdown-title">Язык :</span>--}}
-{{--                                            <ul>--}}
-{{--                                                <li><a class="active" href="javascript:void(0)">Русский</a></li>--}}
-{{--                                                <li><a href="javascript:void(0)">Украинский</a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </li>--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <span class="dropdown-title">Язык :</span>--}}
+                                        {{--                                            <ul>--}}
+                                        {{--                                                <li><a class="active" href="javascript:void(0)">Русский</a></li>--}}
+                                        {{--                                                <li><a href="javascript:void(0)">Украинский</a></li>--}}
+                                        {{--                                            </ul>--}}
+                                        {{--                                        </li>--}}
                                     </ul>
                                 </div>
                             </li>
