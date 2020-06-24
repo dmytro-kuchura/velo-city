@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Date;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -25,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Orders extends Model
 {
+    use Date;
+
     /**
      * Database table name
      *
@@ -44,5 +47,10 @@ class Orders extends Model
     public function items()
     {
         return $this->hasMany('App\Models\OrderItems', 'order_id');
+    }
+
+    public function getRussianDate()
+    {
+        return $this->getHumanDate($this->created_at);
     }
 }

@@ -151,6 +151,10 @@
         </div>
     </div>
 </div>
+
+@widget('message')
+
 <div class="scroll-top">
     <div class="scrollup"></div>
 </div>
+

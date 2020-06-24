@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Alert;
 use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\UpdateProfileRequest;
 use App\Repositories\OrdersRepository;
@@ -39,12 +40,16 @@ class ProfileController extends Controller
     {
         $this->usersRepository->updateProfile(Auth::user()->getAuthIdentifier(), $request->all());
 
+        Alert::success('Профиль был обновлен!', 'Мы все записали! :)');
+
         return redirect(route('profile'));
     }
 
     public function changePassword(ChangePasswordRequest $request)
     {
         $this->usersRepository->changePassword(Auth::user()->getAuthIdentifier(), $request->all());
+
+        Alert::success('Пароль был изменен!', 'Учетная запись в безопастности! :)');
 
         return redirect(route('profile'));
     }

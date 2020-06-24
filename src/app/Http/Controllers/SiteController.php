@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Alert;
+use App\Repositories\ProductsRepository;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
+    private $productsRepository;
+
+    public function __construct(ProductsRepository $productsRepository)
+    {
+        $this->productsRepository = $productsRepository;
+    }
+
     public function index()
     {
         return view('index');
@@ -28,6 +37,11 @@ class SiteController extends Controller
 
     public function search(Request $request)
     {
-        //
+        $result = $this->productsRepository->search($request->get('query'));
+
+        return view('search', [
+            'result' => $result,
+            'query' => $request->get('query')
+        ]);
     }
 }

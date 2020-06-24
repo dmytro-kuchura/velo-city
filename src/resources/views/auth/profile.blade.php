@@ -118,7 +118,7 @@
                                                             <ul>
                                                                 <li>
                                                                     <span>Заказ создан</span>
-                                                                    <span>{{ strftime("%d %B , %Y", strtotime($order->created_at)) }}</span>
+                                                                    <span>{{ $order->getRussianDate() }}</span>
                                                                 </li>
                                                                 <li class="price-box">
                                                                     <span>Итого</span>

@@ -12,12 +12,19 @@ class ProductsRepository
 
     public function all()
     {
-        return $this->model::paginate(12);
+        return $this->model::paginate(ProductConstants::PAGINATE_LIMIT);
     }
 
     public function list()
     {
 
+    }
+
+    public function search(string $query)
+    {
+        return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
+            ->where('name', 'like', '%' . $query . '%')
+            ->paginate(ProductConstants::PAGINATE_LIMIT);
     }
 
     public function find($id)
@@ -30,7 +37,7 @@ class ProductsRepository
     public function category($alias)
     {
         return $this->model::
-            join('catalog', 'catalog.id', '=', 'products.category_id')
+        join('catalog', 'catalog.id', '=', 'products.category_id')
             ->select('products.*')
             ->where('catalog.alias', $alias)
             ->paginate(12);

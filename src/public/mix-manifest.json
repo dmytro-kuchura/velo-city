@@ -1,9 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/css/auth.css": "/css/auth.css",
     "/css/dashboard.css": "/css/dashboard.css",
-    "/js/auth.js": "/js/auth.js",
     "/js/custom.js": "/js/custom.js",
     "/js/dashboard.js": "/js/dashboard.js"
 }

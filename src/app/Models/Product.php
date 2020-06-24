@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $specifications
  * @property string $information
  * @property string $title
- * @property string $keywords
+ * @property string $keywordsprivate
  * @property string $description
  * @property string $created_at
  * @property string $updated_at

@@ -77,9 +77,6 @@
                                                         <a href="{{ route('profile') }}">Профиль</a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{ route('profile') }}">Заказы</a>
-                                                    </li>
-                                                    <li>
                                                         <a href="{{ route('logout') }}"
                                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                             Выход

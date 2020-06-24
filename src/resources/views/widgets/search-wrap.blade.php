@@ -3,10 +3,10 @@
         <div class="sidebar-align-container">
             <div class="search-closer right-side"></div>
             <div class="search-container">
-                <form method="get" id="search-form">
-                    <input type="text" id="s" class="search-input" name="s" placeholder="Start Searching">
+                <form method="get" id="search-form" action="{{ route('search') }}">
+                    <input type="text" id="s" class="search-input" name="query" placeholder="Что будем искать ? :)">
                 </form>
-                <span>Search and Press Enter</span>
+                <span>Для поиска нажмите Enter</span>
             </div>
         </div>
     </div>
