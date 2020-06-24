@@ -21,6 +21,15 @@ class OrdersRepository
             ->get();
     }
 
+    public function paginate() {
+        return $this->model::
+            select(DB::raw('SUM(order_items.count * order_items.cost) as total'), 'orders.*')
+            ->leftJoin('order_items', 'orders.id', '=', 'order_items.order_id')
+            ->orderBy('orders.id', 'desc')
+            ->groupBy('orders.id')
+            ->paginate(12);
+    }
+
     public function getOrdersByUser(int $userId) {
         return $this->model::select(DB::raw('SUM(order_items.count * order_items.cost) as total'), 'orders.*')
             ->leftJoin('order_items', 'orders.id', '=', 'order_items.order_id')

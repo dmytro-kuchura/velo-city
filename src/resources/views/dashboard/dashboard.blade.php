@@ -38,7 +38,7 @@
             </div>
         </div>
         <reviews></reviews>
-        <orders-list></orders-list>
+        <orders-widget-list></orders-widget-list>
         <activity-log></activity-log>
     </div>
 @endsection

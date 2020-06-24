@@ -43,7 +43,7 @@
                     <i class="la la-columns">
                     </i><span>Новости</span>
                 </a>
-                <ul id="dropdown-news" class="collapse list-unstyled {{ $menu === 'banners' ? 'news' : '' }} pt-0">
+                <ul id="dropdown-news" class="collapse list-unstyled {{ $menu === 'news' ? 'show' : '' }} pt-0">
                     <li><a href="{{ route('dashboard.news.index') }}">Список новостей</a></li>
                     <li><a href="{{ route('dashboard.news.create') }}">Добавить новость</a></li>
                 </ul>

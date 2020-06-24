@@ -34,6 +34,8 @@ class DashboardSidebar extends AbstractWidget
             case 'dashboard.categories.create':
                 $menu = 'products';
                 break;
+            case 'dashboard.orders.index':
+            case 'dashboard.orders.edit':
             case 'dashboard.orders.create':
                 $menu = 'orders';
                 break;
@@ -43,6 +45,7 @@ class DashboardSidebar extends AbstractWidget
                 $menu = 'banners';
                 break;
             case 'dashboard.news.index':
+            case 'dashboard.news.edit':
             case 'dashboard.news.create':
                 $menu = 'news';
                 break;

@@ -23,7 +23,7 @@ class OrderController extends Controller
 
     public function list()
     {
-        $result = $this->ordersRepository->list(8);
+        $result = $this->ordersRepository->paginate();
 
         return $this->returnResponse([
             'success' => true,

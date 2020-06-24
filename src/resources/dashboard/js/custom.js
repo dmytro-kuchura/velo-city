@@ -19,9 +19,11 @@ import paginate from "vuejs-paginate";
 import CKEditor from '@ckeditor/ckeditor5-vue';
 
 Vue.component('paginate', paginate);
-Vue.component('orders-list', require('./vue-components/OrdersListComponent.vue').default);
+Vue.component('orders-widget-list', require('./vue-components/OrdersListComponent.vue').default);
 Vue.component('activity-log', require('./vue-components/ActivityLogComponent.vue').default);
 Vue.component('reviews', require('./vue-components/ReviewsComponent.vue').default);
+
+Vue.component('orders-list', require('./vue-components/orders/OrdersListComponent.vue').default);
 
 Vue.component('banner-list', require('./vue-components/banners/BannersListComponent').default);
 Vue.component('banner-edit', require('./vue-components/banners/BannersEditComponent').default);
