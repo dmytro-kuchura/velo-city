@@ -4,73 +4,75 @@
 
 ---
 
-This is an example of dockerized Laravel application, integrated with GitLab CI _(sources testing and images building)_.
-
 ## System requirements
 
 For local application starting (for development) make sure that you have locally installed next applications:
 
 - `docker >= 18.0` _(install: `curl -fsSL get.docker.com | sudo sh`)_
 - `docker-compose >= 1.22` _([installing manual][install_compose])_
-- `make >= 4.1` _(install: `apt-get install make`)_
 
 ## Used services
 
 This application uses next services:
 
-- Redis (cache, internal queue)
-- PostgreSQL (data storage)
-- PHP FPM
+- PostgreSQL
+- PHP 7.4
 - nginx
 
 Declaration of all services can be found into `./docker-compose.yml` file.
 
 ## Work with application
 
-Most used commands declared in `./Makefile` file. For more information execute in your terminal `make help`.
+Checkout the repository or download the sources.
 
-Here are just a few of them:
+Simply run `docker-compose up -d` and you are done.
 
-Command signature | Description
------------------ | -----------
-`make login` | Make login into remote Docker registry <sup>1</sup>
-`make pull`  | Download all application Docker images from remote registry
-`make build` | Build all Docker images from using own Docker files
-`make clean` | Remove all application docker images from **local** Docker registry
-`make up`    | Run all application containers into background mode
-`make down`  | Stop all started application containers
-`make restart` | Restart all application containers
-`make shell` | Start shell into application container
-`make install` | Make install all `composer` and `node` dependencies, make database migration and seeding
-`make watch` | Run `npm watch` _(for frontend-development)_
-`make init` | Make **full** application initialization _(install all dependencies, migrate database, seeding, compile assets)_
-`make test` | Run unit-tests
-`docker-compose down -v` | Stop all application containers and **remove all application data** (database, etc)
+Nginx will be available on `localhost:80` and PostgreSQL on `localhost:5432`.
 
-> **<sup>1</sup>** required for Docker images pulling/pushing. If you use Two-Factor Authentication (2FA) you should use auth token instead your password. Generate your token [here][personal_access_tokens].
+### Using Composer
 
-After application starting you can open [127.0.0.1:9999](http://127.0.0.1:9999/) in your browser.
+`docker-compose run composer <cmd>`
 
-### Fast application starting
+Where `cmd` is any of the available composer command.
 
-Just execute into your terminal next commands:
+### Using PostgreSQL
 
-```bash
-$ git clone https://gitlab.com/tarampampam/laravel-in-docker.git ./laravel-in-docker && cd $_
-$ make init
+Default connection:
+
+`docker-compose exec db psql -U postgres`
+
+Using .env file default parameters:
+
+`docker-compose exec db psql -U dbuser dbname`
+
+If you want to connect to the DB from another container (from the `php` one for instance), the host will be the service name: `db`.
+
+### Using PHP
+
+You can execute any command on the `php` container as you would do on any docker-compose container:
+
+`docker-compose exec php php -v`
+
+## Change configuration
+
+### Configuring PHP
+
+To change PHP's configuration edit `.docker/conf/php/php.ini`.
+Same goes for `.docker/conf/php/xdebug.ini`.
+
+You can add any .ini file in this directory, don't forget to map them by adding a new line in the php's `volume` section of the `docker-compose.yml` file.
+
+### Configuring PostgreSQL
+
+If you want to change the db name, db user and db password simply edit the `.env` file at the project's root.
+
+If you connect to PostgreSQL from localhost a password is not required however from another container you will have to supply it.
+
+## Clear cache
+
 ```
-
-## CI & CD
-
-When you make `git push`, it:
-
-- Build application Docker images and `push` it into Docker registry with tag, which equals branch name;
-- Run unit-tests;
-- Test assets building.
-
-When you make `git push` into branch named `master`, CI uses `latest` and `master` images tags into Docker registry.
-
-When you make `git push` **tag** like `vX.X.X` (where `X` - is numeric value), CI uses tags `vX.X.X` and `stable` into Docker registry.
-
-[install_compose]:https://docs.docker.com/compose/install/#install-compose
-[personal_access_tokens]:https://gitlab.com/profile/personal_access_tokens
+docker-compose rm --all
+docker-compose pull
+docker-compose build --no-cache
+docker-compose up -d --force-recreate
+ ```
