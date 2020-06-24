@@ -1,6 +1,7 @@
 <template>
     <div class="newsletter-inner center-sm">
-        <div class="">
+        <loader v-if="isLoading"></loader>
+        <div v-if="!isLoading">
             <div class="">
                 <div class="newsletter-title">
                     <h2 class="main_title">Подпишитесь</h2>
@@ -24,6 +25,7 @@
     export default {
         data() {
             return {
+                isLoading: false,
                 form: {
                     email: null,
                 },
@@ -39,10 +41,9 @@
             },
             setSuccessResponse() {
                 this.isLoading = false;
-                this.form.name = null;
                 this.form.email = null;
-                this.form.description = null;
                 this.errors = [];
+
                 swal({
                     title: 'Отлично!',
                     text: 'Подписка формлена! :)',
@@ -51,7 +52,9 @@
             },
             setErrorResponse(response) {
                 this.isLoading = false;
+
                 this.errors = response.data.errors;
+
                 swal({
                     title: 'Ошибка!',
                     text: 'Указан не верный email или что то пошло не так! :(',

@@ -21,7 +21,7 @@ class SubscribeController extends Controller
     {
         $check = $this->repository->find($request->get('email'));
 
-        if (($check->ip === '192.168.1.1' && Carbon::now()->diffInMinutes($check->created_at) < 5)) {
+        if ($check && $check->ip === '192.168.1.1' && Carbon::now()->diffInMinutes($check->created_at) < 5) {
             return $this->returnResponse([
                 'success' => false,
             ], 400);
