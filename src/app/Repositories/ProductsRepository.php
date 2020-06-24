@@ -99,6 +99,8 @@ class ProductsRepository
     public function getFeatured(int $limit)
     {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
+            ->whereNotNull('image')
+            ->whereIn('category_id', ProductConstants::CYCLING_CATEGORIES)
             ->limit($limit)
             ->inRandomOrder()
             ->get();
@@ -111,6 +113,8 @@ class ProductsRepository
                 $query->where('sale', ProductConstants::IS_SALE)
                     ->orWhere('top', ProductConstants::IS_TOP);
             })
+            ->whereNotNull('image')
+            ->whereIn('category_id', ProductConstants::EQUIPMENT_CATEGORIES)
             ->limit($limit)
             ->inRandomOrder()
             ->get();
@@ -119,6 +123,8 @@ class ProductsRepository
     public function getMostViewed(int $limit)
     {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
+            ->whereNotNull('image')
+            ->whereIn('category_id', ProductConstants::CYCLING_CATEGORIES)
             ->limit($limit)
             ->inRandomOrder()
             ->get();
@@ -128,6 +134,8 @@ class ProductsRepository
     {
         return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
             ->where('new', ProductConstants::IS_NEW)
+            ->whereIn('category_id', ProductConstants::COMPONENTS_CATEGORIES)
+            ->whereNotNull('image')
             ->limit($limit)
             ->inRandomOrder()
             ->get();
