@@ -78,5 +78,8 @@ Route::middleware('authentication')->group(function () {
         Route::prefix('subscribe')->group(function () {
             Route::post('/', 'Api\SubscribeController@subscribe')->name('api.subscribe');
         });
+        Route::prefix('contacts')->group(function () {
+            Route::post('/', 'Api\ContactsController@contacts')->name('api.contacts');
+        });
     });
 });

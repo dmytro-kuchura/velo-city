@@ -1,6 +1,7 @@
 <template>
     <div class="footer-block-contant">
-        <form name="contactform" @submit.prevent="onSubmit">
+        <loader v-if="isLoading"></loader>
+        <form name="contactform" @submit.prevent="onSubmit" v-if="!isLoading">
             <div class="field">
                 <input type="text" v-model="form.name" :class="{'has-error': errors.name}"
                        placeholder="Введите Ваше имя" required>
@@ -24,6 +25,7 @@
     export default {
         data() {
             return {
+                isLoading: false,
                 form: {
                     name: null,
                     email: null,
@@ -35,7 +37,7 @@
         methods: {
             onSubmit() {
                 this.isLoading = true;
-                axios.post("/api/v1/contacts", this.form)
+                axios.post('/api/v1/contacts', this.form)
                     .then(() => this.setSuccessResponse())
                     .catch(({response}) => this.setErrorResponse(response));
             },
@@ -43,21 +45,25 @@
                 this.isLoading = false;
                 this.form.name = null;
                 this.form.email = null;
-                this.form.description = null;
+                this.form.message = null;
                 this.errors = [];
                 swal({
-                    title: "Отлично!",
-                    text: "Запрос отправлен!",
-                    icon: "success",
+                    title: 'Отлично!',
+                    text: 'Запрос отправлен!',
+                    icon: 'success',
                 });
             },
             setErrorResponse(response) {
                 this.isLoading = false;
-                this.errors = response.data.errors;
+
+                if (response.data.errors) {
+                    this.errors = response.data.errors;
+                }
+
                 swal({
-                    title: "Ошибка!",
-                    text: "Указан не верный email или слишком частый выполняется отправка!",
-                    icon: "error",
+                    title: 'Ошибка!',
+                    text: 'Указан не верный email или слишком частый выполняется отправка!',
+                    icon: 'error',
                 });
             },
         }
