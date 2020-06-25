@@ -43,23 +43,23 @@
 
                 <div class="widget-footer d-flex align-items-center">
                     <div class="mr-auto p-2">
-                        <span class="display-items">Показано 1-30 / 150 Всего</span>
+                        <span class="display-items">Показано {{ showingFrom }}-{{ showingTo }} / {{ total }} Записей</span>
                     </div>
                     <div class="p-2">
                         <nav aria-label="...">
-                            <ul class="pagination justify-content-end">
-                                <li class="page-item disabled">
-                                    <span class="page-link"><i class="ion-chevron-left"></i></span>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active">
-                                    <span class="page-link">2<span class="sr-only">(current)</span></span>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="ion-chevron-right"></i></a>
-                                </li>
-                            </ul>
+                            <paginate
+                                :page-count="pageCount"
+                                :page-range="3"
+                                :margin-pages="2"
+                                :click-handler="fetch"
+                                :prev-text="'<'"
+                                :next-text="'>'"
+                                :container-class="'pagination justify-content-end'"
+                                :page-link-class="'page-link'"
+                                :prev-link-class="'page-link'"
+                                :next-link-class="'page-link'"
+                                :page-class="'page-item'">
+                            </paginate>
                         </nav>
                     </div>
                 </div>
@@ -77,18 +77,22 @@
             };
         },
         mounted() {
-            axios.get("/api/v1/orders/list")
-                .then(({data}) => this.getOrderListSuccessResponse(data.result))
-                .catch((response) => this.getOrderListErrorResponse(response));
+            axios.get('/api/v1/orders/list')
+                .then(({data}) => this.getOrdersListSuccessResponse(data))
+                .catch((response) => this.getOrdersListErrorResponse(response));
         },
         methods: {
             moment: function () {
                 return moment();
             },
-            getOrderListSuccessResponse(result) {
-                this.list = result;
+            getOrdersListSuccessResponse(data) {
+                this.list = data.result.data;
+                this.total = data.result.total;
+                this.showingFrom = data.result.from;
+                this.showingTo = data.result.to;
+                this.pageCount = data.result.last_page;
             },
-            getOrderListErrorResponse(response) {
+            getOrdersListErrorResponse(response) {
                 console.log(response);
             },
             getClass(status) {

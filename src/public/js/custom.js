@@ -2230,11 +2230,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/api/v1/orders/list").then(function (_ref) {
+    axios.get('/api/v1/orders/list').then(function (_ref) {
       var data = _ref.data;
-      return _this.getOrderListSuccessResponse(data.result);
+      return _this.getOrdersListSuccessResponse(data);
     })["catch"](function (response) {
-      return _this.getOrderListErrorResponse(response);
+      return _this.getOrdersListErrorResponse(response);
     });
   },
   methods: {
@@ -2251,10 +2251,14 @@ __webpack_require__.r(__webpack_exports__);
     }(function () {
       return moment();
     }),
-    getOrderListSuccessResponse: function getOrderListSuccessResponse(result) {
-      this.list = result;
+    getOrdersListSuccessResponse: function getOrdersListSuccessResponse(data) {
+      this.list = data.result.data;
+      this.total = data.result.total;
+      this.showingFrom = data.result.from;
+      this.showingTo = data.result.to;
+      this.pageCount = data.result.last_page;
     },
-    getOrderListErrorResponse: function getOrderListErrorResponse(response) {
+    getOrdersListErrorResponse: function getOrdersListErrorResponse(response) {
       console.log(response);
     },
     getClass: function getClass(status) {
@@ -2307,159 +2311,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -28405,7 +28256,46 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _c("div", { staticClass: "widget-footer d-flex align-items-center" }, [
+          _c("div", { staticClass: "mr-auto p-2" }, [
+            _c("span", { staticClass: "display-items" }, [
+              _vm._v(
+                "Показано " +
+                  _vm._s(_vm.showingFrom) +
+                  "-" +
+                  _vm._s(_vm.showingTo) +
+                  " / " +
+                  _vm._s(_vm.total) +
+                  " Записей"
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "p-2" }, [
+            _c(
+              "nav",
+              { attrs: { "aria-label": "..." } },
+              [
+                _c("paginate", {
+                  attrs: {
+                    "page-count": _vm.pageCount,
+                    "page-range": 3,
+                    "margin-pages": 2,
+                    "click-handler": _vm.fetch,
+                    "prev-text": "<",
+                    "next-text": ">",
+                    "container-class": "pagination justify-content-end",
+                    "page-link-class": "page-link",
+                    "prev-link-class": "page-link",
+                    "next-link-class": "page-link",
+                    "page-class": "page-item"
+                  }
+                })
+              ],
+              1
+            )
+          ])
+        ])
       ])
     ])
   ])
@@ -28442,59 +28332,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Действия")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "widget-footer d-flex align-items-center" },
-      [
-        _c("div", { staticClass: "mr-auto p-2" }, [
-          _c("span", { staticClass: "display-items" }, [
-            _vm._v("Показано 1-30 / 150 Всего")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-2" }, [
-          _c("nav", { attrs: { "aria-label": "..." } }, [
-            _c("ul", { staticClass: "pagination justify-content-end" }, [
-              _c("li", { staticClass: "page-item disabled" }, [
-                _c("span", { staticClass: "page-link" }, [
-                  _c("i", { staticClass: "ion-chevron-left" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item" }, [
-                _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-                  _vm._v("1")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item active" }, [
-                _c("span", { staticClass: "page-link" }, [
-                  _vm._v("2"),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item" }, [
-                _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-                  _vm._v("3")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "page-item" }, [
-                _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "ion-chevron-right" })
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -28649,278 +28486,6 @@ var staticRenderFns = [
                             _c("i", { staticClass: "ion-heart" }),
                             _vm._v(" "),
                             _c("span", [_vm._v("12")])
-                          ])
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _c("div", { staticClass: "media" }, [
-                      _c(
-                        "div",
-                        { staticClass: "media-left align-self-start" },
-                        [
-                          _c("img", {
-                            staticClass: "user-img rounded-circle",
-                            attrs: {
-                              src: "assets/img/avatar/avatar-05.jpg",
-                              alt: "..."
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "media-body align-self-center" },
-                        [
-                          _c("div", { staticClass: "username" }, [
-                            _c("h4", [_vm._v("Megan Duncan")])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "msg" }, [
-                            _c("div", { staticClass: "stars" }, [
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" })
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "\n                                            Very nice! Keep up the beautiful work.\n                                        "
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "meta" }, [
-                            _c("span", { staticClass: "mr-3" }, [
-                              _vm._v("2 hours ago")
-                            ]),
-                            _vm._v(" "),
-                            _c("a", { attrs: { href: "#" } }, [_vm._v("Reply")])
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "media-right pr-3 align-self-center" },
-                        [
-                          _c("div", { staticClass: "like text-center" }, [
-                            _c("i", { staticClass: "ion-heart" }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v("4")])
-                          ])
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _c("div", { staticClass: "media" }, [
-                      _c(
-                        "div",
-                        { staticClass: "media-left align-self-start" },
-                        [
-                          _c("img", {
-                            staticClass: "user-img rounded-circle",
-                            attrs: {
-                              src: "assets/img/avatar/avatar-04.jpg",
-                              alt: "..."
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "media-body align-self-center" },
-                        [
-                          _c("div", { staticClass: "username" }, [
-                            _c("h4", [_vm._v("Nathan Hunter")])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "msg" }, [
-                            _c("div", { staticClass: "stars" }, [
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" })
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "\n                                            Nice work, good design!\n                                        "
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "meta" }, [
-                            _c("span", { staticClass: "mr-3" }, [
-                              _vm._v("4 hours ago")
-                            ]),
-                            _vm._v(" "),
-                            _c("a", { attrs: { href: "#" } }, [_vm._v("Reply")])
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "media-right pr-3 align-self-center" },
-                        [
-                          _c("div", { staticClass: "like text-center" }, [
-                            _c("i", { staticClass: "ion-heart" }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v("32")])
-                          ])
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _c("div", { staticClass: "media" }, [
-                      _c(
-                        "div",
-                        { staticClass: "media-left align-self-start" },
-                        [
-                          _c("img", {
-                            staticClass: "user-img rounded-circle",
-                            attrs: {
-                              src: "assets/img/avatar/avatar-09.jpg",
-                              alt: "..."
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "media-body align-self-center" },
-                        [
-                          _c("div", { staticClass: "username" }, [
-                            _c("h4", [_vm._v("Michael Bradley")])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "msg" }, [
-                            _c("div", { staticClass: "stars" }, [
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star-half-empty" })
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "\n                                            Very nice! Keep up the beautiful work.\n                                        "
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "meta" }, [
-                            _c("span", { staticClass: "mr-3" }, [
-                              _vm._v("5 hours ago - 2 Reply")
-                            ]),
-                            _vm._v(" "),
-                            _c("a", { attrs: { href: "#" } }, [_vm._v("Reply")])
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "media-right pr-3 align-self-center" },
-                        [
-                          _c("div", { staticClass: "like text-center" }, [
-                            _c("i", { staticClass: "ion-heart" }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v("2")])
-                          ])
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _c("div", { staticClass: "media" }, [
-                      _c(
-                        "div",
-                        { staticClass: "media-left align-self-start" },
-                        [
-                          _c("img", {
-                            staticClass: "user-img rounded-circle",
-                            attrs: {
-                              src: "assets/img/avatar/avatar-03.jpg",
-                              alt: "..."
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "media-body align-self-center" },
-                        [
-                          _c("div", { staticClass: "username" }, [
-                            _c("h4", [_vm._v("Louis Henry")])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "msg" }, [
-                            _c("div", { staticClass: "stars" }, [
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star" }),
-                              _vm._v(" "),
-                              _c("i", { staticClass: "la la-star-half-empty" })
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "\n                                            I like the color combination!\n                                        "
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "meta" }, [
-                            _c("span", { staticClass: "mr-3" }, [
-                              _vm._v("1 day ago")
-                            ]),
-                            _vm._v(" "),
-                            _c("a", { attrs: { href: "#" } }, [_vm._v("Reply")])
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "media-right pr-3 align-self-center" },
-                        [
-                          _c("div", { staticClass: "like text-center" }, [
-                            _c("i", { staticClass: "ion-heart" }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v("9")])
                           ])
                         ]
                       )
