@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Models\Enum\UserConstants;
 use Illuminate\Foundation\Auth\User as Authenticatable;
