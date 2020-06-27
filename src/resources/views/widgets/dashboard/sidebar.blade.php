@@ -10,10 +10,21 @@
                 <ul id="dropdown-products" class="collapse list-unstyled {{ $menu === 'products' ? 'show' : '' }} pt-0">
                     <li><a href="{{ route('dashboard.products.index') }}">Товары</a></li>
                     <li><a href="{{ route('dashboard.products.create') }}">Добавить товар</a></li>
-                    <li><a href="{{ route('dashboard.categories.index') }}">Категории</a></li>
-                    <li><a href="{{ route('dashboard.categories.create') }}">Добавить категорию</a></li>
                     <li><a href="{{ route('dashboard.brands.index') }}">Бренды</a></li>
                     <li><a href="{{ route('dashboard.brands.create') }}">Добавить бренд</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#dropdown-catalog" aria-expanded="{{ $menu === 'categories' ? 'true' : 'false' }}"
+                   data-toggle="collapse">
+                    <i class="la la-info"></i>
+                    <span>Каталог</span>
+                </a>
+                <ul id="dropdown-catalog" class="collapse list-unstyled {{ $menu === 'categories' ? 'show' : '' }} pt-0">
+                    <li><a href="{{ route('dashboard.categories.index') }}">Категории</a></li>
+                    <li><a href="{{ route('dashboard.categories.create') }}">Добавить категорию</a></li>
+                    <li><a href="{{ route('dashboard.specifications.index') }}">Спецификации</a></li>
+                    <li><a href="{{ route('dashboard.specifications.create') }}">Добавить спецификацию</a></li>
                 </ul>
             </li>
             <li>

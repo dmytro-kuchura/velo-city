@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Http\Resources\BannerResource;
 use App\Models\Banners;
-use App\Models\Enum\BannerStatus;
+use App\Models\Enum\Common;
 
 class BannersRepository
 {
@@ -22,7 +22,7 @@ class BannersRepository
 
     public function list()
     {
-        return $this->model::where('status', BannerStatus::STATUS_ACTIVE)->get();
+        return $this->model::where('status', Common::STATUS_ACTIVE)->get();
     }
 
     public function find($id)

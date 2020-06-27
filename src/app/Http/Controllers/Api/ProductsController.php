@@ -19,7 +19,7 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $result = $this->repository->all();
+        $result = $this->repository->paginate();
 
         return $this->returnResponse([
             'success' => true,

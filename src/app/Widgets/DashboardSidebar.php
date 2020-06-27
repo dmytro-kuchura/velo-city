@@ -30,9 +30,13 @@ class DashboardSidebar extends AbstractWidget
             case 'dashboard.products.create':
             case 'dashboard.brands.index':
             case 'dashboard.brands.create':
+                $menu = 'products';
+                break;
             case 'dashboard.categories.index':
             case 'dashboard.categories.create':
-                $menu = 'products';
+            case 'dashboard.specifications.index':
+            case 'dashboard.specifications.create':
+                $menu = 'categories';
                 break;
             case 'dashboard.orders.index':
             case 'dashboard.orders.edit':

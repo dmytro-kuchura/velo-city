@@ -46,6 +46,17 @@ Route::middleware('authentication')->group(function () {
             Route::get('list', 'Api\OrderController@list')->name('api.order.list');
             Route::get('chart', 'Api\OrderController@chart')->name('api.order.chart');
         });
+        Route::prefix('specifications')->group(function () {
+            Route::get('list', 'Api\SpecificationsController@list')->name('api.specifications.list');
+            Route::post('create', 'Api\SpecificationsController@create')->name('api.specifications.create');
+            Route::get('/{id}', 'Api\SpecificationsController@show')->name('api.specifications.show');
+            Route::put('/{id}', 'Api\SpecificationsController@update')->name('api.specifications.update');
+            Route::delete('/{id}', 'Api\SpecificationsController@delete')->name('api.specifications.delete');
+        });
+        Route::prefix('specifications-values')->group(function () {
+            Route::post('create', 'Api\SpecificationsValuesController@create')->name('api.specifications-values.create');
+            Route::delete('/{id}', 'Api\SpecificationsValuesController@delete')->name('api.specifications-values.delete');
+        });
         Route::prefix('banners')->group(function () {
             Route::get('/', 'Api\BannersController@index')->name('api.banners.index');
             Route::post('/', 'Api\BannersController@create')->name('api.banners.create');

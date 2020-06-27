@@ -3,28 +3,17 @@
 namespace App\Repositories;
 
 use App\Http\Resources\ProductResource;
-use App\Models\Product;
+use App\Models\Enum\Common;
 use App\Models\Enum\ProductConstants;
+use App\Models\Product;
 
-class ProductsRepository
+class ProductsRepository implements Repository
 {
     protected $model = Product::class;
 
-    public function all()
+    public function paginate()
     {
-        return $this->model::paginate(ProductConstants::PAGINATE_LIMIT);
-    }
-
-    public function list()
-    {
-
-    }
-
-    public function search(string $query)
-    {
-        return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
-            ->where('name', 'like', '%' . $query . '%')
-            ->paginate(ProductConstants::PAGINATE_LIMIT);
+        return $this->model::orderBy('id', 'desc')->paginate(Common::PAGINATE_LIMIT);
     }
 
     public function find($id)
@@ -32,15 +21,6 @@ class ProductsRepository
         $product = $this->model::where('id', $id)->first();
 
         return new ProductResource($product);
-    }
-
-    public function category($alias)
-    {
-        return $this->model::
-        join('catalog', 'catalog.id', '=', 'products.category_id')
-            ->select('products.*')
-            ->where('catalog.alias', $alias)
-            ->paginate(12);
     }
 
     public function store($id, $data)
@@ -93,9 +73,25 @@ class ProductsRepository
         return $model->save();
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         return $this->model::where('id', $id)->delete();
+    }
+
+    public function category($alias)
+    {
+        return $this->model::
+        join('catalog', 'catalog.id', '=', 'products.category_id')
+            ->select('products.*')
+            ->where('catalog.alias', $alias)
+            ->paginate(12);
+    }
+
+    public function search(string $query)
+    {
+        return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
+            ->where('name', 'like', '%' . $query . '%')
+            ->paginate(ProductConstants::PAGINATE_LIMIT);
     }
 
     public function updateImage($data)

@@ -17,11 +17,11 @@ class CreateSpecificationsValuesTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('alias')->unique();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->integer('sort')->default(1);
             $table->integer('specification_id');
-            $table->string('color');
+            $table->string('color')->nullable();
 
             $table->timestamps();
         });

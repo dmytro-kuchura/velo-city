@@ -2,7 +2,7 @@
 
 namespace App\Models\Enum;
 
-class UserConstants
+class UserConstants extends Common
 {
     const IS_ACTIVE = 1;
     const IS_NOT_ACTIVE = 0;

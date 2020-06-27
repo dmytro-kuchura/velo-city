@@ -2,7 +2,7 @@
 
 namespace App\Models\Enum;
 
-class ProductConstants
+class ProductConstants extends Common
 {
     const STATUS_ACTIVE = 1;
     const STATUS_DISABLE = 0;
@@ -27,6 +27,4 @@ class ProductConstants
         1264, 1265, 1266, 1267, 1268, 1269, 1281, 1255, 1256, 1257,
         1258, 1259, 1260, 1261, 1262,
     ];
-
-    const PAGINATE_LIMIT = 12;
 }

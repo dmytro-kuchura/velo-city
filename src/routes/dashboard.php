@@ -41,6 +41,12 @@ Route::prefix('products')->group(function () {
     Route::get('/{id}', 'Dashboard\ProductsController@edit')->name('dashboard.products.edit');
 });
 
+Route::prefix('specifications')->group(function () {
+    Route::get('/', 'Dashboard\SpecificationsController@index')->name('dashboard.specifications.index');
+    Route::get('/create', 'Dashboard\SpecificationsController@create')->name('dashboard.specifications.create');
+    Route::get('/{id}', 'Dashboard\SpecificationsController@edit')->name('dashboard.specifications.edit');
+});
+
 Route::prefix('news')->group(function () {
     Route::get('/', 'Dashboard\NewsController@index')->name('dashboard.news.index');
     Route::get('/create', 'Dashboard\NewsController@create')->name('dashboard.news.create');
