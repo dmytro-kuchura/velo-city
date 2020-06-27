@@ -88,7 +88,7 @@
             getOrdersListSuccessResponse(data) {
                 this.list = data.result.data;
                 this.total = data.result.total;
-                this.showingFrom = data.result.from;
+                this.showingFrom = data.result.from ? data.result.from : 1;
                 this.showingTo = data.result.to;
                 this.pageCount = data.result.last_page;
             },

@@ -17,11 +17,12 @@ import Vue from "vue";
 import Vuex from 'vuex';
 import paginate from "vuejs-paginate";
 import CKEditor from '@ckeditor/ckeditor5-vue';
-
 Vue.component('paginate', paginate);
+Vue.component('loader', require('./vue-components/LoaderComponent.vue').default);
 Vue.component('orders-widget-list', require('./vue-components/OrdersListComponent.vue').default);
 Vue.component('activity-log', require('./vue-components/ActivityLogComponent.vue').default);
 Vue.component('reviews', require('./vue-components/ReviewsComponent.vue').default);
+Vue.component('orders-chart', require('./vue-components/OrdersChartsComponent.vue').default);
 
 Vue.component('orders-list', require('./vue-components/orders/OrdersListComponent.vue').default);
 

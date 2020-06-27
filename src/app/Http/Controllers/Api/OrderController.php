@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\Months;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderCreateRequest;
-use App\Repositories\OrdersRepository;use App\Services\OrderCheckout;
+use App\Repositories\OrdersRepository;
+use App\Services\OrderCheckout;
 
 class OrderController extends Controller
 {
@@ -37,6 +39,20 @@ class OrderController extends Controller
 
         return $this->returnResponse([
             'success' => true
+        ]);
+    }
+
+    public function chart()
+    {
+        $result = $this->ordersRepository->chart();
+
+        $allOrders = Months::prepareArrayOfMonthOrders($result);
+
+        dd($allOrders);
+
+        return $this->returnResponse([
+            'success' => true,
+            'result' => $result
         ]);
     }
 }

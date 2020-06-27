@@ -35,6 +35,6 @@ class OrderItems extends Model
 
     public function product()
     {
-        return $this->hasOne('App\Models\Product', 'id');
+        return $this->hasOne('App\Models\Product', 'id', 'product_id');
     }
 }

@@ -44,6 +44,7 @@ Route::middleware('authentication')->group(function () {
         Route::prefix('orders')->group(function () {
             Route::post('create', 'Api\OrderController@create')->name('api.order.create');
             Route::get('list', 'Api\OrderController@list')->name('api.order.list');
+            Route::get('chart', 'Api\OrderController@chart')->name('api.order.chart');
         });
         Route::prefix('banners')->group(function () {
             Route::get('/', 'Api\BannersController@index')->name('api.banners.index');

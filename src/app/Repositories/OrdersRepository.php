@@ -11,9 +11,9 @@ class OrdersRepository
 {
     private $model = Orders::class;
 
-    public function list(int $limit) {
-        return $this->model::
-            select(DB::raw('SUM(order_items.count * order_items.cost) as total'), 'orders.*')
+    public function list(int $limit)
+    {
+        return $this->model::select(DB::raw('SUM(order_items.count * order_items.cost) as total'), 'orders.*')
             ->leftJoin('order_items', 'orders.id', '=', 'order_items.order_id')
             ->orderBy('orders.id', 'desc')
             ->groupBy('orders.id')
@@ -21,16 +21,27 @@ class OrdersRepository
             ->get();
     }
 
-    public function paginate() {
-        return $this->model::
-            select(DB::raw('SUM(order_items.count * order_items.cost) as total'), 'orders.*')
+    public function chart()
+    {
+        return $this->model::select(
+            DB::raw('to_char(created_at, \'Mon\') as month'),
+            DB::raw('COUNT(id) as total')
+        )
+            ->groupBy(DB::raw('to_char(created_at, \'Mon\')'))
+            ->get();
+    }
+
+    public function paginate()
+    {
+        return $this->model::select(DB::raw('SUM(order_items.count * order_items.cost) as total'), 'orders.*')
             ->leftJoin('order_items', 'orders.id', '=', 'order_items.order_id')
             ->orderBy('orders.id', 'desc')
             ->groupBy('orders.id')
             ->paginate(12);
     }
 
-    public function getOrdersByUser(int $userId) {
+    public function getOrdersByUser(int $userId)
+    {
         return $this->model::select(DB::raw('SUM(order_items.count * order_items.cost) as total'), 'orders.*')
             ->leftJoin('order_items', 'orders.id', '=', 'order_items.order_id')
             ->where('orders.user_id', $userId)
