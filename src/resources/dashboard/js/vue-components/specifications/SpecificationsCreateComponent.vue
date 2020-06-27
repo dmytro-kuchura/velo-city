@@ -33,7 +33,6 @@
                             <div class="col-lg-8">
                                 <select class="form-control" v-model="specification.type">
                                     <option>Выберите тип</option>
-                                    <option value="1">Цвет</option>
                                     <option value="2">Обычный</option>
                                     <option value="3">Мультивыбор</option>
                                 </select>

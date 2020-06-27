@@ -3556,38 +3556,28 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      data: new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"]([{
-        name: 'Node 1',
-        id: 1,
-        addTreeNodeDisabled: true,
-        addLeafNodeDisabled: true,
-        editNodeDisabled: true,
-        children: [{
-          name: 'Node 1-2',
-          id: 2,
-          addTreeNodeDisabled: true,
-          addLeafNodeDisabled: true,
-          editNodeDisabled: true
-        }]
-      }, {
-        name: 'Node 2',
-        id: 3,
-        addTreeNodeDisabled: true,
-        addLeafNodeDisabled: true,
-        editNodeDisabled: true
-      }, {
-        name: 'Node 3',
-        id: 4,
-        addTreeNodeDisabled: true,
-        addLeafNodeDisabled: true,
-        editNodeDisabled: true
-      }])
+      data: null
     };
   },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/v1/categories/all').then(function (_ref) {
+      var data = _ref.data;
+      return _this.getCategoriesListSuccessResponse(data);
+    })["catch"](function (response) {
+      return _this.getCategoriesListErrorResponse(response);
+    });
+  },
   methods: {
+    getCategoriesListSuccessResponse: function getCategoriesListSuccessResponse(data) {
+      this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](data.result);
+    },
+    getCategoriesListErrorResponse: function getCategoriesListErrorResponse(response) {
+      console.log(response);
+    },
     onDel: function onDel(node) {
-      console.log(node);
-      node.remove();
+      console.log(node); // node.remove()
     },
     onClick: function onClick(params) {
       console.log(params);
@@ -5352,7 +5342,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -68963,20 +68952,20 @@ var render = function() {
                   "span",
                   {
                     staticClass: "icon",
-                    attrs: { slot: "delNodeIcon" },
-                    slot: "delNodeIcon"
+                    attrs: { slot: "editNodeIcon" },
+                    slot: "editNodeIcon"
                   },
-                  [_vm._v("🗑️")]
+                  [_vm._v("📃")]
                 ),
                 _vm._v(" "),
                 _c(
                   "span",
                   {
                     staticClass: "icon",
-                    attrs: { slot: "treeNodeIcon" },
-                    slot: "treeNodeIcon"
+                    attrs: { slot: "delNodeIcon" },
+                    slot: "delNodeIcon"
                   },
-                  [_vm._v("🚲")]
+                  [_vm._v("🗑️")]
                 )
               ]
             )
@@ -73880,10 +73869,6 @@ var render = function() {
                       },
                       [
                         _c("option", [_vm._v("Выберите тип")]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("Цвет")
-                        ]),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "2" } }, [
                           _vm._v("Обычный")

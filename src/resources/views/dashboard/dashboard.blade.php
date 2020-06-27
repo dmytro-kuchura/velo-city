@@ -9,16 +9,24 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="widget widget-09 has-shadow">
-                    <div class="widget-header d-flex align-items-center">
-                        <h2>Заказы</h2>
+        <div class="row flex-row">
+            <div class="col-xl-6">
+                <div class="widget has-shadow">
+                    <div class="widget-header bordered no-actions d-flex align-items-center">
+                        <h4>Заказы</h4>
                     </div>
-                    <div class="widget-body" style="max-height: 400px;">
-                        <div class="row" style="max-height: 400px;">
-                            <orders-chart></orders-chart>
-                        </div>
+                    <div class="widget-body">
+                        <orders-chart></orders-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="widget has-shadow">
+                    <div class="widget-header bordered no-actions d-flex align-items-center">
+                        <h4>Просмотры и посещения</h4>
+                    </div>
+                    <div class="widget-body">
+                        <orders-chart></orders-chart>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,6 @@ class CategoriesRepository
 
     public function all()
     {
-        return $this->model::orderBy('id', 'asc')->get();
+        return $this->model::with('children')->orderBy('id', 'asc')->get();
     }
 }

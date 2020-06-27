@@ -7,12 +7,12 @@
                     <button class="btn btn-gradient-01" type="submit">Создать</button>
 
                     <vue-tree-list
-                            @click="onClick"
-                            @delete-node="onDel"
-                            :model="data"
-                            v-bind:default-expanded="true">
+                        @click="onClick"
+                        @delete-node="onDel"
+                        :model="data"
+                        v-bind:default-expanded="true">
+                        <span class="icon" slot="editNodeIcon">📃</span>
                         <span class="icon" slot="delNodeIcon">🗑️</span>
-                        <span class="icon" slot="treeNodeIcon">🚲</span>
                     </vue-tree-list>
 
                 </div>
@@ -32,44 +32,24 @@
         },
         data() {
             return {
-                data: new Tree([
-                    {
-                        name: 'Node 1',
-                        id: 1,
-                        addTreeNodeDisabled: true,
-                        addLeafNodeDisabled: true,
-                        editNodeDisabled: true,
-                        children: [
-                            {
-                                name: 'Node 1-2',
-                                id: 2,
-                                addTreeNodeDisabled: true,
-                                addLeafNodeDisabled: true,
-                                editNodeDisabled: true,
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Node 2',
-                        id: 3,
-                        addTreeNodeDisabled: true,
-                        addLeafNodeDisabled: true,
-                        editNodeDisabled: true,
-                    },
-                    {
-                        name: 'Node 3',
-                        id: 4,
-                        addTreeNodeDisabled: true,
-                        addLeafNodeDisabled: true,
-                        editNodeDisabled: true,
-                    }
-                ])
+                data: null
             }
         },
+        mounted() {
+            axios.get('/api/v1/categories/all')
+                .then(({data}) => this.getCategoriesListSuccessResponse(data))
+                .catch((response) => this.getCategoriesListErrorResponse(response));
+        },
         methods: {
+            getCategoriesListSuccessResponse(data) {
+                this.data = new Tree(data.result);
+            },
+            getCategoriesListErrorResponse(response) {
+                console.log(response);
+            },
             onDel(node) {
                 console.log(node);
-                node.remove()
+                // node.remove()
             },
             onClick(params) {
                 console.log(params)

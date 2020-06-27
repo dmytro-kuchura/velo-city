@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Catalog;
-use App\Models\Enum\CatalogConstants;
+use App\Models\Enum\Common;
 
 class CatalogRepository
 {
@@ -13,7 +13,7 @@ class CatalogRepository
     {
         $tree = [];
 
-        $result = $this->model::where('status', CatalogConstants::STATUS_ACTIVE)->get();
+        $result = $this->model::where('status', Common::STATUS_ACTIVE)->get();
 
         foreach ($result as $obj) {
             $tree[$obj->parent_id][] = $obj;
