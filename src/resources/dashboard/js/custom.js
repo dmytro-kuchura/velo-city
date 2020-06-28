@@ -17,6 +17,7 @@ import Vue from "vue";
 import Vuex from 'vuex';
 import paginate from "vuejs-paginate";
 import CKEditor from '@ckeditor/ckeditor5-vue';
+
 Vue.component('paginate', paginate);
 Vue.component('loader', require('./vue-components/LoaderComponent.vue').default);
 Vue.component('orders-widget-list', require('./vue-components/OrdersListComponent.vue').default);

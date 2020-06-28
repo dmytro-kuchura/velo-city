@@ -23,6 +23,7 @@ class Filter extends AbstractWidget
 
         return view('widgets.filter', [
             'config' => $this->config,
+            'filter' => $this->config['filter'],
         ]);
     }
 }

@@ -7,7 +7,7 @@
         <div class="container">
             @if(count($result) > 0)
             <div class="row">
-                @widget('filter')
+                @widget('filter', ['filter' => $filter])
                 <div class="col-xl-10 col-lg-9 col-xl-80per">
                     <sortable></sortable>
                     <div class="product-listing grid-type">

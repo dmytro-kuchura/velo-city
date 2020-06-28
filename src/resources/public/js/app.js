@@ -22,11 +22,14 @@ require('./vendor/custom');
 import Vue from "vue";
 import Vuex from 'vuex';
 import store from "./store";
+import slider from 'vue-slider-component'
 
 Vue.use(Vuex);
 
+Vue.component('vue-slider', slider);
 Vue.component('loader', require('./components/LoaderComponent.vue').default);
 Vue.component('sortable', require('./components/SortableComponent.vue').default);
+Vue.component('filter-component', require('./components/FilterComponent.vue').default);
 
 Vue.component('cart', require('./components/CartComponent.vue').default);
 Vue.component('cart-list', require('./components/CartTableComponent.vue').default);

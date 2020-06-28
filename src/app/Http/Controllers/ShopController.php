@@ -36,11 +36,14 @@ class ShopController extends Controller
     {
         $result = $this->productsRepository->byCategory($request->route('category'), $request->input());
 
+        $filter = $this->productsRepository->byFilter($request->route('category'), $request->input());
+
         $categories = $this->catalogRepository->getParents($request->route('category'));
 
         return view('shop.category', [
             'result' => $result,
             'categories' => $categories,
+            'filter' => $filter,
         ]);
     }
 

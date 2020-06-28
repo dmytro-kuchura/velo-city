@@ -6,6 +6,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Enum\Common;
 use App\Models\Enum\ProductConstants;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductsRepository implements Repository
 {
@@ -78,6 +79,21 @@ class ProductsRepository implements Repository
         return $this->model::where('id', $id)->delete();
     }
 
+    public function byFilter(string $alias, ?array $params)
+    {
+        $query = $this->model::join('catalog', 'catalog.id', '=', 'products.category_id')
+            ->select(
+                DB::raw('MAX(products.cost) as max'),
+                DB::raw('MIN(products.cost) as min')
+            )
+            ->where('catalog.alias', $alias)
+            ->where('products.status', Common::STATUS_ACTIVE);
+
+        $query = $this->sortable($query, $params);
+
+        return $query->get();
+    }
+
     public function byCategory(string $alias, ?array $params)
     {
         $query = $this->model::join('catalog', 'catalog.id', '=', 'products.category_id')
@@ -86,6 +102,8 @@ class ProductsRepository implements Repository
             ->where('products.status', Common::STATUS_ACTIVE);
 
         $query = $this->sortable($query, $params);
+
+        $query = $this->filter($query, $params);
 
         $limit = isset($params['limit']) ? $params['limit'] : Common::PAGINATE_LIMIT;
 
@@ -117,6 +135,22 @@ class ProductsRepository implements Repository
             default:
                 $query->orderBy('id', 'desc');
                 break;
+        }
+
+        return $query;
+    }
+
+    public function filter($query, ?array $array)
+    {
+        if (!isset($array['min-cost']) && !isset($array['max-cost'])) {
+            return $query;
+        }
+
+        if ($array['min-cost'] !== null) {
+            $query->where('cost', '>=', (int)$array['min-cost']);
+        }
+        if ($array['max-cost'] !== null) {
+            $query->where('cost', '<=', (int)$array['max-cost']);
         }
 
         return $query;

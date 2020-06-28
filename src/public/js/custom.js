@@ -65841,7 +65841,6 @@ var Scatter = generateChart('scatter-chart', 'scatter');
   Scatter: Scatter
 });
 
-
 /***/ }),
 
 /***/ "./node_modules/vue-chartjs/es/index.js":
