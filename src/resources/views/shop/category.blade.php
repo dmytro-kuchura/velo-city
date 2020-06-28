@@ -9,56 +9,7 @@
             <div class="row">
                 @widget('filter')
                 <div class="col-xl-10 col-lg-9 col-xl-80per">
-                    <div class="shorting mb-30">
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="view">
-                                    <div class="list-types grid active ">
-                                        <a>
-                                            <div class="grid-icon list-types-icon"></div>
-                                        </a>
-                                    </div>
-                                    <div class="list-types list">
-                                        <a>
-                                            <div class="list-icon list-types-icon"></div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="short-by float-right-sm"><span>Сортировка :</span>
-                                    <div class="select-item select-dropdown">
-                                        <fieldset>
-                                            <select name="speed" id="sort-price" class="option-drop">
-                                                <option value="" selected="selected">Название (от А до Я)</option>
-                                                <option value="">Название (от Я до А)</option>
-                                                <option value="">Цена (низкая &gt; высокая)</option>
-                                                <option value="">Цена (высокая &gt; низкая)</option>
-                                                <option value="">Рейтинг (высокий)</option>
-                                                <option value="">Рейтинг (низкий)</option>
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="show-item float-left-sm">
-                                    <span>Отображается :</span>
-                                    <div class="select-item select-dropdown">
-                                        <fieldset>
-                                            <select name="speed" id="show-item" class="option-drop">
-                                                <option value="" selected="selected">12</option>
-                                                <option value="">24</option>
-                                                <option value="">48</option>
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                    <span>на страницу</span>
-{{--                                    <div class="compare float-right-sm">--}}
-{{--                                        <a href="compare.html" class="btn btn-color">Сравнение (0)</a>--}}
-{{--                                    </div>--}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <sortable></sortable>
                     <div class="product-listing grid-type">
                         <div class="inner-listing">
                             <div class="row">
@@ -111,7 +62,7 @@
                                 @endforeach
                             </div>
 
-                            {!! $result->links('widgets.paginate') !!}
+                            {!! $result->appends(request()->query())->links('widgets.paginate') !!}
                         </div>
                     </div>
                 </div>

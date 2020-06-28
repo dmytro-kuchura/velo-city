@@ -27,7 +27,11 @@
                                     </li>
                                 @else
                                     <li>
-                                        <a href="{{str_replace('?page=1', '', $url)}}">{{ $page }}</a>
+                                        @if(app('request')->input('limit'))
+                                            <a href="{{str_replace('?page=1', '', $url . '&limit=') . app('request')->input('limit')}}">{{ $page }}</a>
+                                        @else
+                                            <a href="{{str_replace('?page=1', '', $url)}}">{{ $page }}</a>
+                                        @endif
                                     </li>
                                 @endif
                             @endforeach

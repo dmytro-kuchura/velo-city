@@ -34,7 +34,7 @@ class ShopController extends Controller
 
     public function category(Request $request)
     {
-        $result = $this->productsRepository->category($request->route('category'));
+        $result = $this->productsRepository->byCategory($request->route('category'), $request->input());
 
         $categories = $this->catalogRepository->getParents($request->route('category'));
 

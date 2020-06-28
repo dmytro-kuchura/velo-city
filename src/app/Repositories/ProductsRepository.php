@@ -16,14 +16,14 @@ class ProductsRepository implements Repository
         return $this->model::orderBy('id', 'desc')->paginate(Common::PAGINATE_LIMIT);
     }
 
-    public function find($id)
+    public function find(int $id)
     {
         $product = $this->model::where('id', $id)->first();
 
         return new ProductResource($product);
     }
 
-    public function store($id, $data)
+    public function store(int $id, array $data)
     {
         return $this->model::where('id', $id)->update([
             'name' => $data['name'],
@@ -47,7 +47,7 @@ class ProductsRepository implements Repository
         ]);
     }
 
-    public function create($data)
+    public function create(array $data)
     {
         $model = new $this->model;
 
@@ -78,13 +78,48 @@ class ProductsRepository implements Repository
         return $this->model::where('id', $id)->delete();
     }
 
-    public function category($alias)
+    public function byCategory(string $alias, ?array $params)
     {
-        return $this->model::
-        join('catalog', 'catalog.id', '=', 'products.category_id')
+        $query = $this->model::join('catalog', 'catalog.id', '=', 'products.category_id')
             ->select('products.*')
             ->where('catalog.alias', $alias)
-            ->paginate(12);
+            ->where('products.status', Common::STATUS_ACTIVE);
+
+        $query = $this->sortable($query, $params);
+
+        $limit = isset($params['limit']) ? $params['limit'] : Common::PAGINATE_LIMIT;
+
+        return $query->paginate($limit);
+    }
+
+    public function sortable($query, ?array $array)
+    {
+
+        if (!isset($array['sort']) && !isset($array['type'])) {
+            return $query;
+        }
+
+        switch ($array['sort']) {
+            case 'price':
+                if ($array['type'] === 'desc') {
+                    $query->orderBy('cost', 'desc');
+                } else {
+                    $query->orderBy('cost', 'asc');
+                }
+                break;
+            case 'name':
+                if ($array['type'] === 'desc') {
+                    $query->orderBy('name', 'desc');
+                } else {
+                    $query->orderBy('name', 'asc');
+                }
+                break;
+            default:
+                $query->orderBy('id', 'desc');
+                break;
+        }
+
+        return $query;
     }
 
     public function search(string $query)
