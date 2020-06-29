@@ -1,13 +1,12 @@
 <template>
     <div class="sidebar-content">
         <div class="price-range mb-30">
-            <div class="inner-title">Цена</div>
+            <div class="inner-title">Цена:</div>
             <input class="price-txt" type="text" :value="this.valuesToText(filterParams.value)">
             <vue-slider v-model="filterParams.value" :max="filterParams.max" :min="filterParams.min"/>
         </div>
-
         <div class="select-color mb-20">
-            <div class="inner-title">Цвет</div>
+            <div class="inner-title">Цвет:</div>
             <ul>
                 <li>
                     <div class="check-box">
@@ -75,12 +74,14 @@
             </ul>
         </div>
         <div class="mb-20">
-            <div class="inner-title">Производитель</div>
+            <div class="inner-title">Производитель:</div>
             <ul>
                 <li>
                     <div class="check-box">
                         <span>
-                            <input type="checkbox" class="checkbox" id="ghost" name="ghost">
+                            <input type="checkbox" class="checkbox" id="ghost" name="ghost"
+                                   :checked="this.includesVendor('ghost')"
+                                   v-on:click="addVendor($event)">
                             <label for="ghost">Ghost</label>
                         </span>
                     </div>
@@ -88,8 +89,20 @@
                 <li>
                     <div class="check-box">
                         <span>
-                            <input type="checkbox" class="checkbox" id="haibike" name="haibike">
+                            <input type="checkbox" class="checkbox" id="haibike" name="haibike"
+                                   :checked="this.includesVendor('haibike')"
+                                   v-on:click="addVendor($event)">
                             <label for="haibike">Haibike</label>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="check-box">
+                        <span>
+                            <input type="checkbox" class="checkbox" id="shimano" name="shimano"
+                                   :checked="this.includesVendor('shimano')"
+                                   v-on:click="addVendor($event)">
+                            <label for="shimano">Shimano</label>
                         </span>
                     </div>
                 </li>
@@ -111,12 +124,24 @@
                     min: 25,
                     max: 100,
                     value: [25, 100],
-                    color: '',
-                    manufacturer: ''
+                    color: [],
+                    manufacturer: []
                 },
             }
         },
         methods: {
+            addVendor($event) {
+                if (this.filterParams.manufacturer.includes($event.target.name)) {
+                    this.filterParams.manufacturer = this.filterParams.manufacturer.filter(e => e !== $event.target.name)
+                } else {
+                    this.filterParams.manufacturer.push($event.target.name)
+                }
+
+                console.log(this.filterParams.manufacturer);
+            },
+            includesVendor(value) {
+                return this.filterParams.manufacturer.includes(value)
+            },
             onFilter() {
                 let arr = this.uri.split('?');
                 this.uri = arr[0];
@@ -127,6 +152,9 @@
                 }
                 if (this.filterParams.value[1]) {
                     get.push('max-cost=' + this.filterParams.value[1]);
+                }
+                if (this.filterParams.manufacturer.length) {
+                    get.push('vendor=' + this.filterParams.manufacturer.join());
                 }
 
                 if (get.length) {
@@ -160,6 +188,9 @@
             }
             if (urlParams.get('limit') !== null) {
                 this.limit = parseInt(urlParams.get('limit'));
+            }
+            if (urlParams.get('vendor') !== null) {
+                this.filterParams.manufacturer = urlParams.get('vendor').split(',');
             }
         }
     }

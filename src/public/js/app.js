@@ -2923,6 +2923,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2934,12 +2947,26 @@ __webpack_require__.r(__webpack_exports__);
         min: 25,
         max: 100,
         value: [25, 100],
-        color: '',
-        manufacturer: ''
+        color: [],
+        manufacturer: []
       }
     };
   },
   methods: {
+    addVendor: function addVendor($event) {
+      if (this.filterParams.manufacturer.includes($event.target.name)) {
+        this.filterParams.manufacturer = this.filterParams.manufacturer.filter(function (e) {
+          return e !== $event.target.name;
+        });
+      } else {
+        this.filterParams.manufacturer.push($event.target.name);
+      }
+
+      console.log(this.filterParams.manufacturer);
+    },
+    includesVendor: function includesVendor(value) {
+      return this.filterParams.manufacturer.includes(value);
+    },
     onFilter: function onFilter() {
       var arr = this.uri.split('?');
       this.uri = arr[0];
@@ -2951,6 +2978,10 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.filterParams.value[1]) {
         get.push('max-cost=' + this.filterParams.value[1]);
+      }
+
+      if (this.filterParams.manufacturer.length) {
+        get.push('vendor=' + this.filterParams.manufacturer.join());
       }
 
       if (get.length) {
@@ -2986,6 +3017,10 @@ __webpack_require__.r(__webpack_exports__);
 
     if (urlParams.get('limit') !== null) {
       this.limit = parseInt(urlParams.get('limit'));
+    }
+
+    if (urlParams.get('vendor') !== null) {
+      this.filterParams.manufacturer = urlParams.get('vendor').split(',');
     }
   }
 });
@@ -40828,7 +40863,7 @@ var render = function() {
       "div",
       { staticClass: "price-range mb-30" },
       [
-        _c("div", { staticClass: "inner-title" }, [_vm._v("Цена")]),
+        _c("div", { staticClass: "inner-title" }, [_vm._v("Цена:")]),
         _vm._v(" "),
         _c("input", {
           staticClass: "price-txt",
@@ -40852,7 +40887,68 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _vm._m(1),
+    _c("div", { staticClass: "mb-20" }, [
+      _c("div", { staticClass: "inner-title" }, [_vm._v("Производитель:")]),
+      _vm._v(" "),
+      _c("ul", [
+        _c("li", [
+          _c("div", { staticClass: "check-box" }, [
+            _c("span", [
+              _c("input", {
+                staticClass: "checkbox",
+                attrs: { type: "checkbox", id: "ghost", name: "ghost" },
+                domProps: { checked: this.includesVendor("ghost") },
+                on: {
+                  click: function($event) {
+                    return _vm.addVendor($event)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "ghost" } }, [_vm._v("Ghost")])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "check-box" }, [
+            _c("span", [
+              _c("input", {
+                staticClass: "checkbox",
+                attrs: { type: "checkbox", id: "haibike", name: "haibike" },
+                domProps: { checked: this.includesVendor("haibike") },
+                on: {
+                  click: function($event) {
+                    return _vm.addVendor($event)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "haibike" } }, [_vm._v("Haibike")])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "check-box" }, [
+            _c("span", [
+              _c("input", {
+                staticClass: "checkbox",
+                attrs: { type: "checkbox", id: "shimano", name: "shimano" },
+                domProps: { checked: this.includesVendor("shimano") },
+                on: {
+                  click: function($event) {
+                    return _vm.addVendor($event)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "shimano" } }, [_vm._v("Shimano")])
+            ])
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("a", { staticClass: "btn btn-color", on: { click: _vm.onFilter } }, [
       _vm._v("Фильтр")
@@ -40865,7 +40961,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "select-color mb-20" }, [
-      _c("div", { staticClass: "inner-title" }, [_vm._v("Цвет")]),
+      _c("div", { staticClass: "inner-title" }, [_vm._v("Цвет:")]),
       _vm._v(" "),
       _c("ul", [
         _c("li", [
@@ -40977,42 +41073,6 @@ var staticRenderFns = [
             }),
             _vm._v(" "),
             _c("label", { staticClass: "magenta", attrs: { for: "magenta" } })
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-20" }, [
-      _c("div", { staticClass: "inner-title" }, [_vm._v("Производитель")]),
-      _vm._v(" "),
-      _c("ul", [
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("span", [
-              _c("input", {
-                staticClass: "checkbox",
-                attrs: { type: "checkbox", id: "ghost", name: "ghost" }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "ghost" } }, [_vm._v("Ghost")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("span", [
-              _c("input", {
-                staticClass: "checkbox",
-                attrs: { type: "checkbox", id: "haibike", name: "haibike" }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "haibike" } }, [_vm._v("Haibike")])
-            ])
           ])
         ])
       ])
