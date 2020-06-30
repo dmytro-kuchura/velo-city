@@ -13,7 +13,7 @@
                                             <span class="slogan">{{ $banner->slogan }}</span>
                                             <h1 class="banner-title">{{ $banner->title }}</h1>
                                             <div class="sub-title">{{ $banner->description }}</div>
-                                            <a class="btn btn-color mt-30" href="{{ $banner->link }}">Shop Now!</a>
+                                            <a class="btn btn-color mt-30" href="{{ $banner->link }}">Подробнее</a>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-5 col-xl-60per"></div>

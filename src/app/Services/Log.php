@@ -2,19 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\SubscribersRepository;
+use App\Models\Enum\LogsTypes;
+use App\Repositories\LogRepository;
 
 class Log
 {
-    const ERROR = 'error';
-    const WARNING = 'warning';
-    const NOTICE = 'notice';
-    const INFO = 'info';
-    const DEBUG = 'debug';
-
     private $repository;
 
-    public function __construct(SubscribersRepository $logsRepository)
+    public function __construct(LogRepository $logsRepository)
     {
         $this->repository = $logsRepository;
     }
@@ -36,7 +31,10 @@ class Log
 
     public static function info($message)
     {
-
+        self::save([
+            'name' => $message,
+            'type' => LogsTypes::INFO,
+        ]);
     }
 
     public static function debug($message)
@@ -46,6 +44,6 @@ class Log
 
     public function save(array $data)
     {
-        $this->repository->store();
+        $this->repository->create($data);
     }
 }

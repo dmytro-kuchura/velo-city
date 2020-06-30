@@ -44,26 +44,6 @@
                             <div class="col-xl-4 f-col">
                                 <div class="footer-static-block">
                                     <span class="opener plus"></span>
-                                    <h3 class="title">Guidance <span></span></h3>
-                                    <ul class="footer-block-contant link">
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Delivery
-                                                information</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Privacy Policy</a>
-                                        </li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Terms &
-                                                Conditions</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Gift Cards</a>
-                                        </li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Contact</a>
-                                        </li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Sitemap</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 f-col">
-                                <div class="footer-static-block">
-                                    <span class="opener plus"></span>
                                     <h3 class="title">Информация <span></span></h3>
                                     <ul class="footer-block-contant link">
                                         <li>
@@ -74,6 +54,23 @@
                                         </li>
                                         <li>
                                             <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>О магазине</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 f-col">
+                                <div class="footer-static-block">
+                                    <span class="opener plus"></span>
+                                    <h3 class="title">Пользователь <span></span></h3>
+                                    <ul class="footer-block-contant link">
+                                        <li>
+                                            <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Вход</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Регистрация</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Избранные товары</a>
                                         </li>
                                     </ul>
                                 </div>

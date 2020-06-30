@@ -5,18 +5,30 @@
 <head>
 
     <!-- Basic Page Needs -->
-    <meta charset="utf-8">
-    <title>VeloCity — интернет магазин велосипедов в Украине, Херсоне</title>
-    <!-- SEO Meta -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Веломагазин VeloCity ➤➤➤ Интернет магазин №➊ по выбору велосипедов ✅ БЕСПЛАТНАЯ доставка ✅ РАССРОЧКА 0% ➜ Официальная гарантия ➜ Цены от производителя">
-    <meta name="keywords" content="">
+    <title>@yield('title')</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
+
+    <meta property="og:locale" content="ru_RU"/>
+    <meta property="og:title" content="@yield('title')"/>
+    <meta property="og:description" content="@yield('description')"/>
+    <meta property="og:image" content="{{ asset('/images/logo-new.png') }}"/>
+    <meta property="og:url" content="{{ url(Request::url()) }}"/>
+    <meta property="og:site_name" content="Velo - City"/>
+
+    <meta itemprop="name" content="@yield('title')"/>
+    <meta itemprop="description" content="@yield('description')"/>
+    <meta itemprop="image" content="{{ asset('/images/logo-new.png') }}"/>
+
+    <meta name="site-created" content="2020/04/15">
+
     <meta name="distribution" content="global">
-    <meta name="revisit-after" content="2 Days">
+    <meta name="revisit-after" content="5 Days">
     <meta name="robots" content="ALL">
-    <meta name="rating" content="8 YEARS">
-    <meta name="Language" content="en-us">
-    <meta name="GOOGLEBOT" content="NOARCHIVE">
+    <meta name="rating" content="general">
+    <meta name="Language" content="{{ str_replace('_', '-', app()->getLocale()) }}">
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- css -->

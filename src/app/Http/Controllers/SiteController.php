@@ -3,31 +3,53 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Alert;
+use App\Models\Enum\SystemPagesConstants;
 use App\Repositories\ProductsRepository;
+use App\Repositories\SystemPagesRepository;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
+    /** @var ProductsRepository */
     private $productsRepository;
 
-    public function __construct(ProductsRepository $productsRepository)
+    /** @var SystemPagesRepository */
+    private $pagesRepository;
+
+    public function __construct(
+        ProductsRepository $productsRepository,
+        SystemPagesRepository $pagesRepository
+    )
     {
         $this->productsRepository = $productsRepository;
+        $this->pagesRepository = $pagesRepository;
     }
 
     public function index()
     {
-        return view('index');
+        $page = $this->pagesRepository->findBySlug(SystemPagesConstants::MAIN_PAGE);
+
+        return view('index', [
+            'page' => $page
+        ]);
     }
 
     public function contacts()
     {
-        return view('contact');
+        $page = $this->pagesRepository->findBySlug(SystemPagesConstants::CONTACTS_PAGE);
+
+        return view('contacts', [
+            'page' => $page
+        ]);
     }
 
     public function about()
     {
-        return view('about');
+        $page = $this->pagesRepository->findBySlug(SystemPagesConstants::ABOUT_PAGE);
+
+        return view('about', [
+            'page' => $page
+        ]);
     }
 
     public function sitemap()
