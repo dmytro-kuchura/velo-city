@@ -7,6 +7,7 @@ use App\Models\CartItems;
 use App\Repositories\CartRepository;
 use App\Repositories\ProductsRepository;
 use App\Repositories\CartItemsRepository;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cookie;
 
@@ -80,10 +81,7 @@ class ShoppingCart
             ];
         }
 
-        /* @var $items CartItems[] */
-        $items = $this->cartItemsRepository->find($cart->id);
-
-        if (!$items) {
+        if (!$cart->items) {
             return [
                 'list' => [],
                 'totalCount' => 0,
@@ -91,20 +89,19 @@ class ShoppingCart
             ];
         }
 
-        foreach ($items as $item) {
-            $product = $this->productsRepository->find($item->product_id);
-
-            if ($product) {
-                $total_price += number_format($product->cost, 2, '.', '') * $item->count;
+        /** @var $item CartItems */
+        foreach ($cart->items as $item) {
+            if ($item->product) {
+                $total_price += number_format($item->product->cost, 2, '.', '') * $item->count;
                 $total_quantity += $item->count;
 
                 $list[] = [
-                    'id' => $product->id,
-                    'alias' => route('shop.item', ['alias' => $product->alias, 'id' => $product->id]),
-                    'name' => $product->name,
-                    'image' => $product->image,
+                    'id' => $item->product->id,
+                    'alias' => route('shop.item', ['alias' => $item->product->alias, 'id' => $item->product->id]),
+                    'name' => $item->product->name,
+                    'image' => $item->product->image,
                     'count' => $item->count,
-                    'price' => number_format($product->cost, 2, '.', ''),
+                    'price' => number_format($item->product->cost, 2, '.', ''),
                     'maxcount' => 50,
                 ];
             }

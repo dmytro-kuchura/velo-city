@@ -33,7 +33,7 @@
   - About Page
   - 404 Page
   - Contact Page
-  - Wishlist Page
+  - WishlistService Page
   - Compare page
   - Faq Page
 
@@ -5847,7 +5847,7 @@ label {
 
 /* Contact Page CSS End */
 
-/* Wishlist Page CSS Start */
+/* WishlistService Page CSS Start */
 
 .commun-table td .product-title .size-text {
     font-size: 11px;
@@ -5862,7 +5862,7 @@ label {
     display: inherit;
 }
 
-/* Wishlist Page CSS End */
+/* WishlistService Page CSS End */
 
 /* Compare Page CSS Start */
 .compare-infomation {

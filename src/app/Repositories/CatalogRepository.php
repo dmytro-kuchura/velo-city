@@ -69,4 +69,9 @@ class CatalogRepository
 
         return $this->model::where('parent_id', $category->id)->get();
     }
+
+    public function getMainCategories()
+    {
+        return $this->model::where('parent_id', 0)->where('status', Common::STATUS_ACTIVE)->get();
+    }
 }

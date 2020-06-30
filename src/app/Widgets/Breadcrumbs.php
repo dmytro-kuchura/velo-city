@@ -79,6 +79,19 @@ class Breadcrumbs extends AbstractWidget
 
                 $page = __('breadcrumbs.cart.title');
                 break;
+            case 'shop.index':
+                $breadcrumbs = [
+                    [
+                        'label' => __('breadcrumbs.index.title'),
+                        'link' => route('home'),
+                    ],
+                    [
+                        'label' => __('breadcrumbs.shop.title'),
+                    ],
+                ];
+
+                $page = __('breadcrumbs.shop.title');
+                break;
             case 'shop.category':
                 $categories = $catalogRepository->getTreeForBreadcrumbs(Route::current()->parameter('category'));
 

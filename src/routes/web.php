@@ -35,6 +35,8 @@ Route::post('change-password', 'ProfileController@changePassword')->name('profil
         Route::get('/{alias}/p{id}', 'ShopController@item')->name('shop.item');
     });
 
+    Route::get('/wishlist', 'WishlistController@wishlist')->name('wishlist');
+
     Route::get('/cart', 'CartController@cart')->name('cart');
     Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
     Route::get('/thank', 'CheckoutController@thank')->name('thank');

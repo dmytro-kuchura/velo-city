@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $user_id
  * @property string $created_at
  * @property string $updated_at
+ *
+ * @property CartItems $items
  */
 class Cart extends Model
 {
@@ -28,4 +30,9 @@ class Cart extends Model
     public $timestamps = true;
 
     protected $fillable = ['hash', 'user_id', 'created_at', 'updated_at'];
+
+    public function items()
+    {
+        return $this->hasMany('App\Models\CartItems', 'cart_id', 'id')->with('product');
+    }
 }

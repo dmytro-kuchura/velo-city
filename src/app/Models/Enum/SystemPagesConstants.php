@@ -7,4 +7,5 @@ class SystemPagesConstants
     const MAIN_PAGE = 'main';
     const CONTACTS_PAGE = 'contacts';
     const ABOUT_PAGE = 'about';
+    const SHOP_PAGE = 'shop';
 }

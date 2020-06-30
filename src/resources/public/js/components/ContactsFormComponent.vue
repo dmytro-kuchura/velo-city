@@ -15,7 +15,7 @@
                           placeholder="Что именно Вас интересует?" rows="2" cols="5" name="message"></textarea>
             </div>
             <div class="field">
-                <button title="Subscribe" class="btn-color">Submit</button>
+                <button title="Отправить" class="btn-color">Отправить</button>
             </div>
         </form>
     </div>

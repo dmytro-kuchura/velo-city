@@ -5,109 +5,109 @@
             <input class="price-txt" type="text" :value="this.valuesToText(filterParams.value)">
             <vue-slider v-model="filterParams.value" :max="filterParams.max" :min="filterParams.min"/>
         </div>
-        <div class="select-color mb-20">
-            <div class="inner-title">Цвет:</div>
-            <ul>
-                <li>
-                    <div class="check-box">
-                        <div class="color-tooltip">
-                            <span class="color-arrow"></span>red
-                        </div>
-                        <input type="checkbox" class="checkbox" id="red" name="red">
-                        <label for="red" class="red"></label>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-box">
-                        <div class="color-tooltip">
-                            <span class="color-arrow"></span>black
-                        </div>
-                        <input type="checkbox" class="checkbox" id="black" name="black">
-                        <label for="black" class="black"></label>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-box">
-                        <div class="color-tooltip">
-                            <span class="color-arrow"></span>navyblue
-                        </div>
-                        <input type="checkbox" class="checkbox" id="navyblue" name="navyblue">
-                        <label for="navyblue" class="navyblue"></label>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-box">
-                        <div class="color-tooltip">
-                            <span class="color-arrow"></span>green
-                        </div>
-                        <input type="checkbox" class="checkbox" id="green" name="green">
-                        <label for="green" class="green"></label>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-box">
-                        <div class="color-tooltip">
-                            <span class="color-arrow"></span>blue
-                        </div>
-                        <input type="checkbox" class="checkbox" id="blue" name="blue">
-                        <label for="blue" class="blue"></label>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-box">
-                        <div class="color-tooltip">
-                            <span class="color-arrow"></span>rose
-                        </div>
-                        <input type="checkbox" class="checkbox" id="rose" name="rose">
-                        <label for="rose" class="rose"></label>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-box">
-                        <div class="color-tooltip">
-                            <span class="color-arrow"></span>magenta
-                        </div>
-                        <input type="checkbox" class="checkbox" id="magenta" name="magenta">
-                        <label for="magenta" class="magenta"></label>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="mb-20">
-            <div class="inner-title">Производитель:</div>
-            <ul>
-                <li>
-                    <div class="check-box">
-                        <span>
-                            <input type="checkbox" class="checkbox" id="ghost" name="ghost"
-                                   :checked="this.includesVendor('ghost')"
-                                   v-on:click="addVendor($event)">
-                            <label for="ghost">Ghost</label>
-                        </span>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-box">
-                        <span>
-                            <input type="checkbox" class="checkbox" id="haibike" name="haibike"
-                                   :checked="this.includesVendor('haibike')"
-                                   v-on:click="addVendor($event)">
-                            <label for="haibike">Haibike</label>
-                        </span>
-                    </div>
-                </li>
-                <li>
-                    <div class="check-box">
-                        <span>
-                            <input type="checkbox" class="checkbox" id="shimano" name="shimano"
-                                   :checked="this.includesVendor('shimano')"
-                                   v-on:click="addVendor($event)">
-                            <label for="shimano">Shimano</label>
-                        </span>
-                    </div>
-                </li>
-            </ul>
-        </div>
+<!--        <div class="select-color mb-20">-->
+<!--            <div class="inner-title">Цвет:</div>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <div class="color-tooltip">-->
+<!--                            <span class="color-arrow"></span>red-->
+<!--                        </div>-->
+<!--                        <input type="checkbox" class="checkbox" id="red" name="red">-->
+<!--                        <label for="red" class="red"></label>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <div class="color-tooltip">-->
+<!--                            <span class="color-arrow"></span>black-->
+<!--                        </div>-->
+<!--                        <input type="checkbox" class="checkbox" id="black" name="black">-->
+<!--                        <label for="black" class="black"></label>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <div class="color-tooltip">-->
+<!--                            <span class="color-arrow"></span>navyblue-->
+<!--                        </div>-->
+<!--                        <input type="checkbox" class="checkbox" id="navyblue" name="navyblue">-->
+<!--                        <label for="navyblue" class="navyblue"></label>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <div class="color-tooltip">-->
+<!--                            <span class="color-arrow"></span>green-->
+<!--                        </div>-->
+<!--                        <input type="checkbox" class="checkbox" id="green" name="green">-->
+<!--                        <label for="green" class="green"></label>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <div class="color-tooltip">-->
+<!--                            <span class="color-arrow"></span>blue-->
+<!--                        </div>-->
+<!--                        <input type="checkbox" class="checkbox" id="blue" name="blue">-->
+<!--                        <label for="blue" class="blue"></label>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <div class="color-tooltip">-->
+<!--                            <span class="color-arrow"></span>rose-->
+<!--                        </div>-->
+<!--                        <input type="checkbox" class="checkbox" id="rose" name="rose">-->
+<!--                        <label for="rose" class="rose"></label>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <div class="color-tooltip">-->
+<!--                            <span class="color-arrow"></span>magenta-->
+<!--                        </div>-->
+<!--                        <input type="checkbox" class="checkbox" id="magenta" name="magenta">-->
+<!--                        <label for="magenta" class="magenta"></label>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="mb-20">-->
+<!--            <div class="inner-title">Производитель:</div>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <span>-->
+<!--                            <input type="checkbox" class="checkbox" id="ghost" name="ghost"-->
+<!--                                   :checked="this.includesVendor('ghost')"-->
+<!--                                   v-on:click="addVendor($event)">-->
+<!--                            <label for="ghost">Ghost</label>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <span>-->
+<!--                            <input type="checkbox" class="checkbox" id="haibike" name="haibike"-->
+<!--                                   :checked="this.includesVendor('haibike')"-->
+<!--                                   v-on:click="addVendor($event)">-->
+<!--                            <label for="haibike">Haibike</label>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <div class="check-box">-->
+<!--                        <span>-->
+<!--                            <input type="checkbox" class="checkbox" id="shimano" name="shimano"-->
+<!--                                   :checked="this.includesVendor('shimano')"-->
+<!--                                   v-on:click="addVendor($event)">-->
+<!--                            <label for="shimano">Shimano</label>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
         <a v-on:click="onFilter" class="btn btn-color">Фильтр</a>
     </div>
 </template>

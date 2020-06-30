@@ -2591,10 +2591,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    if (!this.$store.state.list.length) {
-      window.location.href = '/';
-    }
-
     if (this.$attrs.user.hasOwnProperty('id')) {
       this.order.user_id = this.$attrs.user.id;
       this.order.first_name = this.$attrs.user.name;
@@ -2663,7 +2659,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     setRegionsErrorResponse: function setRegionsErrorResponse(response) {
       this.isLoading = false;
-      console.log(response);
     },
     setPaymentsSuccessResponse: function setPaymentsSuccessResponse(data) {
       this.isLoading = false;
@@ -2671,7 +2666,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     setPaymentsErrorResponse: function setPaymentsErrorResponse(response) {
       this.isLoading = false;
-      console.log(response);
     },
     setDeliveriesSuccessResponse: function setDeliveriesSuccessResponse(data) {
       this.isLoading = false;
@@ -2679,7 +2673,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     setDeliveriesErrorResponse: function setDeliveriesErrorResponse(response) {
       this.isLoading = false;
-      console.log(response);
     },
     selectDelivery: function selectDelivery(event) {
       this.order.delivery_id = parseInt(event.target.value);
@@ -40835,8 +40828,8 @@ var staticRenderFns = [
     return _c("div", { staticClass: "field" }, [
       _c(
         "button",
-        { staticClass: "btn-color", attrs: { title: "Subscribe" } },
-        [_vm._v("Submit")]
+        { staticClass: "btn-color", attrs: { title: "Отправить" } },
+        [_vm._v("Отправить")]
       )
     ])
   }
@@ -40889,200 +40882,12 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "mb-20" }, [
-      _c("div", { staticClass: "inner-title" }, [_vm._v("Производитель:")]),
-      _vm._v(" "),
-      _c("ul", [
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("span", [
-              _c("input", {
-                staticClass: "checkbox",
-                attrs: { type: "checkbox", id: "ghost", name: "ghost" },
-                domProps: { checked: this.includesVendor("ghost") },
-                on: {
-                  click: function($event) {
-                    return _vm.addVendor($event)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "ghost" } }, [_vm._v("Ghost")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("span", [
-              _c("input", {
-                staticClass: "checkbox",
-                attrs: { type: "checkbox", id: "haibike", name: "haibike" },
-                domProps: { checked: this.includesVendor("haibike") },
-                on: {
-                  click: function($event) {
-                    return _vm.addVendor($event)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "haibike" } }, [_vm._v("Haibike")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("span", [
-              _c("input", {
-                staticClass: "checkbox",
-                attrs: { type: "checkbox", id: "shimano", name: "shimano" },
-                domProps: { checked: this.includesVendor("shimano") },
-                on: {
-                  click: function($event) {
-                    return _vm.addVendor($event)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "shimano" } }, [_vm._v("Shimano")])
-            ])
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
     _c("a", { staticClass: "btn btn-color", on: { click: _vm.onFilter } }, [
       _vm._v("Фильтр")
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "select-color mb-20" }, [
-      _c("div", { staticClass: "inner-title" }, [_vm._v("Цвет:")]),
-      _vm._v(" "),
-      _c("ul", [
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("div", { staticClass: "color-tooltip" }, [
-              _c("span", { staticClass: "color-arrow" }),
-              _vm._v("red\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "checkbox",
-              attrs: { type: "checkbox", id: "red", name: "red" }
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "red", attrs: { for: "red" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("div", { staticClass: "color-tooltip" }, [
-              _c("span", { staticClass: "color-arrow" }),
-              _vm._v("black\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "checkbox",
-              attrs: { type: "checkbox", id: "black", name: "black" }
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "black", attrs: { for: "black" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("div", { staticClass: "color-tooltip" }, [
-              _c("span", { staticClass: "color-arrow" }),
-              _vm._v("navyblue\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "checkbox",
-              attrs: { type: "checkbox", id: "navyblue", name: "navyblue" }
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "navyblue", attrs: { for: "navyblue" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("div", { staticClass: "color-tooltip" }, [
-              _c("span", { staticClass: "color-arrow" }),
-              _vm._v("green\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "checkbox",
-              attrs: { type: "checkbox", id: "green", name: "green" }
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "green", attrs: { for: "green" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("div", { staticClass: "color-tooltip" }, [
-              _c("span", { staticClass: "color-arrow" }),
-              _vm._v("blue\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "checkbox",
-              attrs: { type: "checkbox", id: "blue", name: "blue" }
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "blue", attrs: { for: "blue" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("div", { staticClass: "color-tooltip" }, [
-              _c("span", { staticClass: "color-arrow" }),
-              _vm._v("rose\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "checkbox",
-              attrs: { type: "checkbox", id: "rose", name: "rose" }
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "rose", attrs: { for: "rose" } })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "check-box" }, [
-            _c("div", { staticClass: "color-tooltip" }, [
-              _c("span", { staticClass: "color-arrow" }),
-              _vm._v("magenta\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "checkbox",
-              attrs: { type: "checkbox", id: "magenta", name: "magenta" }
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "magenta", attrs: { for: "magenta" } })
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

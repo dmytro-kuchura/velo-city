@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('title', $result->title ? $result->title : $result->name)
+@section('description', $result->description ? $result->description : null)
+@section('keywords', $result->keywords ? $result->keywords : null)
+
 @section('content')
     @widget('breadcrumbs')
 

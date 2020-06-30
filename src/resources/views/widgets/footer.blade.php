@@ -64,10 +64,14 @@
                                     <h3 class="title">Пользователь <span></span></h3>
                                     <ul class="footer-block-contant link">
                                         <li>
-                                            <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Вход</a>
+                                            <a href="{{ route('login') }}">
+                                                <i class="fa fa-angle-right"></i>Вход
+                                            </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Регистрация</a>
+                                            <a href="{{ route('register') }}">
+                                                <i class="fa fa-angle-right"></i>Регистрация
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Избранные товары</a>

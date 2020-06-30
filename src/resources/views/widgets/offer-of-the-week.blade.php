@@ -3,7 +3,7 @@
         <div class="row m-0">
             <div class="col-xl-6 p-0">
                 <div class="offer-img">
-                    <img src="/images/banner-02.png" alt="Velo - City">
+                    <img src="/images/banner-02.png" alt="Velo-City">
                 </div>
             </div>
             <div class="col-xl-6 gray-bg center-sm p-0">

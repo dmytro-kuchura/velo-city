@@ -250,10 +250,6 @@
             }
         },
         mounted() {
-            if (!this.$store.state.list.length) {
-                window.location.href = '/';
-            }
-
             if (this.$attrs.user.hasOwnProperty('id')) {
                 this.order.user_id = this.$attrs.user.id;
                 this.order.first_name = this.$attrs.user.name;
@@ -305,7 +301,6 @@
             },
             setOnSubmitErrorResponse(response) {
                 this.isLoading = false;
-
                 this.errors = response.data;
             },
             setRegionsSuccessResponse(data) {
@@ -314,7 +309,6 @@
             },
             setRegionsErrorResponse(response) {
                 this.isLoading = false;
-                console.log(response);
             },
             setPaymentsSuccessResponse(data) {
                 this.isLoading = false;
@@ -322,7 +316,6 @@
             },
             setPaymentsErrorResponse(response) {
                 this.isLoading = false;
-                console.log(response);
             },
             setDeliveriesSuccessResponse(data) {
                 this.isLoading = false;
@@ -330,7 +323,6 @@
             },
             setDeliveriesErrorResponse(response) {
                 this.isLoading = false;
-                console.log(response);
             },
             selectDelivery(event) {
                 this.order.delivery_id = parseInt(event.target.value);
