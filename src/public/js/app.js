@@ -2591,6 +2591,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    if (!this.$store.state.list.length) {
+      window.location.href = '/';
+    }
+
     if (this.$attrs.user.hasOwnProperty('id')) {
       this.order.user_id = this.$attrs.user.id;
       this.order.first_name = this.$attrs.user.name;
@@ -2647,7 +2651,7 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Ваш заказ был оформлен мы свяжемся с Вами в ближайшее время :)',
         icon: 'success'
       });
-      location.href = '/thank';
+      window.location.href = '/thank';
     },
     setOnSubmitErrorResponse: function setOnSubmitErrorResponse(response) {
       this.isLoading = false;
@@ -2961,8 +2965,6 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.filterParams.manufacturer.push($event.target.name);
       }
-
-      console.log(this.filterParams.manufacturer);
     },
     includesVendor: function includesVendor(value) {
       return this.filterParams.manufacturer.includes(value);
@@ -39802,7 +39804,20 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "clearfix" }),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "mt-20" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm.cart.list.length
+          ? _c(
+              "a",
+              {
+                staticClass: "btn-color btn right-side",
+                attrs: { href: "/checkout" }
+              },
+              [_c("i", { staticClass: "fa fa-share" }), _vm._v("Купить")]
+            )
+          : _vm._e()
+      ])
     ])
   ])
 }
@@ -39811,20 +39826,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-20" }, [
-      _c("a", { staticClass: "btn-color btn", attrs: { href: "/cart" } }, [
-        _c("i", { staticClass: "fa fa-shopping-cart" }),
-        _vm._v("Корзина")
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "btn-color btn right-side",
-          attrs: { href: "/checkout" }
-        },
-        [_c("i", { staticClass: "fa fa-share" }), _vm._v("Купить")]
-      )
+    return _c("a", { staticClass: "btn-color btn", attrs: { href: "/cart" } }, [
+      _c("i", { staticClass: "fa fa-shopping-cart" }),
+      _vm._v("Корзина")
     ])
   }
 ]

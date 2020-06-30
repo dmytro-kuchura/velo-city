@@ -250,6 +250,10 @@
             }
         },
         mounted() {
+            if (!this.$store.state.list.length) {
+                window.location.href = '/';
+            }
+
             if (this.$attrs.user.hasOwnProperty('id')) {
                 this.order.user_id = this.$attrs.user.id;
                 this.order.first_name = this.$attrs.user.name;
@@ -297,7 +301,7 @@
                     icon: 'success',
                 });
 
-                location.href = '/thank';
+                window.location.href = '/thank';
             },
             setOnSubmitErrorResponse(response) {
                 this.isLoading = false;

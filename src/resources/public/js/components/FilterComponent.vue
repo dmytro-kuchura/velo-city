@@ -136,8 +136,6 @@
                 } else {
                     this.filterParams.manufacturer.push($event.target.name)
                 }
-
-                console.log(this.filterParams.manufacturer);
             },
             includesVendor(value) {
                 return this.filterParams.manufacturer.includes(value)

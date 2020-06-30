@@ -36,7 +36,7 @@
             <div class="clearfix"></div>
             <div class="mt-20">
                 <a href="/cart" class="btn-color btn"><i class="fa fa-shopping-cart"></i>Корзина</a>
-                <a href="/checkout" class="btn-color btn right-side"><i class="fa fa-share"></i>Купить</a>
+                <a v-if="cart.list.length" href="/checkout" class="btn-color btn right-side"><i class="fa fa-share"></i>Купить</a>
             </div>
         </div>
     </li>
