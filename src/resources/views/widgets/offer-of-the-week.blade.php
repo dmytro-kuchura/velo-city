@@ -11,13 +11,15 @@
                     <div class="row">
                         <div class="col-12 ">
                             <div class="heading-part mb-30 mb-sm-15">
-                                <h2 class="main_title heading"><span>Новая коллекция Ghost</span></h2>
+                                <h2 class="main_title heading">
+                                    <span>Новая коллекция Ghost</span></h2>
                             </div>
                         </div>
                     </div>
                     <div class="offer-inner-details">
-                        <div class="offer-title">Можельный ряд 2020 года</div>
-                        <div class="offer-slogan">Доступны все ростовки, в нашем магазине</div>
+                        <div class="offer-title" style="text-align: center">Модельный ряд 2020 года</div>
+                        <div class="offer-slogan" style="text-align: center">Доступны все ростовки, в нашем магазине
+                        </div>
                     </div>
                 </div>
             </div>
