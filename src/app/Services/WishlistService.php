@@ -70,6 +70,8 @@ class WishlistService
                     'alias' => route('shop.item', ['alias' => $item->product->alias, 'id' => $item->product->id]),
                     'name' => $item->product->name,
                     'image' => $item->product->image,
+                    'artikul' => $item->product->artikul,
+                    'available' => $item->product->available,
                     'price' => number_format($item->product->cost, 2, '.', ''),
                 ];
             }
@@ -88,7 +90,7 @@ class WishlistService
      */
     public function addItem($data)
     {
-        $wishlist = $this->check();
+        $token = $this->cookie ? $this->cookie : $this->uuid;
 
         if (Auth::check() && Auth::user()) {
             $array = [
@@ -98,29 +100,24 @@ class WishlistService
             ];
         } else {
             $array = [
-                'hash' => $this->uuid,
+                'hash' => $token,
                 'user_id' => null,
                 'product_id' => $data['item_id'],
             ];
         }
 
-        if (!$wishlist) {
-            $this->wishlistRepository->create($array);
+        $this->wishlistRepository->create($array);
 
-            return $this->uuid;
-        }
-
-        return false;
+        return $token;
     }
 
     /**
-     * Delete item from cart
+     * Delete item from wishlist
      *
      * @param $item
      */
     public function deleteItem($item)
     {
-        /* @var $wishlist Wishlist */
-        $this->cartRepository->find($this->cookie);
+        $this->wishlistRepository->destroy($item);
     }
 }

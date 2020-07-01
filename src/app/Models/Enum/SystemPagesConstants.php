@@ -8,4 +8,6 @@ class SystemPagesConstants
     const CONTACTS_PAGE = 'contacts';
     const ABOUT_PAGE = 'about';
     const SHOP_PAGE = 'shop';
+    const SHOPPING_CART_PAGE = 'cart';
+    const WISHLIST_PAGE = 'wishlist';
 }

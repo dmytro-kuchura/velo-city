@@ -35,6 +35,11 @@ Route::post('change-password', 'ProfileController@changePassword')->name('profil
         Route::get('/{alias}/p{id}', 'ShopController@item')->name('shop.item');
     });
 
+    Route::prefix('news')->group(function () {
+        Route::get('/', 'NewsController@index')->name('news.index');
+        Route::get('/{alias}', 'NewsController@item')->name('news.inner');
+    });
+
     Route::get('/wishlist', 'WishlistController@wishlist')->name('wishlist');
 
     Route::get('/cart', 'CartController@cart')->name('cart');

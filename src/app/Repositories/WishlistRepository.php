@@ -32,7 +32,7 @@ class WishlistRepository implements Repository
 
     public function destroy(int $id)
     {
-        // TODO: Implement destroy() method.
+        return $this->model::where('product_id', $id)->delete();
     }
 
     public function findByHash(string $hash)

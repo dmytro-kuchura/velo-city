@@ -2,41 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\WishlistService;
-use Illuminate\Http\Request;
+use App\Models\Enum\SystemPagesConstants;
+use App\Repositories\SystemPagesRepository;
 
 class WishlistController extends Controller
 {
-    /** @var WishlistService */
-    private $wishlist;
+    /** @var SystemPagesRepository */
+    private $pagesRepository;
 
-    public function __construct(WishlistService $wishlist)
+    public function __construct(SystemPagesRepository $pagesRepository)
     {
-        $this->wishlist = $wishlist;
+        $this->pagesRepository = $pagesRepository;
     }
 
     public function wishlist()
     {
-        $result = $this->wishlist->getList();
+        $page = $this->pagesRepository->findBySlug(SystemPagesConstants::WISHLIST_PAGE);
 
-        return $this->returnResponse([
-            'success' => true,
-            'result' => $result
+        return view('wishlist.index', [
+            'page' => $page
         ]);
-    }
-
-    public function add(Request $request)
-    {
-        $uuid = $this->wishlist->addItem($request->all());
-
-        if (!$uuid) {
-            return $this->returnResponse([
-                'success' => true,
-            ]);
-        } else {
-            return $this->returnResponse([
-                'success' => true,
-            ], 201, [], ['name' => 'cart', 'value' => $uuid]);
-        }
     }
 }

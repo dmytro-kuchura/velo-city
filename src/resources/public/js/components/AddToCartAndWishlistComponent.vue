@@ -6,7 +6,7 @@
                     <button v-on:click="addToCart" title="Добавить в корзину"></button>
                 </li>
                 <li class="pro-wishlist-icon">
-                    <button v-on:click="addToWishlist" title="Список желаний"></button>
+                    <button v-on:click="addToWishlist" title="Добавить в список желаний"></button>
                 </li>
             </ul>
         </div>
@@ -29,10 +29,10 @@
         methods: {
             addToCart() {
                 axios.post('/api/v1/cart/add', this.item)
-                    .then(({data}) => this.setSuccessResponse(data))
-                    .catch(({response}) => this.setErrorResponse(response));
+                    .then(({data}) => this.addToCartSuccessResponse(data))
+                    .catch(({response}) => this.addToCartErrorResponse(response));
             },
-            setSuccessResponse(data) {
+            addToCartSuccessResponse(data) {
                 this.$store.commit('loadCart');
 
                 swal({
@@ -41,18 +41,31 @@
                     icon: 'success',
                 });
             },
-            setErrorResponse(response) {
+            addToCartErrorResponse(response) {
                 swal({
                     title: 'Ошибка!',
                     text: 'Что то сломалось :(',
                     icon: 'error',
                 });
             },
-
             addToWishlist() {
-                axios.post('/api/v1/cart/add', this.item)
-                    .then(({data}) => this.setSuccessResponse(data))
-                    .catch(({response}) => this.setErrorResponse(response));
+                axios.post('/api/v1/wishlist/add', this.item)
+                    .then(({data}) => this.addToWishlistSuccessResponse(data))
+                    .catch(({response}) => this.addToWishlistErrorResponse(response));
+            },
+            addToWishlistSuccessResponse(data) {
+                swal({
+                    title: 'Добавлено!',
+                    text: 'Товар в в Вашем списке желаний :)',
+                    icon: 'success',
+                });
+            },
+            addToWishlistErrorResponse(response) {
+                swal({
+                    title: 'Ошибка!',
+                    text: 'Что то сломалось :(',
+                    icon: 'error',
+                });
             },
         }
     }

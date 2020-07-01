@@ -1941,13 +1941,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/api/v1/cart/add', this.item).then(function (_ref) {
         var data = _ref.data;
-        return _this.setSuccessResponse(data);
+        return _this.addToCartSuccessResponse(data);
       })["catch"](function (_ref2) {
         var response = _ref2.response;
-        return _this.setErrorResponse(response);
+        return _this.addToCartErrorResponse(response);
       });
     },
-    setSuccessResponse: function setSuccessResponse(data) {
+    addToCartSuccessResponse: function addToCartSuccessResponse(data) {
       this.$store.commit('loadCart');
       swal({
         title: 'Добавлено!',
@@ -1955,7 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'success'
       });
     },
-    setErrorResponse: function setErrorResponse(response) {
+    addToCartErrorResponse: function addToCartErrorResponse(response) {
       swal({
         title: 'Ошибка!',
         text: 'Что то сломалось :(',
@@ -1965,12 +1965,26 @@ __webpack_require__.r(__webpack_exports__);
     addToWishlist: function addToWishlist() {
       var _this2 = this;
 
-      axios.post('/api/v1/cart/add', this.item).then(function (_ref3) {
+      axios.post('/api/v1/wishlist/add', this.item).then(function (_ref3) {
         var data = _ref3.data;
-        return _this2.setSuccessResponse(data);
+        return _this2.addToWishlistSuccessResponse(data);
       })["catch"](function (_ref4) {
         var response = _ref4.response;
-        return _this2.setErrorResponse(response);
+        return _this2.addToWishlistErrorResponse(response);
+      });
+    },
+    addToWishlistSuccessResponse: function addToWishlistSuccessResponse(data) {
+      swal({
+        title: 'Добавлено!',
+        text: 'Товар в в Вашем списке желаний :)',
+        icon: 'success'
+      });
+    },
+    addToWishlistErrorResponse: function addToWishlistErrorResponse(response) {
+      swal({
+        title: 'Ошибка!',
+        text: 'Что то сломалось :(',
+        icon: 'error'
       });
     }
   }
@@ -3254,6 +3268,138 @@ __webpack_require__.r(__webpack_exports__);
       swal({
         title: 'Ошибка!',
         text: 'Указан не верный email или что то пошло не так! :(',
+        icon: 'error'
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/public/js/components/WishlistTableComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/public/js/components/WishlistTableComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      wishlist: []
+    };
+  },
+  mounted: function mounted() {
+    this.getWishlist();
+  },
+  methods: {
+    getWishlist: function getWishlist() {
+      var _this = this;
+
+      axios.get('/api/v1/wishlist/list').then(function (response) {
+        return _this.getWishlistSuccessResponse(response.data);
+      })["catch"](function (response) {
+        return _this.getWishlistErrorResponse(response);
+      });
+    },
+    getWishlistSuccessResponse: function getWishlistSuccessResponse(data) {
+      this.wishlist = data.result.list;
+    },
+    getWishlistErrorResponse: function getWishlistErrorResponse(response) {
+      console.log(response);
+    },
+    removeFromWishlist: function removeFromWishlist(id) {
+      var _this2 = this;
+
+      axios["delete"]('/api/v1/wishlist/delete/' + id).then(function () {
+        return _this2.removeFromWishlistListSuccessResponse();
+      })["catch"](function (response) {
+        return _this2.removeFromWishlistListErrorResponse(response);
+      });
+    },
+    removeFromWishlistListSuccessResponse: function removeFromWishlistListSuccessResponse() {
+      this.getWishlist();
+    },
+    removeFromWishlistListErrorResponse: function removeFromWishlistListErrorResponse(response) {
+      console.log(response);
+    },
+    addToCart: function addToCart(id) {
+      var _this3 = this;
+
+      axios.post('/api/v1/cart/add', {
+        count: 1,
+        item_id: id
+      }).then(function (_ref) {
+        var data = _ref.data;
+        return _this3.addToCartSuccessResponse(data);
+      })["catch"](function (_ref2) {
+        var response = _ref2.response;
+        return _this3.addToCartErrorResponse(response);
+      });
+    },
+    addToCartSuccessResponse: function addToCartSuccessResponse(data) {
+      this.$store.commit('loadCart');
+      swal({
+        title: 'Добавлено!',
+        text: 'Товар в корзине :)',
+        icon: 'success'
+      });
+    },
+    addToCartErrorResponse: function addToCartErrorResponse(response) {
+      swal({
+        title: 'Ошибка!',
+        text: 'Что то сломалось :(',
         icon: 'error'
       });
     }
@@ -39523,7 +39669,7 @@ var render = function() {
         _vm._v(" "),
         _c("li", { staticClass: "pro-wishlist-icon" }, [
           _c("button", {
-            attrs: { title: "Список желаний" },
+            attrs: { title: "Добавить в список желаний" },
             on: { click: _vm.addToWishlist }
           })
         ])
@@ -39954,7 +40100,7 @@ var render = function() {
           _c("td", [
             _c("i", {
               staticClass: "fa fa-trash cart-remove-item",
-              attrs: { title: "Remove Item From Cart" },
+              attrs: { title: "Удалить товар" },
               on: {
                 click: function($event) {
                   $event.preventDefault()
@@ -41215,6 +41361,127 @@ var staticRenderFns = [
         _c("div", { staticClass: "newsletter-slogan" }, [
           _vm._v("Получайте последние новости и обновление товаров")
         ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/public/js/components/WishlistTableComponent.vue?vue&type=template&id=342e06c5&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/public/js/components/WishlistTableComponent.vue?vue&type=template&id=342e06c5& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("table", { staticClass: "table" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "tbody",
+      _vm._l(_vm.wishlist, function(item) {
+        return _c("tr", [
+          _c("td", [
+            _c("a", { attrs: { href: item.alias } }, [
+              _c("img", {
+                attrs: {
+                  alt: item.name,
+                  src:
+                    item.image.length > 1 ? item.image : "/images/no-image.png"
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c("div", { staticClass: "product-title" }, [
+              _c("a", { attrs: { href: item.alias } }, [
+                _vm._v(_vm._s(item.name))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "size-text" }, [
+                _c("span", [_vm._v("Артикул: " + _vm._s(item.artikul))])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c("ul", [
+              _c("li", [
+                _c("div", { staticClass: "base-price price-box" }, [
+                  _c("span", { staticClass: "price" }, [
+                    _vm._v("₴ " + _vm._s(item.price))
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c("div", { staticClass: "total-price price-box" }, [
+              _c("span", { staticClass: "price" }, [
+                _vm._v(_vm._s(item.available ? "Доступен" : "Недоступен"))
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _c("i", {
+              staticClass: "fa fa-shopping-cart cart-remove-item",
+              attrs: { title: "Купить товар" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.addToCart(item.id)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("i", {
+              staticClass: "fa fa-trash cart-remove-item",
+              attrs: { title: "Удалить товар" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.removeFromWishlist(item.id)
+                }
+              }
+            })
+          ])
+        ])
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Товар")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Название")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Цена")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Статус")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Действия")])
       ])
     ])
   }
@@ -54577,6 +54844,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('vue-slider', vue_slider_co
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('loader', __webpack_require__(/*! ./components/LoaderComponent.vue */ "./resources/public/js/components/LoaderComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('sortable', __webpack_require__(/*! ./components/SortableComponent.vue */ "./resources/public/js/components/SortableComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('filter-component', __webpack_require__(/*! ./components/FilterComponent.vue */ "./resources/public/js/components/FilterComponent.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('wishlist', __webpack_require__(/*! ./components/WishlistTableComponent.vue */ "./resources/public/js/components/WishlistTableComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('cart', __webpack_require__(/*! ./components/CartComponent.vue */ "./resources/public/js/components/CartComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('cart-list', __webpack_require__(/*! ./components/CartTableComponent.vue */ "./resources/public/js/components/CartTableComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('cart-total', __webpack_require__(/*! ./components/CartTotalComponent.vue */ "./resources/public/js/components/CartTotalComponent.vue")["default"]);
@@ -55582,6 +55850,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/public/js/components/WishlistTableComponent.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/public/js/components/WishlistTableComponent.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _WishlistTableComponent_vue_vue_type_template_id_342e06c5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WishlistTableComponent.vue?vue&type=template&id=342e06c5& */ "./resources/public/js/components/WishlistTableComponent.vue?vue&type=template&id=342e06c5&");
+/* harmony import */ var _WishlistTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WishlistTableComponent.vue?vue&type=script&lang=js& */ "./resources/public/js/components/WishlistTableComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _WishlistTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _WishlistTableComponent_vue_vue_type_template_id_342e06c5___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _WishlistTableComponent_vue_vue_type_template_id_342e06c5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/public/js/components/WishlistTableComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/public/js/components/WishlistTableComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/public/js/components/WishlistTableComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WishlistTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./WishlistTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/public/js/components/WishlistTableComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WishlistTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/public/js/components/WishlistTableComponent.vue?vue&type=template&id=342e06c5&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/public/js/components/WishlistTableComponent.vue?vue&type=template&id=342e06c5& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WishlistTableComponent_vue_vue_type_template_id_342e06c5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./WishlistTableComponent.vue?vue&type=template&id=342e06c5& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/public/js/components/WishlistTableComponent.vue?vue&type=template&id=342e06c5&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WishlistTableComponent_vue_vue_type_template_id_342e06c5___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WishlistTableComponent_vue_vue_type_template_id_342e06c5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/public/js/store.js":
 /*!**************************************!*\
   !*** ./resources/public/js/store.js ***!
@@ -55600,7 +55937,7 @@ var store = {
   },
   mutations: {
     loadCart: function loadCart(state) {
-      axios.get("/api/v1/cart/list").then(function (_ref) {
+      axios.get('/api/v1/cart/list').then(function (_ref) {
         var data = _ref.data;
         state.list = data.result.list;
         state.totalCount = data.result.totalCount;

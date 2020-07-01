@@ -48,7 +48,7 @@
                 </div>
             </td>
             <td>
-                <i title="Remove Item From Cart" @click.prevent="removeFromCart(item.id)"
+                <i title="Удалить товар" @click.prevent="removeFromCart(item.id)"
                    class="fa fa-trash cart-remove-item"></i>
             </td>
         </tr>

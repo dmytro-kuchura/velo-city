@@ -47,13 +47,19 @@
                                     <h3 class="title">Информация <span></span></h3>
                                     <ul class="footer-block-contant link">
                                         <li>
-                                            <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Велопрокат</a>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-angle-right"></i>Велопрокат
+                                            </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Веломастерская</a>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-angle-right"></i>Веломастерская
+                                            </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>О магазине</a>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-angle-right"></i>О магазине
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -74,7 +80,9 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Избранные товары</a>
+                                            <a href="{{ route('wishlist') }}">
+                                                <i class="fa fa-angle-right"></i>Список желаний
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>

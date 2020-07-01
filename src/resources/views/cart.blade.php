@@ -1,8 +1,11 @@
 @extends('layouts.main')
 
+@section('title', $page->title ? $page->title : $page->name)
+@section('description', $page->description ? $page->description : null)
+@section('keywords', $page->keywords ? $page->keywords : null)
+
 @section('content')
     @widget('breadcrumbs')
-
     <section class="ptb-70">
         <div class="container">
             <div class="row">
