@@ -31,7 +31,9 @@
                                 </p>
                             </div>
                             <div class="col-12">
-                                <div class="image-part center-xs"><img alt="Roadie" src="images/about-sub.jpg"></div>
+                                <div class="image-part center-xs">
+                                    <img alt="Velo-City" src="/images/about-sub.png">
+                                </div>
                             </div>
                         </div>
                     </div>

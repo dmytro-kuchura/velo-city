@@ -14,21 +14,21 @@
 Route::get('parse-products', 'ParserController@parseProducts')->name('parse.products');
 Route::get('upload-products', 'ParserController@uploadProduct')->name('upload.products');
 Route::get('parse-categories', 'ParserController@parseCategories')->name('parse.categories');
-
 Route::get('justin', 'Warehouses\JustinController@import')->name('justin.import');
+
 Route::get('sitemap.xml', 'SiteController@sitemap')->name('sitemap.xml');
 
 Auth::routes();
-Route::get('profile', 'ProfileController@profile')->name('profile');
-Route::post('change', 'ProfileController@change')->name('profile.change');
-Route::post('change-password', 'ProfileController@changePassword')->name('profile.change.password');
+Route::get('profile', 'ProfileController@profile')->name('profile'); // done
+Route::post('change', 'ProfileController@change')->name('profile.change'); // done
+Route::post('change-password', 'ProfileController@changePassword')->name('profile.change.password'); // done
 
-Route::get('/', 'SiteController@index')->name('home');
+Route::get('/', 'SiteController@index')->name('home'); // done
 
 Route::prefix('shop')->group(function () {
-    Route::get('/', 'ShopController@index')->name('shop.index');
-    Route::get('/{category}', 'ShopController@category')->name('shop.category');
-    Route::get('/{alias}/p{id}', 'ShopController@item')->name('shop.item');
+    Route::get('/', 'ShopController@index')->name('shop.index'); // done
+    Route::get('/{category}', 'ShopController@category')->name('shop.category'); // done
+    Route::get('/{alias}/p{id}', 'ShopController@item')->name('shop.item'); // done
 });
 
 Route::prefix('news')->group(function () {
@@ -36,13 +36,13 @@ Route::prefix('news')->group(function () {
     Route::get('/{alias}', 'NewsController@item')->name('news.inner');
 });
 
-Route::get('/wishlist', 'WishlistController@wishlist')->name('wishlist');
+Route::get('/wishlist', 'WishlistController@wishlist')->name('wishlist'); // done
 
-Route::get('/cart', 'CartController@cart')->name('cart');
-Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
+Route::get('/cart', 'CartController@cart')->name('cart'); // done
+Route::get('/checkout', 'CheckoutController@checkout')->name('checkout'); // done
 Route::get('/thank', 'CheckoutController@thank')->name('thank');
 
-Route::get('/about', 'SiteController@about')->name('about');
+Route::get('/about', 'SiteController@about')->name('about'); // done
 Route::get('/contact', 'SiteController@contacts')->name('contacts');
 Route::get('/search', 'SiteController@search')->name('search');
-Route::get('/{slug}', 'PagesController@page')->name('slug');
+//Route::get('/{slug}', 'PagesController@page')->name('page');
