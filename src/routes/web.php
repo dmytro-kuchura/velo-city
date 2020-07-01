@@ -23,29 +23,26 @@ Route::get('profile', 'ProfileController@profile')->name('profile');
 Route::post('change', 'ProfileController@change')->name('profile.change');
 Route::post('change-password', 'ProfileController@changePassword')->name('profile.change.password');
 
-//$routes = function() {
-    Route::get('/', 'SiteController@index')->name('home');
-    Route::get('/about', 'SiteController@about')->name('about');
-    Route::get('/contact', 'SiteController@contacts')->name('contacts');
-    Route::get('/search', 'SiteController@search')->name('search');
+Route::get('/', 'SiteController@index')->name('home');
 
-    Route::prefix('shop')->group(function () {
-        Route::get('/', 'ShopController@index')->name('shop.index');
-        Route::get('/{category}', 'ShopController@category')->name('shop.category');
-        Route::get('/{alias}/p{id}', 'ShopController@item')->name('shop.item');
-    });
+Route::prefix('shop')->group(function () {
+    Route::get('/', 'ShopController@index')->name('shop.index');
+    Route::get('/{category}', 'ShopController@category')->name('shop.category');
+    Route::get('/{alias}/p{id}', 'ShopController@item')->name('shop.item');
+});
 
-    Route::prefix('news')->group(function () {
-        Route::get('/', 'NewsController@index')->name('news.index');
-        Route::get('/{alias}', 'NewsController@item')->name('news.inner');
-    });
+Route::prefix('news')->group(function () {
+    Route::get('/', 'NewsController@index')->name('news.index');
+    Route::get('/{alias}', 'NewsController@item')->name('news.inner');
+});
 
-    Route::get('/wishlist', 'WishlistController@wishlist')->name('wishlist');
+Route::get('/wishlist', 'WishlistController@wishlist')->name('wishlist');
 
-    Route::get('/cart', 'CartController@cart')->name('cart');
-    Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
-    Route::get('/thank', 'CheckoutController@thank')->name('thank');
-//};
+Route::get('/cart', 'CartController@cart')->name('cart');
+Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
+Route::get('/thank', 'CheckoutController@thank')->name('thank');
 
-//Route::domain('{localization}.' . config('app.original_domain'))->group($routes);
-//Route::domain(config('app.original_domain'))->group($routes);
+Route::get('/about', 'SiteController@about')->name('about');
+Route::get('/contact', 'SiteController@contacts')->name('contacts');
+Route::get('/search', 'SiteController@search')->name('search');
+Route::get('/{slug}', 'PagesController@page')->name('slug');
