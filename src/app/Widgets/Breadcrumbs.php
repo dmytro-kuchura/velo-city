@@ -24,7 +24,7 @@ class Breadcrumbs extends AbstractWidget
     )
     {
         $uri = Route::currentRouteName();
-        $alias = $request->route('alias') ?? $request->route('alias');
+        $slug = $request->route('slug') ?? $request->route('slug');
 
         switch ($uri) {
             case 'search':
@@ -39,6 +39,32 @@ class Breadcrumbs extends AbstractWidget
                 ];
 
                 $page = __('breadcrumbs.search.title');
+                break;
+            case 'about':
+                $breadcrumbs = [
+                    [
+                        'label' => __('breadcrumbs.index.title'),
+                        'link' => route('home'),
+                    ],
+                    [
+                        'label' => __('breadcrumbs.about.title'),
+                    ],
+                ];
+
+                $page = __('breadcrumbs.about.title');
+                break;
+            case 'profile':
+                $breadcrumbs = [
+                    [
+                        'label' => __('breadcrumbs.index.title'),
+                        'link' => route('home'),
+                    ],
+                    [
+                        'label' => __('breadcrumbs.profile.title'),
+                    ],
+                ];
+
+                $page = __('breadcrumbs.profile.title');
                 break;
             case 'login':
                 $breadcrumbs = [
@@ -78,6 +104,19 @@ class Breadcrumbs extends AbstractWidget
                 ];
 
                 $page = __('breadcrumbs.cart.title');
+                break;
+            case 'wishlist':
+                $breadcrumbs = [
+                    [
+                        'label' => __('breadcrumbs.index.title'),
+                        'link' => route('home'),
+                    ],
+                    [
+                        'label' => __('breadcrumbs.wishlist.title'),
+                    ],
+                ];
+
+                $page = __('breadcrumbs.wishlist.title');
                 break;
             case 'shop.index':
                 $breadcrumbs = [

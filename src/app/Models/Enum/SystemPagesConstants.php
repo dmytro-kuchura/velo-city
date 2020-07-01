@@ -10,4 +10,5 @@ class SystemPagesConstants
     const SHOP_PAGE = 'shop';
     const SHOPPING_CART_PAGE = 'cart';
     const WISHLIST_PAGE = 'wishlist';
+    const PROFILE_PAGE = 'profile';
 }

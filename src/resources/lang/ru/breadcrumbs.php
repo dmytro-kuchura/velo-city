@@ -9,4 +9,7 @@ return [
     'login.title' => 'Авторизация',
     'register.title' => 'Регистрация пользователя',
     'search.title' => 'Поиск',
+    'wishlist.title' => 'Список желаний',
+    'profile.title' => 'Ваш профиль',
+    'about.title' => 'О магазине',
 ];

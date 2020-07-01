@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Alert;
 use App\Models\Enum\SystemPagesConstants;
+use App\Repositories\BrandsRepository;
 use App\Repositories\ProductsRepository;
 use App\Repositories\SystemPagesRepository;
 use Illuminate\Http\Request;
@@ -16,12 +17,17 @@ class SiteController extends Controller
     /** @var SystemPagesRepository */
     private $pagesRepository;
 
+    /** @var BrandsRepository */
+    private $brandsRepository;
+
     public function __construct(
         ProductsRepository $productsRepository,
+        BrandsRepository $brandsRepository,
         SystemPagesRepository $pagesRepository
     )
     {
         $this->productsRepository = $productsRepository;
+        $this->brandsRepository = $brandsRepository;
         $this->pagesRepository = $pagesRepository;
     }
 
@@ -47,8 +53,11 @@ class SiteController extends Controller
     {
         $page = $this->pagesRepository->findBySlug(SystemPagesConstants::ABOUT_PAGE);
 
+        $brands = $brands = $this->brandsRepository->list();
+
         return view('about', [
-            'page' => $page
+            'page' => $page,
+            'brands' => $brands,
         ]);
     }
 

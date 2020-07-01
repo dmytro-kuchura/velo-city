@@ -57,7 +57,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)">
+                                            <a href="{{ route('about') }}">
                                                 <i class="fa fa-angle-right"></i>О магазине
                                             </a>
                                         </li>
@@ -115,17 +115,12 @@
                             <ul class="payment_icon">
                                 <li class="visa">
                                     <a href="javascript:void(0)">
-                                        <img src="/images/pay1.png" alt="Roadie">
+                                        <img src="/images/pay1.png" alt="Visa">
                                     </a>
                                 </li>
                                 <li class="discover">
                                     <a href="javascript:void(0)">
-                                        <img src="/images/pay2.png" alt="Roadie">
-                                    </a>
-                                </li>
-                                <li class="paypal">
-                                    <a href="javascript:void(0)">
-                                        <img src="/images/pay3.png" alt="Roadie">
+                                        <img src="/images/pay2.png" alt="MasterCard">
                                     </a>
                                 </li>
                             </ul>
@@ -141,7 +136,7 @@
                 <div class="col-12 mb-30">
                     <div class="site-link">
                         <ul>
-                            <li><a href="javascript:void(0)">О магазине</a>/</li>
+                            <li><a href="{{ route('about') }}">О магазине</a>/</li>
                             <li><a href="javascript:void(0)">Оплата</a>/</li>
                             <li><a href="javascript:void(0)">Доставка</a>/</li>
                             <li><a href="javascript:void(0)">Гарантия</a>/</li>
