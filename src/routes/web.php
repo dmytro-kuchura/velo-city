@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('test', 'TestController@email')->name('test');
+
 Route::get('parse-products', 'ParserController@parseProducts')->name('parse.products');
 Route::get('upload-products', 'ParserController@uploadProduct')->name('upload.products');
 Route::get('parse-categories', 'ParserController@parseCategories')->name('parse.categories');

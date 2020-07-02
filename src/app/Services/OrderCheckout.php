@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Mail\NewOrder;
 use App\Models\Cart;
 use App\Models\CartItems;
 use App\Models\Orders;
@@ -10,6 +11,7 @@ use App\Repositories\CartRepository;
 use App\Repositories\OrderItemsRepository;
 use App\Repositories\OrdersRepository;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Mail;
 
 class OrderCheckout
 {
@@ -57,6 +59,10 @@ class OrderCheckout
             if ($this->orderItemsRepository->create($items, $order->id)) {
                 $this->deleteCartItems($cart->id);
             }
+
+            $order = $this->ordersRepository->find($order->id);
+
+            Mail::to($order->email)->send(new NewOrder($order));
         }
     }
 

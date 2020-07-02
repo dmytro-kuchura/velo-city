@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Date;
+use App\Traits\OrderTotal;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Orders extends Model
 {
-    use Date;
+    use Date, OrderTotal;
 
     /**
      * Database table name
@@ -42,7 +43,7 @@ class Orders extends Model
      */
     public $timestamps = true;
 
-    protected $fillable = ['$user_id', '$delivery', '$payment', '$status', 'created_at', 'updated_at'];
+    protected $fillable = ['user_id', 'delivery', 'payment', 'status', 'created_at', 'updated_at'];
 
     public function items()
     {
@@ -52,5 +53,10 @@ class Orders extends Model
     public function getRussianDate()
     {
         return $this->getHumanDate($this->created_at);
+    }
+
+    public function getOrderTotal()
+    {
+        return $this->getTotal($this->items);
     }
 }

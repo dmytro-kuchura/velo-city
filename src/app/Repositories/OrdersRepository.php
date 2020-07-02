@@ -70,4 +70,9 @@ class OrdersRepository
 
         return $order;
     }
+
+    public function find(int $id)
+    {
+        return $this->model::where('id', $id)->with('items', 'items.product')->first();
+    }
 }
