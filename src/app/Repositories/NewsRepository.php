@@ -10,17 +10,18 @@ class NewsRepository implements Repository
 {
     protected $model = News::class;
 
-    public function list(int $limit)
+    public function list()
     {
         return $this->model::orderBy('id', 'desc')
             ->where('status', Common::STATUS_ACTIVE)
-            ->limit($limit)
-            ->get();
+            ->with('comments')
+            ->paginate(Common::PAGINATE_LIMIT);
     }
 
     public function paginate()
     {
         return $this->model::orderBy('id', 'desc')
+            ->with('comments')
             ->paginate(Common::PAGINATE_LIMIT);
     }
 
@@ -28,6 +29,7 @@ class NewsRepository implements Repository
     {
         return $this->model::where('id', $id)
             ->where('status', Common::STATUS_ACTIVE)
+            ->with('comments')
             ->first();
     }
 
@@ -66,5 +68,27 @@ class NewsRepository implements Repository
     public function destroy($id)
     {
         return $this->model::where('id', $id)->delete();
+    }
+
+    public function findByAlias(string $alias)
+    {
+        return $this->model::where('alias', $alias)
+            ->where('status', Common::STATUS_ACTIVE)
+            ->with('comments')
+            ->first();
+    }
+
+    public function updateImage($data)
+    {
+        return $this->model::where('id', $data['id'])->update(['image' => $data['link']]);
+    }
+
+    public function recent(int $limit)
+    {
+        return $this->model::orderBy('id', 'desc')
+            ->where('status', Common::STATUS_ACTIVE)
+            ->with('comments')
+            ->limit($limit)
+            ->get();
     }
 }

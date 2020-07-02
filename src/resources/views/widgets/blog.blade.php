@@ -16,7 +16,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-xs-30">
                                         <div class="blog-media">
-                                            <img src="{{ $record->image }}" alt="{{ $record->name }}">
+                                            <img src="{{ $record->image ? $record->image : '/images/no-image.png' }}" alt="{{ $record->name }}">
                                             <div class="blog-effect"></div>
                                             <a href="{{ route('news.inner', ['alias' => $record->alias]) }}"
                                                title="{{ $record->name }}"
@@ -32,9 +32,9 @@
                                             <div class="post-info">
                                                 <p>{{ $record->short }}</p>
                                                 <ul>
-                                                    {{--<li>--}}
-                                                    {{--<a href="javascript:void(0)">0 comment(s)</a>--}}
-                                                    {{--</li>--}}
+                                                    <li>
+                                                    <a href="javascript:void(0)">({{ count($record->comments) }}) комментариев</a>
+                                                    </li>
                                                     <li class="right-side">
                                                         <a href="single-blog.html">Подробнее
                                                             <i class="fa fa-angle-double-right"></i>

@@ -8,4 +8,6 @@ class Common
     const STATUS_DISABLE = 0;
 
     const PAGINATE_LIMIT = 12;
+
+    const POPULAR = 5;
 }

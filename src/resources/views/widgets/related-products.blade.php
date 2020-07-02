@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="heading-part align-center mb-30">
-                        <h2 class="main_title heading"><span>Related Products</span></h2>
+                        <h2 class="main_title heading"><span>Популярные товары</span></h2>
                     </div>
                 </div>
             </div>

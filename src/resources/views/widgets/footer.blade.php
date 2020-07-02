@@ -47,6 +47,11 @@
                                     <h3 class="title">Информация <span></span></h3>
                                     <ul class="footer-block-contant link">
                                         <li>
+                                            <a href="{{ route('news.index') }}">
+                                                <i class="fa fa-angle-right"></i>Новости
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="javascript:void(0)">
                                                 <i class="fa fa-angle-right"></i>Велопрокат
                                             </a>

@@ -86,6 +86,7 @@ Route::middleware('authentication')->group(function () {
         Route::prefix('news')->group(function () {
             Route::get('/', 'Api\NewsController@index')->name('api.news.index');
             Route::post('/', 'Api\NewsController@create')->name('api.news.create');
+            Route::put('/image-update', 'Api\NewsController@image')->name('api.news.image');
             Route::get('/{id}', 'Api\NewsController@show')->name('api.news.show');
             Route::put('/{id}', 'Api\NewsController@update')->name('api.news.update');
             Route::delete('/{id}', 'Api\NewsController@delete')->name('api.news.delete');

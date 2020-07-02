@@ -158,7 +158,7 @@ class ProductsRepository implements Repository
 
     public function search(string $query)
     {
-        return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
+        return $this->model::where('status', Common::STATUS_ACTIVE)
             ->where('name', 'like', '%' . $query . '%')
             ->paginate(ProductConstants::PAGINATE_LIMIT);
     }
@@ -170,7 +170,7 @@ class ProductsRepository implements Repository
 
     public function getFeatured(int $limit)
     {
-        return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
+        return $this->model::where('status', Common::STATUS_ACTIVE)
             ->whereNotNull('image')
             ->whereIn('category_id', ProductConstants::CYCLING_CATEGORIES)
             ->limit($limit)
@@ -180,7 +180,7 @@ class ProductsRepository implements Repository
 
     public function getSpecial(int $limit)
     {
-        return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
+        return $this->model::where('status', Common::STATUS_ACTIVE)
             ->where(function ($query) {
                 $query->where('sale', ProductConstants::IS_SALE)
                     ->orWhere('top', ProductConstants::IS_TOP);
@@ -194,7 +194,7 @@ class ProductsRepository implements Repository
 
     public function getMostViewed(int $limit)
     {
-        return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
+        return $this->model::where('status', Common::STATUS_ACTIVE)
             ->whereNotNull('image')
             ->whereIn('category_id', ProductConstants::CYCLING_CATEGORIES)
             ->limit($limit)
@@ -204,12 +204,21 @@ class ProductsRepository implements Repository
 
     public function getLatest(int $limit)
     {
-        return $this->model::where('status', ProductConstants::STATUS_ACTIVE)
+        return $this->model::where('status', Common::STATUS_ACTIVE)
             ->where('new', ProductConstants::IS_NEW)
             ->whereIn('category_id', ProductConstants::COMPONENTS_CATEGORIES)
             ->whereNotNull('image')
             ->limit($limit)
             ->inRandomOrder()
             ->get();
+    }
+
+    public function getRecent()
+    {
+        return $this->model::where('status', Common::STATUS_ACTIVE)
+            ->whereNotNull('image')
+            ->whereIn('category_id', ProductConstants::CYCLING_CATEGORIES)
+            ->limit(Common::POPULAR)
+            ->inRandomOrder()->get();
     }
 }

@@ -33,7 +33,7 @@ Route::prefix('shop')->group(function () {
 
 Route::prefix('news')->group(function () {
     Route::get('/', 'NewsController@index')->name('news.index');
-    Route::get('/{alias}', 'NewsController@item')->name('news.inner');
+    Route::get('/{alias}', 'NewsController@inner')->name('news.inner');
 });
 
 Route::get('/wishlist', 'WishlistController@wishlist')->name('wishlist'); // done

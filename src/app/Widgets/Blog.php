@@ -20,7 +20,7 @@ class Blog extends AbstractWidget
      */
     public function run(NewsRepository $newsRepository)
     {
-        $news = $newsRepository->list(6);
+        $news = $newsRepository->recent(6);
 
         return view('widgets.blog', [
             'news' => $news,

@@ -7,6 +7,7 @@ use App\Http\Requests\BannerCreateRequest;
 use App\Http\Requests\BannerImageUpdateRequest;
 use App\Http\Requests\BannerUpdateRequest;
 use App\Http\Requests\News\NewsCreateRequest;
+use App\Http\Requests\News\NewsImageUpdateRequest;
 use App\Http\Requests\News\NewsUpdateRequest;
 use App\Repositories\NewsRepository;
 
@@ -57,9 +58,9 @@ class NewsController extends Controller
         ]);
     }
 
-    public function image(BannerImageUpdateRequest $bannerImageUpdateRequest)
+    public function image(NewsImageUpdateRequest $request)
     {
-        $this->repository->updateImage($bannerImageUpdateRequest->all());
+        $this->repository->updateImage($request->all());
 
         return $this->returnResponse([
             'success' => true,

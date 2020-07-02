@@ -24,7 +24,7 @@ class NewsCreateRequest extends FormRequest
             'name' => 'required|string|max:255',
             'alias' => 'nullable|string|max:255',
             'image' => 'nullable|string|max:255',
-            'content' => 'nullable|string|max:255',
+            'content' => 'nullable|string',
             'short' => 'nullable|string|max:255',
             'h1' => 'nullable|string|max:255',
             'description' => 'nullable|string',
