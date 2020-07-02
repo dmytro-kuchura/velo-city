@@ -12,4 +12,5 @@ return [
     'wishlist.title' => 'Список желаний',
     'profile.title' => 'Ваш профиль',
     'about.title' => 'О магазине',
+    'news.title' => 'Новости',
 ];

@@ -118,6 +118,20 @@ class Breadcrumbs extends AbstractWidget
 
                 $page = __('breadcrumbs.wishlist.title');
                 break;
+            case 'news.index':
+            case 'news.inner':
+                $breadcrumbs = [
+                    [
+                        'label' => __('breadcrumbs.index.title'),
+                        'link' => route('home'),
+                    ],
+                    [
+                        'label' => __('breadcrumbs.news.title'),
+                    ],
+                ];
+
+                $page = __('breadcrumbs.news.title');
+                break;
             case 'shop.index':
                 $breadcrumbs = [
                     [
