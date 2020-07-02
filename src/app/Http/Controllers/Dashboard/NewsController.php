@@ -13,11 +13,11 @@ class NewsController extends Controller
 
     public function create()
     {
-        return view('dashboard.news.index');
+        return view('dashboard.news.create');
     }
 
     public function edit()
     {
-        return view('dashboard.news.index');
+        return view('dashboard.news.edit');
     }
 }

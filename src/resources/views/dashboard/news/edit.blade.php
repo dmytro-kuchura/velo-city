@@ -22,7 +22,7 @@
         </div>
         <div class="row flex-row">
             <div class="col-xl-12">
-
+                <news-edit></news-edit>
             </div>
         </div>
     </div>

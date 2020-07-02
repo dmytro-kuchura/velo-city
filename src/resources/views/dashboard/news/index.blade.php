@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row flex-row">
-
+            <news-list></news-list>
         </div>
     </div>
 @endsection

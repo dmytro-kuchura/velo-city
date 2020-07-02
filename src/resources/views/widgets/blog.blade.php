@@ -1,15 +1,15 @@
-<section class="pt-70">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 ">
-                <div class="heading-part align-center mb-30">
-                    <h2 class="main_title heading"><span>Последние новости</span></h2>
+@if($news)
+    <section class="pt-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 ">
+                    <div class="heading-part align-center mb-30">
+                        <h2 class="main_title heading"><span>Последние новости</span></h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div id="blog" class="owl-carousel">
-                @if($news)
+            <div class="row">
+                <div id="blog" class="owl-carousel">
                     @foreach($news as $record)
                         <div class="item">
                             <div class="blog-item">
@@ -18,24 +18,25 @@
                                         <div class="blog-media">
                                             <img src="{{ $record->image }}" alt="{{ $record->name }}">
                                             <div class="blog-effect"></div>
-                                            <a href="{{ $record->alias }}" title="{{ $record->name }}"
+                                            <a href="{{ route('news.inner', ['alias' => $record->alias]) }}"
+                                               title="{{ $record->name }}"
                                                class="read">&nbsp;</a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="blog-detail">
                                             <div class="blog-title">
-                                                <a href="single-blog.html">{{ $record->name }}</a>
+                                                <a href="{{ route('news.inner', ['alias' => $record->alias]) }}">{{ $record->name }}</a>
                                             </div>
-                                            <span>by Wed Censtoriya</span>
+                                            <span>опубликовал: Администратор</span>
                                             <div class="post-info">
                                                 <p>{{ $record->short }}</p>
                                                 <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">0 comment(s)</a>
-                                                    </li>
+                                                    {{--<li>--}}
+                                                    {{--<a href="javascript:void(0)">0 comment(s)</a>--}}
+                                                    {{--</li>--}}
                                                     <li class="right-side">
-                                                        <a href="single-blog.html">Read more
+                                                        <a href="single-blog.html">Подробнее
                                                             <i class="fa fa-angle-double-right"></i>
                                                         </a>
                                                     </li>
@@ -47,8 +48,8 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif

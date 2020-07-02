@@ -83,6 +83,13 @@ Route::middleware('authentication')->group(function () {
             Route::put('/{id}', 'Api\ProductsController@update')->name('api.products.update');
             Route::delete('/{id}', 'Api\ProductsController@delete')->name('api.products.delete');
         });
+        Route::prefix('news')->group(function () {
+            Route::get('/', 'Api\NewsController@index')->name('api.news.index');
+            Route::post('/', 'Api\NewsController@create')->name('api.news.create');
+            Route::get('/{id}', 'Api\NewsController@show')->name('api.news.show');
+            Route::put('/{id}', 'Api\NewsController@update')->name('api.news.update');
+            Route::delete('/{id}', 'Api\NewsController@delete')->name('api.news.delete');
+        });
         Route::prefix('categories')->group(function () {
             Route::get('/', 'Api\CategoriesController@index')->name('api.categories.index');
             Route::get('/all', 'Api\CategoriesController@all')->name('api.categories.all');

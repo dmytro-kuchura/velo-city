@@ -27,6 +27,10 @@ Vue.component('orders-chart', require('./vue-components/OrdersChartsComponent.vu
 
 Vue.component('orders-list', require('./vue-components/orders/OrdersListComponent.vue').default);
 
+Vue.component('news-list', require('./vue-components/news/NewsListComponent.vue').default);
+Vue.component('news-create', require('./vue-components/news/NewsCreateComponent.vue').default);
+Vue.component('news-edit', require('./vue-components/news/NewsEditComponent.vue').default);
+
 Vue.component('banner-list', require('./vue-components/banners/BannersListComponent').default);
 Vue.component('banner-edit', require('./vue-components/banners/BannersEditComponent').default);
 Vue.component('banner-create', require('./vue-components/banners/BannersCreateComponent').default);

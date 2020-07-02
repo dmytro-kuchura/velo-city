@@ -44,6 +44,19 @@ return [
                 'resize' => 0,
             ],
         ],
+        'news' => [
+            [
+                'path' => 'main',
+                'width' => 1300,
+                'height' => 811,
+                'resize' => 1,
+                'watermark' => 0,
+            ],
+            [
+                'path' => 'original',
+                'resize' => 0,
+            ],
+        ],
         'products' => [
             [
                 'path' => 'main',

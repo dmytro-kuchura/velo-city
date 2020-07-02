@@ -45,4 +45,4 @@ Route::get('/thank', 'CheckoutController@thank')->name('thank');
 Route::get('/about', 'SiteController@about')->name('about'); // done
 Route::get('/contact', 'SiteController@contacts')->name('contacts');
 Route::get('/search', 'SiteController@search')->name('search');
-//Route::get('/{slug}', 'PagesController@page')->name('page');
+Route::get('/{slug}', 'PagesController@page')->name('page');

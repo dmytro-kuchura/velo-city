@@ -102,8 +102,6 @@
                     .catch(({response}) => {
                         this.createSpecificationErrorResponse(response);
                     })
-
-
             },
             createSpecificationSuccessResponse(data) {
                 swal({
@@ -120,7 +118,7 @@
                 }
             },
             redirectAfterCreate() {
-                location.href = '/admin/specifications';
+                window.location.href = '/admin/specifications';
             }
         }
     }
