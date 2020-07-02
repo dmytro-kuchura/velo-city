@@ -13,7 +13,7 @@ class CatalogRepository
     {
         $tree = [];
 
-        $result = $this->model::where('status', Common::STATUS_ACTIVE)->get();
+        $result = $this->model::where('status', Common::STATUS_ACTIVE)->orderBy('sort')->get();
 
         foreach ($result as $obj) {
             $tree[$obj->parent_id][] = $obj;
