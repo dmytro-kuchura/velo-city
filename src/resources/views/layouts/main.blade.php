@@ -3,7 +3,6 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-
     <!-- Basic Page Needs -->
     <title>@yield('title')</title>
 
@@ -44,6 +43,18 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+
+    @if(config('app.env') !== 'local')
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125280840-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-125280840-1');
+        </script>
+    @endif
 </head>
 <body class="homepage">
 <div class="se-pre-con"></div>
