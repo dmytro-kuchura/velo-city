@@ -10,7 +10,7 @@ class MainController extends Controller
 {
     public function dashboard()
     {
-        if (!Auth::user()->isAdmin()) {
+        if (Auth::check() && !Auth::user()->isAdmin()) {
             Alert::warning('Ой, а Вы точно администратор?', 'Слабо верится! :)');
 
             return redirect(route('home'));

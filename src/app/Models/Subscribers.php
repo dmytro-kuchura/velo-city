@@ -3,6 +3,33 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Swagger\Annotations as SWG;
+
+/**
+ * @SWG\Definition(
+ *  definition="Subscribers",
+ *  @SWG\Property(
+ *      property="id",
+ *      type="integer"
+ *  ),
+ *  @SWG\Property(
+ *      property="email",
+ *      type="string"
+ *  ),
+ *  @SWG\Property(
+ *      property="ip",
+ *      type="string"
+ *  ),
+ *  @SWG\Property(
+ *      property="hash",
+ *      type="string"
+ *  ),
+ *  @SWG\Property(
+ *      property="status",
+ *      type="integer"
+ *  )
+ * )
+ */
 
 /**
  * @property int $id
