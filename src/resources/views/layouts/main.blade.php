@@ -31,7 +31,7 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="/css/app.css"/>
     <!-- sitemap.xml -->
     <link href='{{ url('sitemap.xml') }}' rel='alternate' title='Sitemap' type='application/rss+xml'/>
     <!-- canonical -->
@@ -89,7 +89,7 @@
     @widget('footer')
 </div>
 
-<script src="{{ asset('/js/app.js') }}"></script>
+<script src="/js/app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 
 {{--<script>--}}
