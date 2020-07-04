@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Services\UploadImage;
+use App\Services\UploadImageService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImageUploadRequest;
 use Illuminate\Support\Facades\Log;
@@ -11,7 +11,7 @@ class UploadController extends Controller
 {
     private $service;
 
-    public function __construct(UploadImage $uploadImage)
+    public function __construct(UploadImageService $uploadImage)
     {
         $this->service = $uploadImage;
     }

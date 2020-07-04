@@ -13,8 +13,9 @@
 
 Route::get('test', 'TestController@email')->name('test');
 
-Route::get('parse-products', 'ParserController@parseProducts')->name('parse.products');
-Route::get('upload-products', 'ParserController@uploadProduct')->name('upload.products');
+Route::get('parse-products', 'ParserController@addProductsToQuery')->name('parse.query.products');
+Route::get('upload-products', 'ParserController@addOrUpdateProductsFromQuery')->name('parse.upload.products');
+
 Route::get('parse-categories', 'ParserController@parseCategories')->name('parse.categories');
 Route::get('justin', 'Warehouses\JustinController@import')->name('justin.import');
 

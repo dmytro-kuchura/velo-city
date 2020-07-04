@@ -2,143 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Text;
-use App\Models\Catalog;
-use App\Models\Product;
-use App\Models\ProductImages;
-use App\Models\Query;
-use App\Services\UploadImage;
+use App\Services\SportTopParserService;
 
-class ParserController
+class ParserController extends Controller
 {
-    const LINK = 'https://sporttop.com.ua/all.xml';
+    private $service;
 
-    public $data;
-
-    public function __construct()
+    public function __construct(SportTopParserService $service)
     {
-        $this->data = $this->getData();
+        $this->service = $service;
     }
 
-    public function parseProducts()
+    public function addProductsToQuery()
     {
-        $xml = simplexml_load_string($this->data);
+        $this->service->addToQuery();
 
-        foreach ($xml->shop->offers->offer as $item) {
-            $model = new Query();
-
-            $model->data = json_encode($item);
-            $model->save();
-        }
+        return $this->returnResponse([
+            'success' => true,
+            'add_to_query' => true,
+        ], 201);
     }
 
-    public function uploadProduct()
+    public function addOrUpdateProductsFromQuery()
     {
-        ini_set('memory_limit', '256M');
-        set_time_limit(8000);
+        $count = $this->service->uploadProductFromQuery();
 
-        $items = Query::orderBy('id', 'asc')->limit(15)->get();
-
-        $count = 0;
-
-        /** @var Query $item */
-        foreach ($items as $item) {
-            $product = json_decode($item->data);
-
-            $model = Product::where('alias', Text::cyrillic(strtolower($product->model)))->first();
-
-            if (!$model) {
-                $model = new Product();
-            }
-
-            $model->name = $product->model;
-            $model->title = $product->model;
-            $model->alias = Text::cyrillic(strtolower($product->model));
-            $model->category_id = $product->categoryId;
-            $model->new = rand(0, 1);
-            $model->sale = rand(0, 1);
-            $model->top = rand(0, 1);
-            $model->cost = $product->price;
-            $model->cost_old = $product->oldprice;
-            $model->information = is_string($product->description) ? $product->description : null;
-            $model->artikul = $product->vendorCode;
-            $model->available = 1;
-
-            $model->save();
-
-            $model->image = isset($product->picture) ? $this->uploadImages((array)$product->picture, $model->id) : null;
-
-            if ($model->save()) {
-                $item->delete();
-            }
-
-            $count++;
-        }
-
-        return response()->json([
-            'imported' => $count
+        return $this->returnResponse([
+            'success' => true,
+            'imported' => $count,
         ], 200);
-    }
-
-    public function uploadImages(array $images, int $id): string
-    {
-        if (count($images) === 1) {
-            $service = new UploadImage();
-            $link = $service->uploadByLink(reset($images), 'products');
-
-            $model = new ProductImages();
-            $model->link = $link;
-            $model->product_id = $id;
-            $model->status = 1;
-            $model->save();
-
-            return $model->link;
-        }
-
-        foreach ($images as $image) {
-            $service = new UploadImage();
-            $link = $service->uploadByLink($image, 'products');
-
-            $model = new ProductImages();
-            $model->link = $link;
-            $model->product_id = $id;
-            $model->status = 1;
-            $model->save();
-        }
-
-        return $model->link;
-    }
-
-    public function parseCategories()
-    {
-        $xml = simplexml_load_string($this->data);
-
-        foreach ($xml->shop->categories->children() as $child) {
-            $model = new Catalog();
-
-            $model->id = $child->attributes()->id;
-            $model->name = $child->__toString();
-            $model->alias = Text::cyrillic(strtolower($child->__toString()));
-            $model->parent_id = $child->attributes()->parentId ? $child->attributes()->parentId->__toString() : 0;
-            $model->status = 1;
-
-            $model->save();
-        }
-    }
-
-    public function getData()
-    {
-        $curl = curl_init();
-
-        curl_setopt_array($curl, [
-            CURLOPT_URL => self::LINK,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => 'utf-8'
-        ]);
-
-        $data = curl_exec($curl);
-        curl_close($curl);
-
-        return $data;
     }
 }

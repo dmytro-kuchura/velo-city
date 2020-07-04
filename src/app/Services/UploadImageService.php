@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Image;
 use Illuminate\Support\Facades\Storage;
 
-class UploadImage
+class UploadImageService
 {
     public function upload($request, $param)
     {
