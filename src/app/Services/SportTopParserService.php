@@ -8,6 +8,7 @@ use App\Models\Query;
 use App\Repositories\ProductImagesRepository;
 use App\Repositories\ProductsRepository;
 use App\Repositories\QueryRepository;
+use Illuminate\Support\Facades\Log;
 
 class SportTopParserService
 {
@@ -112,6 +113,7 @@ class SportTopParserService
                 }
 
             } catch (\Throwable $exception) {
+                Log::error($exception->getMessage());
                 return 0;
             }
 

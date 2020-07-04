@@ -49,21 +49,19 @@ class ProductsRepository implements Repository
         $model->name = $data['name'];
         $model->alias = $data['alias'];
         $model->category_id = $data['category_id'];
-        $model->status = $data['status'];
+        $model->status = 1;
         $model->new = $data['new'];
         $model->sale = $data['sale'];
         $model->top = $data['top'];
         $model->available = $data['available'];
         $model->cost = $data['cost'];
         $model->cost_old = $data['cost_old'];
-        $model->brand = $data['brand'];
+        $model->brand = isset($data['brand']) ?? $data['brand'];
         $model->artikul = $data['artikul'];
-        $model->image = $data['image'];
-        $model->specifications = $data['specifications'];
+        $model->specifications = isset($data['specifications']) ?? $data['specifications'];
         $model->information = $data['information'];
         $model->title = $data['title'];
         $model->description = $data['description'];
-        $model->keywords = $data['keywords'];
 
         return $model->save();
     }
