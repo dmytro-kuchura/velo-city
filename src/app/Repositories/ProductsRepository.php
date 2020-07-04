@@ -28,23 +28,17 @@ class ProductsRepository implements Repository
     {
         return $this->model::where('id', $id)->update([
             'name' => $data['name'],
-            'alias' => $data['alias'],
             'category_id' => $data['category_id'],
-            'status' => $data['status'],
             'new' => $data['new'],
             'sale' => $data['sale'],
             'top' => $data['top'],
             'available' => $data['available'],
             'cost' => $data['cost'],
             'cost_old' => $data['cost_old'],
-            'brand' => $data['brand'],
             'artikul' => $data['artikul'],
-            'image' => $data['image'],
-            'specifications' => $data['specifications'],
             'information' => $data['information'],
-            'title' => $data['title'],
             'description' => $data['description'],
-            'keywords' => $data['keywords'],
+            'title' => $data['name'],
         ]);
     }
 
@@ -213,12 +207,8 @@ class ProductsRepository implements Repository
             ->get();
     }
 
-    public function getRecent()
+    public function findByArtikul(string $artikul)
     {
-        return $this->model::where('status', Common::STATUS_ACTIVE)
-            ->whereNotNull('image')
-            ->whereIn('category_id', ProductConstants::CYCLING_CATEGORIES)
-            ->limit(Common::POPULAR)
-            ->inRandomOrder()->get();
+        return $this->model::where('artikul', $artikul)->first();
     }
 }
