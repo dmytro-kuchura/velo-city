@@ -68,6 +68,9 @@ class SportTopParserService
 
     public function uploadProductFromQuery()
     {
+        ini_set('memory_limit', '256M');
+        set_time_limit(8000);
+
         $items = $this->queryRepository->list(5);
 
         $count = 0;
