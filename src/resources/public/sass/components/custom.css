@@ -2363,7 +2363,7 @@ _______________________________________________________*/
 
 .product-item.sold-out::after {
     background: #fa6b6b;
-    content: "Sold out";
+    content: "Продано";
     color: #fff;
     position: absolute;
     top: 50%;

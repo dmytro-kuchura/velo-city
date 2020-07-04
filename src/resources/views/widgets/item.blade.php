@@ -1,10 +1,10 @@
 <div class="item">
     <div class="product-item {{ $item->available === 1 ? '' : 'sold-out' }}">
         @if($item->sale)
-            <div class="main-label sale-label"><span>Sale</span></div>
+            <div class="main-label sale-label"><span>Распродажа</span></div>
         @endif
         @if($item->new)
-            <div class="main-label new-label"><span>New</span></div>
+            <div class="main-label new-label"><span>Новинка</span></div>
         @endif
         <div class="product-image">
             <a href="{{ route('shop.item', ['alias' => $item->alias, 'id' => $item->id]) }}">
