@@ -68,7 +68,7 @@ class SportTopParserService
 
     public function uploadProductFromQuery()
     {
-        $items = $this->queryRepository->list(10);
+        $items = $this->queryRepository->list(5);
 
         $count = 0;
 
