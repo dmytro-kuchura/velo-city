@@ -209,4 +209,9 @@ class ProductsRepository implements Repository
     {
         return $this->model::where('artikul', $artikul)->first();
     }
+
+    public function all()
+    {
+        return $this->model::where('status', Common::STATUS_ACTIVE)->get();
+    }
 }

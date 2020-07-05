@@ -91,4 +91,9 @@ class NewsRepository implements Repository
             ->limit($limit)
             ->get();
     }
+
+    public function all()
+    {
+        return $this->model::where('status', Common::STATUS_ACTIVE)->get();
+    }
 }

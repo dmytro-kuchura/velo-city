@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Alert;
 use App\Models\Enum\SystemPagesConstants;
 use App\Repositories\BrandsRepository;
+use App\Repositories\NewsRepository;
 use App\Repositories\ProductsRepository;
 use App\Repositories\SystemPagesRepository;
 use Illuminate\Http\Request;
@@ -20,14 +21,19 @@ class SiteController extends Controller
     /** @var BrandsRepository */
     private $brandsRepository;
 
+    /** @var NewsRepository */
+    private $newsRepository;
+
     public function __construct(
         ProductsRepository $productsRepository,
         BrandsRepository $brandsRepository,
+        NewsRepository $newsRepository,
         SystemPagesRepository $pagesRepository
     )
     {
         $this->productsRepository = $productsRepository;
         $this->brandsRepository = $brandsRepository;
+        $this->newsRepository = $newsRepository;
         $this->pagesRepository = $pagesRepository;
     }
 
@@ -63,7 +69,15 @@ class SiteController extends Controller
 
     public function sitemap()
     {
-        //
+        $pages = $this->pagesRepository->all();
+        $items = $this->productsRepository->all();
+        $news = $this->newsRepository->all();
+
+        return response()->view('sitemap', [
+            'items' => $items,
+            'pages' => $pages,
+            'news' => $news,
+        ])->header('Content-Type', 'application/xml');
     }
 
     public function search(Request $request)

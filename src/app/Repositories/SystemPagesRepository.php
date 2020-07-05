@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Enum\Common;
 use App\Models\SystemPages;
 
 class SystemPagesRepository implements Repository
@@ -36,5 +37,15 @@ class SystemPagesRepository implements Repository
     public function destroy(int $id)
     {
         // TODO: Implement destroy() method.
+    }
+
+    public function all()
+    {
+        return $this->model::whereIn('slug', [
+            'main',
+            'shop',
+            'about',
+            'news',
+        ])->get();
     }
 }

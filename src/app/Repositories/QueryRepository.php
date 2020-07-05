@@ -41,4 +41,9 @@ class QueryRepository
     {
         return $this->model::where('id', $id)->delete();
     }
+
+    public function count()
+    {
+        return $this->model::count();
+    }
 }

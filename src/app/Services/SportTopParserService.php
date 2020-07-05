@@ -95,7 +95,7 @@ class SportTopParserService
                     'information' => is_string($itemData->description) ? $itemData->description : null,
                     'artikul' => $itemData->vendorCode,
                     'available' => $itemData->{'@attributes'}->available == 'true',
-                    'description' => $itemData->model .' ➤➤➤ Купить по цене №➊ в Херсоне ➤ Рассрочка 0% ✔ Официальная гарантия ☎ (050) 570-19-00 ✔ Velo-Сity | Веломагазин Velo-Сity',
+                    'description' => $itemData->model . ' ➤➤➤ Купить по цене №➊ в Херсоне ➤ Рассрочка 0% ✔ Официальная гарантия ☎ (050) 570-19-00 ✔ Velo-Сity | Веломагазин Velo-Сity',
                 ];
 
                 if (!$product) {
@@ -146,12 +146,16 @@ class SportTopParserService
             return $link;
         }
 
-        foreach ($images as $image) {
+        foreach ($images as $key => $image) {
             $service = new UploadImageService();
-            $link = $service->uploadByLink($image, 'products');
+            $imageLink = $service->uploadByLink($image, 'products');
+
+            if ($key === 0) {
+                $link = $imageLink;
+            }
 
             $this->productImagesRepository->create([
-                'link' => $link,
+                'link' => $imageLink,
                 'product_id' => $id
             ]);
         }
