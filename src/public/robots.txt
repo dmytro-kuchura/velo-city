@@ -1,2 +1,4 @@
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: http://velo-city.store/sitemap.xml
