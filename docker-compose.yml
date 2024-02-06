@@ -3,9 +3,9 @@ version: '3'
 services:
   web:
     container_name: shop_nginx
-    image: nginx
+    image: nginx:1.24
     volumes:
-      - './.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf'
+      - './.docker/nginx:/etc/nginx/conf.d/'
       - './src/:/var/www/html'
     ports:
       - '80:80'
@@ -13,30 +13,36 @@ services:
       - php
       - db
 
-  php:
+  php: &app-podcasts-service
     container_name: shop_php
-    build: .docker/php
+    build:
+      args:
+        user: podcast
+        uid: 1000
+      context: .docker/php
     volumes:
       - './.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini'
       - './.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini'
       - './src/:/var/www/html'
 
-  composer:
-    container_name: shop_composer
-    image: composer
-    volumes:
-      - './src/:/app'
-    command: install
+  scheduler:
+    <<: *app-podcasts-service
+    container_name: shop_scheduler
+    restart: always
+    command: /scheduler/scheduler.sh
 
   db:
     container_name: shop_db
-    image: 'postgres:10.12'
+    image: 'postgres:14.8'
     environment:
-      - 'POSTGRES_DB=${DB_NAME}'
-      - 'POSTGRES_USER=${DB_USER}'
-      - 'POSTGRES_PASSWORD=${DB_PASSWORD}'
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - '5432:5432'
     volumes:
-      - './.docker/postgres/data:/var/lib/postgresql/data'
-      - './.docker/postgres:/docker-entrypoint-initdb.d'
+      - 'local-database:/var/lib/postgresql/data'
+
+volumes:
+  local-database:
+    driver: local
