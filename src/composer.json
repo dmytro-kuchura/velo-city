@@ -9,8 +9,6 @@
   "license": "MIT",
   "require": {
     "php": "^7.2",
-    "ext-curl": "*",
-    "ext-json": "*",
     "arrilot/laravel-widgets": "^3.13",
     "darkaonline/l5-swagger": "6.*",
     "fideloper/proxy": "^4.0",
@@ -18,8 +16,7 @@
     "laravel/framework": "^6.2",
     "laravel/tinker": "^1.0",
     "league/flysystem-aws-s3-v3": "^1.0",
-    "zircote/swagger-php": "2.*",
-    "ext-simplexml": "*"
+    "zircote/swagger-php": "2.*"
   },
   "require-dev": {
     "facade/ignition": "^1.4",

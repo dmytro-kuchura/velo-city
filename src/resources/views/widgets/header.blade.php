@@ -32,35 +32,11 @@
                     <div id="menu" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             @if($tree)
-                                @foreach($tree[1202] as $obj)
+                                @foreach($tree[0] as $obj)
                                     <li class="level dropdown">
                                         <span class="opener plus"></span>
                                         <a href="{{ route('shop.category', ['category' => $obj->alias]) }}"
                                            class="page-scroll">{{ $obj->name }}</a>
-                                        <div class="megamenu mobile-sub-menu">
-                                            <div class="megamenu-inner-top">
-                                                @if(isset($tree[$obj->id]))
-                                                    <ul class="sub-menu-level1">
-                                                        @foreach($tree[$obj->id] as $subItem)
-                                                            <li class="level2 ">
-                                                                <a href="{{ route('shop.category', ['category' => $subItem->alias]) }}"><span>{{ $subItem->name }}</span></a>
-                                                                @if(isset($tree[$subItem->id]))
-                                                                    <ul class="sub-menu-level2">
-                                                                        @foreach($tree[$subItem->id] as $item)
-                                                                            <li class="level3">
-                                                                                <a href="{{ route('shop.category', ['category' => $item->alias]) }}">
-                                                                                    <span>■</span>{{ $item->name }}
-                                                                                </a>
-                                                                            </li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                @endif
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                @endif
-                                            </div>
-                                        </div>
                                     </li>
                                 @endforeach
                             @endif
